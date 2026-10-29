@@ -6,6 +6,7 @@ Analisador de echos de Wuthering Waves: lê os 5 echos de um personagem, compara
 
 ```bash
 uv sync
+uv run wuwastats serve                               # API + página em http://127.0.0.1:8000 (contrato: docs/api.md)
 uv run wuwastats check-data                          # valida data/*.json
 uv run wuwastats analyze fixtures/entradas/suoming_dps.json
 uv run wuwastats extract input/ --build Suoming_DPS --saida input/entrada.json  # IA de visão

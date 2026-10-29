@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WuwaStats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>WuwaStats</h1>
+    <p>Página provisória: só consome a API (<a href="/docs">/docs</a>). Toda regra de negócio fica no backend.</p>
+  </header>
+
+  <section>
+    <h2>Build</h2>
+    <label>Build <select id="build"></select></label>
+    <label>Arma assinatura
+      <select id="arma">
+        <option value="">detectar / perguntar</option>
+        <option value="sim">sim</option>
+        <option value="nao">não</option>
+      </select>
+    </label>
+    <label>Regen externa (arma, cadeia) <input id="regen-externa" type="number" step="0.1" value="0"></label>
+    <label>Regen total da tela (opcional) <input id="regen-informado" type="number" step="0.1"></label>
+  </section>
+
+  <section>
+    <h2>1. Prints</h2>
+    <label>Echos (1 a 5, na ordem dos slots) <input id="prints-echo" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+    <label>Tela do personagem (opcional) <input id="print-personagem" type="file" accept="image/png,image/jpeg,image/webp"></label>
+    <button id="extrair" type="button">Extrair com IA</button>
+    <ul id="resultado-extracao"></ul>
+  </section>
+
+  <section>
+    <h2>2. Entrada (JSON, edite à vontade)</h2>
+    <textarea id="entrada-json" rows="14" spellcheck="false"></textarea>
+    <div>
+      <button id="analisar" type="button">Analisar</button>
+      <button id="adicionar-echo" type="button">Adicionar echo vazio</button>
+    </div>
+  </section>
+
+  <section id="analise" hidden>
+    <h2>3. Análise</h2>
+    <div id="avisos"></div>
+    <div id="echos" class="echos"></div>
+    <div id="conjunto"></div>
+    <div id="desconhecidos"></div>
+  </section>
+
+  <p id="status" role="status"></p>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

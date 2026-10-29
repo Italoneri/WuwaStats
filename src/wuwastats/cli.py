@@ -8,8 +8,10 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import get_args
 
+import uvicorn
 from pydantic import ValidationError
 
+from wuwastats.api.app import criar_app
 from wuwastats.config import Settings
 from wuwastats.domain.analyze import analisar
 from wuwastats.domain.models import Condicoes, EntradaBuild
@@ -60,6 +62,10 @@ def _parser() -> argparse.ArgumentParser:
     extract.add_argument("--arma-assinatura", choices=list(RESPOSTA_ARMA), help="sobrescreve o que for detectado no print")
     extract.add_argument("--regen-externa", type=float, default=0.0, help="Regen. de Energia de arma, cadeia etc.")
     extract.add_argument("--saida", type=Path, help="grava o JSON de entrada aqui (padrão: imprime)")
+
+    serve = comandos.add_parser("serve", help="sobe a API e a página em http://127.0.0.1:8000")
+    serve.add_argument("--host", default="127.0.0.1")
+    serve.add_argument("--port", type=int, default=8000)
 
     alias = comandos.add_parser("alias", help="mapeia um nome lido para uma chave do dicionário")
     alias.add_argument("categoria", choices=get_args(CategoriaNome))
@@ -146,11 +152,22 @@ def _alias(args: argparse.Namespace, dados: GameData, settings: Settings) -> int
     return 0
 
 
+def _serve(args: argparse.Namespace, _dados: GameData, settings: Settings) -> int:
+    uvicorn.run(criar_app(settings), host=args.host, port=args.port)
+    return 0
+
+
 def _erro(*linhas: str) -> None:
     print("\n".join(linhas), file=sys.stderr)
 
 
-COMANDOS: dict[str, Comando] = {"check-data": _check_data, "analyze": _analyze, "extract": _extract, "alias": _alias}
+COMANDOS: dict[str, Comando] = {
+    "check-data": _check_data,
+    "analyze": _analyze,
+    "extract": _extract,
+    "serve": _serve,
+    "alias": _alias,
+}
 
 if __name__ == "__main__":
     sys.exit(main())

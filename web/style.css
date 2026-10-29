@@ -1,0 +1,21 @@
+/* Estilo mínimo e provisório: o design final vem do Claude Design. */
+body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 1400px; padding: 0 16px 48px; }
+section { border-top: 1px solid #ccc; padding: 8px 0 16px; }
+label { display: inline-block; margin: 4px 16px 4px 0; }
+textarea { width: 100%; font-family: ui-monospace, monospace; font-size: 12px; box-sizing: border-box; }
+button { margin: 8px 8px 0 0; }
+.echos { display: grid; grid-template-columns: repeat(5, minmax(220px, 1fr)); gap: 12px; overflow-x: auto; }
+.echo { border: 1px solid #999; padding: 8px; }
+.echo.revisao { border: 2px solid #c00; }
+.sub { margin: 6px 0; font-size: 13px; }
+.sub input { width: 64px; }
+.sub select { max-width: 130px; }
+.barra { position: relative; height: 8px; background: #ddd; }
+.barra > div { height: 100%; background: #36c; }
+.limites { display: flex; justify-content: space-between; font-size: 11px; color: #666; }
+.problema { font-size: 12px; margin: 2px 0; }
+.problema.revisao { color: #c00; }
+.problema.build { color: #b60; }
+.problema.mapeamento { color: #63c; }
+.problema.aviso { color: #666; }
+#status.erro { color: #c00; white-space: pre-wrap; }
