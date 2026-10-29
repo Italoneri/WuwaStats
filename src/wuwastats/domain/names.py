@@ -28,18 +28,20 @@ def is_pct_flat_pair(keys: frozenset[str]) -> bool:
 @dataclass(frozen=True)
 class NameIndex:
     keys_by_name: Mapping[str, frozenset[str]]
+    aliases_by_key: Mapping[str, tuple[str, ...]]
 
     @classmethod
     def build(cls, aliases_by_key: Mapping[str, Iterable[str]]) -> "NameIndex":
+        originals = {key: tuple(aliases) for key, aliases in aliases_by_key.items()}
         keys_by_name: dict[str, set[str]] = {}
-        for key, aliases in aliases_by_key.items():
+        for key, aliases in originals.items():
             for name in (key, *aliases):
                 keys_by_name.setdefault(fold(name), set()).add(key)
-        return cls({name: frozenset(keys) for name, keys in keys_by_name.items()})
+        return cls({name: frozenset(keys) for name, keys in keys_by_name.items()}, originals)
 
     @property
     def keys(self) -> frozenset[str]:
-        return frozenset().union(*self.keys_by_name.values())
+        return frozenset(self.aliases_by_key)
 
     def candidates(self, name: str) -> frozenset[str]:
         return self.keys_by_name.get(fold(name), frozenset())

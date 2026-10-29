@@ -2,7 +2,7 @@ import pytest
 
 from wuwastats.domain.models import Condicoes
 from wuwastats.domain.tables import GameData
-from wuwastats.domain.variants import Resolucao, resolver_build
+from wuwastats.domain.variants import Resolucao, detectar_condicoes, resolver_build
 
 
 @pytest.mark.parametrize(
@@ -40,6 +40,30 @@ def test_variante_herda_campos_do_perfil_base(dados: GameData) -> None:
 
     assert spec.pesos == perfil.base.pesos
     assert spec.custos == (4, 3, 3, 1, 1)
+
+
+@pytest.mark.parametrize(
+    ("arma_lida", "informadas", "esperado"),
+    [
+        ("Arma Teste", Condicoes(), True),
+        ("test weapon", Condicoes(), True),
+        ("Outra Arma", Condicoes(), False),
+        (None, Condicoes(), None),
+        ("Outra Arma", Condicoes(arma_assinatura=True), True),
+    ],
+)
+def test_detecta_arma_assinatura_pelo_nome_lido(
+    dados: GameData, arma_lida: str | None, informadas: Condicoes, esperado: bool | None
+) -> None:
+    condicoes = detectar_condicoes(dados.perfis["Suoming_DPS"], arma_lida, informadas)
+
+    assert condicoes.arma_assinatura is esperado
+
+
+def test_sem_armas_cadastradas_condicao_fica_pendente(dados: GameData) -> None:
+    perfil = dados.perfis["Suoming_SubDPS"]
+
+    assert detectar_condicoes(perfil, "Arma Teste", Condicoes()).arma_assinatura is None
 
 
 def test_perfil_sem_variantes_ignora_condicoes(dados: GameData) -> None:

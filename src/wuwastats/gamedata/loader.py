@@ -9,7 +9,7 @@ from typing import Any
 from pydantic import ValidationError
 
 from wuwastats.domain.models import Custo
-from wuwastats.domain.names import NameIndex, is_pct_flat_pair, is_percent_stat, resolve_stat
+from wuwastats.domain.names import NameIndex, fold, is_pct_flat_pair, is_percent_stat, resolve_stat
 from wuwastats.domain.tables import (
     BuildSpec,
     EchoInfo,
@@ -144,13 +144,14 @@ class _Resolvedor:
 
     def perfil(self, nome: str, raw: PerfilRaw) -> Perfil:
         onde = f"characters.json › {nome}"
-        base_campos = raw.model_dump(exclude={"personagem", "variantes"})
+        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "variantes"})
         variantes = (
             self._variante(base_campos, variante, f"{onde} › variantes › {indice}")
             for indice, variante in enumerate(raw.variantes)
         )
         return Perfil(
             personagem=raw.personagem,
+            armas_assinatura=frozenset(fold(arma) for arma in raw.armas_assinatura),
             base=self._spec(raw, onde),
             variantes=tuple(v for v in variantes if v is not None),
         )

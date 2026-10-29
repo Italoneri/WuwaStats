@@ -6,6 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 Custo = Literal[1, 3, 4]
 Escala = Literal["ATQ", "DEF", "HP"]
+MAX_ECHOS = 5
 
 
 class _Entrada(BaseModel):
@@ -37,4 +38,4 @@ class EntradaBuild(_Entrada):
     condicoes: Condicoes = Condicoes()
     regen_externa: float = 0
     regen_total_informado: float | None = None
-    echos: tuple[EchoEntrada, ...] = Field(min_length=1, max_length=5)
+    echos: tuple[EchoEntrada, ...] = Field(min_length=1, max_length=MAX_ECHOS)

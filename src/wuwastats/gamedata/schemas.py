@@ -140,6 +140,7 @@ class VarianteRaw(_Estrito):
 
 class PerfilRaw(BuildSpecRaw):
     personagem: str = Field(min_length=1)
+    armas_assinatura: list[str] = []
     variantes: list[VarianteRaw] = []
 
 

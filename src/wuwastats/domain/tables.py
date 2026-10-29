@@ -58,6 +58,7 @@ class Variante:
 @dataclass(frozen=True)
 class Perfil:
     personagem: str
+    armas_assinatura: frozenset[str]  # já normalizados com fold(), em qualquer idioma
     base: BuildSpec
     variantes: tuple[Variante, ...]
 
