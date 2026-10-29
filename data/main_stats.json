@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "descricao": "Status principais por custo, com o valor no nível máximo (5 estrelas, +25). 'secundario' é o status fixo que todo echo daquele custo tem. Troque status para \"ok\" depois de conferir."
+  },
+  "custos": {
+    "4": {
+      "primarios": {
+        "crit_rate": 22.0,
+        "crit_dmg": 44.0,
+        "atk_pct": 33.0,
+        "hp_pct": 33.0,
+        "def_pct": 41.8,
+        "healing_bonus": 26.4
+      },
+      "secundario": { "atk_flat": 150 },
+      "status": "TODO: confirmar"
+    },
+    "3": {
+      "primarios": {
+        "atk_pct": 30.0,
+        "hp_pct": 30.0,
+        "def_pct": 38.0,
+        "energy_regen": 32.0,
+        "glacio_dmg": 30.0,
+        "fusion_dmg": 30.0,
+        "electro_dmg": 30.0,
+        "aero_dmg": 30.0,
+        "spectro_dmg": 30.0,
+        "havoc_dmg": 30.0
+      },
+      "secundario": { "atk_flat": 100 },
+      "status": "TODO: confirmar"
+    },
+    "1": {
+      "primarios": {
+        "atk_pct": 18.0,
+        "hp_pct": 22.8,
+        "def_pct": 18.0
+      },
+      "secundario": { "hp_flat": 2280 },
+      "status": "TODO: confirmar"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "build": "Suoming_DPS",
+  "condicoes": { "arma_assinatura": false },
+  "regen_externa": 0,
+  "echos": [
+    {
+      "nome": "Suhsin",
+      "custo": 4,
+      "set": "Moonlit Clouds",
+      "principal": { "stat": "Dano CRIT", "valor": 44 },
+      "substatus": [
+        { "stat": "Taxa CRIT", "valor": 8.1 },
+        { "stat": "Dano CRIT", "valor": 17.5 },
+        { "stat": "ATQ%", "valor": 10.1 },
+        { "stat": "ATQ Básico", "valor": 9.4 },
+        { "stat": "Regen. de Energia", "valor": 8.4 }
+      ]
+    },
+    {
+      "custo": 3,
+      "set": "Moonlit Clouds",
+      "principal": { "stat": "Dano Elétrico", "valor": 30 },
+      "substatus": [
+        { "stat": "Taxa CRIT", "valor": 10.5 },
+        { "stat": "Dano CRIT", "valor": 21 },
+        { "stat": "ATQ", "valor": 50, "percentual": false },
+        { "stat": "HP%", "valor": 7.1 },
+        { "stat": "DEF", "valor": 60, "percentual": false }
+      ]
+    },
+    {
+      "custo": 3,
+      "set": "Moonlit Clouds",
+      "principal": { "stat": "ATQ%", "valor": 30 },
+      "substatus": [
+        { "stat": "Taxa CRIT", "valor": 6.3 },
+        { "stat": "DEF%", "valor": 14.7 },
+        { "stat": "HP", "valor": 430, "percentual": false },
+        { "stat": "Regen. de Energia", "valor": 12.4 },
+        { "stat": "ATQ%", "valor": 6.4 }
+      ]
+    },
+    {
+      "custo": 1,
+      "set": "Moonlit Clouds",
+      "principal": { "stat": "ATQ%", "valor": 18 },
+      "substatus": [
+        { "stat": "Dano CRIT", "valor": 12.6 },
+        { "stat": "Taxa CRIT", "valor": 6.9 },
+        { "stat": "ATQ", "valor": 40, "percentual": false },
+        { "stat": "Regen. de Energia", "valor": 6.8 },
+        { "stat": "ATQ Pesado", "valor": 7.9 }
+      ]
+    },
+    {
+      "custo": 1,
+      "set": "Moonlit Clouds",
+      "principal": { "stat": "HP%", "valor": 22.8 },
+      "substatus": [
+        { "stat": "DEF%", "valor": 8.1 },
+        { "stat": "HP%", "valor": 11.6 },
+        { "stat": "DEF", "valor": 40, "percentual": false },
+        { "stat": "HP", "valor": 320, "percentual": false },
+        { "stat": "Regen. de Energia", "valor": 7.6 }
+      ]
+    }
+  ]
+}

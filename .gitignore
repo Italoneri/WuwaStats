@@ -1,0 +1,21 @@
+# Segredos: nunca commitar
+.env
+.env.*
+!.env.example
+
+# Prints e cache da IA de visão (créditos limitados, dados pessoais)
+input/
+cache/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+*.egg-info/
+
+# Escrita atômica de JSON
+*.json.tmp

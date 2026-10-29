@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "descricao": "Sets (sonatas). Chave = nome em inglês; nomes PT-BR ficam em stat_aliases.json. 'pecas' = tamanho do set completo. 'bonus' lista só efeitos que são status (por número de peças); efeitos condicionais ficam de fora.",
+    "echos_repetidos_contam": false,
+    "echos_repetidos_contam_status": "TODO: confirmar se dois echos com o mesmo nome contam como duas peças"
+  },
+  "sets": {
+    "Moonlit Clouds": {
+      "pecas": 5,
+      "bonus": { "2": { "energy_regen": 10.0 } },
+      "status": "TODO: confirmar"
+    },
+    "Heart of Sworn Vigil": {
+      "pecas": null,
+      "bonus": {},
+      "status": "TODO: confirmar peças e bônus"
+    }
+  }
+}

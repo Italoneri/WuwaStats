@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "descricao": "Chave interna -> nomes alternativos (PT-BR do jogo, inglês). A busca ignora maiúsculas, acentos, pontos e espaços extras. Um nome pode aparecer numa chave _pct e na _flat correspondente (ex.: 'ATQ'); o sinal de % desempata. Mapeamentos feitos na interface são gravados aqui automaticamente."
+  },
+  "stats": {
+    "crit_rate": ["Taxa CRIT", "Crit Rate", "CRIT Rate"],
+    "crit_dmg": ["Dano CRIT", "Crit DMG", "CRIT DMG"],
+    "atk_pct": ["ATQ%", "ATK%", "ATQ", "ATK"],
+    "atk_flat": ["ATQ", "ATK"],
+    "hp_pct": ["HP%", "HP"],
+    "hp_flat": ["HP"],
+    "def_pct": ["DEF%", "DEF"],
+    "def_flat": ["DEF"],
+    "energy_regen": ["Regen. de Energia", "Energy Regen"],
+    "basic_atk_dmg": ["ATQ Básico", "Basic Attack DMG Bonus", "Basic Attack"],
+    "heavy_atk_dmg": ["ATQ Pesado", "Heavy Attack DMG Bonus", "Heavy Attack"],
+    "skill_dmg": ["Hab. de Ressonância", "Resonance Skill DMG Bonus", "Resonance Skill"],
+    "liberation_dmg": ["Lib. de Ressonância", "Resonance Liberation DMG Bonus", "Resonance Liberation"],
+    "healing_bonus": ["Healing Bonus"],
+    "glacio_dmg": ["Glacio DMG Bonus", "Glacio DMG"],
+    "fusion_dmg": ["Fusion DMG Bonus", "Fusion DMG"],
+    "electro_dmg": ["Dano Elétrico", "Electro DMG Bonus", "Electro DMG"],
+    "aero_dmg": ["Aero DMG Bonus", "Aero DMG"],
+    "spectro_dmg": ["Spectro DMG Bonus", "Spectro DMG"],
+    "havoc_dmg": ["Havoc DMG Bonus", "Havoc DMG"]
+  },
+  "echoes": {
+    "Suhsin": [],
+    "Soulfrayer": []
+  },
+  "sets": {
+    "Moonlit Clouds": [],
+    "Heart of Sworn Vigil": []
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "descricao": "Catálogo de echos. Chave = nome em inglês; nomes PT-BR ficam em stat_aliases.json. 'custo' null = desconhecido (não é conferido)."
+  },
+  "echoes": {
+    "Suhsin": { "custo": null, "status": "TODO: confirmar custo" },
+    "Soulfrayer": { "custo": null, "status": "TODO: confirmar custo" }
+  }
+}
