@@ -1,19 +1,701 @@
 {
   "_meta": {
-    "descricao": "Sets (sonatas). Chave = nome em inglês; nomes PT-BR ficam em stat_aliases.json. 'pecas' = tamanho do set completo. 'bonus' lista só efeitos que são status (por número de peças); efeitos condicionais ficam de fora.",
     "echos_repetidos_contam": false,
+    "descricao": "Sets (sonatas), gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês; nome_pt também vira alias em stat_aliases.json. 'pecas' = tamanho do set completo. 'bonus' lista só efeitos que são status fixos (por número de peças); 'efeitos' traz o texto completo de cada bônus, inclusive os condicionais.",
     "echos_repetidos_contam_status": "TODO: confirmar se dois echos com o mesmo nome contam como duas peças"
   },
   "sets": {
-    "Moonlit Clouds": {
+    "Celestial Light": {
+      "nome_pt": "Luz Celestial",
       "pecas": 5,
-      "bonus": { "2": { "energy_regen": 10.0 } },
-      "status": "TODO: confirmar"
+      "bonus": {
+        "2": {
+          "spectro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Spectro DMG + 10%.",
+          "pt": "Dano Fotônico + 10%."
+        },
+        "5": {
+          "en": "Spectro DMG + 30% for 15s after releasing Intro Skill.",
+          "pt": "Dano Fotônico + 30% por 15 s após liberar a Habilidade Intro."
+        }
+      },
+      "status": "ok"
+    },
+    "Chromatic Foam": {
+      "nome_pt": "Espuma Cromática",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "fusion_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Fusion DMG + 10%",
+          "pt": "Dano Térmico + 10%"
+        },
+        "5": {
+          "en": "When the Resonator inflicts Fusion Burst on the enemies, they gain the following effects: Gain 10% Fusion DMG Bonus for 15 s. While this effect is active, casting an Outro Skill grants the incoming Resonator 25% Fusion DMG Bonus for 15s.",
+          "pt": "Quando o Ressonante inflige Estouro Térmico nos inimigos, obtém os seguintes efeitos: Ganha 10% de Bônus de Dano Térmico por 15 s. Enquanto este efeito estiver ativo, usar uma Habilidade Outro concede ao Ressonante que entra 25% de Bônus de Dano Térmico por 15s."
+        }
+      },
+      "status": "ok"
+    },
+    "Crown of Valor": {
+      "nome_pt": "Coroa de Valor",
+      "pecas": 3,
+      "bonus": {},
+      "efeitos": {
+        "3": {
+          "en": "Upon gaining a Shield, increase the Resonator's ATK by 6% and Crit. DMG by 4% for 4s. This effect can be triggered once every 0.5s and stacks up to 5 times.",
+          "pt": "Ao ganhar um escudo, aumenta o ATQ do Ressonante em 6% e o Dano Crítico em 4% por 4s. Este efeito pode ser ativado uma vez a cada 0.5s e acumula até 5 vezes."
+        }
+      },
+      "status": "ok"
+    },
+    "Dream of the Lost": {
+      "nome_pt": "Sonho do Perdido",
+      "pecas": 3,
+      "bonus": {},
+      "efeitos": {
+        "3": {
+          "en": "Holding 0 Resonance Energy increases Crit. Rate by 20% and grants 35% Echo Skill DMG Bonus.",
+          "pt": "Ter 0 de Energia de Ressonância aumenta a Taxa CRIT em 20% e concede 35% de Bônus de Dano de Habilidade de Eco."
+        }
+      },
+      "status": "ok"
+    },
+    "Empyrean Anthem": {
+      "nome_pt": "Hino Empíreo",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "energy_regen": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Energy Regen + 10%",
+          "pt": "Regen. de Energia + 10%"
+        },
+        "5": {
+          "en": "Increase the Resonator's Coordinated Attack DMG by 80%. Upon a critical hit of Coordinated Attack, increase the active Resonator's ATK by 20% for 4s.",
+          "pt": "Aumenta em 80% o dano de ATQ Coordenado do Ressonante. Ao acertar um golpe crítico de ATQ Coordenado, aumenta em 20% o ATQ do Ressonante ativo por 4 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Eternal Radiance": {
+      "nome_pt": "Radiância Eterna",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "spectro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Spectro DMG + 10%",
+          "pt": "Dano Fotônico +10%"
+        },
+        "5": {
+          "en": "Inflicting Spectro Frazzle on enemies increases Crit. Rate by 20% for 15s. Attacking enemies inflicted with 10 stacks of Spectro Frazzle grants 15% Spectro DMG Bonus for 15s.",
+          "pt": "Infligir Estridência Fotônical nos inimigos aumenta em 20% a taxa de crít. por 15 s. Atacar inimigos com 10 acúmulos de Estridência Fotônical concede 15% de bônus de Dano Fotônico por 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Flamewing's Shadow": {
+      "nome_pt": "Sombra de Chamasa",
+      "pecas": 3,
+      "bonus": {},
+      "efeitos": {
+        "3": {
+          "en": "Dealing Echo Skill DMG increases Heavy Attack Crit. Rate by 20% for 6s. Dealing Heavy Attack DMG increases Echo Skill Crit. Rate by 20% for 6s. While both effects are active, gain 16% Fusion DMG Bonus.",
+          "pt": "Causar dano de Habilidade de Eco aumenta a Taxa de Crítico de ATQ Pesado em 20% por 6s. Causar Dano de ATQ Pesado aumenta a Taxa de Crítico de Habilidade de Eco em 20% por 6s. Enquanto ambos os efeitos estão ativos, ganha 16% de Bônus de Dano Térmico."
+        }
+      },
+      "status": "ok"
+    },
+    "Flaming Clawprint": {
+      "nome_pt": "Pegada Flamejante",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "fusion_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Fusion DMG + 10%",
+          "pt": "Dano Térmico + 10%"
+        },
+        "5": {
+          "en": "Casting Resonance Liberation grants all Resonators in the team 15% Fusion DMG Bonus and the caster 20% Resonance Liberation DMG Bonus, lasting for 35s.",
+          "pt": "O lançamento da Liberação de Ressonância concede a todos os Ressonantes da equipe 15% de Bônus de Dano Térmico e 20% de Bônus de Dano de Liberação de Ressonância ao conjurador, com duração de 35s."
+        }
+      },
+      "status": "ok"
+    },
+    "Flash of Electric Reflection": {
+      "nome_pt": "Clarão do Reflexo Relâmpago",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "electro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Electro DMG + 10%",
+          "pt": "Dano Voltaico é aumentado em 10%"
+        },
+        "5": {
+          "en": "When the Resonator inflicts Electro Flare on enemies, they gain the following effects: Gain 10% Electro DMG Bonus for 15s. While this effect is active, casting Outro Skill grants the incoming Resonator 25% Electro DMG Bonus for 15s.",
+          "pt": "Quando o Ressonante inflige Clarão Voltaico aos inimigos, ele ganha o seguinte efeito: Dano Voltaico aumenta em 10% por 15 s. Após lançar uma Habilidade Outro durante essa duração, o Dano Voltaico do próximo Ressonante que entrar com uma Habilidade Intro aumenta em 25% por 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Flower of Tinged Yearning": {
+      "nome_pt": "Flor do Desejo Matizado",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "healing_bonus": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Healing + 10%",
+          "pt": "Cura + 10%."
+        },
+        "5": {
+          "en": "Healing a Resonator in the team increases the ATK of all Resonators in the team by 10% for 30s. Effects of the same name cannot be stacked. While the effect is active, if the Resonator gains Unison or triggers Unison Response, their ATK is further increased by 15%.",
+          "pt": "Ao fornecer Cura para a equipe, o ATQ dos Ressonantes da equipe aumenta em 10% por 30 s. Efeitos com o mesmo nome não podem ser acumulados. Durante a duração desse efeito, se o Ressonante ganhar o efeito Uníssono ou ativar a Resposta de Uníssono, o ATQ aumenta adicionalmente em 15%."
+        }
+      },
+      "status": "ok"
+    },
+    "Freezing Frost": {
+      "nome_pt": "Geada Congelante",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "glacio_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Glacio DMG + 10%.",
+          "pt": "Dano Criogênico + 10%."
+        },
+        "5": {
+          "en": "Glacio DMG + 10% after releasing Basic Attack or Heavy Attack. This effect stacks up to 3 times, each stack lasts 15s.",
+          "pt": "Dano Criogênico + 10% após liberar ATQ Básico ou ATQ Pesado. Este efeito acumula até 3 vezes, cada acúmulo dura 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Frosty Resolve": {
+      "nome_pt": "Resolução Gélida",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "skill_dmg": 12.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Resonance Skill DMG + 12%",
+          "pt": "Dano de habilidade de ressonância + 12%"
+        },
+        "5": {
+          "en": "Casting Resonance Skill grants 22.5% Glacio DMG Bonus for 15s and casting Resonance Liberation increases Resonance Skill DMG by 18%, lasting for 5s. This effect stacks up to 2 times.",
+          "pt": "O lançamento da habilidade de ressonância concede 22.5% de bônus de Dano Criogênico por 15 s e o lançamento de liberação de ressonância aumenta em 18% o dano de habilidade de ressonância — dura 5s. Este efeito acumula até 2 vezes."
+        }
+      },
+      "status": "ok"
+    },
+    "Gusts of Welkin": {
+      "nome_pt": "Rajadas Celestiais",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "aero_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Aero DMG + 10%",
+          "pt": "Dano Pneumático + 10%"
+        },
+        "5": {
+          "en": "Inflicting Aero Erosion upon enemies increases Aero DMG for all Resonators in the team by 15%, and for the Resonator triggering this effect by an additional 15%, lasting for 20s.",
+          "pt": "Aplicar Erosão Pneumática em inimigos aumenta o Dano Pneumático de todos os Ressonantes da equipe em 15% e em mais 15% para o Ressonante que ativa este efeito, durando 20s."
+        }
+      },
+      "status": "ok"
+    },
+    "Halo of Starry Radiance": {
+      "nome_pt": "Halo da Radiância Estelar",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "healing_bonus": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Healing Bonus + 10%.",
+          "pt": "Cura + 10%."
+        },
+        "5": {
+          "en": "When healing a Resonator in the team, every 1% of Off-Tune Buildup Rate grants a 0.2% ATK increase to all Resonators in the team for 4s, up to 25%. Effects of the same name cannot be stacked.",
+          "pt": "Ao curar um Ressonante da equipe, cada 1% de Taxa de Acúmulo de Dissonância concede 0.2% de aumento de ATQ a todos os Ressonantes da equipe por 4s, até 25%. Efeitos de mesmo nome não podem ser acumulados."
+        }
+      },
+      "status": "ok"
+    },
+    "Havoc Eclipse": {
+      "nome_pt": "Eclipse Aniquilante",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "havoc_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Havoc DMG + 10%.",
+          "pt": "Dano Aniquilante + 10%."
+        },
+        "5": {
+          "en": "Havoc DMG + 7.5% after releasing Basic Attack or Heavy Attack. This effect stacks up to 4 times, each stack lasts 15s.",
+          "pt": "Dano Aniquilante + 7,5% após liberar um ATQ Básico ou ATQ Pesado. Este efeito acumula até 4 vezes, cada acúmulo dura 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Heart of Evil's Purge": {
+      "nome_pt": "Coração da Pureza Imaculada",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "aero_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Aero DMG + 10%",
+          "pt": "Dano Pneumático + 10%"
+        },
+        "5": {
+          "en": "Inflicting Tune Strain - Shifting increases Crit. DMG by 20% and Aero DMG Bonus 30% for 15s.",
+          "pt": "Infligir Tensão de Sintonia: Oscilação aumenta o Dano CRIT em 20% e o bônus de Dano Pneumático em 30% por 15s."
+        }
+      },
+      "status": "ok"
     },
     "Heart of Sworn Vigil": {
-      "pecas": null,
+      "nome_pt": "Coração da Vigia Jurada",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "electro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Electro DMG + 10%",
+          "pt": "Dano Voltaico é aumentado em 10%"
+        },
+        "5": {
+          "en": "Inflicting Electro Flare on the target, obtaining Unison, or triggering Unison Response increases the Resonator's Crit. Rate by 15% and grants them 22.5% Electro DMG for 30s.",
+          "pt": "Quando o Ressonante inflige Clarão Voltaico aos inimigos, ganha o efeito Uníssono ou entra no campo com Uníssono, sua Taxa CRIT aumenta em 15% e seu Dano Voltaico aumenta em 22.5% por 30 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Lamp of Nether Road": {
+      "nome_pt": "Lanterna da Travessia Noturna",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "hp_pct": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "HP + 10%",
+          "pt": "HP aumentado em 10%."
+        },
+        "5": {
+          "en": "Upon gaining a Shield, gain 5% increase in Crit. Rate for 5s, max 4 stacks. This effect can be triggered every 0.5s. At max stacks, gain 15% Fusion DMG Bonus.",
+          "pt": "Ao obter um Escudo, ganha um aumento de 5% na Taxa CRIT por 5s, máx. de 4 acúmulos. Este efeito pode ser acionado a cada 0.5s. Com o máximo de acúmulos, ganha 15% de bônus de Dano Térmico."
+        }
+      },
+      "status": "ok"
+    },
+    "Law of Harmony": {
+      "nome_pt": "Lei da Harmonia",
+      "pecas": 3,
       "bonus": {},
-      "status": "TODO: confirmar peças e bônus"
+      "efeitos": {
+        "3": {
+          "en": "Casting Echo Skill grants 30% Heavy Attack DMG Bonus to the caster for 4s.\nAdditionally, all Resonators in the team gain 4% Echo Skill DMG Bonus for 30s, stacking up to 4 times. Echoes of the same name can only trigger this effect once. The record of Echo triggering this effect is cleared along with this effect. At 4 stacks, casting Echo Skill again resets the duration of this effect.",
+          "pt": "Usar Habilidade de Eco concede 30% de Bônus de dano de ATQ Pesado ao conjurador por 4s.\nAlém disso, todos os Ressonantes da equipe ganham 4% de Bônus de dano de Habilidade de Eco por 30s, acumulando até 4 vezes. Ecos com o mesmo nome só podem ativar este efeito uma vez. Os Registros de Ecos que ativaram este efeito são apagados junto com o efeito. Com 4 acúmulos, lançar Habilidade de Eco novamente redefine a duração deste efeito."
+        }
+      },
+      "status": "ok"
+    },
+    "Lingering Tunes": {
+      "nome_pt": "Pós-melodia",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "atk_pct": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "ATK +10%",
+          "pt": "ATQ + 10%"
+        },
+        "5": {
+          "en": "While on the field, ATK increases by 5% every 1.5s. This effect stacks up to 4 times. Outro Skill DMG + 60%.",
+          "pt": "Enquanto no campo, o ATQ aumenta em 5% a cada 1,5 s. Este efeito acumula até 4 vezes. Dano de Habilidade Outro + 60%."
+        }
+      },
+      "status": "ok"
+    },
+    "Midnight Veil": {
+      "nome_pt": "Véu da Meia-noite",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "havoc_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Havoc DMG + 10%",
+          "pt": "Dano Aniquilante + 10%"
+        },
+        "5": {
+          "en": "When Outro Skill is triggered, deal additional 480% Havoc DMG to surrounding enemies, considered Outro Skill DMG, and grant the incoming Resonator 15% Havoc DMG Bonus for 15s.",
+          "pt": "Quando a Habilidade Outro é ativada, causa 480% de Dano Aniquilante adicional aos inimigos ao redor, considerado como dano de Habilidade Outro e concede ao Ressonante vindouro 15% de bônus de Dano Aniquilante por 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Molten Rift": {
+      "nome_pt": "Fenda Fundente",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "fusion_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Fusion DMG + 10%.",
+          "pt": "Dano Térmico + 10%."
+        },
+        "5": {
+          "en": "Fusion DMG + 30% for 15s after releasing Resonance Skill.",
+          "pt": "Dano Térmico + 30% por 15 s após liberar a Habilidade de Ressonância."
+        }
+      },
+      "status": "ok"
+    },
+    "Moonlit Clouds": {
+      "nome_pt": "Nuvens Enluaradas",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "energy_regen": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Energy Regen + 10%.",
+          "pt": "Regeneração de energia + 10%."
+        },
+        "5": {
+          "en": "Upon using Outro Skill, increases the ATK of the next Resonator by 22.5% for 15s.",
+          "pt": "Ao usar a Habilidade Outro, aumenta o ATQ do próximo Ressonante em 22,5% por 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Pact of Neonlight Leap": {
+      "nome_pt": "Pacto do Salto Neonluz",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "spectro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Spectro DMG + 10%",
+          "pt": "Dano Fotônico + 10%"
+        },
+        "5": {
+          "en": "Casting Outro Skill increases the ATK of the incoming Resonator who casts Intro Skill by 15%. Each point of Tune Break Boost the incoming Resonator has additionally increases their ATK by 0.3%, up to 15%. This effect lasts for 15s, or until the Resonator is switched out.",
+          "pt": "Lançar a Habilidade Outro aumenta o ATQ do próximo Ressonante que lançar a Habilidade Intro em 15%. Cada ponto de Bônus de Ruptura de Sintonia que o próximo Ressonante tiver aumenta seu ATQ em mais 0.3%, até 15%. Este efeito dura 15s ou até o Ressonante ser trocado."
+        }
+      },
+      "status": "ok"
+    },
+    "Reel of Spliced Memories": {
+      "nome_pt": "Carretel de Memórias Fragmentadas",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "atk_pct": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "ATK + 10%",
+          "pt": "ATQ + 10%"
+        },
+        "5": {
+          "en": "Inflicting Tune Rupture - Shifting or Tune Strain - Shifting on enemies increases the Tune Break Boost of Resonators in the team by 20 for 30s. Effects of the same name do not stack.",
+          "pt": "Infligir Rompimento de Sintonia: Oscilação ou Tensão de Sintonia: Oscilação em inimigos aumenta o Bônus de Ruptura de Sintonia dos Ressonantes da equipe em 20 por 30s. Efeitos de mesmo nome não se acumulam."
+        }
+      },
+      "status": "ok"
+    },
+    "Rejuvenating Glow": {
+      "nome_pt": "Brilho Rejuvenescedor",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "healing_bonus": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Healing Bonus + 10%.",
+          "pt": "Bônus de cura + 10%."
+        },
+        "5": {
+          "en": "Increases the ATK of all party members by 15% for 30s upon healing allies.",
+          "pt": "Aumenta o ATQ de todos os membros do grupo em 15% por 30 s ao curar aliados."
+        }
+      },
+      "status": "ok"
+    },
+    "Rite of Gilded Revelation": {
+      "nome_pt": "Rito da Revelação Dourada",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "spectro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Spectro DMG + 10%",
+          "pt": "Dano Fotônico + 10%"
+        },
+        "5": {
+          "en": "Dealing Basic Attack DMG increases Spectro DMG by 10% for 5s, stacking up to 3 times. With 3 stacks, casting Resonance Liberation grants 40% Basic Attack DMG Bonus.",
+          "pt": "Causar Dano de ATQ Básico aumenta o Dano Fotônico em 10% por 5s, acumulando até 3 vezes. Com 3 acúmulos, lançar Liberação de Ressonância concede 40% de bônus de dano de ATQ Básico."
+        }
+      },
+      "status": "ok"
+    },
+    "Shadow of Shattered Dreams": {
+      "nome_pt": "Sombra dos Sonhos Despedaçados",
+      "pecas": 1,
+      "bonus": {},
+      "efeitos": {
+        "1": {
+          "en": "Inflicting Hack - Shifting on the target grants 35% Basic Attack DMG Bonus and Heavy Attack DMG Bonus for 15s.",
+          "pt": "Infligir Hack: Oscilação no alvo concede 35% de Bônus de Dano de Ataque Básico e Bônus de Dano de Ataque Pesado por 15s."
+        }
+      },
+      "status": "ok"
+    },
+    "Sierra Gale": {
+      "nome_pt": "Lufada da Serra",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "aero_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Aero DMG + 10%.",
+          "pt": "Dano Pneumático + 10%."
+        },
+        "5": {
+          "en": "Aero DMG + 30% for 15s after releasing Intro Skill.",
+          "pt": "Dano Pneumático + 30% por 15 s após liberar a Habilidade Intro."
+        }
+      },
+      "status": "ok"
+    },
+    "Song of Feathered Trace": {
+      "nome_pt": "Cântico das Plumas Cadentes",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "energy_regen": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Energy Regen + 10%",
+          "pt": "Regeneração de energia + 10%."
+        },
+        "5": {
+          "en": "Upon inflicting Havoc Bane, gain Xuanling's Feather, which grants a 20% increase in Crit. Rate and 35% increase in Heavy Attack DMG Bonus to the Resonator, lasting 15s.\nUpon inflicting Glacio Chafe, gain Chongming's Feather, which grants a 0.1% increase in ATK to Resonators in the team for every 1% of the Resonator's Energy Regen, up to 25%, lasting 10s.",
+          "pt": "Ao aplicar Ruína Aniquilante, ganha a Pena de Xuanling, que concede um aumento de 20% na Taxa CRIT e 35% no bônus de Dano de ATQ Pesado ao Ressonante, durando 15s.\nAo aplicar Esfoladura Criogênica, ganha a Pena de Chongming, que concede um aumento de 0.1% no ATQ aos Ressonantes na equipe a cada 1% da Regen. de Energia do Ressonante, até 25%, durando 10s."
+        }
+      },
+      "status": "ok"
+    },
+    "Sound of True Name": {
+      "nome_pt": "Som do Nome Verdadeiro",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "aero_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Aero DMG + 10%",
+          "pt": "Dano Pneumático + 10%"
+        },
+        "5": {
+          "en": "Dealing Echo Skill DMG to enemies increases the Resonator's Echo Skill Crit. Rate by 20%, and grants 15% Aero DMG Bonus for 5s.",
+          "pt": "Causar Dano de Habilidade de Eco em inimigos aumenta a Taxa de Crít. da Habilidade de Eco do Ressonante em 20% e concede 15% de Bônus de Dano Pneumático por 5s."
+        }
+      },
+      "status": "ok"
+    },
+    "Thread of Severed Fate": {
+      "nome_pt": "Fio do Destino Rompido",
+      "pecas": 3,
+      "bonus": {},
+      "efeitos": {
+        "3": {
+          "en": "Inflicting Havoc Bane increases the Resonator's ATK by 20% and grants 30% Resonance Liberation DMG Bonus for 5s.",
+          "pt": "Infligir Ruína Aniquilante aumenta o ATQ do Ressonante em 20% e 30% concede de Bônus de Dano de Liberação de Ressonância por 5s."
+        }
+      },
+      "status": "ok"
+    },
+    "Tidebreaking Courage": {
+      "nome_pt": "Coragem Quebra-maré",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "energy_regen": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Energy Regen + 10%",
+          "pt": "Regen. de Energia + 10%"
+        },
+        "5": {
+          "en": "Increase the Resonator's ATK by 15%. Reaching 250% Energy Regen increases all Attribute DMG by 30% for the Resonator.",
+          "pt": "Aumenta em 15% o ATQ do Ressonante. Alcançar 250% de Regen. de Energia aumenta em 30% todo o Dano de Atributo do Ressonante."
+        }
+      },
+      "status": "ok"
+    },
+    "Trailblazing Star": {
+      "nome_pt": "Estrela Desbravadora",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "fusion_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Fusion DMG + 10%",
+          "pt": "Dano Térmico + 10%"
+        },
+        "5": {
+          "en": "Inflicting Fusion Burst or Tune Rupture - Shifting increases the Resonator's Crit. Rate by 20% and grants 20% Fusion DMG Bonus for 8s.",
+          "pt": "Infligir Estouro Térmico ou Rompimento de Sintonia: Oscilação aumenta a Taxa de Crítico do Ressonante em 20% e concede 20% de Bônus de Dano Térmico por 8s."
+        }
+      },
+      "status": "ok"
+    },
+    "Void Thunder": {
+      "nome_pt": "Trovão do Limbo",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "electro_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Electro DMG + 10%.",
+          "pt": "Dano Voltaico + 10%."
+        },
+        "5": {
+          "en": "Electro DMG + 15% after releasing Heavy Attack or Resonance Skill. This effect stacks up to 2 times, each stack lasts 15s.",
+          "pt": "Dano Voltaico + 15% após liberar ATQ Pesado ou Habilidade de Ressonância. Este efeito acumula até 2 vezes, cada acúmulo dura 15 s."
+        }
+      },
+      "status": "ok"
+    },
+    "Windward Pilgrimage": {
+      "nome_pt": "Barlavento Peregrino",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "aero_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Aero DMG + 10%",
+          "pt": "Dano Pneumático + 10%"
+        },
+        "5": {
+          "en": "Hitting a target with Aero Erosion increases Crit. Rate by 10% and grants 30% Aero DMG Bonus, lasting for 10s.",
+          "pt": "Acertar um alvo com Erosão Pneumática aumenta a Taxa CRIT em 10% e concede 30% de Bônus de Dano Pneumático que dura 10s."
+        }
+      },
+      "status": "ok"
+    },
+    "Wishes of Quiet Snowfall": {
+      "nome_pt": "Desejos da Nevada Silenciosa",
+      "pecas": 5,
+      "bonus": {
+        "2": {
+          "glacio_dmg": 10.0
+        }
+      },
+      "efeitos": {
+        "2": {
+          "en": "Glacio DMG + 10%",
+          "pt": "Dano Criogênico + 10%"
+        },
+        "5": {
+          "en": "Inflicting Glacio Chafe on enemies increases Glacio DMG dealt by 10% for 15s. The Resonator gains the Snowfall effect for 15s, which can be triggered once every 25s. While Snowfall is active:\n- Dealing Resonance Liberation DMG removes Snowfall and increases the Resonator's Crit. Rate by 25% for 6s. While the effect is active, dealing Resonance Liberation DMG extends its duration by 4s, triggered once every 0.5s, up to 6 times.\n- Casting Outro Skill removes Snowfall and grants 25% Glacio DMG Bonus to the incoming Resonator for 15s.\nWhen Snowfall is removed, only one of the effects above can be triggered.",
+          "pt": "Infligir Esfoladura Criogênica em inimigos aumenta o Dano Criogênico causado em 10% por 15s. O Ressonante ganha o efeito Nevada por 15s, que pode ser ativado uma vez a cada 25s. Enquanto Nevada estiver ativa:\n- Causar Dano de Liberação de Ressonância remove Nevada e aumenta a Taxa CRIT do Ressonante em 25% por 6s. Enquanto o efeito estiver ativo, causar Dano de Liberação de Ressonância estende sua duração em 4s, ativado uma vez a cada 0.5s, até 6 vezes.\n- Usar Habilidade Outro remove Nevada e concede 25% de Bônus de Dano Criogênico ao Ressonante que entra por 15s.\nQuando Nevada é removida, apenas um dos efeitos acima pode ser ativado."
+        }
+      },
+      "status": "ok"
     }
   }
 }

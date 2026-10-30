@@ -1,0 +1,11 @@
+{
+  "repositorio": "Arikatsu/WutheringWaves_Data",
+  "ref": "3.7",
+  "commit": "9218d612ad815e398e064e577e42aaf878899968",
+  "data_commit": "2026-09-29T20:35:07Z",
+  "versao": "GameVer 3.7.0 | ResVer 3.7.8 | Changelist 8975829 | Release",
+  "url": "https://github.com/Arikatsu/WutheringWaves_Data/tree/9218d612ad815e398e064e577e42aaf878899968",
+  "textmap_pt": true,
+  "importado_em": "2026-10-30T05:13:24+00:00",
+  "como_atualizar": "A branch padrão do repositório é a versão do jogo (ex.: 3.7 → 3.8). Quando o último commit de lá for diferente de 'commit', rode: uv run python scripts/importar_dados_jogo.py"
+}

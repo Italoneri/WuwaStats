@@ -3,33 +3,930 @@
     "descricao": "Chave interna -> nomes alternativos (PT-BR do jogo, inglês). A busca ignora maiúsculas, acentos, pontos e espaços extras. Um nome pode aparecer numa chave _pct e na _flat correspondente (ex.: 'ATQ'); o sinal de % desempata. Mapeamentos feitos na interface são gravados aqui automaticamente."
   },
   "stats": {
-    "crit_rate": ["Taxa CRIT", "Crit Rate", "CRIT Rate"],
-    "crit_dmg": ["Dano CRIT", "Crit DMG", "CRIT DMG"],
-    "atk_pct": ["ATQ%", "ATK%", "ATQ", "ATK"],
-    "atk_flat": ["ATQ", "ATK"],
-    "hp_pct": ["HP%", "HP"],
-    "hp_flat": ["HP"],
-    "def_pct": ["DEF%", "DEF"],
-    "def_flat": ["DEF"],
-    "energy_regen": ["Regen. de Energia", "Energy Regen"],
-    "basic_atk_dmg": ["ATQ Básico", "Basic Attack DMG Bonus", "Basic Attack"],
-    "heavy_atk_dmg": ["ATQ Pesado", "Heavy Attack DMG Bonus", "Heavy Attack"],
-    "skill_dmg": ["Hab. de Ressonância", "Resonance Skill DMG Bonus", "Resonance Skill"],
-    "liberation_dmg": ["Lib. de Ressonância", "Resonance Liberation DMG Bonus", "Resonance Liberation"],
-    "healing_bonus": ["Healing Bonus"],
-    "glacio_dmg": ["Glacio DMG Bonus", "Glacio DMG"],
-    "fusion_dmg": ["Fusion DMG Bonus", "Fusion DMG"],
-    "electro_dmg": ["Dano Elétrico", "Electro DMG Bonus", "Electro DMG"],
-    "aero_dmg": ["Aero DMG Bonus", "Aero DMG"],
-    "spectro_dmg": ["Spectro DMG Bonus", "Spectro DMG"],
-    "havoc_dmg": ["Havoc DMG Bonus", "Havoc DMG"]
+    "crit_rate": [
+      "Taxa CRIT",
+      "Crit Rate",
+      "CRIT Rate"
+    ],
+    "crit_dmg": [
+      "Dano CRIT",
+      "Crit DMG",
+      "CRIT DMG"
+    ],
+    "atk_pct": [
+      "ATQ%",
+      "ATK%",
+      "ATQ",
+      "ATK"
+    ],
+    "atk_flat": [
+      "ATQ",
+      "ATK"
+    ],
+    "hp_pct": [
+      "HP%",
+      "HP"
+    ],
+    "hp_flat": [
+      "HP"
+    ],
+    "def_pct": [
+      "DEF%",
+      "DEF"
+    ],
+    "def_flat": [
+      "DEF"
+    ],
+    "energy_regen": [
+      "Regen. de Energia",
+      "Energy Regen"
+    ],
+    "basic_atk_dmg": [
+      "ATQ Básico",
+      "Basic Attack DMG Bonus",
+      "Basic Attack"
+    ],
+    "heavy_atk_dmg": [
+      "ATQ Pesado",
+      "Heavy Attack DMG Bonus",
+      "Heavy Attack"
+    ],
+    "skill_dmg": [
+      "Hab. de Ressonância",
+      "Resonance Skill DMG Bonus",
+      "Resonance Skill"
+    ],
+    "liberation_dmg": [
+      "Lib. de Ressonância",
+      "Resonance Liberation DMG Bonus",
+      "Resonance Liberation"
+    ],
+    "healing_bonus": [
+      "Healing Bonus"
+    ],
+    "glacio_dmg": [
+      "Glacio DMG Bonus",
+      "Glacio DMG"
+    ],
+    "fusion_dmg": [
+      "Fusion DMG Bonus",
+      "Fusion DMG"
+    ],
+    "electro_dmg": [
+      "Dano Elétrico",
+      "Electro DMG Bonus",
+      "Electro DMG"
+    ],
+    "aero_dmg": [
+      "Aero DMG Bonus",
+      "Aero DMG"
+    ],
+    "spectro_dmg": [
+      "Spectro DMG Bonus",
+      "Spectro DMG"
+    ],
+    "havoc_dmg": [
+      "Havoc DMG Bonus",
+      "Havoc DMG"
+    ]
   },
   "echoes": {
     "Suhsin": [],
-    "Soulfrayer": []
+    "Soulfrayer": [
+      "Desfia-Alma"
+    ],
+    "Abyssal Gladius": [
+      "Gládio Abissal"
+    ],
+    "Abyssal Mercator": [
+      "Mercador Abissal"
+    ],
+    "Abyssal Patricius": [
+      "Patrício Abissal"
+    ],
+    "Aero Drake": [
+      "Draco Pneumático"
+    ],
+    "Aero Predator": [
+      "Predador Aéreo"
+    ],
+    "Aero Prism": [
+      "Prisma Pneumático"
+    ],
+    "Aureate Picket": [
+      "Marquês Dourado"
+    ],
+    "Autopuppet Scout": [
+      "Maquinete"
+    ],
+    "Baby Roseshroom": [
+      "Champirrosa Jovem"
+    ],
+    "Baby Viridblaze Saurian": [
+      "Verdelisco Bebê"
+    ],
+    "Bell-Borne Geochelone": [
+      "Geobuti-sineiro"
+    ],
+    "Bloomburst Puppet": [
+      "Floro-Explosão"
+    ],
+    "Brant": [
+      "Brant"
+    ],
+    "Calamity Effigy": [
+      "Efígie da Calamidade"
+    ],
+    "Calcharo": [
+      "Calcharo"
+    ],
+    "Calcified Junrock": [
+      "Novirrocha Calcificada"
+    ],
+    "Camellya": [
+      "Camellya"
+    ],
+    "Cantarella": [
+      "Cantarella"
+    ],
+    "Capitaneus": [
+      "Capitão"
+    ],
+    "Carapace": [
+      "Carapaça"
+    ],
+    "Carlotta": [
+      "Carlotta"
+    ],
+    "Cartethyia": [
+      "Cartethyia"
+    ],
+    "Changli": [
+      "Changli"
+    ],
+    "Chasm Guardian": [
+      "Guardião do Abismo"
+    ],
+    "Chest Mimic": [
+      "Baú Mímico"
+    ],
+    "Chirpuff": [
+      "Baiapiu"
+    ],
+    "Chop Chop": [
+      "Flutubo"
+    ],
+    "Chop Chop: Headless": [
+      "Flutubo: Céfalo"
+    ],
+    "Chop Chop: Leftless": [
+      "Flutubo: Dextra"
+    ],
+    "Chop Chop: Rightless": [
+      "Flutubo: Sinistra"
+    ],
+    "Clang Bang": [
+      "Clang-bang"
+    ],
+    "Corrosaurus": [
+      "Corrossauro"
+    ],
+    "Crownless": [
+      "Destronado"
+    ],
+    "Cruisewing": [
+      "Asaveloz"
+    ],
+    "Cuddle Wuddle": [
+      "Abraço-amasso"
+    ],
+    "Cyan-Feathered Heron": [
+      "Garça-plumazul"
+    ],
+    "Devotee's Flesh": [
+      "Carne do Devoto"
+    ],
+    "Diamondclaw": [
+      "Garra de Diamante"
+    ],
+    "Diggy Duggy": [
+      "Digue-dugue"
+    ],
+    "Diurnus Knight": [
+      "Cavaleiro Diurno"
+    ],
+    "Dragon of Dirge": [
+      "Dragão Lamentoso"
+    ],
+    "Dreamless": [
+      "Insone"
+    ],
+    "Dwarf Cassowary": [
+      "Casuar-anão"
+    ],
+    "Electro Drake": [
+      "Draco Voltaico"
+    ],
+    "Electro Predator": [
+      "Predador Voltaico"
+    ],
+    "Excarat": [
+      "Exquilate"
+    ],
+    "Fae Ignis": [
+      "Ígnea-feérica"
+    ],
+    "Fallacy of No Return": [
+      "Falácia Irreversível"
+    ],
+    "Feilian Beringal": [
+      "Beringal-feiliano"
+    ],
+    "Fission Junrock": [
+      "Novirrocha Físsil"
+    ],
+    "Flautist": [
+      "Flautista"
+    ],
+    "Flora Drone": [
+      "Drone Flora"
+    ],
+    "Flora Reindeer": [
+      "Rena Flora"
+    ],
+    "Fog Lionarch": [
+      "Leão Soberano da Névoa"
+    ],
+    "Fog Lionarch: Body": [
+      "Leão Soberano da Névoa: Corpo"
+    ],
+    "Fog Lionarch: Head": [
+      "Leão Soberano da Névoa: Cabeça"
+    ],
+    "Forbidden Bastion": [
+      "Pavilhão Proibido"
+    ],
+    "Formrender": [
+      "Quebra-Formas"
+    ],
+    "Frostbite Coleoid": [
+      "Coleóide de Geladura"
+    ],
+    "Frostscourge Stalker": [
+      "Lobo-praga Gélido"
+    ],
+    "Fusion Drake": [
+      "Draco Térmico"
+    ],
+    "Fusion Dreadmane": [
+      "Jubapavor Térmico"
+    ],
+    "Fusion Prism": [
+      "Prisma de Fusão"
+    ],
+    "Fusion Warrior": [
+      "Guerreiro Térmico"
+    ],
+    "Galescourge Stalker": [
+      "Lobo-praga Eólico"
+    ],
+    "Geospider S4": [
+      "Georanha S4"
+    ],
+    "Glacio Drake": [
+      "Draco Criogênico"
+    ],
+    "Glacio Dreadmane": [
+      "Lobo-criogênico"
+    ],
+    "Glacio Predator": [
+      "Predador Criogênico"
+    ],
+    "Glacio Prism": [
+      "Prisma Criogênico"
+    ],
+    "Glommoth": [
+      "Glommoth"
+    ],
+    "Golden Junrock": [
+      "Novirrocha Dourada"
+    ],
+    "Gulpuff": [
+      "Baiagul"
+    ],
+    "Havoc Drake": [
+      "Draco Aniquilante"
+    ],
+    "Havoc Dreadmane": [
+      "Jubapavor Aniquilante"
+    ],
+    "Havoc Prism": [
+      "Prisma Aniquilante"
+    ],
+    "Havoc Warrior": [
+      "Guerreiro Aniquilante"
+    ],
+    "Hecate": [
+      "Hécate"
+    ],
+    "Hoartoise": [
+      "Geatuga"
+    ],
+    "Hocus Pocus": [
+      "Abra Cadabra"
+    ],
+    "Hoochief": [
+      "Mico-Chefe"
+    ],
+    "Hooscamp": [
+      "Campemico"
+    ],
+    "Hurriclaw": [
+      "Furagarra"
+    ],
+    "Hyvatia": [
+      "Hyvatia"
+    ],
+    "Iceglint Dancer": [
+      "Dançarina de Gelo Cristalino"
+    ],
+    "Impermanence Heron": [
+      "Garça-cambiante"
+    ],
+    "Inferno Rider": [
+      "Cavaleiro Infernal"
+    ],
+    "Ironhoof": [
+      "Casco de Ferro"
+    ],
+    "Jade Nether Serpent": [
+      "Serpente de Jade do Inframundo"
+    ],
+    "Jinhsi": [
+      "Jinhsi"
+    ],
+    "Jué": [
+      "Jué"
+    ],
+    "Kerasaur": [
+      "Ceratossauro"
+    ],
+    "Kernel Puppet: Anger": [
+      "Maquinete do Núcleo: Raiva"
+    ],
+    "Kernel Puppet: Fright": [
+      "Maquinete do Núcleo: Medo"
+    ],
+    "Kernel Puppet: Grief": [
+      "Maquinete do Núcleo: Tristeza"
+    ],
+    "Kernel Puppet: Joy": [
+      "Maquinete do Núcleo: Alegria"
+    ],
+    "Kernel Puppet: Reflection": [
+      "Maquinete do Núcleo: Reflexão"
+    ],
+    "Kernel Puppet: Worry": [
+      "Maquinete do Núcleo: Preocupação"
+    ],
+    "Kronablight": [
+      "Kronaflagelo"
+    ],
+    "La Guardia": [
+      "La Guardia"
+    ],
+    "Lady of the Sea": [
+      "Senhora do Mar"
+    ],
+    "Lampylumen Myriad": [
+      "Miríade lampilúmen"
+    ],
+    "Lava Larva": [
+      "Larva-lava"
+    ],
+    "Lightcrusher": [
+      "Esmaga-luz"
+    ],
+    "Lioness of Glory": [
+      "Leoa da Glória"
+    ],
+    "Lorelei": [
+      "Lorelei"
+    ],
+    "Lottie Lost": [
+      "Srta. Solitária"
+    ],
+    "Lumiscale Construct": [
+      "Constructo Lumescama"
+    ],
+    "Mech Abomination": [
+      "Abominação mecânica"
+    ],
+    "Mining Drone": [
+      "Drone Minerador"
+    ],
+    "Mining Reindeer": [
+      "Rena Mineradora"
+    ],
+    "Mourning Aix": [
+      "Aix Lamentoso"
+    ],
+    "Myriad Snare: Rustfire Chassis": [
+      "Prisão de Miríades: Corpo Decadente"
+    ],
+    "Nameless Explorer": [
+      "Explorador Anônimo"
+    ],
+    "Nightmare: Aero Predator": [
+      "Pesadelo: Predador Aéreo"
+    ],
+    "Nightmare: Baby Roseshroom": [
+      "Pesadelo: Champirrosa Bebê"
+    ],
+    "Nightmare: Baby Viridblaze Saurian": [
+      "Pesadelo: Verdelisco Bebê"
+    ],
+    "Nightmare: Chirpuff": [
+      "Pesadelo: Baiapiu"
+    ],
+    "Nightmare: Crownless": [
+      "Pesadelo: Destronado"
+    ],
+    "Nightmare: Cyan-Feathered Heron": [
+      "Pesadelo: Garça Plumazul"
+    ],
+    "Nightmare: Dwarf Cassowary": [
+      "Pesadelo: Casuar-anão"
+    ],
+    "Nightmare: Electro Predator": [
+      "Pesadelo: Predador Voltaico"
+    ],
+    "Nightmare: Feilian Beringal": [
+      "Pesadelo: Beringal-feiliano"
+    ],
+    "Nightmare: Glacio Predator": [
+      "Pesadelo: Predador Criogênico"
+    ],
+    "Nightmare: Gulpuff": [
+      "Pesadelo: Baiagul"
+    ],
+    "Nightmare: Havoc Warrior": [
+      "Pesadelo: Guerreiro Aniquilante"
+    ],
+    "Nightmare: Hecate": [
+      "Pesadelo: Hécate"
+    ],
+    "Nightmare: Impermanence Heron": [
+      "Pesadelo: Garça-cambiante"
+    ],
+    "Nightmare: Inferno Rider": [
+      "Pesadelo: Cavaleiro Infernal"
+    ],
+    "Nightmare: Kelpie": [
+      "Pesadelo: Kelpie"
+    ],
+    "Nightmare: Lampylumen Myriad": [
+      "Pesadelo: Miríade Lampilúmen"
+    ],
+    "Nightmare: Mourning Aix": [
+      "Pesadelo: Aix Lamentoso"
+    ],
+    "Nightmare: Roseshroom": [
+      "Pesadelo: Champirrosa"
+    ],
+    "Nightmare: Tambourinist": [
+      "Pesadelo: Pandeirista"
+    ],
+    "Nightmare: Tempest Mephis": [
+      "Pesadelo: Mefítico Tempestuoso"
+    ],
+    "Nightmare: Thundering Mephis": [
+      "Pesadelo: Mefítico Tonitruante"
+    ],
+    "Nightmare: Tick Tack": [
+      "Pesadelo: Tic-tac"
+    ],
+    "Nightmare: Violet-Feathered Heron": [
+      "Pesadelo: Garça Roxiplumas"
+    ],
+    "Nightmare: Viridblaze Saurian": [
+      "Pesadelo: Verdelisco"
+    ],
+    "Nimbus Wraith": [
+      "Espectro de Nimbo"
+    ],
+    "Nocturnus Knight": [
+      "Cavaleiro Noturno"
+    ],
+    "Phantom: Capitaneus": [
+      "Divergente: Capitão"
+    ],
+    "Phantom: Chest Mimic": [
+      "Divergente: Baú Mímico"
+    ],
+    "Phantom: Chop Chop": [
+      "Divergente: Flutubo"
+    ],
+    "Phantom: Clang Bang": [
+      "Divergente: Clang-bang"
+    ],
+    "Phantom: Crownless": [
+      "Divergente: Destronado"
+    ],
+    "Phantom: Cuddle Wuddle": [
+      "Divergente: Abraço-amasso"
+    ],
+    "Phantom: Diggy Duggy": [
+      "Divergente: Digue-dugue"
+    ],
+    "Phantom: Dreamless": [
+      "Divergente: Insone"
+    ],
+    "Phantom: Fae Ignis": [
+      "Divergente: Ígnea-feérica"
+    ],
+    "Phantom: Fallacy of No Return": [
+      "Divergente: Falácia Irreversível"
+    ],
+    "Phantom: Feilian Beringal": [
+      "Divergente: Beringal-feiliano"
+    ],
+    "Phantom: Forbidden Bastion": [
+      "Divergente: Pavilhão Proibido"
+    ],
+    "Phantom: Glommoth": [
+      "Divergente: Glommoth"
+    ],
+    "Phantom: Gulpuff": [
+      "Divergente: Baiagul"
+    ],
+    "Phantom: Hoartoise": [
+      "Divergente: Geatuga"
+    ],
+    "Phantom: Iceglint Dancer": [
+      "Divergente: Dançarina de Gelo Cristalino"
+    ],
+    "Phantom: Impermanence Heron": [
+      "Divergente: Garça-cambiante"
+    ],
+    "Phantom: Inferno Rider": [
+      "Divergente: Cavaleiro Infernal"
+    ],
+    "Phantom: Kerasaur": [
+      "Divergente: Ceratossauro"
+    ],
+    "Phantom: Kronaclaw": [
+      "Divergente: Kronagarra"
+    ],
+    "Phantom: Lightcrusher": [
+      "Divergente: Esmaga-luz"
+    ],
+    "Phantom: Lorelei": [
+      "Divergente: Lorelei"
+    ],
+    "Phantom: Lumiscale Construct": [
+      "Divergente: Constructo Lumescama"
+    ],
+    "Phantom: Mourning Aix": [
+      "Divergente: Aix Lamentoso"
+    ],
+    "Phantom: Myriad Snare: Rustfire Chassis": [
+      "Divergente: Prisão de Miríades: Corpo Decadente"
+    ],
+    "Phantom: Nightmare Crownless": [
+      "Divergente: Pesadelo Destronado"
+    ],
+    "Phantom: Nightmare Inferno Rider": [
+      "Divergente: Pesadelo Cavaleiro Infernal"
+    ],
+    "Phantom: Nimbus Wraith": [
+      "Divergente: Espectro de Nimbo"
+    ],
+    "Phantom: Questless Knight": [
+      "Divergente: Cavaleiro Errante"
+    ],
+    "Phantom: Reactor Husk": [
+      "Divergente: Reator Deteriorado"
+    ],
+    "Phantom: Rocksteady Guardian": [
+      "Divergente: Guardião Rochafirme"
+    ],
+    "Phantom: Sentry Construct": [
+      "Divergente: Constructo de Sentinela"
+    ],
+    "Phantom: Sigillum": [
+      "Divergente: Sigillum"
+    ],
+    "Phantom: Skywatch Lancer": [
+      "Divergente: Atirador Vigiacéu"
+    ],
+    "Phantom: Smiter": [
+      "Divergente: Açoitador"
+    ],
+    "Phantom: Smolder": [
+      "Divergente: Caçador Inextinguível"
+    ],
+    "Phantom: The False Sovereign": [
+      "Divergente: Falso Soberano"
+    ],
+    "Phantom: Thundering Mephis": [
+      "Divergente: Mefítico Tonitruante"
+    ],
+    "Phantom: Twin Nova - Collapsar Blade": [
+      "Divergente: Supernova Gêmea - Lâmina do Colapso"
+    ],
+    "Phantom: Twin Nova - Nebulous Cannon": [
+      "Divergente: Supernova Gêmea - Canhão de Nebulosa"
+    ],
+    "Phantom: Vitreum Dancer": [
+      "Divergente: Dançarina Vítrea"
+    ],
+    "Phantom: Zip Zap": [
+      "Divergente: Zip Zap"
+    ],
+    "Phoebe": [
+      "Phoebe"
+    ],
+    "Pilgrim's Shell": [
+      "Carapaça do Peregrino"
+    ],
+    "Porcelain Picket": [
+      "Marquês de Porcelana"
+    ],
+    "Questless Knight": [
+      "Cavaleiro Errante"
+    ],
+    "Rage Against the Statue": [
+      "Fúria Contra a Estátua"
+    ],
+    "Reactor Husk": [
+      "Reator Deteriorado"
+    ],
+    "Reminiscence - Nightmare: Adam Smasher": [
+      "Reminiscência - Pesadelo: Adam Smasher"
+    ],
+    "Reminiscence: Denia": [
+      "Reminiscência: Denia"
+    ],
+    "Reminiscence: Fenrico": [
+      "Reminiscência: Fenrico"
+    ],
+    "Reminiscence: Fleurdelys": [
+      "Reminiscência: Fleurdelys"
+    ],
+    "Reminiscence: Kronaclaw": [
+      "Reminiscência: Kronagarra"
+    ],
+    "Reminiscence: Suhsin the Inevitable": [
+      "Reminiscência: Suhsin, a Inevitável"
+    ],
+    "Reminiscence: Threnodian - Leviathan": [
+      "Reminiscência: Leviatã - trenodiano"
+    ],
+    "Reminiscence: Threnodian - Voidborne Construct": [
+      "Reminiscência: Trenodiano - Constructo do Vazio"
+    ],
+    "Roccia": [
+      "Roccia"
+    ],
+    "Rocksteady Guardian": [
+      "Guardião Rochafirme"
+    ],
+    "Roseshroom": [
+      "Champirrosa"
+    ],
+    "Sabercat Prowler": [
+      "Espreitador Dente-de-sabre"
+    ],
+    "Sabercat Reaver": [
+      "Saqueador Dente-de-sabre"
+    ],
+    "Sabyr Boar": [
+      "Javali-sabrino"
+    ],
+    "Sacerdos": [
+      "Sacerdote"
+    ],
+    "Sagittario": [
+      "Sagitário"
+    ],
+    "Sentry Construct": [
+      "Constructo de Sentinela"
+    ],
+    "Shadow Stepper": [
+      "Andador das Sombras"
+    ],
+    "Shorekeeper": [
+      "Guardiã da Costa"
+    ],
+    "Sigillum": [
+      "Sigillum"
+    ],
+    "Skywatch Lancer": [
+      "Atirador Vigiacéu"
+    ],
+    "Smiter": [
+      "Açoitador"
+    ],
+    "Smolder": [
+      "Caçador Inextinguível"
+    ],
+    "Snip Snap": [
+      "Clic-clac"
+    ],
+    "Spacetrek Explorer": [
+      "Explorador Sideral"
+    ],
+    "Spearback": [
+      "Costalança"
+    ],
+    "Spectro Drake": [
+      "Draco Fotônico"
+    ],
+    "Spectro Prism": [
+      "Prisma Fotônico"
+    ],
+    "Stone Picket": [
+      "Marquês de Pedra"
+    ],
+    "Stonewall Bracer": [
+      "Braçal Pétrea"
+    ],
+    "Tambourinist": [
+      "Pandeirista"
+    ],
+    "Tempest Mephis": [
+      "Mefítico tempestuoso"
+    ],
+    "The False Sovereign": [
+      "Falso Soberano"
+    ],
+    "Thousand-Puppet Pavilion": [
+      "Pavilhão das Mil Marionetes"
+    ],
+    "Thundering Mephis": [
+      "Mefítico Tonitruante"
+    ],
+    "Tick Tack": [
+      "Tic-tac"
+    ],
+    "Traffic Illuminator": [
+      "Semaforoide"
+    ],
+    "Tremor Warrior": [
+      "Guerreiro Sísmico"
+    ],
+    "Twin Nova: Collapsar Blade": [
+      "Supernova Gêmea: Lâmina do Colapso"
+    ],
+    "Twin Nova: Nebulous Cannon": [
+      "Supernova Gêmea: Canhão de Nebulosa"
+    ],
+    "Vanguard Junrock": [
+      "Novirrocha Vanguarda"
+    ],
+    "Violet-Feathered Heron": [
+      "Garça Roxiplumas"
+    ],
+    "Viridblaze Saurian": [
+      "Verdelisco"
+    ],
+    "Vitreum Dancer": [
+      "Dançarina Vítrea"
+    ],
+    "Voidwing Moth": [
+      "Mariposa Asa do Vazio"
+    ],
+    "Voltscourge Stalker": [
+      "Lobo-praga Voltaico"
+    ],
+    "Whiff Whaff": [
+      "Vapt-vupt"
+    ],
+    "Windlash Coleoid": [
+      "Coleóide Açoite-vento"
+    ],
+    "Zani": [
+      "Zani"
+    ],
+    "Zig Zag": [
+      "Zigue-zague"
+    ],
+    "Zip Zap": [
+      "Zip Zap"
+    ]
   },
   "sets": {
-    "Moonlit Clouds": [],
-    "Heart of Sworn Vigil": []
+    "Moonlit Clouds": [
+      "Nuvens Enluaradas"
+    ],
+    "Heart of Sworn Vigil": [
+      "Coração da Vigia Jurada"
+    ],
+    "Celestial Light": [
+      "Luz Celestial"
+    ],
+    "Chromatic Foam": [
+      "Espuma Cromática"
+    ],
+    "Crown of Valor": [
+      "Coroa de Valor"
+    ],
+    "Dream of the Lost": [
+      "Sonho do Perdido"
+    ],
+    "Empyrean Anthem": [
+      "Hino Empíreo"
+    ],
+    "Eternal Radiance": [
+      "Radiância Eterna"
+    ],
+    "Flamewing's Shadow": [
+      "Sombra de Chamasa"
+    ],
+    "Flaming Clawprint": [
+      "Pegada Flamejante"
+    ],
+    "Flash of Electric Reflection": [
+      "Clarão do Reflexo Relâmpago"
+    ],
+    "Flower of Tinged Yearning": [
+      "Flor do Desejo Matizado"
+    ],
+    "Freezing Frost": [
+      "Geada Congelante"
+    ],
+    "Frosty Resolve": [
+      "Resolução Gélida"
+    ],
+    "Gusts of Welkin": [
+      "Rajadas Celestiais"
+    ],
+    "Halo of Starry Radiance": [
+      "Halo da Radiância Estelar"
+    ],
+    "Havoc Eclipse": [
+      "Eclipse Aniquilante"
+    ],
+    "Heart of Evil's Purge": [
+      "Coração da Pureza Imaculada"
+    ],
+    "Lamp of Nether Road": [
+      "Lanterna da Travessia Noturna"
+    ],
+    "Law of Harmony": [
+      "Lei da Harmonia"
+    ],
+    "Lingering Tunes": [
+      "Pós-melodia"
+    ],
+    "Midnight Veil": [
+      "Véu da Meia-noite"
+    ],
+    "Molten Rift": [
+      "Fenda Fundente"
+    ],
+    "Pact of Neonlight Leap": [
+      "Pacto do Salto Neonluz"
+    ],
+    "Reel of Spliced Memories": [
+      "Carretel de Memórias Fragmentadas"
+    ],
+    "Rejuvenating Glow": [
+      "Brilho Rejuvenescedor"
+    ],
+    "Rite of Gilded Revelation": [
+      "Rito da Revelação Dourada"
+    ],
+    "Shadow of Shattered Dreams": [
+      "Sombra dos Sonhos Despedaçados"
+    ],
+    "Sierra Gale": [
+      "Lufada da Serra"
+    ],
+    "Song of Feathered Trace": [
+      "Cântico das Plumas Cadentes"
+    ],
+    "Sound of True Name": [
+      "Som do Nome Verdadeiro"
+    ],
+    "Thread of Severed Fate": [
+      "Fio do Destino Rompido"
+    ],
+    "Tidebreaking Courage": [
+      "Coragem Quebra-maré"
+    ],
+    "Trailblazing Star": [
+      "Estrela Desbravadora"
+    ],
+    "Void Thunder": [
+      "Trovão do Limbo"
+    ],
+    "Windward Pilgrimage": [
+      "Barlavento Peregrino"
+    ],
+    "Wishes of Quiet Snowfall": [
+      "Desejos da Nevada Silenciosa"
+    ]
   }
 }

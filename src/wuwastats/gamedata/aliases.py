@@ -24,7 +24,7 @@ def registrar_alias(data_dir: Path, dados: GameData, categoria: CategoriaNome, c
     if alias in existentes:
         return
     existentes.append(alias)
-    _escrever_atomico(caminho, conteudo)
+    escrever_atomico(caminho, conteudo)
 
 
 def _indice(dados: GameData, categoria: CategoriaNome) -> NameIndex:
@@ -42,7 +42,7 @@ def _validar(indice: NameIndex, categoria: CategoriaNome, chave: str, alias: str
         raise AliasInvalido(f"'{alias}' já aponta para {sorted(outros)}")
 
 
-def _escrever_atomico(caminho: Path, conteudo: object) -> None:
+def escrever_atomico(caminho: Path, conteudo: object) -> None:
     temporario = caminho.with_suffix(".json.tmp")
     temporario.write_text(json.dumps(conteudo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     os.replace(temporario, caminho)

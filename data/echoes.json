@@ -1,9 +1,2173 @@
 {
   "_meta": {
-    "descricao": "Catálogo de echos. Chave = nome em inglês; nomes PT-BR ficam em stat_aliases.json. 'custo' null = desconhecido (não é conferido)."
+    "descricao": "Catálogo de echos, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês; nome_pt também vira alias em stat_aliases.json. 'custo' null = desconhecido (não é conferido). 'sets' = sonatas possíveis. Para custo marcado como TODO, preencha à mão: a escolha sobrevive à próxima importação."
   },
   "echoes": {
-    "Suhsin": { "custo": null, "status": "TODO: confirmar custo" },
-    "Soulfrayer": { "custo": null, "status": "TODO: confirmar custo" }
+    "Abyssal Gladius": {
+      "nome_pt": "Gládio Abissal",
+      "custo": 3,
+      "sets": [
+        "Tidebreaking Courage",
+        "Midnight Veil",
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Abyssal Mercator": {
+      "nome_pt": "Mercador Abissal",
+      "custo": 3,
+      "sets": [
+        "Frosty Resolve",
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Abyssal Patricius": {
+      "nome_pt": "Patrício Abissal",
+      "custo": 3,
+      "sets": [
+        "Empyrean Anthem",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Aero Drake": {
+      "nome_pt": "Draco Pneumático",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Tidebreaking Courage",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Aero Predator": {
+      "nome_pt": "Predador Aéreo",
+      "custo": 1,
+      "sets": [
+        "Void Thunder",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Aero Prism": {
+      "nome_pt": "Prisma Pneumático",
+      "custo": 1,
+      "sets": [
+        "Eternal Radiance",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Aureate Picket": {
+      "nome_pt": "Marquês Dourado",
+      "custo": 1,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Autopuppet Scout": {
+      "nome_pt": "Maquinete",
+      "custo": 3,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Baby Roseshroom": {
+      "nome_pt": "Champirrosa Jovem",
+      "custo": 1,
+      "sets": [
+        "Sierra Gale",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Baby Viridblaze Saurian": {
+      "nome_pt": "Verdelisco Bebê",
+      "custo": 1,
+      "sets": [
+        "Lingering Tunes",
+        "Void Thunder",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Bell-Borne Geochelone": {
+      "nome_pt": "Geobuti-sineiro",
+      "custo": 4,
+      "sets": [
+        "Moonlit Clouds",
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Bloomburst Puppet": {
+      "nome_pt": "Floro-Explosão",
+      "custo": 1,
+      "sets": [
+        "Heart of Sworn Vigil"
+      ],
+      "status": "ok"
+    },
+    "Brant": {
+      "nome_pt": "Brant",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Calamity Effigy": {
+      "nome_pt": "Efígie da Calamidade",
+      "custo": 4,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Calcharo": {
+      "nome_pt": "Calcharo",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Calcified Junrock": {
+      "nome_pt": "Novirrocha Calcificada",
+      "custo": 1,
+      "sets": [
+        "Tidebreaking Courage",
+        "Empyrean Anthem",
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Camellya": {
+      "nome_pt": "Camellya",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Cantarella": {
+      "nome_pt": "Cantarella",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Capitaneus": {
+      "nome_pt": "Capitão",
+      "custo": 3,
+      "sets": [
+        "Gusts of Welkin",
+        "Eternal Radiance",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Carapace": {
+      "nome_pt": "Carapaça",
+      "custo": 3,
+      "sets": [
+        "Moonlit Clouds",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Carlotta": {
+      "nome_pt": "Carlotta",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Cartethyia": {
+      "nome_pt": "Cartethyia",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Changli": {
+      "nome_pt": "Changli",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Chasm Guardian": {
+      "nome_pt": "Guardião do Abismo",
+      "custo": 3,
+      "sets": [
+        "Lingering Tunes",
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Chest Mimic": {
+      "nome_pt": "Baú Mímico",
+      "custo": 1,
+      "sets": [
+        "Midnight Veil",
+        "Empyrean Anthem",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Chirpuff": {
+      "nome_pt": "Baiapiu",
+      "custo": 1,
+      "sets": [
+        "Havoc Eclipse",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Chop Chop": {
+      "nome_pt": "Flutubo",
+      "custo": 3,
+      "sets": [
+        "Tidebreaking Courage",
+        "Empyrean Anthem",
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Chop Chop: Headless": {
+      "nome_pt": "Flutubo: Céfalo",
+      "custo": 1,
+      "sets": [
+        "Eternal Radiance",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Chop Chop: Leftless": {
+      "nome_pt": "Flutubo: Dextra",
+      "custo": 1,
+      "sets": [
+        "Frosty Resolve",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Chop Chop: Rightless": {
+      "nome_pt": "Flutubo: Sinistra",
+      "custo": 1,
+      "sets": [
+        "Tidebreaking Courage",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Clang Bang": {
+      "nome_pt": "Clang-bang",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Corrosaurus": {
+      "nome_pt": "Corrossauro",
+      "custo": 3,
+      "sets": [
+        "Flaming Clawprint",
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Crownless": {
+      "nome_pt": "Destronado",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Cruisewing": {
+      "nome_pt": "Asaveloz",
+      "custo": 1,
+      "sets": [
+        "Rejuvenating Glow",
+        "Moonlit Clouds",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Cuddle Wuddle": {
+      "nome_pt": "Abraço-amasso",
+      "custo": 3,
+      "sets": [
+        "Midnight Veil",
+        "Frosty Resolve",
+        "Molten Rift",
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Cyan-Feathered Heron": {
+      "nome_pt": "Garça-plumazul",
+      "custo": 3,
+      "sets": [
+        "Sierra Gale",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Devotee's Flesh": {
+      "nome_pt": "Carne do Devoto",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Windward Pilgrimage",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Diamondclaw": {
+      "nome_pt": "Garra de Diamante",
+      "custo": 1,
+      "sets": [
+        "Moonlit Clouds",
+        "Lingering Tunes"
+      ],
+      "status": "ok"
+    },
+    "Diggy Duggy": {
+      "nome_pt": "Digue-dugue",
+      "custo": 1,
+      "sets": [
+        "Eternal Radiance",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Diurnus Knight": {
+      "nome_pt": "Cavaleiro Diurno",
+      "custo": 3,
+      "sets": [
+        "Eternal Radiance",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Dragon of Dirge": {
+      "nome_pt": "Dragão Lamentoso",
+      "custo": 4,
+      "sets": [
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Dreamless": {
+      "nome_pt": "Insone",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse",
+        "Tidebreaking Courage"
+      ],
+      "status": "ok"
+    },
+    "Dwarf Cassowary": {
+      "nome_pt": "Casuar-anão",
+      "custo": 1,
+      "sets": [
+        "Sierra Gale",
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Electro Drake": {
+      "nome_pt": "Draco Voltaico",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Midnight Veil",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Electro Predator": {
+      "nome_pt": "Predador Voltaico",
+      "custo": 1,
+      "sets": [
+        "Molten Rift",
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Excarat": {
+      "nome_pt": "Exquilate",
+      "custo": 1,
+      "sets": [
+        "Freezing Frost",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Fae Ignis": {
+      "nome_pt": "Ígnea-feérica",
+      "custo": 1,
+      "sets": [
+        "Midnight Veil",
+        "Eternal Radiance",
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Fallacy of No Return": {
+      "nome_pt": "Falácia Irreversível",
+      "custo": 4,
+      "sets": [
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Feilian Beringal": {
+      "nome_pt": "Beringal-feiliano",
+      "custo": 4,
+      "sets": [
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Fission Junrock": {
+      "nome_pt": "Novirrocha Físsil",
+      "custo": 1,
+      "sets": [
+        "Moonlit Clouds",
+        "Void Thunder",
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Flautist": {
+      "nome_pt": "Flautista",
+      "custo": null,
+      "sets": [
+        "Lingering Tunes",
+        "Void Thunder",
+        "Midnight Veil",
+        "Eternal Radiance"
+      ],
+      "status": "TODO: a fonte lista custos [1, 3] para variantes deste echo; escolha um"
+    },
+    "Flora Drone": {
+      "nome_pt": "Drone Flora",
+      "custo": 1,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Rite of Gilded Revelation",
+        "Sound of True Name",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Flora Reindeer": {
+      "nome_pt": "Rena Flora",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Fog Lionarch": {
+      "nome_pt": "Leão Soberano da Névoa",
+      "custo": 3,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Fog Lionarch: Body": {
+      "nome_pt": "Leão Soberano da Névoa: Corpo",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Sworn Vigil"
+      ],
+      "status": "ok"
+    },
+    "Fog Lionarch: Head": {
+      "nome_pt": "Leão Soberano da Névoa: Cabeça",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Sworn Vigil"
+      ],
+      "status": "ok"
+    },
+    "Forbidden Bastion": {
+      "nome_pt": "Pavilhão Proibido",
+      "custo": 3,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Formrender": {
+      "nome_pt": "Quebra-Formas",
+      "custo": 3,
+      "sets": [
+        "Heart of Sworn Vigil",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Frostbite Coleoid": {
+      "nome_pt": "Coleóide de Geladura",
+      "custo": 3,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Frostscourge Stalker": {
+      "nome_pt": "Lobo-praga Gélido",
+      "custo": 1,
+      "sets": [
+        "Midnight Veil",
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Fusion Drake": {
+      "nome_pt": "Draco Térmico",
+      "custo": 1,
+      "sets": [
+        "Flaming Clawprint",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Fusion Dreadmane": {
+      "nome_pt": "Jubapavor Térmico",
+      "custo": 1,
+      "sets": [
+        "Rejuvenating Glow",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Fusion Prism": {
+      "nome_pt": "Prisma de Fusão",
+      "custo": 1,
+      "sets": [
+        "Freezing Frost",
+        "Lingering Tunes",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Fusion Warrior": {
+      "nome_pt": "Guerreiro Térmico",
+      "custo": 1,
+      "sets": [
+        "Sierra Gale",
+        "Void Thunder",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Galescourge Stalker": {
+      "nome_pt": "Lobo-praga Eólico",
+      "custo": 1,
+      "sets": [
+        "Frosty Resolve",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Geospider S4": {
+      "nome_pt": "Georanha S4",
+      "custo": 1,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Halo of Starry Radiance",
+        "Trailblazing Star"
+      ],
+      "status": "ok"
+    },
+    "Glacio Drake": {
+      "nome_pt": "Draco Criogênico",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Glacio Dreadmane": {
+      "nome_pt": "Lobo-criogênico",
+      "custo": 3,
+      "sets": [
+        "Moonlit Clouds",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Glacio Predator": {
+      "nome_pt": "Predador Criogênico",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Glacio Prism": {
+      "nome_pt": "Prisma Criogênico",
+      "custo": 1,
+      "sets": [
+        "Havoc Eclipse",
+        "Moonlit Clouds",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Glommoth": {
+      "nome_pt": "Glommoth",
+      "custo": 3,
+      "sets": [
+        "Trailblazing Star",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Golden Junrock": {
+      "nome_pt": "Novirrocha Dourada",
+      "custo": 1,
+      "sets": [
+        "Eternal Radiance",
+        "Frosty Resolve",
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Gulpuff": {
+      "nome_pt": "Baiagul",
+      "custo": null,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost",
+        "Midnight Veil"
+      ],
+      "status": "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"
+    },
+    "Havoc Drake": {
+      "nome_pt": "Draco Aniquilante",
+      "custo": 1,
+      "sets": [
+        "Flaming Clawprint",
+        "Windward Pilgrimage",
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Havoc Dreadmane": {
+      "nome_pt": "Jubapavor Aniquilante",
+      "custo": 3,
+      "sets": [
+        "Molten Rift",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Havoc Prism": {
+      "nome_pt": "Prisma Aniquilante",
+      "custo": 1,
+      "sets": [
+        "Void Thunder",
+        "Celestial Light",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Havoc Warrior": {
+      "nome_pt": "Guerreiro Aniquilante",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Hecate": {
+      "nome_pt": "Hécate",
+      "custo": 4,
+      "sets": [
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Hoartoise": {
+      "nome_pt": "Geatuga",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Hocus Pocus": {
+      "nome_pt": "Abra Cadabra",
+      "custo": 1,
+      "sets": [
+        "Frosty Resolve",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Hoochief": {
+      "nome_pt": "Mico-Chefe",
+      "custo": 3,
+      "sets": [
+        "Rejuvenating Glow",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Hooscamp": {
+      "nome_pt": "Campemico",
+      "custo": 1,
+      "sets": [
+        "Lingering Tunes",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Hurriclaw": {
+      "nome_pt": "Furagarra",
+      "custo": 3,
+      "sets": [
+        "Tidebreaking Courage",
+        "Gusts of Welkin",
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Hyvatia": {
+      "nome_pt": "Hyvatia",
+      "custo": 4,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Rite of Gilded Revelation"
+      ],
+      "status": "ok"
+    },
+    "Iceglint Dancer": {
+      "nome_pt": "Dançarina de Gelo Cristalino",
+      "custo": 1,
+      "sets": [
+        "Trailblazing Star",
+        "Wishes of Quiet Snowfall",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Impermanence Heron": {
+      "nome_pt": "Garça-cambiante",
+      "custo": 4,
+      "sets": [
+        "Moonlit Clouds"
+      ],
+      "status": "ok"
+    },
+    "Inferno Rider": {
+      "nome_pt": "Cavaleiro Infernal",
+      "custo": 4,
+      "sets": [
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Ironhoof": {
+      "nome_pt": "Casco de Ferro",
+      "custo": 3,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Wishes of Quiet Snowfall",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Jade Nether Serpent": {
+      "nome_pt": "Serpente de Jade do Inframundo",
+      "custo": 1,
+      "sets": [
+        "Heart of Sworn Vigil"
+      ],
+      "status": "ok"
+    },
+    "Jinhsi": {
+      "nome_pt": "Jinhsi",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Jué": {
+      "nome_pt": "Jué",
+      "custo": null,
+      "sets": [
+        "Celestial Light",
+        "Tidebreaking Courage",
+        "Empyrean Anthem"
+      ],
+      "status": "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"
+    },
+    "Kerasaur": {
+      "nome_pt": "Ceratossauro",
+      "custo": 3,
+      "sets": [
+        "Windward Pilgrimage",
+        "Flaming Clawprint",
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Anger": {
+      "nome_pt": "Maquinete do Núcleo: Raiva",
+      "custo": 1,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Fright": {
+      "nome_pt": "Maquinete do Núcleo: Medo",
+      "custo": 1,
+      "sets": [
+        "Lamp of Nether Road",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Grief": {
+      "nome_pt": "Maquinete do Núcleo: Tristeza",
+      "custo": 1,
+      "sets": [
+        "Lamp of Nether Road",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Joy": {
+      "nome_pt": "Maquinete do Núcleo: Alegria",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Sworn Vigil"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Reflection": {
+      "nome_pt": "Maquinete do Núcleo: Reflexão",
+      "custo": 1,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Kernel Puppet: Worry": {
+      "nome_pt": "Maquinete do Núcleo: Preocupação",
+      "custo": 1,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Kronablight": {
+      "nome_pt": "Kronaflagelo",
+      "custo": 3,
+      "sets": [
+        "Trailblazing Star",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "La Guardia": {
+      "nome_pt": "La Guardia",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Midnight Veil",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Lady of the Sea": {
+      "nome_pt": "Senhora do Mar",
+      "custo": 4,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Lampylumen Myriad": {
+      "nome_pt": "Miríade lampilúmen",
+      "custo": 4,
+      "sets": [
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Lava Larva": {
+      "nome_pt": "Larva-lava",
+      "custo": 1,
+      "sets": [
+        "Lingering Tunes",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Lightcrusher": {
+      "nome_pt": "Esmaga-luz",
+      "custo": 3,
+      "sets": [
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Lioness of Glory": {
+      "nome_pt": "Leoa da Glória",
+      "custo": 4,
+      "sets": [
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Lorelei": {
+      "nome_pt": "Lorelei",
+      "custo": 4,
+      "sets": [
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Lottie Lost": {
+      "nome_pt": "Srta. Solitária",
+      "custo": 1,
+      "sets": [
+        "Tidebreaking Courage",
+        "Frosty Resolve",
+        "Moonlit Clouds",
+        "Lingering Tunes",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Lumiscale Construct": {
+      "nome_pt": "Constructo Lumescama",
+      "custo": 3,
+      "sets": [
+        "Void Thunder",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Mech Abomination": {
+      "nome_pt": "Abominação mecânica",
+      "custo": 4,
+      "sets": [
+        "Lingering Tunes"
+      ],
+      "status": "ok"
+    },
+    "Mining Drone": {
+      "nome_pt": "Drone Minerador",
+      "custo": 1,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Rite of Gilded Revelation",
+        "Sound of True Name",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Mining Reindeer": {
+      "nome_pt": "Rena Mineradora",
+      "custo": 3,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Mourning Aix": {
+      "nome_pt": "Aix Lamentoso",
+      "custo": 4,
+      "sets": [
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Myriad Snare: Rustfire Chassis": {
+      "nome_pt": "Prisão de Miríades: Corpo Decadente",
+      "custo": 4,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Nameless Explorer": {
+      "nome_pt": "Explorador Anônimo",
+      "custo": 4,
+      "sets": [
+        "Sound of True Name",
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Aero Predator": {
+      "nome_pt": "Pesadelo: Predador Aéreo",
+      "custo": 1,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Baby Roseshroom": {
+      "nome_pt": "Pesadelo: Champirrosa Bebê",
+      "custo": 1,
+      "sets": [
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Baby Viridblaze Saurian": {
+      "nome_pt": "Pesadelo: Verdelisco Bebê",
+      "custo": 1,
+      "sets": [
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Chirpuff": {
+      "nome_pt": "Pesadelo: Baiapiu",
+      "custo": 1,
+      "sets": [
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Crownless": {
+      "nome_pt": "Pesadelo: Destronado",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Cyan-Feathered Heron": {
+      "nome_pt": "Pesadelo: Garça Plumazul",
+      "custo": 3,
+      "sets": [
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Dwarf Cassowary": {
+      "nome_pt": "Pesadelo: Casuar-anão",
+      "custo": 1,
+      "sets": [
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Electro Predator": {
+      "nome_pt": "Pesadelo: Predador Voltaico",
+      "custo": 1,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Feilian Beringal": {
+      "nome_pt": "Pesadelo: Beringal-feiliano",
+      "custo": 4,
+      "sets": [
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Glacio Predator": {
+      "nome_pt": "Pesadelo: Predador Criogênico",
+      "custo": 1,
+      "sets": [
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Gulpuff": {
+      "nome_pt": "Pesadelo: Baiagul",
+      "custo": 1,
+      "sets": [
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Havoc Warrior": {
+      "nome_pt": "Pesadelo: Guerreiro Aniquilante",
+      "custo": 1,
+      "sets": [
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Hecate": {
+      "nome_pt": "Pesadelo: Hécate",
+      "custo": 4,
+      "sets": [
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Impermanence Heron": {
+      "nome_pt": "Pesadelo: Garça-cambiante",
+      "custo": 4,
+      "sets": [
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Inferno Rider": {
+      "nome_pt": "Pesadelo: Cavaleiro Infernal",
+      "custo": 4,
+      "sets": [
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Kelpie": {
+      "nome_pt": "Pesadelo: Kelpie",
+      "custo": 4,
+      "sets": [
+        "Gusts of Welkin",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Lampylumen Myriad": {
+      "nome_pt": "Pesadelo: Miríade Lampilúmen",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Mourning Aix": {
+      "nome_pt": "Pesadelo: Aix Lamentoso",
+      "custo": 4,
+      "sets": [
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Roseshroom": {
+      "nome_pt": "Pesadelo: Champirrosa",
+      "custo": 3,
+      "sets": [
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Tambourinist": {
+      "nome_pt": "Pesadelo: Pandeirista",
+      "custo": 3,
+      "sets": [
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Tempest Mephis": {
+      "nome_pt": "Pesadelo: Mefítico Tempestuoso",
+      "custo": 4,
+      "sets": [
+        "Void Thunder",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Thundering Mephis": {
+      "nome_pt": "Pesadelo: Mefítico Tonitruante",
+      "custo": 4,
+      "sets": [
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Tick Tack": {
+      "nome_pt": "Pesadelo: Tic-tac",
+      "custo": 1,
+      "sets": [
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Violet-Feathered Heron": {
+      "nome_pt": "Pesadelo: Garça Roxiplumas",
+      "custo": 3,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Nightmare: Viridblaze Saurian": {
+      "nome_pt": "Pesadelo: Verdelisco",
+      "custo": 3,
+      "sets": [
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Nimbus Wraith": {
+      "nome_pt": "Espectro de Nimbo",
+      "custo": 1,
+      "sets": [
+        "Empyrean Anthem",
+        "Midnight Veil",
+        "Flamewing's Shadow"
+      ],
+      "status": "ok"
+    },
+    "Nocturnus Knight": {
+      "nome_pt": "Cavaleiro Noturno",
+      "custo": 3,
+      "sets": [
+        "Midnight Veil",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Capitaneus": {
+      "nome_pt": "Divergente: Capitão",
+      "custo": 3,
+      "sets": [
+        "Gusts of Welkin",
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Chest Mimic": {
+      "nome_pt": "Divergente: Baú Mímico",
+      "custo": 1,
+      "sets": [
+        "Midnight Veil",
+        "Empyrean Anthem",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Chop Chop": {
+      "nome_pt": "Divergente: Flutubo",
+      "custo": 3,
+      "sets": [
+        "Tidebreaking Courage",
+        "Empyrean Anthem",
+        "Dream of the Lost"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Clang Bang": {
+      "nome_pt": "Divergente: Clang-bang",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Crownless": {
+      "nome_pt": "Divergente: Destronado",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Cuddle Wuddle": {
+      "nome_pt": "Divergente: Abraço-amasso",
+      "custo": 3,
+      "sets": [
+        "Midnight Veil",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Diggy Duggy": {
+      "nome_pt": "Divergente: Digue-dugue",
+      "custo": 1,
+      "sets": [
+        "Moonlit Clouds",
+        "Lingering Tunes",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Dreamless": {
+      "nome_pt": "Divergente: Insone",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Fae Ignis": {
+      "nome_pt": "Divergente: Ígnea-feérica",
+      "custo": 1,
+      "sets": [
+        "Midnight Veil",
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Fallacy of No Return": {
+      "nome_pt": "Divergente: Falácia Irreversível",
+      "custo": 4,
+      "sets": [
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Feilian Beringal": {
+      "nome_pt": "Divergente: Beringal-feiliano",
+      "custo": 4,
+      "sets": [
+        "Sierra Gale",
+        "Rejuvenating Glow"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Forbidden Bastion": {
+      "nome_pt": "Divergente: Pavilhão Proibido",
+      "custo": 3,
+      "sets": [
+        "Song of Feathered Trace",
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Glommoth": {
+      "nome_pt": "Divergente: Glommoth",
+      "custo": 3,
+      "sets": [
+        "Trailblazing Star",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Gulpuff": {
+      "nome_pt": "Divergente: Baiagul",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Hoartoise": {
+      "nome_pt": "Divergente: Geatuga",
+      "custo": 1,
+      "sets": [
+        "Celestial Light",
+        "Freezing Frost",
+        "Frosty Resolve",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Iceglint Dancer": {
+      "nome_pt": "Divergente: Dançarina de Gelo Cristalino",
+      "custo": 1,
+      "sets": [
+        "Trailblazing Star"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Impermanence Heron": {
+      "nome_pt": "Divergente: Garça-cambiante",
+      "custo": 4,
+      "sets": [
+        "Moonlit Clouds"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Inferno Rider": {
+      "nome_pt": "Divergente: Cavaleiro Infernal",
+      "custo": 4,
+      "sets": [
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Kerasaur": {
+      "nome_pt": "Divergente: Ceratossauro",
+      "custo": 3,
+      "sets": [
+        "Windward Pilgrimage",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Kronaclaw": {
+      "nome_pt": "Divergente: Kronagarra",
+      "custo": 3,
+      "sets": [
+        "Trailblazing Star",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Lightcrusher": {
+      "nome_pt": "Divergente: Esmaga-luz",
+      "custo": 3,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Lorelei": {
+      "nome_pt": "Divergente: Lorelei",
+      "custo": 4,
+      "sets": [
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Lumiscale Construct": {
+      "nome_pt": "Divergente: Constructo Lumescama",
+      "custo": 3,
+      "sets": [
+        "Void Thunder",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Mourning Aix": {
+      "nome_pt": "Divergente: Aix Lamentoso",
+      "custo": 4,
+      "sets": [
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Myriad Snare: Rustfire Chassis": {
+      "nome_pt": "Divergente: Prisão de Miríades: Corpo Decadente",
+      "custo": 4,
+      "sets": [
+        "Heart of Evil's Purge",
+        "Lamp of Nether Road"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Nightmare Crownless": {
+      "nome_pt": "Divergente: Pesadelo Destronado",
+      "custo": 4,
+      "sets": [
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Nightmare Inferno Rider": {
+      "nome_pt": "Divergente: Pesadelo Cavaleiro Infernal",
+      "custo": 4,
+      "sets": [
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Nimbus Wraith": {
+      "nome_pt": "Divergente: Espectro de Nimbo",
+      "custo": 1,
+      "sets": [
+        "Empyrean Anthem",
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Questless Knight": {
+      "nome_pt": "Divergente: Cavaleiro Errante",
+      "custo": 3,
+      "sets": [
+        "Molten Rift",
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Reactor Husk": {
+      "nome_pt": "Divergente: Reator Deteriorado",
+      "custo": 4,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Rocksteady Guardian": {
+      "nome_pt": "Divergente: Guardião Rochafirme",
+      "custo": null,
+      "sets": [
+        "Rejuvenating Glow",
+        "Celestial Light",
+        "Frosty Resolve"
+      ],
+      "status": "TODO: a fonte lista custos [3, 4] para variantes deste echo; escolha um"
+    },
+    "Phantom: Sentry Construct": {
+      "nome_pt": "Divergente: Constructo de Sentinela",
+      "custo": 4,
+      "sets": [
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Sigillum": {
+      "nome_pt": "Divergente: Sigillum",
+      "custo": 4,
+      "sets": [
+        "Trailblazing Star"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Skywatch Lancer": {
+      "nome_pt": "Divergente: Atirador Vigiacéu",
+      "custo": 3,
+      "sets": [
+        "Flash of Electric Reflection",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Smiter": {
+      "nome_pt": "Divergente: Açoitador",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Smolder": {
+      "nome_pt": "Divergente: Caçador Inextinguível",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace"
+      ],
+      "status": "ok"
+    },
+    "Phantom: The False Sovereign": {
+      "nome_pt": "Divergente: Falso Soberano",
+      "custo": 4,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Thundering Mephis": {
+      "nome_pt": "Divergente: Mefítico Tonitruante",
+      "custo": 4,
+      "sets": [
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Twin Nova - Collapsar Blade": {
+      "nome_pt": "Divergente: Supernova Gêmea - Lâmina do Colapso",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Twin Nova - Nebulous Cannon": {
+      "nome_pt": "Divergente: Supernova Gêmea - Canhão de Nebulosa",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Vitreum Dancer": {
+      "nome_pt": "Divergente: Dançarina Vítrea",
+      "custo": 3,
+      "sets": [
+        "Molten Rift",
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Phantom: Zip Zap": {
+      "nome_pt": "Divergente: Zip Zap",
+      "custo": 1,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Rite of Gilded Revelation"
+      ],
+      "status": "ok"
+    },
+    "Phoebe": {
+      "nome_pt": "Phoebe",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Pilgrim's Shell": {
+      "nome_pt": "Carapaça do Peregrino",
+      "custo": 3,
+      "sets": [
+        "Windward Pilgrimage",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Porcelain Picket": {
+      "nome_pt": "Marquês de Porcelana",
+      "custo": 1,
+      "sets": [
+        "Lamp of Nether Road",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Questless Knight": {
+      "nome_pt": "Cavaleiro Errante",
+      "custo": 3,
+      "sets": [
+        "Frosty Resolve",
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Rage Against the Statue": {
+      "nome_pt": "Fúria Contra a Estátua",
+      "custo": 3,
+      "sets": [
+        "Eternal Radiance",
+        "Gusts of Welkin",
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Reactor Husk": {
+      "nome_pt": "Reator Deteriorado",
+      "custo": 4,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence - Nightmare: Adam Smasher": {
+      "nome_pt": "Reminiscência - Pesadelo: Adam Smasher",
+      "custo": 4,
+      "sets": [
+        "Shadow of Shattered Dreams"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Denia": {
+      "nome_pt": "Reminiscência: Denia",
+      "custo": 4,
+      "sets": [
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Fenrico": {
+      "nome_pt": "Reminiscência: Fenrico",
+      "custo": 4,
+      "sets": [
+        "Dream of the Lost",
+        "Law of Harmony"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Fleurdelys": {
+      "nome_pt": "Reminiscência: Fleurdelys",
+      "custo": 4,
+      "sets": [
+        "Gusts of Welkin",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Kronaclaw": {
+      "nome_pt": "Reminiscência: Kronagarra",
+      "custo": 3,
+      "sets": [
+        "Trailblazing Star",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Suhsin the Inevitable": {
+      "nome_pt": "Reminiscência: Suhsin, a Inevitável",
+      "custo": 4,
+      "sets": [
+        "Heart of Sworn Vigil",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Threnodian - Leviathan": {
+      "nome_pt": "Reminiscência: Leviatã - trenodiano",
+      "custo": 4,
+      "sets": [
+        "Flamewing's Shadow",
+        "Thread of Severed Fate"
+      ],
+      "status": "ok"
+    },
+    "Reminiscence: Threnodian - Voidborne Construct": {
+      "nome_pt": "Reminiscência: Trenodiano - Constructo do Vazio",
+      "custo": 4,
+      "sets": [
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Roccia": {
+      "nome_pt": "Roccia",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Rocksteady Guardian": {
+      "nome_pt": "Guardião Rochafirme",
+      "custo": 3,
+      "sets": [
+        "Rejuvenating Glow",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Roseshroom": {
+      "nome_pt": "Champirrosa",
+      "custo": 3,
+      "sets": [
+        "Freezing Frost",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Sabercat Prowler": {
+      "nome_pt": "Espreitador Dente-de-sabre",
+      "custo": 3,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Halo of Starry Radiance",
+        "Sound of True Name"
+      ],
+      "status": "ok"
+    },
+    "Sabercat Reaver": {
+      "nome_pt": "Saqueador Dente-de-sabre",
+      "custo": 3,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Halo of Starry Radiance",
+        "Sound of True Name"
+      ],
+      "status": "ok"
+    },
+    "Sabyr Boar": {
+      "nome_pt": "Javali-sabrino",
+      "custo": 1,
+      "sets": [
+        "Moonlit Clouds",
+        "Sierra Gale",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Sacerdos": {
+      "nome_pt": "Sacerdote",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Sagittario": {
+      "nome_pt": "Sagitário",
+      "custo": 1,
+      "sets": [
+        "Gusts of Welkin",
+        "Eternal Radiance",
+        "Flaming Clawprint"
+      ],
+      "status": "ok"
+    },
+    "Sentry Construct": {
+      "nome_pt": "Constructo de Sentinela",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Shadow Stepper": {
+      "nome_pt": "Andador das Sombras",
+      "custo": 1,
+      "sets": [
+        "Trailblazing Star",
+        "Chromatic Foam",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Shorekeeper": {
+      "nome_pt": "Guardiã da Costa",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Sigillum": {
+      "nome_pt": "Sigillum",
+      "custo": 4,
+      "sets": [
+        "Trailblazing Star"
+      ],
+      "status": "ok"
+    },
+    "Skywatch Lancer": {
+      "nome_pt": "Atirador Vigiacéu",
+      "custo": 3,
+      "sets": [
+        "Flash of Electric Reflection",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Smiter": {
+      "nome_pt": "Açoitador",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace"
+      ],
+      "status": "ok"
+    },
+    "Smolder": {
+      "nome_pt": "Caçador Inextinguível",
+      "custo": 1,
+      "sets": [
+        "Song of Feathered Trace"
+      ],
+      "status": "ok"
+    },
+    "Snip Snap": {
+      "nome_pt": "Clic-clac",
+      "custo": 1,
+      "sets": [
+        "Lingering Tunes",
+        "Rejuvenating Glow",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Soulfrayer": {
+      "nome_pt": "Desfia-Alma",
+      "custo": 3,
+      "sets": [
+        "Heart of Sworn Vigil",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Spacetrek Explorer": {
+      "nome_pt": "Explorador Sideral",
+      "custo": 3,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Chromatic Foam",
+        "Sound of True Name"
+      ],
+      "status": "ok"
+    },
+    "Spearback": {
+      "nome_pt": "Costalança",
+      "custo": 3,
+      "sets": [
+        "Lingering Tunes",
+        "Moonlit Clouds"
+      ],
+      "status": "ok"
+    },
+    "Spectro Drake": {
+      "nome_pt": "Draco Fotônico",
+      "custo": 1,
+      "sets": [
+        "Flaming Clawprint",
+        "Windward Pilgrimage"
+      ],
+      "status": "ok"
+    },
+    "Spectro Prism": {
+      "nome_pt": "Prisma Fotônico",
+      "custo": 1,
+      "sets": [
+        "Molten Rift",
+        "Void Thunder",
+        "Celestial Light"
+      ],
+      "status": "ok"
+    },
+    "Stone Picket": {
+      "nome_pt": "Marquês de Pedra",
+      "custo": 1,
+      "sets": [
+        "Lamp of Nether Road",
+        "Flash of Electric Reflection"
+      ],
+      "status": "ok"
+    },
+    "Stonewall Bracer": {
+      "nome_pt": "Braçal Pétrea",
+      "custo": 3,
+      "sets": [
+        "Rejuvenating Glow",
+        "Moonlit Clouds"
+      ],
+      "status": "ok"
+    },
+    "Tambourinist": {
+      "nome_pt": "Pandeirista",
+      "custo": 3,
+      "sets": [
+        "Freezing Frost",
+        "Havoc Eclipse"
+      ],
+      "status": "ok"
+    },
+    "Tempest Mephis": {
+      "nome_pt": "Mefítico tempestuoso",
+      "custo": 4,
+      "sets": [
+        "Void Thunder",
+        "Empyrean Anthem"
+      ],
+      "status": "ok"
+    },
+    "The False Sovereign": {
+      "nome_pt": "Falso Soberano",
+      "custo": 4,
+      "sets": [
+        "Crown of Valor"
+      ],
+      "status": "ok"
+    },
+    "Thousand-Puppet Pavilion": {
+      "nome_pt": "Pavilhão das Mil Marionetes",
+      "custo": 4,
+      "sets": [
+        "Song of Feathered Trace",
+        "Flower of Tinged Yearning"
+      ],
+      "status": "ok"
+    },
+    "Thundering Mephis": {
+      "nome_pt": "Mefítico Tonitruante",
+      "custo": 4,
+      "sets": [
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Tick Tack": {
+      "nome_pt": "Tic-tac",
+      "custo": 1,
+      "sets": [
+        "Lingering Tunes",
+        "Rejuvenating Glow",
+        "Havoc Eclipse",
+        "Celestial Light",
+        "Freezing Frost"
+      ],
+      "status": "ok"
+    },
+    "Traffic Illuminator": {
+      "nome_pt": "Semaforoide",
+      "custo": 1,
+      "sets": [
+        "Void Thunder",
+        "Sierra Gale",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Tremor Warrior": {
+      "nome_pt": "Guerreiro Sísmico",
+      "custo": 1,
+      "sets": [
+        "Halo of Starry Radiance",
+        "Chromatic Foam",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Twin Nova: Collapsar Blade": {
+      "nome_pt": "Supernova Gêmea: Lâmina do Colapso",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation",
+        "Trailblazing Star",
+        "Sound of True Name"
+      ],
+      "status": "ok"
+    },
+    "Twin Nova: Nebulous Cannon": {
+      "nome_pt": "Supernova Gêmea: Canhão de Nebulosa",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation",
+        "Chromatic Foam"
+      ],
+      "status": "ok"
+    },
+    "Vanguard Junrock": {
+      "nome_pt": "Novirrocha Vanguarda",
+      "custo": 1,
+      "sets": [
+        "Rejuvenating Glow",
+        "Void Thunder",
+        "Lingering Tunes"
+      ],
+      "status": "ok"
+    },
+    "Violet-Feathered Heron": {
+      "nome_pt": "Garça Roxiplumas",
+      "custo": 3,
+      "sets": [
+        "Molten Rift",
+        "Void Thunder"
+      ],
+      "status": "ok"
+    },
+    "Viridblaze Saurian": {
+      "nome_pt": "Verdelisco",
+      "custo": 3,
+      "sets": [
+        "Moonlit Clouds",
+        "Molten Rift"
+      ],
+      "status": "ok"
+    },
+    "Vitreum Dancer": {
+      "nome_pt": "Dançarina Vítrea",
+      "custo": 3,
+      "sets": [
+        "Empyrean Anthem",
+        "Eternal Radiance"
+      ],
+      "status": "ok"
+    },
+    "Voidwing Moth": {
+      "nome_pt": "Mariposa Asa do Vazio",
+      "custo": 3,
+      "sets": [
+        "Reel of Spliced Memories"
+      ],
+      "status": "ok"
+    },
+    "Voltscourge Stalker": {
+      "nome_pt": "Lobo-praga Voltaico",
+      "custo": 1,
+      "sets": [
+        "Empyrean Anthem",
+        "Midnight Veil"
+      ],
+      "status": "ok"
+    },
+    "Whiff Whaff": {
+      "nome_pt": "Vapt-vupt",
+      "custo": 1,
+      "sets": [
+        "Rejuvenating Glow",
+        "Moonlit Clouds",
+        "Sierra Gale"
+      ],
+      "status": "ok"
+    },
+    "Windlash Coleoid": {
+      "nome_pt": "Coleóide Açoite-vento",
+      "custo": 3,
+      "sets": [
+        "Rite of Gilded Revelation",
+        "Wishes of Quiet Snowfall"
+      ],
+      "status": "ok"
+    },
+    "Zani": {
+      "nome_pt": "Zani",
+      "custo": 4,
+      "sets": [
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Zig Zag": {
+      "nome_pt": "Zigue-zague",
+      "custo": 1,
+      "sets": [
+        "Moonlit Clouds",
+        "Lingering Tunes",
+        "Celestial Light",
+        "Midnight Veil",
+        "Empyrean Anthem",
+        "Frosty Resolve"
+      ],
+      "status": "ok"
+    },
+    "Zip Zap": {
+      "nome_pt": "Zip Zap",
+      "custo": 1,
+      "sets": [
+        "Pact of Neonlight Leap",
+        "Rite of Gilded Revelation",
+        "Chromatic Foam",
+        "Sound of True Name"
+      ],
+      "status": "ok"
+    },
+    "Suhsin": {
+      "nome_pt": null,
+      "custo": null,
+      "sets": [],
+      "status": "TODO: não encontrado em Arikatsu/WutheringWaves_Data@9218d612ad; renomeie para o nome da fonte ou remova"
+    }
   }
 }

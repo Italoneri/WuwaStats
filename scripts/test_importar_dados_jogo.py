@@ -1,0 +1,202 @@
+import json
+import shutil
+from pathlib import Path
+from typing import Any
+
+import pytest
+from importar_dados_jogo import (
+    Categoria,
+    Commit,
+    EchoFonte,
+    EchoImportado,
+    EfeitoSetFonte,
+    GrupoSetFonte,
+    PropriedadeFonte,
+    RaridadeFonte,
+    TabelasFonte,
+    gerar_echoes,
+    gerar_sets,
+    gravar_validado,
+    mesclar_aliases,
+    montar_catalogo,
+    preencher,
+)
+
+from wuwastats.config import PROJECT_ROOT
+from wuwastats.domain.names import NameIndex
+from wuwastats.gamedata.loader import GameDataError, load_game_data
+from wuwastats.gamedata.schemas import AliasesFile, EchoesFile, SetsFile
+
+GAMEDATA_FIXTURE = PROJECT_ROOT / "fixtures" / "gamedata"
+COMMIT = Commit(ref="3.7", sha="abc1234567890", data="2026-09-29T20:35:07Z", mensagem="GameVer 3.7.0")
+STATS = NameIndex.build({"energy_regen": ["Energy Regen"], "atk_pct": ["ATK"], "atk_flat": ["ATK"]})
+
+
+def _tabelas(textos_pt: dict[str, str] | None) -> TabelasFonte:
+    def echo(nome: str, raridade: int, grupos: list[int]) -> EchoFonte:
+        return EchoFonte.model_validate({"MonsterName": nome, "Rarity": raridade, "FetterGroup": grupos})
+
+    return TabelasFonte(
+        echos=[echo("M_Nuvem", 0, [8]), echo("M_Nuvem", 0, [8]), echo("M_Gulpuff", 0, [8]), echo("M_Gulpuff", 2, [9])],
+        raridades=[RaridadeFonte.model_validate({"Rare": r, "Cost": c}) for r, c in [(0, 1), (1, 3), (2, 4)]],
+        grupos_set=[
+            _grupo(8, {2: 15, 5: 16}),
+            _grupo(9, {2: 17}),
+        ],
+        efeitos_set=[
+            _efeito(15, ["10%"], [{"Id": 11, "Value": 1000, "IsRatio": False}]),
+            _efeito(16, ["22.5%", "15"], []),
+            _efeito(17, ["10%"], [{"Id": 10007, "Value": 0.10000000149011612, "IsRatio": True}]),
+        ],
+        propriedades=[
+            PropriedadeFonte.model_validate({"Id": 11, "Name": "P_11", "IsPercent": True}),
+            PropriedadeFonte.model_validate({"Id": 10007, "Name": "P_10007", "IsPercent": False}),
+        ],
+        textos_en={
+            "M_Nuvem": "Cloudy",
+            "M_Gulpuff": "Gulpuff",
+            "F_8": "Moonlit Clouds",
+            "F_9": "Lingering Tunes",
+            "D_15": "Energy Regen + {0}",
+            "D_16": "ATK +{0} for {1}s.",
+            "D_17": "ATK +{0}",
+            "P_11": "Energy Regen",
+            "P_10007": "ATK",
+        },
+        textos_pt=textos_pt,
+    )
+
+
+def _grupo(id_: int, efeito_por_pecas: dict[int, int]) -> GrupoSetFonte:
+    mapa = [{"Key": pecas, "Value": efeito} for pecas, efeito in efeito_por_pecas.items()]
+    return GrupoSetFonte.model_validate({"Id": id_, "FetterGroupName": f"F_{id_}", "FetterMap": mapa})
+
+
+def _efeito(id_: int, parametros: list[str], propriedades: list[dict[str, Any]]) -> EfeitoSetFonte:
+    return EfeitoSetFonte.model_validate(
+        {"Id": id_, "EffectDescription": f"D_{id_}", "EffectDescriptionParam": parametros, "AddProp": propriedades}
+    )
+
+
+TEXTOS_PT = {"M_Nuvem": "Nublado", "M_Gulpuff": "Baiagul", "F_8": "Nuvens Enluaradas", "D_16": "ATQ +{0} por {1}s."}
+
+
+def test_monta_sets_com_bonus_em_status_e_descricoes_preenchidas() -> None:
+    catalogo = montar_catalogo(_tabelas(TEXTOS_PT), STATS)
+
+    nuvens = catalogo.sets["Moonlit Clouds"]
+    assert nuvens.nome_pt == "Nuvens Enluaradas"
+    assert nuvens.pecas == 5
+    assert nuvens.bonus == {2: {"energy_regen": 10.0}}
+    assert nuvens.efeitos[5] == ("ATK +22.5% for 15s.", "ATQ +22.5% por 15s.")
+    assert catalogo.sets["Lingering Tunes"].bonus == {2: {"atk_pct": 10.0}}
+
+
+def test_agrupa_variantes_do_echo_pelo_nome_em_ingles() -> None:
+    catalogo = montar_catalogo(_tabelas(TEXTOS_PT), STATS)
+
+    assert catalogo.echoes["Cloudy"] == EchoImportado(nome_pt="Nublado", custos=frozenset({1}), sets=("Moonlit Clouds",))
+    assert catalogo.echoes["Gulpuff"].custos == {1, 4}
+    assert catalogo.echoes["Gulpuff"].sets == ("Moonlit Clouds", "Lingering Tunes")
+
+
+def test_sem_textmap_pt_os_nomes_pt_ficam_vazios() -> None:
+    catalogo = montar_catalogo(_tabelas(None), STATS)
+
+    assert {echo.nome_pt for echo in catalogo.echoes.values()} == {None}
+    assert catalogo.sets["Moonlit Clouds"].efeitos[2] == ("Energy Regen + 10%", None)
+
+
+@pytest.mark.parametrize(
+    ("custo_anterior", "custo", "status"),
+    [
+        (None, None, "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"),
+        (4, 4, "custo escolhido à mão; a fonte lista [1, 4]"),
+        (3, None, "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"),
+    ],
+)
+def test_custo_ambiguo_so_mantem_escolha_manual_valida(custo_anterior: int | None, custo: int | None, status: str) -> None:
+    atual = EchoesFile.model_validate({"_meta": {}, "echoes": {"Gulpuff": {"custo": custo_anterior}}})
+    novos = {"Gulpuff": EchoImportado(nome_pt="Baiagul", custos=frozenset({1, 4}), sets=())}
+
+    gerado, _ = gerar_echoes(novos, atual, COMMIT)
+
+    assert gerado["echoes"]["Gulpuff"]["custo"] == custo
+    assert gerado["echoes"]["Gulpuff"]["status"] == status
+
+
+def test_mantem_entradas_que_sumiram_da_fonte_marcadas_como_todo() -> None:
+    atual = EchoesFile.model_validate({"_meta": {"extra": 1}, "echoes": {"Suhsin": {"custo": None}}})
+
+    gerado, avisos = gerar_echoes({}, atual, COMMIT)
+
+    assert gerado["_meta"]["extra"] == 1
+    assert gerado["echoes"]["Suhsin"]["status"].startswith("TODO: não encontrado em Arikatsu/WutheringWaves_Data@abc1234567")
+    assert avisos == ["echo 'Suhsin' não existe na fonte; mantido com status TODO"]
+
+
+def test_aliases_acrescenta_nomes_pt_sem_apagar_manuais_nem_criar_ambiguidade() -> None:
+    aliases = AliasesFile.model_validate(
+        {
+            "_meta": {},
+            "stats": {"crit_rate": ["Taxa CRIT"]},
+            "echoes": {"Cloudy": ["Nuvenzinha"], "Gulpuff": ["Baiagul"]},
+            "sets": {},
+        }
+    )
+    nomes_pt: dict[Categoria, dict[str, str | None]] = {
+        "echoes": {"Cloudy": "Nublado", "Gulpuff": "Baiagul", "Jue": "Gulpuff", "Sem PT": None},
+        "sets": {"Moonlit Clouds": "Nuvens Enluaradas"},
+    }
+
+    resultado, avisos = mesclar_aliases(aliases, nomes_pt)
+
+    assert resultado["stats"] == {"crit_rate": ["Taxa CRIT"]}
+    assert resultado["echoes"] == {"Cloudy": ["Nuvenzinha", "Nublado"], "Gulpuff": ["Baiagul"]}
+    assert resultado["sets"] == {"Moonlit Clouds": ["Nuvens Enluaradas"]}
+    assert avisos == ["alias echoes 'Gulpuff' → Jue pulado: já aponta para ['Gulpuff']"]
+
+
+@pytest.mark.parametrize(
+    ("modelo", "parametros", "esperado"),
+    [
+        ("Glacio DMG + {0}", ["10%"], "Glacio DMG + 10%"),
+        ("{1} por {0}s", ["5", "Cura"], "Cura por 5s"),
+        ("sobra {2}", ["a"], "sobra {2}"),
+    ],
+)
+def test_preenche_parametros_da_descricao(modelo: str, parametros: list[str], esperado: str) -> None:
+    assert preencher(modelo, parametros) == esperado
+
+
+def test_grava_so_depois_de_validar_o_conjunto(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    shutil.copytree(GAMEDATA_FIXTURE, data_dir)
+    novos = {"Suhsin": EchoImportado(nome_pt="Suhsin PT", custos=frozenset({4}), sets=("Moonlit Clouds",))}
+    echoes, _ = gerar_echoes(novos, _ler(data_dir, "echoes.json", EchoesFile), COMMIT)
+
+    gravar_validado(data_dir, {"echoes.json": echoes})
+
+    assert load_game_data(data_dir).echoes["Suhsin"].custo == 4
+    assert _json(data_dir / "echoes.json")["echoes"]["Suhsin"]["nome_pt"] == "Suhsin PT"
+
+
+def test_nao_toca_em_data_quando_o_resultado_nao_carrega(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    shutil.copytree(GAMEDATA_FIXTURE, data_dir)
+    antes = (data_dir / "sets.json").read_bytes()
+    sets, _ = gerar_sets({}, _ler(data_dir, "sets.json", SetsFile), COMMIT)
+    sets["sets"]["Moonlit Clouds"]["bonus"] = {"2": {"stat_inexistente": 1.0}}
+
+    with pytest.raises(GameDataError):
+        gravar_validado(data_dir, {"sets.json": sets})
+
+    assert (data_dir / "sets.json").read_bytes() == antes
+
+
+def _ler[T: EchoesFile | SetsFile](data_dir: Path, nome: str, modelo: type[T]) -> T:
+    return modelo.model_validate_json((data_dir / nome).read_text(encoding="utf-8"))
+
+
+def _json(caminho: Path) -> Any:
+    return json.loads(caminho.read_text(encoding="utf-8"))
