@@ -33,6 +33,7 @@ def main(argv: list[str] | None = None) -> int:
     if isinstance(sys.stdout, io.TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
     logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(name)s: %(message)s")
+    logging.getLogger("wuwastats").setLevel(logging.INFO)  # eventos de negócio: captura iniciada, tempo de cada leitura
     args = _parser().parse_args(argv)
     settings = Settings()
     if args.data_dir:

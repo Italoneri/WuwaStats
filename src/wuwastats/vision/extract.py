@@ -1,6 +1,7 @@
 """Prints -> echos lidos. Toda falha (imagem, API, resposta) vira ExtracaoFalhou, nunca exceção."""
 
 import logging
+import time
 from collections.abc import Sequence
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
@@ -11,7 +12,8 @@ from openai import OpenAIError
 from pydantic import BaseModel, ConfigDict, Field
 
 from wuwastats.config import Recorte
-from wuwastats.domain.models import MAX_ECHOS, Condicoes, EchoEntrada, EntradaBuild
+from wuwastats.domain.models import MAX_ECHOS, Condicoes, EchoEntrada, EntradaBuild, StatLido
+from wuwastats.domain.names import resolve_stat
 from wuwastats.domain.tables import GameData, Perfil
 from wuwastats.domain.variants import detectar_condicoes
 from wuwastats.vision.cache import CacheVisao, ChaveCache
@@ -21,6 +23,7 @@ from wuwastats.vision.parse import ErroLeitura, LeituraPersonagem, parse_echo, p
 from wuwastats.vision.prompt import PROMPT_PERSONAGEM, TipoPrint, prompt_echo
 
 PREFIXO_PRINT_PERSONAGEM = "personagem"
+TOLERANCIA_SECUNDARIO = 0.5
 
 logger = logging.getLogger(__name__)
 
@@ -82,7 +85,8 @@ class Extrator:
         leitura = parse_echo(resposta.texto)
         if isinstance(leitura, ErroLeitura):
             return _falha_de_leitura(arquivo, leitura, resposta)
-        return EchoExtraido(arquivo=arquivo.name, do_cache=resposta.do_cache, echo=leitura)
+        echo = sem_status_secundario(leitura, self.dados)
+        return EchoExtraido(arquivo=arquivo.name, do_cache=resposta.do_cache, echo=echo)
 
     def personagem(self, arquivo: Path) -> PersonagemExtraido | ExtracaoFalhou:
         resposta = self._consultar(arquivo, "personagem", PROMPT_PERSONAGEM, None)
@@ -102,6 +106,7 @@ class Extrator:
         em_cache = self.cache.ler(chave)
         if em_cache is not None:
             return _Resposta(em_cache, do_cache=True)
+        inicio = time.monotonic()
         try:
             texto = self.modelo.completar(prompt, imagem)
         except OpenAIError as erro:
@@ -109,9 +114,27 @@ class Extrator:
                 "extract %s: API de visão falhou: %s", tipo, erro, extra={"arquivo": arquivo.name, "modelo": self.modelo.nome}
             )
             return ExtracaoFalhou(arquivo=arquivo.name, do_cache=False, motivo=f"API de visão: {erro}")
+        duracao_ms = round((time.monotonic() - inicio) * 1000)
+        logger.info("visão: %s lido em %.1fs", tipo, duracao_ms / 1000, extra={"arquivo": arquivo.name, "durationMs": duracao_ms})
         # Resposta malformada também vai pro cache: com temperature=0 repetir só gastaria crédito.
         self.cache.gravar(chave, texto)
         return _Resposta(texto, do_cache=False)
+
+
+def sem_status_secundario(echo: EchoEntrada, dados: GameData) -> EchoEntrada:
+    """Tira dos substatus o status fixo que todo echo do custo tem (ex.: ATQ 150 no custo 4), que a IA às vezes inclui.
+    Só sai a linha com o mesmo status e o valor da tabela; um substatus legítimo do mesmo tipo nunca tem esse valor."""
+    tabela = dados.main_stats.get(echo.custo)
+    secundario = tabela.secundario if tabela else {}
+
+    def e_secundario(lido: StatLido) -> bool:
+        stat = resolve_stat(dados.stat_names, lido.stat, lido.percentual)
+        return stat is not None and stat in secundario and abs(lido.valor - secundario[stat]) <= TOLERANCIA_SECUNDARIO
+
+    substatus = tuple(s for s in echo.substatus if not e_secundario(s))
+    if len(substatus) == len(echo.substatus):
+        return echo
+    return echo.model_copy(update={"substatus": substatus})
 
 
 def _falha_de_leitura(arquivo: Path, erro: ErroLeitura, resposta: _Resposta) -> ExtracaoFalhou:

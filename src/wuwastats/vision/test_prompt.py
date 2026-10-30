@@ -10,3 +10,4 @@ def test_prompt_lista_nomes_validos_de_status_sets_e_echos(dados: GameData) -> N
     assert "Moonlit Clouds" in prompt
     assert "Suhsin" in prompt
     assert "SOMENTE com um objeto JSON" in prompt
+    assert "custo 4: ATQ 150" in prompt

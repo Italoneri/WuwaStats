@@ -77,6 +77,24 @@ class TestEcho:
         assert primeiro.echo == segundo.echo
         assert len(modelo.chamadas) == 1
 
+    @pytest.mark.parametrize(
+        ("substatus", "restantes"),
+        [
+            ([{"stat": "ATQ", "valor": 150, "percentual": False}, {"stat": "Taxa CRIT", "valor": 8.1}], ["Taxa CRIT"]),
+            ([{"stat": "ATQ", "valor": 40, "percentual": False}, {"stat": "Taxa CRIT", "valor": 8.1}], ["ATQ", "Taxa CRIT"]),
+            ([{"stat": "ATQ%", "valor": 150}, {"stat": "Taxa CRIT", "valor": 8.1}], ["ATQ%", "Taxa CRIT"]),
+        ],
+    )
+    def test_tira_o_status_fixo_secundario_lido_como_substatus(
+        self, tmp_path: Path, dados: GameData, cache: CacheVisao, substatus: list[dict[str, object]], restantes: list[str]
+    ) -> None:
+        modelo = ModeloFalso({b"echo-1": json.dumps(ECHO_JSON | {"substatus": substatus})})
+
+        resultado = Extrator(modelo=modelo, cache=cache, dados=dados).echo(_print(tmp_path, "1.png", b"echo-1"))
+
+        assert isinstance(resultado, EchoExtraido)
+        assert [s.stat for s in resultado.echo.substatus] == restantes
+
     def test_cache_separa_modelos_diferentes(self, tmp_path: Path, dados: GameData, cache: CacheVisao) -> None:
         arquivo = _print(tmp_path, "1.png", b"echo-1")
         respostas: dict[bytes, str | Exception] = {b"echo-1": json.dumps(ECHO_JSON)}
