@@ -105,7 +105,9 @@ class Extrator:
         try:
             texto = self.modelo.completar(prompt, imagem)
         except OpenAIError as erro:
-            logger.warning("extract %s: API de visão falhou", tipo, extra={"arquivo": arquivo.name, "modelo": self.modelo.nome})
+            logger.warning(
+                "extract %s: API de visão falhou: %s", tipo, erro, extra={"arquivo": arquivo.name, "modelo": self.modelo.nome}
+            )
             return ExtracaoFalhou(arquivo=arquivo.name, do_cache=False, motivo=f"API de visão: {erro}")
         # Resposta malformada também vai pro cache: com temperature=0 repetir só gastaria crédito.
         self.cache.gravar(chave, texto)

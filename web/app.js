@@ -99,6 +99,9 @@ async function extrairPrints() {
   if ($("print-personagem").files[0]) form.append("personagem", $("print-personagem").files[0]);
 
   status("Extraindo com a IA de visão...");
+  const botao = $("extrair");
+  botao.disabled = true;
+  botao.textContent = `Extraindo ${prints.length} print(s)...`;
   try {
     const { extracao, analise } = await api.extrair(form);
     desenharExtracao(extracao, [...prints].map((p) => p.name));
@@ -107,6 +110,9 @@ async function extrairPrints() {
     status("Extração concluída. Revise a entrada e os echos marcados.");
   } catch (erro) {
     status(erro.message, true);
+  } finally {
+    botao.disabled = false;
+    botao.textContent = "Extrair com IA";
   }
 }
 

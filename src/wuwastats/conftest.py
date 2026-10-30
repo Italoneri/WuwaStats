@@ -3,13 +3,19 @@ from pathlib import Path
 
 import pytest
 
-from wuwastats.config import PROJECT_ROOT
+from wuwastats.config import PROJECT_ROOT, Settings
 from wuwastats.domain.models import EchoEntrada, EntradaBuild
 from wuwastats.domain.tables import GameData
 from wuwastats.gamedata.loader import load_game_data
 
 FIXTURES = PROJECT_ROOT / "fixtures"
 GAMEDATA_FIXTURE = FIXTURES / "gamedata"
+
+
+@pytest.fixture(autouse=True)
+def sem_env_local(monkeypatch: pytest.MonkeyPatch) -> None:
+    """O .env de quem roda os testes (recorte, modelo, limites) não pode mudar o resultado."""
+    monkeypatch.setitem(Settings.model_config, "env_file", None)
 
 
 @pytest.fixture(scope="session")
