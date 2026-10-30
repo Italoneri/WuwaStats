@@ -1,14 +1,14 @@
 {
   "Suoming_DPS": {
     "personagem": "Suoming",
-    "armas_assinatura": [],
+    "armas_assinatura": ["Unspoken Rue", "Penumbra Abissal"],
     "escala": "ATQ",
     "regen_energia_min": 110,
     "custos": [4, 3, 3, 1, 1],
-    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Elétrico", "ATQ%"], "1": ["ATQ%"] },
+    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
     "pesos": { "Taxa CRIT": 1.0, "Dano CRIT": 1.0, "ATQ%": 0.8, "ATQ Básico": 0.7, "Regen. de Energia": 0.4, "DEF%": 0, "HP%": 0 },
     "variantes": [
-      { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Suhsin" },
+      { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Reminiscence: Suhsin the Inevitable" },
       { "condicao": { "arma_assinatura": false }, "set": "Moonlit Clouds" }
     ]
   },
@@ -19,7 +19,7 @@
     "custos": [4, 3, 3, 1, 1],
     "echo_principal": "Soulfrayer",
     "set": "Moonlit Clouds",
-    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Elétrico", "ATQ%"], "1": ["ATQ%"] },
+    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
     "pesos": { "Taxa CRIT": 1.0, "Dano CRIT": 1.0, "Regen. de Energia": 0.8, "ATQ%": 0.7, "ATQ Básico": 0.5, "DEF%": 0, "HP%": 0 }
   }
 }

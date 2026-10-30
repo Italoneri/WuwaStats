@@ -62,36 +62,48 @@
       "Resonance Liberation"
     ],
     "healing_bonus": [
+      "Bônus de Cura",
       "Healing Bonus"
     ],
     "glacio_dmg": [
+      "Dano Criogênico",
+      "Bônus de Dano Criogênico",
       "Glacio DMG Bonus",
       "Glacio DMG"
     ],
     "fusion_dmg": [
+      "Dano Térmico",
+      "Bônus de Dano Térmico",
       "Fusion DMG Bonus",
       "Fusion DMG"
     ],
     "electro_dmg": [
+      "Dano Voltaico",
+      "Bônus de Dano Voltaico",
       "Dano Elétrico",
       "Electro DMG Bonus",
       "Electro DMG"
     ],
     "aero_dmg": [
+      "Dano Pneumático",
+      "Bônus de Dano Pneumático",
       "Aero DMG Bonus",
       "Aero DMG"
     ],
     "spectro_dmg": [
+      "Dano Fotônico",
+      "Bônus de Dano Fotônico",
       "Spectro DMG Bonus",
       "Spectro DMG"
     ],
     "havoc_dmg": [
+      "Dano Aniquilante",
+      "Bônus de Dano Aniquilante",
       "Havoc DMG Bonus",
       "Havoc DMG"
     ]
   },
   "echoes": {
-    "Suhsin": [],
     "Soulfrayer": [
       "Desfia-Alma"
     ],
@@ -651,7 +663,8 @@
       "Reminiscência: Kronagarra"
     ],
     "Reminiscence: Suhsin the Inevitable": [
-      "Reminiscência: Suhsin, a Inevitável"
+      "Reminiscência: Suhsin, a Inevitável",
+      "Suhsin"
     ],
     "Reminiscence: Threnodian - Leviathan": [
       "Reminiscência: Leviatã - trenodiano"

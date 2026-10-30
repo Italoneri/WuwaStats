@@ -2045,12 +2045,6 @@
         "Sound of True Name"
       ],
       "status": "ok"
-    },
-    "Suhsin": {
-      "nome_pt": null,
-      "custo": null,
-      "sets": [],
-      "status": "TODO: não encontrado em Arikatsu/WutheringWaves_Data@9218d612ad; renomeie para o nome da fonte ou remova"
     }
   }
 }
