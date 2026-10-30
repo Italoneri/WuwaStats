@@ -32,7 +32,7 @@ Todo erro (4xx/5xx) tem o mesmo formato:
 
 ## Fluxo sugerido para a interface
 
-1. `GET /api/builds` e `GET /api/catalogo` ao abrir.
+1. `GET /api/personagens`, `GET /api/builds` e `GET /api/catalogo` ao abrir.
 2. Upload dos prints → `POST /api/extrair`. Mostra `extracao.echos` (ok/falhou) e já desenha `analise`.
 3. O usuário corrige qualquer valor na `extracao.entrada` → `POST /api/analisar` a cada mudança.
 4. Se `analise.condicoes_pendentes` não for vazio, pergunte (ex.: "Está com a arma assinatura?") e reenvie com `condicoes`.
@@ -44,6 +44,29 @@ Todo erro (4xx/5xx) tem o mesmo formato:
 
 `200 {"status": "ok"}`
 
+## `GET /api/personagens`
+
+Todos os ressonadores jogáveis (`data/resonators.json`, gerado pelo importador), em ordem alfabética da chave.
+
+```json
+[
+  {
+    "chave": "Suoming",
+    "nome": "Suoming",
+    "elemento": { "chave": "electro", "nome": "Voltaico" },
+    "tipo_arma": { "chave": "sword", "nome": "Espada" },
+    "raridade": 5,
+    "builds": ["Suoming_DPS", "Suoming_SubDPS"],
+    "tem_perfil": true
+  }
+]
+```
+
+- `chave`: nome em inglês; é o `personagem` de `/api/builds`. `nome`: nome PT-BR do jogo (o inglês se não houver).
+- `elemento.chave` ∈ `glacio`, `fusion`, `electro`, `aero`, `spectro`, `havoc`.
+  `tipo_arma.chave` ∈ `broadblade`, `sword`, `pistols`, `gauntlets`, `rectifier`.
+- `tem_perfil: false` (e `builds: []`): o personagem ainda não tem build em `characters.json`.
+
 ## `GET /api/builds`
 
 Lista de builds (perfis em `data/characters.json`).
@@ -53,20 +76,23 @@ Lista de builds (perfis em `data/characters.json`).
   {
     "chave": "Suoming_DPS",
     "personagem": "Suoming",
-    "escala": "ATQ",
-    "set": null,
-    "echo_principal": null,
     "condicoes": ["arma_assinatura"],
+    "armas": { "melhor": "Unspoken Rue", "alternativas": [] },
+    "base": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "set": null, "echo_principal": null,
+              "principais": { "4": ["crit_dmg", "crit_rate"] }, "pesos": { "crit_rate": 1.0 } },
     "variantes": [
-      { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Suhsin" },
-      { "condicao": { "arma_assinatura": false }, "set": "Moonlit Clouds", "echo_principal": null }
+      { "condicao": { "arma_assinatura": true }, "perfil": { "set": "Heart of Sworn Vigil", "...": "..." } },
+      { "condicao": { "arma_assinatura": false }, "perfil": { "set": "Moonlit Clouds", "...": "..." } }
     ]
   }
 ]
 ```
 
-- `set`/`echo_principal` no nível da build são os do perfil base; cada variante pode sobrescrevê-los.
+- `base` e `variantes[].perfil` têm o formato de `perfil` da **Analise**. O perfil da variante já vem completo
+  (base + o que a variante sobrescreve).
 - `condicoes`: chaves que a interface pode precisar perguntar. Hoje só existe `arma_assinatura` (booleano).
+- `armas`: recomendação para a tela do personagem (não entra no cálculo); chaves de `catalogo.armas`.
+  `null` se a build não define.
 
 ## `GET /api/catalogo`
 
@@ -84,7 +110,8 @@ Tudo que a interface precisa para rótulos, seletores e validação visual.
     }
   ],
   "sets": [{ "chave": "Moonlit Clouds", "nomes": [], "pecas": 5 }],
-  "echoes": [{ "chave": "Suhsin", "nomes": [], "custo": null }]
+  "echoes": [{ "chave": "Reminiscence: Suhsin the Inevitable", "nomes": ["Reminiscência: Suhsin, a Inevitável"], "custo": 4 }],
+  "armas": [{ "chave": "Unspoken Rue", "nomes": ["Penumbra Abissal"], "tipo": "sword", "raridade": 5 }]
 }
 ```
 

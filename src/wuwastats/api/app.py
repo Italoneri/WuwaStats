@@ -15,7 +15,9 @@ from wuwastats.api.contracts import (
     Catalogo,
     Erro,
     PedidoAlias,
+    PersonagemResumo,
     RespostaExtracao,
+    listar_personagens,
     montar_catalogo,
     resumir_build,
 )
@@ -79,6 +81,10 @@ def criar_app(settings: Settings | None = None, fabrica_modelo: FabricaModelo = 
     @app.get("/api/builds")
     def builds(dados: Dados) -> list[BuildResumo]:
         return [resumir_build(chave, perfil) for chave, perfil in sorted(dados.perfis.items())]
+
+    @app.get("/api/personagens")
+    def personagens(dados: Dados) -> list[PersonagemResumo]:
+        return listar_personagens(dados)
 
     @app.get("/api/catalogo")
     def catalogo(dados: Dados) -> Catalogo:

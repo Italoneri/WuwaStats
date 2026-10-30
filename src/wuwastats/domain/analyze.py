@@ -30,7 +30,7 @@ def analisar(entrada: EntradaBuild, perfil: Perfil, dados: GameData) -> Analise:
         personagem=perfil.personagem,
         variante=resolucao.variante,
         condicoes_pendentes=list(resolucao.condicoes_pendentes),
-        perfil=_perfil_aplicado(spec),
+        perfil=perfil_aplicado(spec),
         echos=echos,
         conjunto=conjunto,
         candidatos_troca=candidatos_troca(echos),
@@ -85,7 +85,7 @@ def _nomes_nao_resolvidos(echo: EchoAnalise) -> list[tuple[CategoriaNome, str]]:
     return nomes
 
 
-def _perfil_aplicado(spec: BuildSpec) -> PerfilAplicado:
+def perfil_aplicado(spec: BuildSpec) -> PerfilAplicado:
     return PerfilAplicado(
         escala=spec.escala,
         regen_energia_min=spec.regen_energia_min,

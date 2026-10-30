@@ -51,8 +51,28 @@ def test_lista_builds_com_condicoes_das_variantes(cliente: TestClient) -> None:
     builds = {b["chave"]: b for b in cliente.get("/api/builds").json()}
 
     assert builds["Suoming_DPS"]["condicoes"] == ["arma_assinatura"]
-    assert builds["Suoming_DPS"]["variantes"][0]["set"] == "Heart of Sworn Vigil"
+    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["set"] == "Heart of Sworn Vigil"
+    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["pesos"] == builds["Suoming_DPS"]["base"]["pesos"]
+    assert builds["Suoming_DPS"]["armas"] == {"melhor": "Test Weapon", "alternativas": ["Alt Weapon"]}
     assert builds["Suoming_SubDPS"]["condicoes"] == []
+    assert builds["Suoming_SubDPS"]["armas"] is None
+
+
+def test_lista_todos_os_personagens_e_indica_quem_tem_perfil(cliente: TestClient) -> None:
+    personagens = {p["chave"]: p for p in cliente.get("/api/personagens").json()}
+
+    assert personagens["Suoming"]["builds"] == ["Suoming_DPS", "Suoming_SubDPS"]
+    assert personagens["Suoming"]["tem_perfil"] is True
+    assert personagens["Suoming"]["elemento"] == {"chave": "electro", "nome": "Voltaico"}
+    assert personagens["Shorekeeper"] == {
+        "chave": "Shorekeeper",
+        "nome": "Guardiã da Costa",
+        "elemento": {"chave": "glacio", "nome": "Criogênico"},
+        "tipo_arma": {"chave": "rectifier", "nome": "Retificador"},
+        "raridade": 4,
+        "builds": [],
+        "tem_perfil": False,
+    }
 
 
 def test_catalogo_traz_rotulos_e_valores_discretos(cliente: TestClient) -> None:
@@ -63,6 +83,8 @@ def test_catalogo_traz_rotulos_e_valores_discretos(cliente: TestClient) -> None:
     assert stats["crit_dmg"]["principal"] == {"4": 44.0}
     assert stats["electro_dmg"]["substatus"] is None
     assert stats["atk_flat"]["percentual"] is False
+    armas = {a["chave"]: a for a in cliente.get("/api/catalogo").json()["armas"]}
+    assert armas["Test Weapon"] == {"chave": "Test Weapon", "nomes": ["Arma Teste"], "tipo": "sword", "raridade": 5}
 
 
 def test_analisa_entrada_manual(cliente: TestClient, entrada: dict[str, Any]) -> None:

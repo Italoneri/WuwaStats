@@ -2,6 +2,7 @@
   "Suoming_DPS": {
     "personagem": "Suoming",
     "armas_assinatura": ["Unspoken Rue", "Penumbra Abissal"],
+    "armas": { "melhor": "Unspoken Rue", "alternativas": [], "status": "TODO: alternativas ainda não conferidas" },
     "escala": "ATQ",
     "regen_energia_min": 110,
     "custos": [4, 3, 3, 1, 1],

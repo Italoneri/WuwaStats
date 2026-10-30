@@ -2,10 +2,11 @@
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from wuwastats.domain.models import Custo, Escala
-from wuwastats.domain.names import is_percent_stat
-from wuwastats.domain.report import Analise, CategoriaNome
-from wuwastats.domain.tables import GameData, Perfil
+from wuwastats.domain.analyze import perfil_aplicado
+from wuwastats.domain.models import Custo
+from wuwastats.domain.names import NameIndex, is_percent_stat
+from wuwastats.domain.report import Analise, CategoriaNome, PerfilAplicado
+from wuwastats.domain.tables import GameData, Perfil, Traducao
 from wuwastats.vision.extract import ExtracaoBuild
 
 
@@ -15,18 +16,36 @@ class _Contrato(BaseModel):
 
 class VarianteResumo(_Contrato):
     condicao: dict[str, bool | int | str]
-    set: str | None
-    echo_principal: str | None
+    perfil: PerfilAplicado = Field(description="Perfil base com o que a variante sobrescreve já aplicado.")
+
+
+class ArmasResumo(_Contrato):
+    melhor: str | None
+    alternativas: list[str]
 
 
 class BuildResumo(_Contrato):
     chave: str
-    personagem: str
-    escala: Escala
-    set: str | None
-    echo_principal: str | None
+    personagem: str = Field(description="Chave do ressonador em GET /api/personagens.")
     condicoes: list[str] = Field(description="Condições usadas pelas variantes; a interface deve perguntar as pendentes.")
+    armas: ArmasResumo | None = Field(description="Chaves de GET /api/catalogo (armas); null se a build não recomenda.")
+    base: PerfilAplicado
     variantes: list[VarianteResumo]
+
+
+class Rotulo(_Contrato):
+    chave: str
+    nome: str = Field(description="Nome PT-BR do jogo; o inglês se não houver.")
+
+
+class PersonagemResumo(_Contrato):
+    chave: str
+    nome: str
+    elemento: Rotulo
+    tipo_arma: Rotulo
+    raridade: int
+    builds: list[str] = Field(description="Chaves de GET /api/builds deste personagem.")
+    tem_perfil: bool
 
 
 class StatCatalogo(_Contrato):
@@ -50,10 +69,16 @@ class EchoCatalogo(ItemCatalogo):
     custo: Custo | None
 
 
+class ArmaCatalogo(ItemCatalogo):
+    tipo: str
+    raridade: int
+
+
 class Catalogo(_Contrato):
     stats: list[StatCatalogo]
     sets: list[SetCatalogo]
     echoes: list[EchoCatalogo]
+    armas: list[ArmaCatalogo]
 
 
 class PedidoAlias(_Contrato):
@@ -76,18 +101,44 @@ class Erro(_Contrato):
 
 def resumir_build(chave: str, perfil: Perfil) -> BuildResumo:
     variantes = [
-        VarianteResumo(condicao=v.condicao.model_dump(exclude_none=True), set=v.spec.set, echo_principal=v.spec.echo_principal)
+        VarianteResumo(condicao=v.condicao.model_dump(exclude_none=True), perfil=perfil_aplicado(v.spec))
         for v in perfil.variantes
     ]
+    armas = perfil.armas
     return BuildResumo(
         chave=chave,
         personagem=perfil.personagem,
-        escala=perfil.base.escala,
-        set=perfil.base.set,
-        echo_principal=perfil.base.echo_principal,
         condicoes=sorted({chave for v in variantes for chave in v.condicao}),
+        armas=ArmasResumo(melhor=armas.melhor, alternativas=list(armas.alternativas)) if armas else None,
+        base=perfil_aplicado(perfil.base),
         variantes=variantes,
     )
+
+
+def listar_personagens(dados: GameData) -> list[PersonagemResumo]:
+    builds: dict[str, list[str]] = {}
+    for chave, perfil in sorted(dados.perfis.items()):
+        builds.setdefault(perfil.personagem, []).append(chave)
+    return [
+        PersonagemResumo(
+            chave=nome,
+            nome=_rotulo(dados.ressonador_names, nome),
+            elemento=_traduzido(r.elemento, dados.elementos[r.elemento]),
+            tipo_arma=_traduzido(r.tipo_arma, dados.tipos_arma[r.tipo_arma]),
+            raridade=r.raridade,
+            builds=builds.get(nome, []),
+            tem_perfil=nome in builds,
+        )
+        for nome, r in sorted(dados.ressonadores.items())
+    ]
+
+
+def _rotulo(indice: NameIndex, chave: str) -> str:
+    return next(iter(indice.aliases_by_key.get(chave, ())), chave)
+
+
+def _traduzido(chave: str, traducao: Traducao) -> Rotulo:
+    return Rotulo(chave=chave, nome=traducao.rotulo)
 
 
 def montar_catalogo(dados: GameData) -> Catalogo:
@@ -100,6 +151,12 @@ def montar_catalogo(dados: GameData) -> Catalogo:
         echoes=[
             EchoCatalogo(chave=chave, nomes=list(dados.echo_names.aliases_by_key.get(chave, ())), custo=info.custo)
             for chave, info in sorted(dados.echoes.items())
+        ],
+        armas=[
+            ArmaCatalogo(
+                chave=chave, nomes=list(dados.arma_names.aliases_by_key.get(chave, ())), tipo=arma.tipo, raridade=arma.raridade
+            )
+            for chave, arma in sorted(dados.armas.items())
         ],
     )
 
