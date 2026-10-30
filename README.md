@@ -28,27 +28,23 @@ Prints que falharem aparecem no resumo com o motivo; preencha esses echos à mã
 
 ### Captura por atalho (Windows)
 
-`scripts/captura.py` fica rodando num terminal enquanto você joga e tira os prints sem sair do jogo:
-
-```bash
-uv run python scripts/captura.py Suoming --build Suoming_DPS   # --build é opcional se o personagem tiver uma build só
-```
+A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura, escolha a build e clique em
+**Iniciar captura**: o servidor passa a escutar as teclas enquanto você joga, e cada print é lido pela IA na hora.
 
 | Tecla | O que faz |
 |---|---|
-| F8 | print do echo aberto → `input/<personagem>/echo_N.png` (N em sequência, até 5; o 1º é o echo principal) |
-| F9 | print da tela do personagem (arma e regen total) → `input/<personagem>/personagem.png` (substitui o anterior) |
-| F10 | roda `extract` na pasta, grava `entrada.json`, sobe a API se ela não estiver no ar e abre a análise no navegador |
-| Ctrl+C | encerra (e derruba a API, se foi o script que subiu) |
+| F8 | print do echo aberto → próximo espaço vazio (ou o marcado com "Refazer"); o 1º espaço é o echo principal |
+| F9 | print da tela do personagem (arma, nível, atributos totais) → substitui o anterior |
+| F10 | avisa a página aberta para ir para a análise |
 
-- Bipe agudo = salvo; dois bipes graves = erro (a mensagem aparece no terminal).
+- Bipe agudo = salvo; dois bipes graves = erro (a mensagem aparece na página).
 - Só a área interna da janela cujo título é exatamente `Wuthering Waves` é capturada, e só com o jogo em primeiro plano.
-  Se o título for outro, o erro lista janelas parecidas; use `--titulo`.
+  Se o título for outro, o erro lista janelas parecidas; ajuste `CAPTURA_TITULO_JANELA` no `.env`.
 - Use o jogo em modo janela ou tela cheia sem bordas: em tela cheia exclusiva o print pode sair preto.
-- O script só lê a tela. Escuta F8–F10 com `RegisterHotKey`, e por isso essas teclas não chegam ao jogo enquanto ele estiver
-  rodando. Ele nunca envia cliques nem teclas ao jogo, e um teste falha se alguém incluir uma API que faça isso.
-- Para refazer um print de echo, apague o arquivo e aperte F8 de novo: o próximo número livre é usado.
-- Se os atalhos não responderem com o jogo em foco, rode o terminal como administrador.
+- O servidor só lê a tela. Escuta F8–F10 com `RegisterHotKey` enquanto a captura estiver ligada, e por isso essas teclas
+  não chegam ao jogo nesse período. Ele nunca envia cliques nem teclas ao jogo, e um teste falha se alguém incluir uma API
+  que faça isso. Parar a captura (ou derrubar o servidor) solta as teclas.
+- Se os atalhos não responderem com o jogo em foco, rode o servidor num terminal como administrador.
 
 ## Dados de jogo
 
@@ -61,15 +57,18 @@ Tudo em `data/`, editável à mão:
 | `sets.json` | sets, nome PT, peças, bônus que são status (ex.: Regen. de Energia) e texto de cada efeito — gerado |
 | `echoes.json` | catálogo de echos (nome PT, custo, sets possíveis) — gerado |
 | `stat_aliases.json` | chave interna (inglês) → nomes do jogo (PT-BR) e alternativos |
-| `characters.json` | perfis de build |
+| `characters.json` | perfis de build (com `armas` recomendadas, opcional) |
+| `notas.json` | faixas de nota (SSS…C) pelo score |
+| `resonators.json` | ressonadores jogáveis (elemento, tipo de arma, raridade, nome PT) — gerado |
+| `weapons.json` | armas (nome PT, tipo, raridade) — gerado |
 | `fonte_dados_jogo.json` | commit/versão de [Arikatsu/WutheringWaves_Data](https://github.com/Arikatsu/WutheringWaves_Data) usado na última importação |
 
 Entradas com `"status": "TODO: ..."` ainda precisam ser conferidas num wiki atualizado.
 
-### Atualizar echos e sets
+### Atualizar echos, sets, ressonadores e armas
 
 `scripts/importar_dados_jogo.py` baixa as tabelas de echos/sonatas e os textos EN/PT do repositório (branch padrão = versão
-atual do jogo), regenera `echoes.json` e `sets.json` e acrescenta os nomes PT como aliases, sem apagar mapeamentos manuais.
+atual do jogo), regenera `echoes.json`, `sets.json`, `resonators.json` e `weapons.json` e acrescenta os nomes PT como aliases, sem apagar mapeamentos manuais.
 Tudo é validado numa cópia antes de tocar em `data/`. Compare `commit` em `fonte_dados_jogo.json` com o último commit do
 repositório para saber se há atualização.
 

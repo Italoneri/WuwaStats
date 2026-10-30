@@ -1,8 +1,11 @@
 import shutil
+from collections.abc import Callable, Mapping
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pytest
 
+from wuwastats.captura.servico import CapturaFalhou, FerramentasCaptura, Sinal, Tecla
 from wuwastats.config import PROJECT_ROOT, Settings
 from wuwastats.domain.models import EchoEntrada, EntradaBuild
 from wuwastats.domain.tables import GameData
@@ -42,3 +45,43 @@ def com_echo(entrada: EntradaBuild, indice: int, **campos: object) -> EntradaBui
     echo = EchoEntrada.model_validate(entrada.echos[indice].model_dump() | campos)
     echos = (*entrada.echos[:indice], echo, *entrada.echos[indice + 1 :])
     return entrada.model_copy(update={"echos": echos})
+
+
+@dataclass
+class EscutaFalsa:
+    acoes: Mapping[Tecla, Callable[[], None]]
+    parada: bool = False
+
+    def parar(self) -> None:
+        self.parada = True
+
+
+@dataclass
+class TelaFalsa:
+    """Faz o papel do jogo: 'proximo_print' é o que o F8/F9 vai capturar; apertar() simula a tecla."""
+
+    proximo_print: bytes | CapturaFalhou = b"echo"
+    sinais: list[Sinal] = field(default_factory=list)
+    escutas: list[EscutaFalsa] = field(default_factory=list)
+
+    def ferramentas(self) -> FerramentasCaptura:
+        return FerramentasCaptura(capturar_tela=self._capturar, escutar_atalhos=self._escutar, sinalizar=self.sinais.append)
+
+    def apertar(self, tecla: Tecla, print_: bytes | None = None) -> None:
+        if print_ is not None:
+            self.proximo_print = print_
+        self.escutas[-1].acoes[tecla]()
+
+    def _capturar(self) -> bytes:
+        if isinstance(self.proximo_print, CapturaFalhou):
+            raise self.proximo_print
+        return self.proximo_print
+
+    def _escutar(self, acoes: Mapping[Tecla, Callable[[], None]]) -> EscutaFalsa:
+        self.escutas.append(EscutaFalsa(acoes))
+        return self.escutas[-1]
+
+
+@pytest.fixture
+def tela() -> TelaFalsa:
+    return TelaFalsa()

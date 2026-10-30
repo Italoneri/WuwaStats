@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     nvidia_max_tokens: int = Field(default=1024, gt=0)
     nvidia_concorrencia: int = Field(default=2, ge=1, le=5)
 
+    # Título exato da janela do jogo, para a captura por atalho (F8/F9).
+    captura_titulo_janela: str = "Wuthering Waves"
+
     # Recorte do painel do echo em frações da imagem: [x0, y0, x1, y1]. Vazio = imagem inteira.
     echo_recorte: Recorte | None = None
 

@@ -1,7 +1,10 @@
 """API HTTP. Contrato documentado em docs/api.md; OpenAPI interativo em /docs."""
 
+import sys
 import tempfile
-from collections.abc import Callable
+from collections.abc import AsyncIterator, Callable
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated, Literal
 
@@ -10,6 +13,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
+from wuwastats.api.captura import rotas_captura
 from wuwastats.api.contracts import (
     BuildResumo,
     Catalogo,
@@ -22,6 +26,16 @@ from wuwastats.api.contracts import (
     resumir_build,
 )
 from wuwastats.api.repositorio import RepositorioDados
+from wuwastats.captura.servico import (
+    CapturaFalhou,
+    CapturaIndisponivel,
+    Escuta,
+    FerramentasCaptura,
+    SemEchoLido,
+    ServicoCaptura,
+    SessaoInexistente,
+)
+from wuwastats.captura.sessao import OrdemInvalida
 from wuwastats.config import PROJECT_ROOT, Settings
 from wuwastats.domain.analyze import analisar
 from wuwastats.domain.models import MAX_ECHOS, Condicoes, EntradaBuild
@@ -42,6 +56,15 @@ ERROS: dict[int | str, dict[str, object]] = {
     404: {"model": Erro, "description": "Build não encontrada"},
     422: {"model": Erro, "description": "Entrada inválida"},
 }
+# Erros de domínio que atravessam as rotas sem tratamento local (o Starlette escolhe pelo tipo mais específico).
+STATUS_POR_ERRO: dict[type[Exception], int] = {
+    SessaoInexistente: 404,
+    OrdemInvalida: 422,
+    SemEchoLido: 409,
+    CapturaFalhou: 409,
+    CapturaIndisponivel: 501,
+    ConfiguracaoAusente: 503,
+}
 
 
 class ErroApi(Exception):
@@ -59,15 +82,44 @@ def _dados_atuais(request: Request) -> GameData:
 Dados = Annotated[GameData, Depends(_dados_atuais)]
 
 
-def criar_app(settings: Settings | None = None, fabrica_modelo: FabricaModelo = criar_modelo_nvidia) -> FastAPI:
+def criar_app(
+    settings: Settings | None = None,
+    fabrica_modelo: FabricaModelo = criar_modelo_nvidia,
+    ferramentas_captura: FerramentasCaptura | None = None,
+) -> FastAPI:
     configuracao = settings or Settings()
     repositorio = RepositorioDados(configuracao.data_dir)
-    app = FastAPI(title="WuwaStats", version="0.1.0", description="Analisador de echos de Wuthering Waves")
+    leituras = ThreadPoolExecutor(max_workers=configuracao.nvidia_concorrencia, thread_name_prefix="leitura")
+
+    def criar_extrator() -> Extrator:
+        return Extrator(
+            modelo=fabrica_modelo(configuracao),
+            cache=CacheVisao(configuracao.cache_dir),
+            dados=repositorio.dados,
+            recorte_echo=configuracao.echo_recorte,
+        )
+
+    captura = ServicoCaptura(
+        ferramentas_captura or _ferramentas_do_sistema(configuracao), criar_extrator, executar=leituras.submit
+    )
+
+    @asynccontextmanager
+    async def ciclo_de_vida(_app: FastAPI) -> AsyncIterator[None]:
+        yield
+        captura.parar()  # solta F8/F9/F10 para o resto do sistema
+        leituras.shutdown(wait=False, cancel_futures=True)
+
+    app = FastAPI(
+        title="WuwaStats", version="0.1.0", description="Analisador de echos de Wuthering Waves", lifespan=ciclo_de_vida
+    )
     app.state.repositorio = repositorio
 
     @app.exception_handler(ErroApi)
     def _erro_api(_request: Request, erro: ErroApi) -> JSONResponse:
         return JSONResponse(status_code=erro.status, content=erro.corpo.model_dump())
+
+    for tipo, status in STATUS_POR_ERRO.items():
+        app.add_exception_handler(tipo, _responder_com(status))
 
     @app.exception_handler(RequestValidationError)
     def _erro_validacao(_request: Request, erro: RequestValidationError) -> JSONResponse:
@@ -106,16 +158,7 @@ def criar_app(settings: Settings | None = None, fabrica_modelo: FabricaModelo = 
         perfil = _perfil(dados, build)
         if not 1 <= len(echos) <= MAX_ECHOS:
             raise ErroApi(422, f"envie de 1 a {MAX_ECHOS} prints de echo; recebi {len(echos)}")
-        try:
-            modelo = fabrica_modelo(configuracao)
-        except ConfiguracaoAusente as erro:
-            raise ErroApi(503, str(erro)) from erro
-        extrator = Extrator(
-            modelo=modelo,
-            cache=CacheVisao(configuracao.cache_dir),
-            dados=dados,
-            recorte_echo=configuracao.echo_recorte,
-        )
+        extrator = criar_extrator()
         with tempfile.TemporaryDirectory(prefix="wuwastats-") as pasta:
             pedido = PedidoExtracao(
                 build=build,
@@ -142,6 +185,8 @@ def criar_app(settings: Settings | None = None, fabrica_modelo: FabricaModelo = 
         except GameDataError as erro:
             raise ErroApi(422, "dados de jogo inválidos; mantidos os anteriores", erro.erros) from erro
 
+    app.include_router(rotas_captura(captura, lambda build: _perfil(repositorio.dados, build)))
+
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")
     return app
@@ -152,6 +197,25 @@ def _perfil(dados: GameData, build: str) -> Perfil:
     if perfil is None:
         raise ErroApi(404, f"build '{build}' não existe em characters.json", sorted(dados.perfis))
     return perfil
+
+
+def _responder_com(status: int) -> Callable[[Request, Exception], JSONResponse]:
+    def responder(_request: Request, erro: Exception) -> JSONResponse:
+        return JSONResponse(status_code=status, content=Erro(mensagem=str(erro)).model_dump())
+
+    return responder
+
+
+def _ferramentas_do_sistema(configuracao: Settings) -> FerramentasCaptura:
+    if sys.platform == "win32":
+        from wuwastats.captura.windows import ferramentas_windows  # usa APIs que só existem no Windows
+
+        return ferramentas_windows(configuracao.captura_titulo_janela)
+
+    def indisponivel(*_args: object) -> Escuta:
+        raise CapturaIndisponivel("a captura por atalho só funciona no Windows; envie os prints pela página")
+
+    return FerramentasCaptura(capturar_tela=bytes, escutar_atalhos=indisponivel, sinalizar=lambda _sinal: None)
 
 
 def _salvar(upload: UploadFile, pasta: Path, prefixo: str) -> Path:

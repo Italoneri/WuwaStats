@@ -26,14 +26,17 @@ Todo erro (4xx/5xx) tem o mesmo formato:
 
 | Status | Quando |
 |---|---|
-| 404 | build inexistente (`erros` lista as disponíveis) |
+| 404 | build inexistente (`erros` lista as disponíveis), sessão de captura inexistente ou substituída |
+| 409 | captura: atalho em uso por outro programa, nenhum echo lido ainda |
 | 422 | corpo inválido (`erros` aponta campo › motivo), alias inválido, dados de jogo inválidos |
+| 501 | captura por atalho fora do Windows |
 | 503 | IA de visão não configurada (`.env` sem `NVIDIA_API_KEY`/`NVIDIA_VISION_MODEL`) |
 
 ## Fluxo sugerido para a interface
 
 1. `GET /api/personagens`, `GET /api/builds` e `GET /api/catalogo` ao abrir.
-2. Upload dos prints → `POST /api/extrair`. Mostra `extracao.echos` (ok/falhou) e já desenha `analise`.
+2. Prints: captura no servidor (`POST /api/captura/iniciar` + eventos) e `GET /api/captura/{sessao}/entrada`,
+   ou upload manual → `POST /api/extrair`, que mostra `extracao.echos` (ok/falhou) e já desenha `analise`.
 3. O usuário corrige qualquer valor na `extracao.entrada` → `POST /api/analisar` a cada mudança.
 4. Se `analise.condicoes_pendentes` não for vazio, pergunte (ex.: "Está com a arma assinatura?") e reenvie com `condicoes`.
 5. Para cada item de `analise.nomes_desconhecidos`, ofereça mapear para uma chave do catálogo → `POST /api/aliases` e reanalise.
@@ -325,6 +328,98 @@ Resposta:
 - `leitura.atributos`: atributos totais da tela, na ordem e com o nome como aparecem no jogo (só para exibição).
   Campos que a IA não conseguiu ler vêm `null` (`[]` em `atributos`).
 - Com o print do personagem, `entrada.condicoes.arma_assinatura` é detectada comparando a arma lida com `armas_assinatura` da build, e `entrada.regen_total_informado` vem da tela.
+
+## Captura no servidor
+
+O servidor escuta F8 (echo), F9 (tela do personagem) e F10 enquanto uma sessão estiver ativa, e lê cada print com a IA
+assim que ele chega. Uma sessão por vez: iniciar outra encerra a anterior. Só Windows (fora dele, `iniciar` responde 501).
+
+### Sessao
+
+Resposta de todos os endpoints abaixo que mudam ou consultam a sessão.
+
+```json
+{
+  "id": "9450ce4e9406",
+  "build": "Suoming_DPS",
+  "ativa": true,
+  "echos": [
+    { "estado": "lido", "captura": 1, "do_cache": false, "echo": { /* echo da EntradaBuild */ } },
+    { "estado": "falhou", "captura": 2, "motivo": "a resposta não contém um objeto JSON" },
+    { "estado": "lendo", "captura": 3 },
+    { "estado": "recebido", "captura": 4 },
+    { "estado": "vazio" }
+  ],
+  "personagem": { "estado": "lido", "captura": 5, "do_cache": true, "leitura": { /* leitura de /api/extrair */ } },
+  "alvo_f8": null,
+  "ultima_captura": 5
+}
+```
+
+- `echos`: sempre 5 espaços, na ordem dos slots (o 0 é o echo principal). `estado` ∈ `vazio`, `recebido` (na fila),
+  `lendo`, `lido`, `falhou`.
+- `captura`: número do print na sessão. A leitura acha o espaço por ele, então reordenar ou esvaziar durante a leitura é seguro
+  (a leitura de um print removido é descartada).
+- `alvo_f8`: espaço marcado com "Refazer". Sem marca, o F8 vai para o primeiro espaço vazio; com os 5 ocupados, vira
+  `erro_captura`.
+
+### `POST /api/captura/iniciar`
+
+Corpo `{ "build": "Suoming_DPS" }`. Liga os atalhos e devolve a **Sessao** nova. `404` build inexistente,
+`409` atalho em uso por outro programa, `501` fora do Windows, `503` IA não configurada.
+
+### `POST /api/captura/parar`
+
+Solta os atalhos e encerra a sessão (ela continua consultável, com `ativa: false`). `204`.
+
+### `GET /api/captura/{sessao}`
+
+A **Sessao** atual. `404` se não existe ou foi substituída.
+
+### `GET /api/captura/{sessao}/eventos`
+
+`text/event-stream` (SSE). O primeiro evento é `estado`; com a sessão encerrada vem `encerrada` em seguida e o stream fecha.
+A cada 15 s sem eventos chega um comentário `: ping`.
+
+```
+event: lido
+data: {"tipo": "lido", "espaco": 0, "nome": "Suhsin", "principal": {"stat": "Dano CRIT", "valor": 44, "percentual": true},
+       "motivo": null, "sessao": { /* Sessao */ }}
+```
+
+Todo evento traz a **Sessao** completa depois da mudança: basta redesenhar a partir dela.
+
+| `tipo` | Quando | Campos |
+|---|---|---|
+| `estado` | ao conectar e depois de reordenar, esvaziar ou refazer | — |
+| `print_recebido` | F8/F9 salvou o print | `espaco` |
+| `leitura_iniciada` | a IA começou a ler | `espaco` |
+| `lido` | leitura ok | `espaco`, `nome` (echo ou personagem), `principal` (só echo) |
+| `falhou` | leitura falhou | `espaco`, `motivo` |
+| `erro_captura` | o print nem foi tirado (jogo fora de foco, espaços cheios...) | `motivo` |
+| `f10` | F10 pressionado | — |
+| `encerrada` | sessão parada ou substituída; o stream fecha | — |
+
+`espaco` é o índice do echo (0–4) ou `"personagem"`.
+
+### `POST /api/captura/{sessao}/reordenar`
+
+Corpo `{ "ordem": [1, 0, 2, 3, 4] }`: `ordem[j]` é o índice atual do espaço que vai para a posição `j`
+(o exemplo troca os dois primeiros). A marca de "Refazer" acompanha o espaço. `422` se não for uma permutação de 0 a 4.
+
+### `DELETE /api/captura/{sessao}/echos/{indice}` e `DELETE /api/captura/{sessao}/personagem`
+
+Esvaziam o espaço. Devolvem a **Sessao**.
+
+### `POST /api/captura/{sessao}/echos/{indice}/refazer`
+
+Marca o espaço como destino do próximo F8 (o print atual fica até lá). Devolve a **Sessao**.
+
+### `GET /api/captura/{sessao}/entrada`
+
+**EntradaBuild** montada da sessão: só os echos lidos, na ordem dos espaços; `condicoes.arma_assinatura` e
+`regen_total_informado` vêm da tela do personagem, se lida. Os que falharam devem ser preenchidos na análise.
+`409` se nenhum echo foi lido.
 
 ## `POST /api/aliases`
 
