@@ -1,11 +1,11 @@
-"""Importa echos e sets (sonatas) de Arikatsu/WutheringWaves_Data para data/.
+"""Importa echos, sets (sonatas), ressonadores e armas de Arikatsu/WutheringWaves_Data para data/.
 
     uv run python scripts/importar_dados_jogo.py              # branch padrão (= versão atual do jogo)
     uv run python scripts/importar_dados_jogo.py --ref 3.7    # branch ou commit específico
 
-Gera data/echoes.json e data/sets.json, acrescenta os nomes PT-BR como aliases em data/stat_aliases.json
-(mapeamentos manuais ficam) e grava em data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia
-de data/ antes de substituir os arquivos de verdade.
+Gera data/echoes.json, data/sets.json, data/resonators.json e data/weapons.json, acrescenta os nomes PT-BR
+de echos e sets como aliases em data/stat_aliases.json (mapeamentos manuais ficam) e grava em
+data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de substituir os arquivos de verdade.
 """
 
 import argparse
@@ -47,10 +47,20 @@ CAMINHO_RARIDADES = "BinData/phantom/phantomrarity.json"
 CAMINHO_GRUPOS_SET = "BinData/phantom/phantomfettergroup.json"
 CAMINHO_EFEITOS_SET = "BinData/phantom/phantomfetter.json"
 CAMINHO_PROPRIEDADES = "BinData/property/propertyindex.json"
+CAMINHO_PERSONAGENS = "BinData/role/roleinfo.json"
+CAMINHO_ELEMENTOS = "BinData/element_info/elementinfo.json"
+CAMINHO_ARMAS = "BinData/weapon/weaponconf.json"
 CAMINHO_TEXTMAP = "Textmaps/{idioma}/multi_text/MultiText.json"
+
+# Os outros RoleType são versões de teste/evento dos mesmos personagens.
+TIPO_PERSONAGEM_JOGAVEL = 1
+# Tipo de arma não tem tabela própria: o nome vem deste texto ("Weapon Type: Sword"), sem o prefixo.
+TEXTO_TIPO_ARMA = "RoleProject_WeaponType{:02d}"
 
 ARQUIVO_ECHOES = "echoes.json"
 ARQUIVO_SETS = "sets.json"
+ARQUIVO_RESSONADORES = "resonators.json"
+ARQUIVO_ARMAS = "weapons.json"
 ARQUIVO_FONTE = "fonte_dados_jogo.json"
 
 Categoria = Literal["echoes", "sets"]
@@ -118,6 +128,26 @@ class PropriedadeFonte(_Fonte):
     percentual: bool = Field(alias="IsPercent")
 
 
+class PersonagemFonte(_Fonte):
+    chave_nome: str = Field(alias="Name")
+    raridade: int = Field(alias="QualityId")
+    elemento: int = Field(alias="ElementId")
+    tipo_arma: int = Field(alias="WeaponType")
+    tipo: int = Field(alias="RoleType")
+    teste: bool = Field(alias="IsTrial")
+
+
+class ElementoFonte(_Fonte):
+    id: int = Field(alias="Id")
+    chave_nome: str = Field(alias="Name")
+
+
+class ArmaFonte(_Fonte):
+    chave_nome: str = Field(alias="WeaponName")
+    raridade: int = Field(alias="QualityId")
+    tipo: int = Field(alias="WeaponType")
+
+
 class RepositorioApi(_Fonte):
     default_branch: str
 
@@ -153,6 +183,9 @@ class TabelasFonte:
     propriedades: list[PropriedadeFonte]
     textos_en: Mapping[str, str]
     textos_pt: Mapping[str, str] | None
+    personagens: list[PersonagemFonte] = field(default_factory=list)
+    elementos: list[ElementoFonte] = field(default_factory=list)
+    armas: list[ArmaFonte] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -168,6 +201,36 @@ class SetImportado:
     pecas: int
     bonus: dict[int, dict[str, float]]
     efeitos: dict[int, tuple[str, str | None]]
+
+
+@dataclass(frozen=True)
+class Traducao:
+    en: str
+    pt: str | None
+
+
+@dataclass(frozen=True)
+class RessonadorImportado:
+    nome_pt: str | None
+    elemento: str
+    tipo_arma: str
+    raridade: int
+
+
+@dataclass(frozen=True)
+class ArmaImportada:
+    nome_pt: str | None
+    tipo: str
+    raridade: int
+
+
+@dataclass(frozen=True)
+class Elenco:
+    elementos: dict[str, Traducao]
+    tipos_arma: dict[str, Traducao]
+    ressonadores: dict[str, RessonadorImportado]
+    armas: dict[str, ArmaImportada]
+    avisos: list[str] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -196,6 +259,7 @@ def main(argv: list[str] | None = None) -> int:
 
     aliases = AliasesFile.model_validate_json((data_dir / ARQUIVO_ALIASES).read_text(encoding="utf-8"))
     catalogo = montar_catalogo(tabelas, NameIndex.build(aliases.stats))
+    elenco = montar_elenco(tabelas)
     echoes_atual = EchoesFile.model_validate_json((data_dir / ARQUIVO_ECHOES).read_text(encoding="utf-8"))
     sets_atual = SetsFile.model_validate_json((data_dir / ARQUIVO_SETS).read_text(encoding="utf-8"))
 
@@ -206,6 +270,8 @@ def main(argv: list[str] | None = None) -> int:
         ARQUIVO_ECHOES: echoes_json,
         ARQUIVO_SETS: sets_json,
         ARQUIVO_ALIASES: aliases_json,
+        ARQUIVO_RESSONADORES: gerar_ressonadores(elenco),
+        ARQUIVO_ARMAS: gerar_armas(elenco),
         ARQUIVO_FONTE: registro_da_fonte(commit, tem_pt=tabelas.textos_pt is not None),
     }
     try:
@@ -215,7 +281,7 @@ def main(argv: list[str] | None = None) -> int:
         print("\n".join(f"  - {linha}" for linha in erro.erros), file=sys.stderr)
         return 1
 
-    _relatorio(catalogo, tabelas, [*catalogo.avisos, *avisos_echoes, *avisos_sets, *avisos_aliases])
+    _relatorio(catalogo, elenco, tabelas, [*catalogo.avisos, *elenco.avisos, *avisos_echoes, *avisos_sets, *avisos_aliases])
     return 0
 
 
@@ -250,6 +316,9 @@ def baixar_tabelas(sha: str) -> TabelasFonte:
         propriedades=tabela(CAMINHO_PROPRIEDADES, TypeAdapter(list[PropriedadeFonte])),
         textos_en=_textmap(tabela(CAMINHO_TEXTMAP.format(idioma="en"), textmap)),
         textos_pt=_textmap_opcional(lambda: tabela(CAMINHO_TEXTMAP.format(idioma="pt"), textmap)),
+        personagens=tabela(CAMINHO_PERSONAGENS, TypeAdapter(list[PersonagemFonte])),
+        elementos=tabela(CAMINHO_ELEMENTOS, TypeAdapter(list[ElementoFonte])),
+        armas=tabela(CAMINHO_ARMAS, TypeAdapter(list[ArmaFonte])),
     )
 
 
@@ -419,6 +488,91 @@ def _montar_echo(
     )
 
 
+def montar_elenco(tabelas: TabelasFonte) -> Elenco:
+    """Ressonadores jogáveis e armas; elemento e tipo de arma viram chaves (nome em inglês, minúsculo)."""
+    avisos: list[str] = []
+    jogaveis = [p for p in tabelas.personagens if p.tipo == TIPO_PERSONAGEM_JOGAVEL and not p.teste]
+    elementos = _elementos(tabelas, {p.elemento for p in jogaveis}, avisos)
+    numeros_tipo = sorted({p.tipo_arma for p in jogaveis} | {a.tipo for a in tabelas.armas})
+    tipos_arma = {numero: _tipo_arma(tabelas, numero, avisos) for numero in numeros_tipo}
+    return Elenco(
+        elementos={_chave(t): t for t in elementos.values()},
+        tipos_arma={_chave(t): t for t in tipos_arma.values()},
+        ressonadores=_ressonadores(tabelas, jogaveis, elementos, tipos_arma, avisos),
+        armas=_armas(tabelas, tipos_arma, avisos),
+        avisos=avisos,
+    )
+
+
+def _ressonadores(
+    tabelas: TabelasFonte,
+    jogaveis: list[PersonagemFonte],
+    elementos: Mapping[int, Traducao],
+    tipos_arma: Mapping[int, Traducao],
+    avisos: list[str],
+) -> dict[str, RessonadorImportado]:
+    ressonadores: dict[str, RessonadorImportado] = {}
+    for personagem in jogaveis:
+        nome = tabelas.textos_en.get(personagem.chave_nome, "").strip()
+        if not nome or personagem.elemento not in elementos:
+            avisos.append(f"ressonador '{personagem.chave_nome}': sem nome em inglês ou com elemento desconhecido")
+            continue
+        novo = RessonadorImportado(
+            nome_pt=_texto_pt(tabelas, personagem.chave_nome),
+            elemento=_chave(elementos[personagem.elemento]),
+            tipo_arma=_chave(tipos_arma[personagem.tipo_arma]),
+            raridade=personagem.raridade,
+        )
+        # Rover aparece uma vez por gênero, com o mesmo nome; só avisa se os dados divergirem.
+        if ressonadores.setdefault(nome, novo) != novo:
+            avisos.append(f"ressonador {nome}: linhas com dados diferentes; mantida a primeira")
+    return dict(sorted(ressonadores.items()))
+
+
+def _armas(tabelas: TabelasFonte, tipos_arma: Mapping[int, Traducao], avisos: list[str]) -> dict[str, ArmaImportada]:
+    armas: dict[str, ArmaImportada] = {}
+    for arma in tabelas.armas:
+        nome = tabelas.textos_en.get(arma.chave_nome, "").strip()
+        if not nome or nome in armas:
+            avisos.append(f"arma '{arma.chave_nome}': nome '{nome}' vazio ou repetido, ignorada")
+            continue
+        armas[nome] = ArmaImportada(
+            nome_pt=_texto_pt(tabelas, arma.chave_nome), tipo=_chave(tipos_arma[arma.tipo]), raridade=arma.raridade
+        )
+    return dict(sorted(armas.items()))
+
+
+def _elementos(tabelas: TabelasFonte, usados: set[int], avisos: list[str]) -> dict[int, Traducao]:
+    por_id = {elemento.id: elemento for elemento in tabelas.elementos}
+    resultado: dict[int, Traducao] = {}
+    for numero in sorted(usados):
+        elemento = por_id.get(numero)
+        nome = tabelas.textos_en.get(elemento.chave_nome, "").strip() if elemento else ""
+        if elemento is None or not nome:
+            avisos.append(f"elemento {numero}: não existe na tabela de elementos ou está sem nome")
+            continue
+        resultado[numero] = Traducao(en=nome, pt=_texto_pt(tabelas, elemento.chave_nome))
+    return resultado
+
+
+def _tipo_arma(tabelas: TabelasFonte, numero: int, avisos: list[str]) -> Traducao:
+    chave = TEXTO_TIPO_ARMA.format(numero)
+    nome = _sem_prefixo(tabelas.textos_en.get(chave, ""))
+    if not nome:
+        avisos.append(f"tipo de arma {numero}: texto '{chave}' não encontrado; usando 'Tipo {numero}'")
+        return Traducao(en=f"Tipo {numero}", pt=None)
+    pt = _texto_pt(tabelas, chave)
+    return Traducao(en=nome, pt=_sem_prefixo(pt) if pt else None)
+
+
+def _sem_prefixo(texto: str) -> str:
+    return texto.split(":", 1)[-1].strip()
+
+
+def _chave(traducao: Traducao) -> str:
+    return re.sub(r"\W+", "_", fold(traducao.en)).strip("_")
+
+
 # --- Mescla com os arquivos atuais ---
 
 
@@ -532,6 +686,41 @@ def _sem_colisao(
     return aceitos
 
 
+def gerar_ressonadores(elenco: Elenco) -> dict[str, Any]:
+    return {
+        "_meta": {
+            "descricao": (
+                "Ressonadores jogáveis, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). "
+                "Chave = nome em inglês, a mesma de 'personagem' em characters.json. 'elemento' e 'tipo_arma' "
+                "apontam para as listas deste arquivo. Não edite à mão: a próxima importação sobrescreve."
+            )
+        },
+        "elementos": {chave: _traducao_json(t) for chave, t in elenco.elementos.items()},
+        "tipos_arma": {chave: _traducao_json(t) for chave, t in elenco.tipos_arma.items()},
+        "ressonadores": {
+            nome: {"nome_pt": r.nome_pt, "elemento": r.elemento, "tipo_arma": r.tipo_arma, "raridade": r.raridade}
+            for nome, r in elenco.ressonadores.items()
+        },
+    }
+
+
+def gerar_armas(elenco: Elenco) -> dict[str, Any]:
+    return {
+        "_meta": {
+            "descricao": (
+                "Armas, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em "
+                "inglês, usada em 'armas' de characters.json. 'tipo' aponta para tipos_arma em resonators.json. "
+                "Não edite à mão: a próxima importação sobrescreve."
+            )
+        },
+        "armas": {nome: {"nome_pt": a.nome_pt, "tipo": a.tipo, "raridade": a.raridade} for nome, a in elenco.armas.items()},
+    }
+
+
+def _traducao_json(traducao: Traducao) -> dict[str, str | None]:
+    return {"en": traducao.en, "pt": traducao.pt}
+
+
 # --- Gravação ---
 
 
@@ -564,9 +753,12 @@ def gravar_validado(data_dir: Path, arquivos: Mapping[str, object]) -> None:
         escrever_atomico(data_dir / nome, conteudo)
 
 
-def _relatorio(catalogo: Catalogo, tabelas: TabelasFonte, avisos: list[str]) -> None:
+def _relatorio(catalogo: Catalogo, elenco: Elenco, tabelas: TabelasFonte, avisos: list[str]) -> None:
     sem_pt = sum(1 for echo in catalogo.echoes.values() if echo.nome_pt is None)
-    print(f"\n{len(catalogo.echoes)} echos e {len(catalogo.sets)} sets importados.")
+    print(
+        f"\n{len(catalogo.echoes)} echos, {len(catalogo.sets)} sets, {len(elenco.ressonadores)} ressonadores "
+        f"e {len(elenco.armas)} armas importados."
+    )
     if tabelas.textos_pt is not None:
         print(f"Echos sem nome PT: {sem_pt}")
     if avisos:

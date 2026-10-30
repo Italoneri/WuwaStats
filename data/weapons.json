@@ -1,0 +1,627 @@
+{
+  "_meta": {
+    "descricao": "Armas, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês, usada em 'armas' de characters.json. 'tipo' aponta para tipos_arma em resonators.json. Não edite à mão: a próxima importação sobrescreve."
+  },
+  "armas": {
+    "Abyss Surges": {
+      "nome_pt": "Ondas do Abismo",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Aether Strike": {
+      "nome_pt": "Golpe Etéreo",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Ages of Harvest": {
+      "nome_pt": "Eras de Colheita",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Amity Accord": {
+      "nome_pt": "Pacto de Amizade",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Augment": {
+      "nome_pt": "Amplificador",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Aureate Zenith": {
+      "nome_pt": "Zênite Áureo",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Autumntrace": {
+      "nome_pt": "Rastro de Outono",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Azure Oath": {
+      "nome_pt": "Juramento Azul-Celeste",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Beguiling Melody": {
+      "nome_pt": "Melodia Envolvente",
+      "tipo": "broadblade",
+      "raridade": 3
+    },
+    "Blazing Brilliance": {
+      "nome_pt": "Fulgor Celestial",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Blazing Justice": {
+      "nome_pt": "Justiça Incandescente",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Bloodpact's Pledge": {
+      "nome_pt": "Pacto de Sangue",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Blooming Jadehaven": {
+      "nome_pt": "Jade Sublime",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Boson Astrolabe": {
+      "nome_pt": "Astrolábio de Bósons",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Broadblade of Night": {
+      "nome_pt": "Espadão da Noite",
+      "tipo": "broadblade",
+      "raridade": 3
+    },
+    "Broadblade of Voyager": {
+      "nome_pt": "Espadão de Viajante",
+      "tipo": "broadblade",
+      "raridade": 3
+    },
+    "Broadblade#41": {
+      "nome_pt": "Espadão 41",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Cadenza": {
+      "nome_pt": "Cadência",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Call of the Abyss": {
+      "nome_pt": "Chamado do Abismo",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Celestial Spiral": {
+      "nome_pt": "Espiral Celestial",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Comet Flare": {
+      "nome_pt": "Erupção de Cometa",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Commando of Conviction": {
+      "nome_pt": "Comando de Convicção",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Cosmic Ripples": {
+      "nome_pt": "Ondas Cósmicas",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Dauntless Evernight": {
+      "nome_pt": "Alvorada na Noite Eterna",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Daybreaker's Spine": {
+      "nome_pt": "Espinha da Alvorada",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Defier's Thorn": {
+      "nome_pt": "Coroa do Destino Indômito",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Discord": {
+      "nome_pt": "Éterion",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Emerald Sentence": {
+      "nome_pt": "Sentença Esmeralda",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Emerald of Genesis": {
+      "nome_pt": "Gênese Esmeralda",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Endless Collapse": {
+      "nome_pt": "Colapso Infinito",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Everbright Polestar": {
+      "nome_pt": "Estrela Polaris Eterna",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Fables of Wisdom": {
+      "nome_pt": "Fábulas de Sabedoria",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Feather Edge": {
+      "nome_pt": "Gume Alado",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Firstlight's Herald": {
+      "nome_pt": "Arauto da Alvorada",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Forged Dwarf Star": {
+      "nome_pt": "Estrela Anã Forjada",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Freeze Frame": {
+      "nome_pt": "Imagem Congelada",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Frostburn": {
+      "nome_pt": "Chama Congelante",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Fusion Accretion": {
+      "nome_pt": "Acreção Nuclear",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Gauntlets of Night": {
+      "nome_pt": "Manoplas da Noite",
+      "tipo": "gauntlets",
+      "raridade": 3
+    },
+    "Gauntlets of Voyager": {
+      "nome_pt": "Manoplas de Viajante",
+      "tipo": "gauntlets",
+      "raridade": 3
+    },
+    "Gauntlets#21D": {
+      "nome_pt": "Manoplas 21D",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Glint of Clouds": {
+      "nome_pt": "Clarão entre Nuvens",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Guardian Broadblade": {
+      "nome_pt": "Espadão Guardião",
+      "tipo": "broadblade",
+      "raridade": 3
+    },
+    "Guardian Gauntlets": {
+      "nome_pt": "Manoplas Guardiãs",
+      "tipo": "gauntlets",
+      "raridade": 3
+    },
+    "Guardian Pistols": {
+      "nome_pt": "Pistolas Guardiãs",
+      "tipo": "pistols",
+      "raridade": 3
+    },
+    "Guardian Rectifier": {
+      "nome_pt": "Retificador Guardião",
+      "tipo": "rectifier",
+      "raridade": 3
+    },
+    "Guardian Sword": {
+      "nome_pt": "Espada Guardiã",
+      "tipo": "sword",
+      "raridade": 3
+    },
+    "Helios Cleaver": {
+      "nome_pt": "Leste Cadente",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Hollow Mirage": {
+      "nome_pt": "Passo Assombroso",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Jinzhou Keeper": {
+      "nome_pt": "Guardiões de Jinzhou",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Kumokiri": {
+      "nome_pt": "Kumokiri",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Laser Shearer": {
+      "nome_pt": "Laser Cromático",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Legend of Drunken Hero": {
+      "nome_pt": "Lenda de Heróis Bêbados",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Lethean Elegy": {
+      "nome_pt": "Lamento do Ocaso",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Lumingloss": {
+      "nome_pt": "Lúmengloss",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Luminous Hymn": {
+      "nome_pt": "Hino Luminoso",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Lunar Cutter": {
+      "nome_pt": "Oeste Ascendente",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Lustrous Razor": {
+      "nome_pt": "Espadão Luminazul",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Lux & Umbra": {
+      "nome_pt": "Lux & Umbra",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Marcato": {
+      "nome_pt": "Marcato",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Meditations on Mercy": {
+      "nome_pt": "Meditações sobre a Misericórdia",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Moongazer's Sigil": {
+      "nome_pt": "Notas do Luar Eterno",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Novaburst": {
+      "nome_pt": "Explonova",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Ocean's Gift": {
+      "nome_pt": "Dádiva do Mar",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Originite: Type I": {
+      "nome_pt": "Originita: Tipo I",
+      "tipo": "broadblade",
+      "raridade": 3
+    },
+    "Originite: Type II": {
+      "nome_pt": "Originita: Tipo II",
+      "tipo": "sword",
+      "raridade": 3
+    },
+    "Originite: Type III": {
+      "nome_pt": "Originita: Tipo III",
+      "tipo": "pistols",
+      "raridade": 3
+    },
+    "Originite: Type IV": {
+      "nome_pt": "Originita: Tipo IV",
+      "tipo": "gauntlets",
+      "raridade": 3
+    },
+    "Originite: Type V": {
+      "nome_pt": "Originita: Tipo V",
+      "tipo": "rectifier",
+      "raridade": 3
+    },
+    "Overture": {
+      "nome_pt": "Marcha de Abertura",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Phasic Homogenizer": {
+      "nome_pt": "Homogeneizador Fásico",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Pistols of Night": {
+      "nome_pt": "Pistolas da Noite",
+      "tipo": "pistols",
+      "raridade": 3
+    },
+    "Pistols of Voyager": {
+      "nome_pt": "Pistola de Viajante",
+      "tipo": "pistols",
+      "raridade": 3
+    },
+    "Pistols#26": {
+      "nome_pt": "Pistolas 26",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Pulsation Bracer": {
+      "nome_pt": "Braçal da Pulsação",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Radiance Cleaver": {
+      "nome_pt": "Lâmina Radiante",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Radiant Dawn": {
+      "nome_pt": "Aurora Radiante",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Rectifier of Night": {
+      "nome_pt": "Retificador da Noite",
+      "tipo": "rectifier",
+      "raridade": 3
+    },
+    "Rectifier of Voyager": {
+      "nome_pt": "Retificador de Viajante",
+      "tipo": "rectifier",
+      "raridade": 3
+    },
+    "Rectifier#25": {
+      "nome_pt": "Retificador 25",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Red Spring": {
+      "nome_pt": "Recorte da Primavera",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Relativistic Jet": {
+      "nome_pt": "Jato Relativístico",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Rime-Draped Sprouts": {
+      "nome_pt": "Pétalas de Cristal",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Romance in Farewell": {
+      "nome_pt": "Romance da Despedida",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Skull Thrasher": {
+      "nome_pt": "Ceifador de Crânios",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Solar Flame": {
+      "nome_pt": "Chama Solar",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Solsworn Ciphers": {
+      "nome_pt": "Cifras do Juramento Solar",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Somnoire Anchor": {
+      "nome_pt": "Âncora de Sonúmia",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "Spectral Trigger": {
+      "nome_pt": "Ativação Espectral",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Spectrum Blaster": {
+      "nome_pt": "Espectro Neon",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Starfield Calibrator": {
+      "nome_pt": "Calibrador Estelar",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Static Mist": {
+      "nome_pt": "Névoa Estática",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Stellar Symphony": {
+      "nome_pt": "Sinfonia Estelar",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Stonard": {
+      "nome_pt": "Palma de Ouro",
+      "tipo": "gauntlets",
+      "raridade": 4
+    },
+    "Stringmaster": {
+      "nome_pt": "Mestra de Bonecos",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Sword of Night": {
+      "nome_pt": "Espada da Noite",
+      "tipo": "sword",
+      "raridade": 3
+    },
+    "Sword of Voyager": {
+      "nome_pt": "Espada de Viajante",
+      "tipo": "sword",
+      "raridade": 3
+    },
+    "Sword#18": {
+      "nome_pt": "Espada 18",
+      "tipo": "sword",
+      "raridade": 4
+    },
+    "The Last Dance": {
+      "nome_pt": "A Última Dança",
+      "tipo": "pistols",
+      "raridade": 5
+    },
+    "Thousandfold Deliverance": {
+      "nome_pt": "Redenção Suprema",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Thunderbolt": {
+      "nome_pt": "Trovoada",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Thunderflare Dominion": {
+      "nome_pt": "Supremacia do Trovão Dominado",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Tragicomedy": {
+      "nome_pt": "Tragicomédia",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Training Broadblade": {
+      "nome_pt": "Espadão de Treino",
+      "tipo": "broadblade",
+      "raridade": 1
+    },
+    "Training Gauntlets": {
+      "nome_pt": "Manoplas de Treino",
+      "tipo": "gauntlets",
+      "raridade": 1
+    },
+    "Training Pistols": {
+      "nome_pt": "Pistolas de Treino",
+      "tipo": "pistols",
+      "raridade": 1
+    },
+    "Training Rectifier": {
+      "nome_pt": "Retificador de Treino",
+      "tipo": "rectifier",
+      "raridade": 1
+    },
+    "Training Sword": {
+      "nome_pt": "Espada de Treino",
+      "tipo": "sword",
+      "raridade": 1
+    },
+    "Tyro Broadblade": {
+      "nome_pt": "Espadão Rústico",
+      "tipo": "broadblade",
+      "raridade": 2
+    },
+    "Tyro Gauntlets": {
+      "nome_pt": "Manoplas Rústica",
+      "tipo": "gauntlets",
+      "raridade": 2
+    },
+    "Tyro Pistols": {
+      "nome_pt": "Pistolas Rústica",
+      "tipo": "pistols",
+      "raridade": 2
+    },
+    "Tyro Rectifier": {
+      "nome_pt": "Retificador Rústico",
+      "tipo": "rectifier",
+      "raridade": 2
+    },
+    "Tyro Sword": {
+      "nome_pt": "Espada Rústica",
+      "tipo": "sword",
+      "raridade": 2
+    },
+    "Undying Flame": {
+      "nome_pt": "Chama Eterna",
+      "tipo": "pistols",
+      "raridade": 4
+    },
+    "Unflickering Valor": {
+      "nome_pt": "Persistência Inabalável",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Unspoken Rue": {
+      "nome_pt": "Penumbra Abissal",
+      "tipo": "sword",
+      "raridade": 5
+    },
+    "Variation": {
+      "nome_pt": "Variação",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Verdant Summit": {
+      "nome_pt": "Espadão Jadeloong",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Verity's Handle": {
+      "nome_pt": "Cerne da Verdade",
+      "tipo": "gauntlets",
+      "raridade": 5
+    },
+    "Waltz in Masquerade": {
+      "nome_pt": "Valsa na Mascarada",
+      "tipo": "rectifier",
+      "raridade": 4
+    },
+    "Waning Redshift": {
+      "nome_pt": "Desvio Entrópico",
+      "tipo": "broadblade",
+      "raridade": 4
+    },
+    "Whispers of Sirens": {
+      "nome_pt": "Sussurros do Mar",
+      "tipo": "rectifier",
+      "raridade": 5
+    },
+    "Wildfire Mark": {
+      "nome_pt": "Marca Incinerante",
+      "tipo": "broadblade",
+      "raridade": 5
+    },
+    "Woodland Aria": {
+      "nome_pt": "Canto da Floresta",
+      "tipo": "pistols",
+      "raridade": 5
+    }
+  }
+}

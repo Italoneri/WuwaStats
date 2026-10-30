@@ -24,6 +24,13 @@ def test_resolve_nomes_pt_br_do_perfil_para_chaves_internas(data_dir_copia: Path
     assert perfil.base.pesos["basic_atk_dmg"] == 0.7
 
 
+def test_resolve_armas_do_perfil_em_qualquer_idioma_para_a_chave_em_ingles(data_dir_copia: Path) -> None:
+    armas = load_game_data(data_dir_copia).perfis["Suoming_DPS"].armas
+
+    assert armas is not None
+    assert (armas.melhor, armas.alternativas) == ("Test Weapon", ("Alt Weapon",))
+
+
 def _editar(data_dir: Path, arquivo: str, mudar: Callable[[Json], None]) -> None:
     caminho = data_dir / arquivo
     conteudo = json.loads(caminho.read_text(encoding="utf-8"))
@@ -57,6 +64,11 @@ def _variante(campo: str, valor: object) -> Callable[[Json], None]:
         ("stat_aliases.json", lambda c: c["stats"]["crit_rate"].append("Dano CRIT"), "'dano crit' aponta para"),
         ("sets.json", lambda c: c["sets"]["Moonlit Clouds"]["bonus"]["2"].__setitem__("Sorte", 1), "Sorte"),
         ("notas.json", lambda c: c["faixas"].reverse(), "ordem decrescente"),
+        ("characters.json", _suoming("personagem", "Ninguém"), "personagem: 'Ninguém' não está"),
+        ("characters.json", _suoming("armas", {"melhor": "Arma Fantasma"}), "armas › melhor: 'Arma Fantasma'"),
+        ("characters.json", _suoming("armas", {"alternativas": ["Arma Fantasma"]}), "armas › alternativas: 'Arma Fantasma'"),
+        ("resonators.json", lambda c: c["ressonadores"]["Suoming"].__setitem__("elemento", "agua"), "'agua' não existe"),
+        ("weapons.json", lambda c: c["armas"]["Test Weapon"].__setitem__("tipo", "lanca"), "'lanca' não existe"),
         ("notas.json", lambda c: c["faixas"].pop(), "última faixa precisa ter min 0"),
     ],
 )

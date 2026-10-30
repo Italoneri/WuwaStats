@@ -1,0 +1,15 @@
+{
+  "_meta": { "descricao": "Fixture de testes." },
+  "elementos": {
+    "electro": { "en": "Electro", "pt": "Voltaico" },
+    "glacio": { "en": "Glacio", "pt": "Criogênico" }
+  },
+  "tipos_arma": {
+    "sword": { "en": "Sword", "pt": "Espada" },
+    "rectifier": { "en": "Rectifier", "pt": "Retificador" }
+  },
+  "ressonadores": {
+    "Suoming": { "nome_pt": "Suoming", "elemento": "electro", "tipo_arma": "sword", "raridade": 5 },
+    "Shorekeeper": { "nome_pt": "Guardiã da Costa", "elemento": "glacio", "tipo_arma": "rectifier", "raridade": 4 }
+  }
+}

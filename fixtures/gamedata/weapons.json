@@ -1,0 +1,7 @@
+{
+  "_meta": { "descricao": "Fixture de testes." },
+  "armas": {
+    "Test Weapon": { "nome_pt": "Arma Teste", "tipo": "sword", "raridade": 5 },
+    "Alt Weapon": { "nome_pt": "Arma Alternativa", "tipo": "sword", "raridade": 4 }
+  }
+}

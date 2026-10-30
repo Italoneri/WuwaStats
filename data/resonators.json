@@ -1,0 +1,415 @@
+{
+  "_meta": {
+    "descricao": "Ressonadores jogáveis, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês, a mesma de 'personagem' em characters.json. 'elemento' e 'tipo_arma' apontam para as listas deste arquivo. Não edite à mão: a próxima importação sobrescreve."
+  },
+  "elementos": {
+    "glacio": {
+      "en": "Glacio",
+      "pt": "Criogênico"
+    },
+    "fusion": {
+      "en": "Fusion",
+      "pt": "Térmico"
+    },
+    "electro": {
+      "en": "Electro",
+      "pt": "Voltaico"
+    },
+    "aero": {
+      "en": "Aero",
+      "pt": "Pneumático"
+    },
+    "spectro": {
+      "en": "Spectro",
+      "pt": "Fotônico"
+    },
+    "havoc": {
+      "en": "Havoc",
+      "pt": "Aniquilante"
+    }
+  },
+  "tipos_arma": {
+    "broadblade": {
+      "en": "Broadblade",
+      "pt": "Espadão"
+    },
+    "sword": {
+      "en": "Sword",
+      "pt": "Espada"
+    },
+    "pistols": {
+      "en": "Pistols",
+      "pt": "Pistolas"
+    },
+    "gauntlets": {
+      "en": "Gauntlets",
+      "pt": "Manoplas"
+    },
+    "rectifier": {
+      "en": "Rectifier",
+      "pt": "Retificador"
+    }
+  },
+  "ressonadores": {
+    "Aalto": {
+      "nome_pt": "Aalto",
+      "elemento": "aero",
+      "tipo_arma": "pistols",
+      "raridade": 4
+    },
+    "Aemeath": {
+      "nome_pt": "Aemeath",
+      "elemento": "fusion",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Augusta": {
+      "nome_pt": "Augusta",
+      "elemento": "electro",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Baizhi": {
+      "nome_pt": "Baizhi",
+      "elemento": "glacio",
+      "tipo_arma": "rectifier",
+      "raridade": 4
+    },
+    "Brant": {
+      "nome_pt": "Brant",
+      "elemento": "fusion",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Buling": {
+      "nome_pt": "Buling",
+      "elemento": "electro",
+      "tipo_arma": "rectifier",
+      "raridade": 4
+    },
+    "Calcharo": {
+      "nome_pt": "Calcharo",
+      "elemento": "electro",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Camellya": {
+      "nome_pt": "Camellya",
+      "elemento": "havoc",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Cantarella": {
+      "nome_pt": "Cantarella",
+      "elemento": "havoc",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Carlotta": {
+      "nome_pt": "Carlotta",
+      "elemento": "glacio",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Cartethyia": {
+      "nome_pt": "Cartethyia",
+      "elemento": "aero",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Changli": {
+      "nome_pt": "Changli",
+      "elemento": "fusion",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Chisa": {
+      "nome_pt": "Chisa",
+      "elemento": "havoc",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Chixia": {
+      "nome_pt": "Chixia",
+      "elemento": "fusion",
+      "tipo_arma": "pistols",
+      "raridade": 4
+    },
+    "Ciaccona": {
+      "nome_pt": "Ciaccona",
+      "elemento": "aero",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Danjin": {
+      "nome_pt": "Danjin",
+      "elemento": "havoc",
+      "tipo_arma": "sword",
+      "raridade": 4
+    },
+    "Denia": {
+      "nome_pt": "Denia",
+      "elemento": "fusion",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Encore": {
+      "nome_pt": "Encore",
+      "elemento": "fusion",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Galbrena": {
+      "nome_pt": "Galbrena",
+      "elemento": "fusion",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Hiyuki": {
+      "nome_pt": "Hiyuki",
+      "elemento": "glacio",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Hsin": {
+      "nome_pt": "Hsin",
+      "elemento": "electro",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Iuno": {
+      "nome_pt": "Iuno",
+      "elemento": "aero",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Jianxin": {
+      "nome_pt": "Jianxin",
+      "elemento": "aero",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Jingran": {
+      "nome_pt": "Jingran",
+      "elemento": "fusion",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Jinhsi": {
+      "nome_pt": "Jinhsi",
+      "elemento": "spectro",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Jiyan": {
+      "nome_pt": "Jiyan",
+      "elemento": "aero",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Lingyang": {
+      "nome_pt": "Lingyang",
+      "elemento": "glacio",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Lucilla": {
+      "nome_pt": "Lucilla",
+      "elemento": "glacio",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Lucy": {
+      "nome_pt": "Lucy",
+      "elemento": "spectro",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Lumi": {
+      "nome_pt": "Lumi",
+      "elemento": "electro",
+      "tipo_arma": "broadblade",
+      "raridade": 4
+    },
+    "Lupa": {
+      "nome_pt": "Lupa",
+      "elemento": "fusion",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Luuk Herssen": {
+      "nome_pt": "Luuk Herssen",
+      "elemento": "spectro",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Lynae": {
+      "nome_pt": "Lynae",
+      "elemento": "spectro",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Mornye": {
+      "nome_pt": "Mornye",
+      "elemento": "fusion",
+      "tipo_arma": "broadblade",
+      "raridade": 5
+    },
+    "Mortefi": {
+      "nome_pt": "Mortefi",
+      "elemento": "fusion",
+      "tipo_arma": "pistols",
+      "raridade": 4
+    },
+    "Phoebe": {
+      "nome_pt": "Phoebe",
+      "elemento": "spectro",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Phrolova": {
+      "nome_pt": "Phrolova",
+      "elemento": "havoc",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Qingxiao": {
+      "nome_pt": "Qingxiao",
+      "elemento": "aero",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Qiuyuan": {
+      "nome_pt": "Qiuyuan",
+      "elemento": "aero",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Rebecca": {
+      "nome_pt": "Rebecca",
+      "elemento": "electro",
+      "tipo_arma": "pistols",
+      "raridade": 5
+    },
+    "Roccia": {
+      "nome_pt": "Roccia",
+      "elemento": "havoc",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Rover: Aero": {
+      "nome_pt": "Rover: Pneumático",
+      "elemento": "aero",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Rover: Electro": {
+      "nome_pt": "Rover: Voltaico",
+      "elemento": "electro",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Rover: Havoc": {
+      "nome_pt": "Rover: Aniquilante",
+      "elemento": "havoc",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Rover: Spectro": {
+      "nome_pt": "Rover: Fotônico",
+      "elemento": "spectro",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Sanhua": {
+      "nome_pt": "Sanhua",
+      "elemento": "glacio",
+      "tipo_arma": "sword",
+      "raridade": 4
+    },
+    "Shorekeeper": {
+      "nome_pt": "Guardiã da Costa",
+      "elemento": "spectro",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Sigrika": {
+      "nome_pt": "Sigrika",
+      "elemento": "aero",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Suisui": {
+      "nome_pt": "Suisui",
+      "elemento": "glacio",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Suoming": {
+      "nome_pt": "Suoming",
+      "elemento": "electro",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Taoqi": {
+      "nome_pt": "Taoqi",
+      "elemento": "havoc",
+      "tipo_arma": "broadblade",
+      "raridade": 4
+    },
+    "Verina": {
+      "nome_pt": "Verina",
+      "elemento": "spectro",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Xiangli Yao": {
+      "nome_pt": "Xiangli Yao",
+      "elemento": "electro",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Yangyang": {
+      "nome_pt": "Yangyang",
+      "elemento": "aero",
+      "tipo_arma": "sword",
+      "raridade": 4
+    },
+    "Yangyang: Xuanling": {
+      "nome_pt": "Yangyang: Xuanling",
+      "elemento": "havoc",
+      "tipo_arma": "sword",
+      "raridade": 5
+    },
+    "Yinlin": {
+      "nome_pt": "Yinlin",
+      "elemento": "electro",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    },
+    "Youhu": {
+      "nome_pt": "Youhu",
+      "elemento": "glacio",
+      "tipo_arma": "gauntlets",
+      "raridade": 4
+    },
+    "Yuanwu": {
+      "nome_pt": "Yuanwu",
+      "elemento": "electro",
+      "tipo_arma": "gauntlets",
+      "raridade": 4
+    },
+    "Zani": {
+      "nome_pt": "Zani",
+      "elemento": "spectro",
+      "tipo_arma": "gauntlets",
+      "raridade": 5
+    },
+    "Zhezhi": {
+      "nome_pt": "Zhezhi",
+      "elemento": "glacio",
+      "tipo_arma": "rectifier",
+      "raridade": 5
+    }
+  }
+}

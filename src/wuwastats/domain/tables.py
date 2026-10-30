@@ -56,11 +56,41 @@ class Variante:
 
 
 @dataclass(frozen=True)
+class ArmasPerfil:
+    melhor: str | None
+    alternativas: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class Perfil:
-    personagem: str
+    personagem: str  # chave em resonators.json
     armas_assinatura: frozenset[str]  # já normalizados com fold(), em qualquer idioma
     base: BuildSpec
     variantes: tuple[Variante, ...]
+    armas: ArmasPerfil | None = None
+
+
+@dataclass(frozen=True)
+class Traducao:
+    en: str
+    pt: str | None
+
+    @property
+    def rotulo(self) -> str:
+        return self.pt or self.en
+
+
+@dataclass(frozen=True)
+class Ressonador:
+    elemento: str
+    tipo_arma: str
+    raridade: int
+
+
+@dataclass(frozen=True)
+class Arma:
+    tipo: str
+    raridade: int
 
 
 @dataclass(frozen=True)
@@ -81,3 +111,9 @@ class GameData:
     set_names: NameIndex
     perfis: Mapping[str, Perfil]
     notas: tuple[FaixaNota, ...]  # ordem decrescente de min; a última tem min 0
+    elementos: Mapping[str, Traducao]
+    tipos_arma: Mapping[str, Traducao]
+    ressonadores: Mapping[str, Ressonador]
+    armas: Mapping[str, Arma]
+    ressonador_names: NameIndex
+    arma_names: NameIndex

@@ -110,6 +110,36 @@ class AliasesFile(_Estrito):
     sets: dict[str, list[str]]
 
 
+class TraducaoRaw(_Estrito):
+    en: str = Field(min_length=1)
+    pt: str | None = None
+
+
+class RessonadorRaw(_Estrito):
+    nome_pt: str | None = None
+    elemento: str
+    tipo_arma: str
+    raridade: int = Field(ge=1, le=5)
+
+
+class ResonatorsFile(_Estrito):
+    meta: Meta = Field(alias="_meta")
+    elementos: dict[str, TraducaoRaw]
+    tipos_arma: dict[str, TraducaoRaw]
+    ressonadores: dict[str, RessonadorRaw]
+
+
+class ArmaRaw(_Estrito):
+    nome_pt: str | None = None
+    tipo: str
+    raridade: int = Field(ge=1, le=5)
+
+
+class WeaponsFile(_Estrito):
+    meta: Meta = Field(alias="_meta")
+    armas: dict[str, ArmaRaw]
+
+
 class FaixaNotaRaw(_Estrito):
     nota: str = Field(min_length=1)
     min: float = Field(ge=0, le=100)
@@ -166,9 +196,18 @@ class VarianteRaw(_Estrito):
         return condicao
 
 
+class ArmasPerfilRaw(_Estrito):
+    """Recomendação exibida na tela do personagem; não entra no cálculo."""
+
+    melhor: str | None = None
+    alternativas: list[str] = []
+    status: str = "ok"
+
+
 class PerfilRaw(BuildSpecRaw):
     personagem: str = Field(min_length=1)
     armas_assinatura: list[str] = []
+    armas: ArmasPerfilRaw | None = None
     variantes: list[VarianteRaw] = []
 
 
@@ -182,3 +221,5 @@ class ArquivosDeDados(BaseModel):
     stat_aliases: AliasesFile
     characters: dict[str, PerfilRaw]
     notas: NotasFile
+    resonators: ResonatorsFile
+    weapons: WeaponsFile

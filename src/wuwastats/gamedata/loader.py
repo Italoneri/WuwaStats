@@ -11,25 +11,32 @@ from pydantic import ValidationError
 from wuwastats.domain.models import Custo
 from wuwastats.domain.names import NameIndex, fold, is_pct_flat_pair, is_percent_stat, resolve_stat
 from wuwastats.domain.tables import (
+    Arma,
+    ArmasPerfil,
     BuildSpec,
     EchoInfo,
     FaixaNota,
     GameData,
     MainStatTable,
     Perfil,
+    Ressonador,
     SetInfo,
     SubstatTable,
+    Traducao,
     Variante,
 )
 from wuwastats.gamedata.schemas import (
     CUSTO_POR_CHAVE,
+    ArmasPerfilRaw,
     ArquivosDeDados,
     BuildSpecRaw,
     CustoChave,
     PerfilRaw,
+    ResonatorsFile,
     SetRaw,
     SubstatsFile,
     VarianteRaw,
+    WeaponsFile,
 )
 
 
@@ -85,7 +92,10 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
     stat_names = _indice(aliases.stats, _stats_conhecidos(substats, main_stats), "stats", erros)
     echo_names = _indice(aliases.echoes, set(arquivos.echoes.echoes), "echoes", erros)
     set_names = _indice(aliases.sets, set(arquivos.sets.sets), "sets", erros)
-    resolvedor = _Resolvedor(stat_names, echo_names, set_names, main_stats, erros)
+    _conferir_elenco(arquivos.resonators, arquivos.weapons, erros)
+    ressonador_names = _indice_pt({nome: r.nome_pt for nome, r in arquivos.resonators.ressonadores.items()}, "resonators", erros)
+    arma_names = _indice_pt({nome: a.nome_pt for nome, a in arquivos.weapons.armas.items()}, "weapons", erros)
+    resolvedor = _Resolvedor(stat_names, echo_names, set_names, ressonador_names, arma_names, main_stats, erros)
     return GameData(
         substats=substats,
         main_stats=main_stats,
@@ -97,6 +107,15 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
         set_names=set_names,
         perfis={nome: resolvedor.perfil(nome, raw) for nome, raw in arquivos.characters.items()},
         notas=tuple(FaixaNota(nota=f.nota, min=f.min) for f in arquivos.notas.faixas),
+        elementos={chave: Traducao(en=t.en, pt=t.pt) for chave, t in arquivos.resonators.elementos.items()},
+        tipos_arma={chave: Traducao(en=t.en, pt=t.pt) for chave, t in arquivos.resonators.tipos_arma.items()},
+        ressonadores={
+            nome: Ressonador(elemento=r.elemento, tipo_arma=r.tipo_arma, raridade=r.raridade)
+            for nome, r in arquivos.resonators.ressonadores.items()
+        },
+        armas={nome: Arma(tipo=a.tipo, raridade=a.raridade) for nome, a in arquivos.weapons.armas.items()},
+        ressonador_names=ressonador_names,
+        arma_names=arma_names,
     )
 
 
@@ -129,6 +148,30 @@ def _indice(aliases: Mapping[str, list[str]], conhecidos: set[str], categoria: s
     return indice
 
 
+def _conferir_elenco(ressonadores: ResonatorsFile, armas: WeaponsFile, erros: list[str]) -> None:
+    for nome, r in ressonadores.ressonadores.items():
+        onde = f"resonators.json › ressonadores › {nome}"
+        if r.elemento not in ressonadores.elementos:
+            erros.append(f"{onde} › elemento: '{r.elemento}' não existe em elementos")
+        if r.tipo_arma not in ressonadores.tipos_arma:
+            erros.append(f"{onde} › tipo_arma: '{r.tipo_arma}' não existe em tipos_arma")
+    erros.extend(
+        f"weapons.json › armas › {nome} › tipo: '{a.tipo}' não existe em tipos_arma de resonators.json"
+        for nome, a in armas.armas.items()
+        if a.tipo not in ressonadores.tipos_arma
+    )
+
+
+def _indice_pt(nomes_pt: Mapping[str, str | None], arquivo: str, erros: list[str]) -> NameIndex:
+    """Chave em inglês + nome PT (primeiro, para virar o rótulo)."""
+    indice = NameIndex.build({chave: [pt] if pt else [] for chave, pt in nomes_pt.items()})
+    erros.extend(
+        f"{arquivo}.json: '{nome}' aponta para mais de uma chave {sorted(chaves)}"
+        for nome, chaves in sorted(indice.ambiguous_names().items())
+    )
+    return indice
+
+
 @dataclass(frozen=True)
 class _Resolvedor:
     """Converte nomes escritos à mão (PT-BR, aliases) em chaves internas, acumulando erros."""
@@ -136,6 +179,8 @@ class _Resolvedor:
     stat_names: NameIndex
     echo_names: NameIndex
     set_names: NameIndex
+    ressonador_names: NameIndex
+    arma_names: NameIndex
     main_stats: Mapping[Custo, MainStatTable]
     erros: list[str]
 
@@ -146,16 +191,24 @@ class _Resolvedor:
 
     def perfil(self, nome: str, raw: PerfilRaw) -> Perfil:
         onde = f"characters.json › {nome}"
-        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "variantes"})
+        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "armas", "variantes"})
         variantes = (
             self._variante(base_campos, variante, f"{onde} › variantes › {indice}")
             for indice, variante in enumerate(raw.variantes)
         )
         return Perfil(
-            personagem=raw.personagem,
+            personagem=self._nome(self.ressonador_names, raw.personagem, f"{onde} › personagem") or raw.personagem,
             armas_assinatura=frozenset(fold(arma) for arma in raw.armas_assinatura),
             base=self._spec(raw, onde),
             variantes=tuple(v for v in variantes if v is not None),
+            armas=self._armas(raw.armas, f"{onde} › armas") if raw.armas else None,
+        )
+
+    def _armas(self, raw: ArmasPerfilRaw, onde: str) -> ArmasPerfil:
+        alternativas = (self._nome(self.arma_names, nome, f"{onde} › alternativas") for nome in raw.alternativas)
+        return ArmasPerfil(
+            melhor=self._nome(self.arma_names, raw.melhor, f"{onde} › melhor"),
+            alternativas=tuple(a for a in alternativas if a),
         )
 
     def _variante(self, base_campos: dict[str, Any], raw: VarianteRaw, onde: str) -> Variante | None:

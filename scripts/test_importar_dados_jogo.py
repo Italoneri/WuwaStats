@@ -1,3 +1,4 @@
+import dataclasses
 import json
 import shutil
 from pathlib import Path
@@ -5,20 +6,27 @@ from typing import Any
 
 import pytest
 from importar_dados_jogo import (
+    ArmaFonte,
+    ArmaImportada,
     Categoria,
     Commit,
     EchoFonte,
     EchoImportado,
     EfeitoSetFonte,
+    ElementoFonte,
     GrupoSetFonte,
+    PersonagemFonte,
     PropriedadeFonte,
     RaridadeFonte,
+    RessonadorImportado,
     TabelasFonte,
+    Traducao,
     gerar_echoes,
     gerar_sets,
     gravar_validado,
     mesclar_aliases,
     montar_catalogo,
+    montar_elenco,
     preencher,
 )
 
@@ -116,6 +124,48 @@ def test_sem_textmap_pt_os_nomes_pt_ficam_vazios() -> None:
 
     assert {echo.nome_pt for echo in catalogo.echoes.values()} == {None}
     assert catalogo.sets["Moonlit Clouds"].efeitos[2] == ("Energy Regen + 10%", None)
+
+
+def _elenco_fonte() -> TabelasFonte:
+    def personagem(nome: str, tipo: int = 1, teste: bool = False, raridade: int = 5) -> PersonagemFonte:
+        campos = {"Name": nome, "QualityId": raridade, "ElementId": 3, "WeaponType": 2, "RoleType": tipo, "IsTrial": teste}
+        return PersonagemFonte.model_validate(campos)
+
+    textos_en = {"R_Suo": "Suoming", "R_Rover": "Rover: Electro", "E_3": "Electro", "W_1": "Unspoken Rue"}
+    textos_en["RoleProject_WeaponType02"] = "Weapon Type: Sword"
+    textos_pt = {"R_Suo": "Suoming", "E_3": "Voltaico", "W_1": "Penumbra Abissal"}
+    textos_pt["RoleProject_WeaponType02"] = "Tipo de Armas: Espada"
+    return dataclasses.replace(
+        _tabelas(None),
+        textos_en=textos_en,
+        textos_pt=textos_pt,
+        personagens=[
+            personagem("R_Suo"),
+            personagem("R_Suo", tipo=2, teste=True, raridade=4),
+            personagem("R_Rover"),
+            personagem("R_Rover"),
+        ],
+        elementos=[ElementoFonte.model_validate({"Id": 3, "Name": "E_3"})],
+        armas=[ArmaFonte.model_validate({"WeaponName": "W_1", "QualityId": 5, "WeaponType": 2})],
+    )
+
+
+def test_monta_ressonadores_jogaveis_sem_versoes_de_teste_nem_rover_repetido() -> None:
+    elenco = montar_elenco(_elenco_fonte())
+
+    assert elenco.ressonadores == {
+        "Rover: Electro": RessonadorImportado(nome_pt=None, elemento="electro", tipo_arma="sword", raridade=5),
+        "Suoming": RessonadorImportado(nome_pt="Suoming", elemento="electro", tipo_arma="sword", raridade=5),
+    }
+    assert elenco.avisos == []
+
+
+def test_monta_elementos_tipos_de_arma_e_armas_com_nome_pt() -> None:
+    elenco = montar_elenco(_elenco_fonte())
+
+    assert elenco.elementos == {"electro": Traducao(en="Electro", pt="Voltaico")}
+    assert elenco.tipos_arma == {"sword": Traducao(en="Sword", pt="Espada")}
+    assert elenco.armas == {"Unspoken Rue": ArmaImportada(nome_pt="Penumbra Abissal", tipo="sword", raridade=5)}
 
 
 @pytest.mark.parametrize(
