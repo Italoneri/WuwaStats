@@ -24,6 +24,14 @@ def test_resolve_nomes_pt_br_do_perfil_para_chaves_internas(data_dir_copia: Path
     assert perfil.base.pesos["basic_atk_dmg"] == 0.7
 
 
+def test_arma_assinatura_do_catalogo_vale_por_todos_os_nomes_dela(data_dir_copia: Path) -> None:
+    _editar(data_dir_copia, "characters.json", _suoming("armas_assinatura", ["Test Weapon"]))
+
+    assinatura = load_game_data(data_dir_copia).perfis["Suoming_DPS"].armas_assinatura
+
+    assert {"test weapon", "arma teste"} <= assinatura
+
+
 def test_resolve_armas_do_perfil_em_qualquer_idioma_para_a_chave_em_ingles(data_dir_copia: Path) -> None:
     armas = load_game_data(data_dir_copia).perfis["Suoming_DPS"].armas
 

@@ -348,3 +348,81 @@ class TestHistorico:
 
         assert resposta.status_code == 404
         assert cliente.get("/api/historico").json() == []
+
+
+class TestEditorDeBuilds:
+    def _perfil(self, cliente: TestClient, chave: str = "Suoming_DPS") -> dict[str, Any]:
+        return cliente.get("/api/perfis").json()[chave]
+
+    def test_lista_perfis_com_chaves_internas(self, cliente: TestClient) -> None:
+        perfil = self._perfil(cliente)
+
+        assert perfil["pesos"]["crit_rate"] == 1.0
+        assert perfil["principais"]["3"] == ["electro_dmg", "atk_pct"]
+        assert perfil["armas"]["alternativas"] == ["Alt Weapon"]
+        assert perfil["armas_assinatura"] == ["Test Weapon"]
+        assert perfil["variantes"][1] == {"condicao": {"arma_assinatura": False}, "set": "Moonlit Clouds"}
+
+    def test_salva_faz_backup_e_recarrega(self, cliente: TestClient, settings: Settings) -> None:
+        perfil = self._perfil(cliente) | {"regen_energia_min": 125}
+
+        resposta = cliente.put("/api/perfis/Suoming_DPS", json=perfil)
+
+        assert resposta.status_code == 200
+        builds = {b["chave"]: b for b in cliente.get("/api/builds").json()}
+        assert builds["Suoming_DPS"]["base"]["regen_energia_min"] == 125
+        assert len(list((settings.data_dir / "backups").glob("characters-*.json"))) == 1
+        gravado = json.loads((settings.data_dir / "characters.json").read_text(encoding="utf-8"))
+        assert next(iter(gravado["Suoming_DPS"])) == "personagem"
+
+    def test_perfil_salvo_pelo_editor_ainda_detecta_a_arma_pelo_nome_pt(self, cliente: TestClient) -> None:
+        cliente.put("/api/perfis/Suoming_DPS", json=self._perfil(cliente))
+
+        resposta = cliente.post(
+            "/api/extrair",
+            data={"build": "Suoming_DPS"},
+            files=[("echos", ("1.png", b"echo", "image/png")), ("personagem", ("tela.png", b"tela", "image/png"))],
+        )
+
+        assert resposta.json()["extracao"]["entrada"]["condicoes"] == {"arma_assinatura": True}
+
+    @pytest.mark.parametrize(
+        ("mudanca", "trecho"),
+        [
+            ({"pesos": {"Sorte": 1.0}}, "characters.json › Suoming_DPS › pesos › Sorte"),
+            ({"set": "Set Inexistente"}, "characters.json › Suoming_DPS › set"),
+            ({"regen_energia_min": 50}, "body › regen_energia_min"),
+            ({"custos": [4, 4, 4, 1, 1]}, "custo total 14"),
+        ],
+    )
+    def test_perfil_invalido_responde_422_e_nao_grava(
+        self, cliente: TestClient, settings: Settings, mudanca: dict[str, Any], trecho: str
+    ) -> None:
+        antes = (settings.data_dir / "characters.json").read_bytes()
+
+        resposta = cliente.put("/api/perfis/Suoming_DPS", json=self._perfil(cliente) | mudanca)
+
+        assert resposta.status_code == 422
+        assert any(trecho in erro for erro in resposta.json()["erros"])
+        assert (settings.data_dir / "characters.json").read_bytes() == antes
+
+    def test_cria_e_apaga_build(self, cliente: TestClient) -> None:
+        nova = self._perfil(cliente, "Suoming_SubDPS") | {"regen_energia_min": 130}
+
+        criada = cliente.put("/api/perfis/Suoming_Teste", json=nova)
+        apagada = cliente.delete("/api/perfis/Suoming_Teste")
+
+        assert criada.status_code == 200
+        assert apagada.status_code == 204
+        assert "Suoming_Teste" not in cliente.get("/api/perfis").json()
+        assert cliente.delete("/api/perfis/Suoming_Teste").status_code == 404
+
+    def test_chave_invalida_e_recusada(self, cliente: TestClient) -> None:
+        resposta = cliente.put("/api/perfis/build com espaço", json=self._perfil(cliente))
+
+        assert resposta.status_code == 422
+
+
+def test_pagina_pede_revalidacao_para_nao_usar_js_antigo(cliente: TestClient) -> None:
+    assert cliente.get("/comum.js").headers["cache-control"] == "no-cache"
+    assert cliente.get("/api/health").headers.get("cache-control") is None

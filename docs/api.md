@@ -433,6 +433,28 @@ cache do navegador não mostrar o antigo.
 `regen_total_informado` vêm da tela do personagem, se lida. Os que falharam devem ser preenchidos na análise.
 `409` se nenhum echo foi lido.
 
+## Editor de builds
+
+Edita os perfis de `data/characters.json`. O editor usa **chaves internas** (`crit_rate`, `Moonlit Clouds`,
+`Unspoken Rue`): sem ambiguidade de idioma nem de ATQ/ATQ%. Nomes em PT continuam aceitos no `PUT`.
+
+### `GET /api/perfis`
+
+`{ "<chave da build>": PerfilRaw }`, no formato do arquivo, com os nomes trocados pelas chaves. Campos ausentes não
+aparecem; numa variante, campo presente = substitui o da base.
+
+### `PUT /api/perfis/{chave}`
+
+Corpo: o perfil (mesmo formato). Cria ou substitui a build `chave` (letras, números, `_` ou `-`). O servidor valida o
+`characters.json` inteiro com o loader numa cópia dos dados. Se passar, copia o arquivo anterior para
+`data/backups/characters-<data>.json`, grava de forma atômica, recarrega os dados e devolve o perfil salvo.
+`422` com `erros` (`characters.json › <chave> › pesos › X: motivo` ou `body › regen_energia_min: motivo`); nesse caso
+nada é gravado.
+
+### `DELETE /api/perfis/{chave}`
+
+Apaga a build, com o mesmo backup e validação. `204`; `404` se não existe.
+
 ## Análises salvas
 
 Entradas corrigidas guardadas para reabrir depois e comparar o antes e o depois de trocar um echo, em

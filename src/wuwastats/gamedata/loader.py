@@ -198,11 +198,19 @@ class _Resolvedor:
         )
         return Perfil(
             personagem=self._nome(self.ressonador_names, raw.personagem, f"{onde} › personagem") or raw.personagem,
-            armas_assinatura=frozenset(fold(arma) for arma in raw.armas_assinatura),
+            armas_assinatura=self._armas_assinatura(raw.armas_assinatura),
             base=self._spec(raw, onde),
             variantes=tuple(v for v in variantes if v is not None),
             armas=self._armas(raw.armas, f"{onde} › armas") if raw.armas else None,
         )
+
+    def _armas_assinatura(self, nomes: list[str]) -> frozenset[str]:
+        """A tela do personagem mostra a arma em PT: uma arma do catálogo vale por todos os nomes dela."""
+        todos: set[str] = set()
+        for nome in nomes:
+            chave = self.arma_names.resolve(nome)
+            todos |= {nome, *((chave, *self.arma_names.aliases_by_key.get(chave, ())) if chave else ())}
+        return frozenset(fold(nome) for nome in todos)
 
     def _armas(self, raw: ArmasPerfilRaw, onde: str) -> ArmasPerfil:
         alternativas = (self._nome(self.arma_names, nome, f"{onde} › alternativas") for nome in raw.alternativas)

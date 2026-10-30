@@ -78,7 +78,12 @@ function semBuild(personagem) {
     { class: "vazio-msg" },
     el("strong", {}, "Sem build cadastrada"),
     el("p", {}, `${personagem.nome} ainda não tem perfil em data/characters.json, então os echos não podem ser avaliados.`),
-    el("a", { class: "chip on", href: "index.html" }, "Ver outros personagens"),
+    el(
+      "span",
+      { style: { display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" } },
+      el("a", { class: "chip on", href: `perfis.html?novo=${encodeURIComponent(personagem.chave)}` }, "Criar build"),
+      el("a", { class: "chip", href: "index.html" }, "Ver outros personagens"),
+    ),
   );
 }
 
@@ -97,7 +102,12 @@ function conteudoBuild(build, { rotulo }, redesenhar) {
       "div",
       { class: "btitle" },
       el("h2", {}, el("span", { class: "bar", "aria-hidden": "true" }), build.chave.replaceAll("_", " ")),
-      el("a", { class: "chip on", href: `captura.html?build=${encodeURIComponent(build.chave)}` }, "Avaliar meus echos ", el("span", { "aria-hidden": "true" }, "→")),
+      el(
+        "span",
+        { style: { display: "flex", flexWrap: "wrap", gap: "10px" } },
+        el("a", { class: "chip", href: `perfis.html?build=${encodeURIComponent(build.chave)}` }, "Editar build"),
+        el("a", { class: "chip on", href: `captura.html?build=${encodeURIComponent(build.chave)}` }, "Avaliar meus echos ", el("span", { "aria-hidden": "true" }, "→")),
+      ),
     ),
     build.variantes.length ? seletorDeVariante(build, escolhida, redesenhar) : null,
     el("div", { class: "tables" }, tabelaConstrucao(build, perfil, rotulo), tabelaEstatisticas(perfil, rotulo)),

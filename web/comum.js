@@ -33,6 +33,11 @@ export const api = {
     ler: (id) => pedir(`/api/historico/${encodeURIComponent(id)}`),
     apagar: (id) => pedir(`/api/historico/${encodeURIComponent(id)}`, { method: "DELETE" }),
   },
+  perfis: {
+    listar: () => pedir("/api/perfis"),
+    salvar: (chave, perfil) => pedir(`/api/perfis/${encodeURIComponent(chave)}`, json("PUT", perfil)),
+    apagar: (chave) => pedir(`/api/perfis/${encodeURIComponent(chave)}`, { method: "DELETE" }),
+  },
   imagens: () => pedir("/api/imagens"),
   enviarImagem: (categoria, chave, arquivo) => {
     const form = new FormData();
@@ -112,6 +117,7 @@ export const ICONES = {
   personagens: ["M2.5 20a6.5 6.5 0 0 1 13 0", "M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6 6 0 0 1 3.5 5.5", "M9 4.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"],
   captura: ["M4 8h3l2-3h6l2 3h3v11H4z", "M12 9.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"],
   analise: "M4 20V10M10 20V4M16 20v-7M22 20H2",
+  builds: ["M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3", "M1 14h6M9 8h6M17 16h6"],
   voltar: "M19 12H5M11 6l-6 6 6 6",
   busca: ["M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14z", "m20 20-3.5-3.5"],
   filtro: "M3 5h18l-7 8.5V20l-4-2v-4.5z",
@@ -243,6 +249,7 @@ const PAGINAS = [
   { id: "personagens", href: "index.html", rotulo: "Personagens" },
   { id: "captura", href: "captura.html", rotulo: "Captura" },
   { id: "analise", href: "analise.html", rotulo: "Análise" },
+  { id: "builds", href: "perfis.html", rotulo: "Editor de builds" },
 ];
 
 /** Monta a barra lateral e devolve o <main> onde a página desenha. */

@@ -49,6 +49,16 @@ A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura
   F1–F24, A–Z, 0–9, Num0–Num9). A página mostra as teclas configuradas.
 - Se mesmo assim os atalhos não responderem com o jogo em foco, rode o servidor num terminal como administrador.
 
+### Mais na interface
+
+- **Editor de builds** (menu lateral): pesos com sliders, Regen mínima, custos, principais, set, echo principal, armas e
+  variantes. Salvar valida com o mesmo loader dos dados, guarda o arquivo anterior em `data/backups/` e recarrega.
+- **Imagens**: passe o mouse no retrato do personagem, na arma ou no echo e clique na câmera para enviar uma imagem
+  (PNG/JPEG/WebP até 5 MB). Ficam em `data/imagens/`.
+- **Histórico**: na Análise, "Salvar análise" guarda a entrada corrigida em `data/historico/`; depois dá para reabrir e
+  comparar o antes e o depois de trocar um echo.
+- `data/imagens/`, `data/historico/` e `data/backups/` estão no `.gitignore` (dados pessoais).
+
 ## Dados de jogo
 
 Tudo em `data/`, editável à mão:

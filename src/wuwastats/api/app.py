@@ -2,7 +2,7 @@
 
 import sys
 import tempfile
-from collections.abc import AsyncIterator, Callable
+from collections.abc import AsyncIterator, Awaitable, Callable
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -10,7 +10,7 @@ from typing import Annotated, Literal
 
 from fastapi import Depends, FastAPI, File, Form, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from wuwastats.api.captura import rotas_captura
@@ -27,6 +27,7 @@ from wuwastats.api.contracts import (
 )
 from wuwastats.api.historico import rotas_historico
 from wuwastats.api.imagens import rotas_imagens
+from wuwastats.api.perfis import rotas_perfis
 from wuwastats.api.repositorio import RepositorioDados
 from wuwastats.captura.servico import (
     CapturaFalhou,
@@ -49,6 +50,7 @@ from wuwastats.gamedata.aliases import AliasInvalido
 from wuwastats.gamedata.historico import AnaliseSalvaInexistente, HistoricoAnalises
 from wuwastats.gamedata.imagens import ImagemInexistente, ImagemRecusada, ImagensDoCatalogo
 from wuwastats.gamedata.loader import GameDataError
+from wuwastats.gamedata.perfis import ChaveDeBuildInvalida, PerfilInexistente
 from wuwastats.vision.cache import CacheVisao
 from wuwastats.vision.client import ConfiguracaoAusente, ModeloVisao, criar_modelo_nvidia
 from wuwastats.vision.extract import Extrator, PedidoExtracao, extrair_build
@@ -74,6 +76,8 @@ STATUS_POR_ERRO: dict[type[Exception], int] = {
     ImagemInexistente: 404,
     ImagemRecusada: 422,
     AnaliseSalvaInexistente: 404,
+    PerfilInexistente: 404,
+    ChaveDeBuildInvalida: 422,
 }
 
 
@@ -127,6 +131,11 @@ def criar_app(
     @app.exception_handler(ErroApi)
     def _erro_api(_request: Request, erro: ErroApi) -> JSONResponse:
         return JSONResponse(status_code=erro.status, content=erro.corpo.model_dump())
+
+    @app.exception_handler(GameDataError)
+    def _dados_invalidos(_request: Request, erro: GameDataError) -> JSONResponse:
+        corpo = Erro(mensagem="os dados não passaram na validação; nada foi gravado", erros=erro.erros)
+        return JSONResponse(status_code=422, content=corpo.model_dump())
 
     for tipo, status in STATUS_POR_ERRO.items():
         app.add_exception_handler(tipo, _responder_com(status))
@@ -200,8 +209,17 @@ def criar_app(
         return _perfil(repositorio.dados, build)
 
     app.include_router(rotas_historico(HistoricoAnalises(configuracao.data_dir), perfil_da_build, lambda: repositorio.dados))
+    app.include_router(rotas_perfis(repositorio))
     app.include_router(rotas_imagens(ImagensDoCatalogo(configuracao.data_dir), lambda: repositorio.dados))
     app.include_router(rotas_captura(captura, perfil_da_build, teclas))
+
+    @app.middleware("http")
+    async def _pagina_sempre_atual(request: Request, seguir: Callable[[Request], Awaitable[Response]]) -> Response:
+        """Sem isso o navegador reaproveita JS/CSS antigos depois de uma atualização (cache heurístico)."""
+        resposta = await seguir(request)
+        if not request.url.path.startswith("/api/"):
+            resposta.headers.setdefault("Cache-Control", "no-cache")
+        return resposta
 
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")
