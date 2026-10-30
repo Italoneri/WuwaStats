@@ -256,11 +256,29 @@ function adicionarEchoVazio() {
   escreverEntrada(entrada);
 }
 
+// Link aberto pelo scripts/captura.py (F10): #entrada=<EntradaBuild em JSON, codificado para URL>.
+function entradaDoLink() {
+  const prefixo = "#entrada=";
+  if (!location.hash.startsWith(prefixo)) return null;
+  try {
+    return JSON.parse(decodeURIComponent(location.hash.slice(prefixo.length)));
+  } catch (erro) {
+    status(`Entrada do link inválida: ${erro.message}`, true);
+    return null;
+  }
+}
+
 async function iniciar() {
   try {
     const [builds] = await Promise.all([api.builds(), carregarCatalogo()]);
     $("build").replaceChildren(...builds.map((b) => el("option", { value: b.chave }, `${b.personagem} — ${b.chave}`)));
-    escreverEntrada({ build: $("build").value, condicoes: {}, regen_externa: 0, echos: [] });
+    const doLink = entradaDoLink();
+    if (doLink) {
+      $("build").value = doLink.build;
+      $("regen-externa").value = doLink.regen_externa ?? 0;
+    }
+    escreverEntrada(doLink ?? { build: $("build").value, condicoes: {}, regen_externa: 0, echos: [] });
+    if (doLink) await analisarEntrada();
   } catch (erro) {
     status(erro.message, true);
   }

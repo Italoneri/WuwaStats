@@ -26,6 +26,30 @@ uvx ruff check src scripts && uvx pyright src scripts
 Respostas da IA ficam em `cache/vision/` por hash da imagem + modelo: reprocessar o mesmo print não gasta crédito.
 Prints que falharem aparecem no resumo com o motivo; preencha esses echos à mão no JSON.
 
+### Captura por atalho (Windows)
+
+`scripts/captura.py` fica rodando num terminal enquanto você joga e tira os prints sem sair do jogo:
+
+```bash
+uv run python scripts/captura.py Suoming --build Suoming_DPS   # --build é opcional se o personagem tiver uma build só
+```
+
+| Tecla | O que faz |
+|---|---|
+| F8 | print do echo aberto → `input/<personagem>/echo_N.png` (N em sequência, até 5; o 1º é o echo principal) |
+| F9 | print da tela do personagem (arma e regen total) → `input/<personagem>/personagem.png` (substitui o anterior) |
+| F10 | roda `extract` na pasta, grava `entrada.json`, sobe a API se ela não estiver no ar e abre a análise no navegador |
+| Ctrl+C | encerra (e derruba a API, se foi o script que subiu) |
+
+- Bipe agudo = salvo; dois bipes graves = erro (a mensagem aparece no terminal).
+- Só a área interna da janela cujo título é exatamente `Wuthering Waves` é capturada, e só com o jogo em primeiro plano.
+  Se o título for outro, o erro lista janelas parecidas; use `--titulo`.
+- Use o jogo em modo janela ou tela cheia sem bordas: em tela cheia exclusiva o print pode sair preto.
+- O script só lê a tela. Escuta F8–F10 com `RegisterHotKey`, e por isso essas teclas não chegam ao jogo enquanto ele estiver
+  rodando. Ele nunca envia cliques nem teclas ao jogo, e um teste falha se alguém incluir uma API que faça isso.
+- Para refazer um print de echo, apague o arquivo e aperte F8 de novo: o próximo número livre é usado.
+- Se os atalhos não responderem com o jogo em foco, rode o terminal como administrador.
+
 ## Dados de jogo
 
 Tudo em `data/`, editável à mão:
