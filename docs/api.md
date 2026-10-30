@@ -433,6 +433,25 @@ cache do navegador não mostrar o antigo.
 `regen_total_informado` vêm da tela do personagem, se lida. Os que falharam devem ser preenchidos na análise.
 `409` se nenhum echo foi lido.
 
+## Imagens do catálogo
+
+Imagens de personagens, echos e armas enviadas pelo usuário, em `data/imagens/<categoria>/<chave>.png`.
+`categoria` ∈ `personagens`, `echoes`, `armas`; `chave` é a chave do catálogo (`Suoming`,
+`Reminiscence: Suhsin the Inevitable`, `Unspoken Rue`), codificada na URL. Chave fora do catálogo: `404`.
+
+### `GET /api/imagens`
+
+Quais chaves têm imagem: `{ "personagens": ["Suoming"], "echoes": [], "armas": [] }`. As outras usam placeholder.
+
+### `GET /api/imagens/{categoria}/{chave}`
+
+A imagem (PNG). `404` se não há imagem. Vem com `Cache-Control: no-cache`, então o navegador revalida depois de uma troca.
+
+### `PUT /api/imagens/{categoria}/{chave}`
+
+`multipart/form-data` com `arquivo`: PNG, JPEG ou WebP, até 5 MB. A imagem é regravada como PNG, com no máximo
+1024 px no maior lado. Substitui a anterior. `204`; `422` se o arquivo não é uma imagem aceita.
+
 ## `POST /api/aliases`
 
 Mapeia um nome lido para uma chave e grava em `data/stat_aliases.json`. Idempotente.

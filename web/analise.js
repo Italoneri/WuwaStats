@@ -1,7 +1,7 @@
 // Tela 4 · Análise: POST /api/analisar a cada mudança na entrada. A entrada vem da sessão de captura ou do envio manual.
 
 import {
-  ICONES, QUALIDADES, ampliar, api, avisoErro, corNota, el, elemento, estrelas, formatarValor, icone, iconeStat, lembrarPagina, moldura,
+  ICONES, QUALIDADES, ampliar, api, avisoErro, carregarImagens, corNota, el, figura, elemento, estrelas, formatarValor, icone, iconeStat, lembrarPagina, moldura,
   parametro, perguntaCondicao, qualidade, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
@@ -34,7 +34,7 @@ async function carregar() {
   try {
     estado.fonte = fonteDaUrl();
     if (!estado.fonte) return desenharSemEntrada();
-    const [builds, personagens, catalogo, origem] = await Promise.all([api.builds(), api.personagens(), api.catalogo(), carregarOrigem()]);
+    const [builds, personagens, catalogo, origem] = await Promise.all([api.builds(), api.personagens(), api.catalogo(), carregarOrigem(), carregarImagens()]);
     Object.assign(estado, origem);
     estado.rotulo = rotulador(catalogo);
     estado.build = builds.find((b) => b.chave === estado.entrada.build);
@@ -192,7 +192,7 @@ function colunaEsquerda(analise) {
   return el(
     "div",
     { style: { display: "flex", flexDirection: "column", gap: "16px" } },
-    el("div", { class: "ph", style: { width: "100%", aspectRatio: "4 / 5", borderRadius: "14px", placeItems: "end center", overflow: "hidden", borderColor: "#3A2F52" } }, silhueta(cor, "", "80%")),
+    el("div", { class: "ph", style: { width: "100%", aspectRatio: "4 / 5", borderRadius: "14px", placeItems: "end center", overflow: "hidden", borderColor: "#3A2F52" } }, figura("personagens", estado.personagem?.chave, silhueta(cor, "", "80%"), { trocavel: true, rotulo: estado.personagem?.nome })),
     painelArma(),
     botaoPrintPersonagem(),
     el(
@@ -222,7 +222,7 @@ function painelArma() {
   return el(
     "div",
     { class: "panel", style: { padding: "16px", display: "flex", gap: "14px", alignItems: "center" } },
-    el("span", { class: "ph", style: { width: "60px", height: "60px", borderRadius: "10px" } }, icone(ICONES.imagem, 24)),
+    el("span", { class: "ph", style: { width: "60px", height: "60px", borderRadius: "10px", overflow: "hidden" } }, figura("armas", arma?.chave, icone(ICONES.imagem, 24), { trocavel: true, rotulo: leitura?.arma })),
     el(
       "div",
       { style: { display: "flex", flexDirection: "column", gap: "3px", minWidth: 0 } },
@@ -370,7 +370,7 @@ function cartaoEcho(echo) {
       el(
         "span",
         { class: "ph eimg" },
-        icone(ICONES.echo, 26, { espessura: 1.6, cor: "#6E5C96" }),
+        figura("echoes", echo.nome, icone(ICONES.echo, 26, { espessura: 1.6, cor: "#6E5C96" }), { trocavel: true, rotulo: nome }),
         el("span", { class: `seti${echo.set ? "" : " unk"}`, title: nomeSet }, icone(ICONES.sonata, 11, { espessura: 2.4 })),
         el("span", { class: "costcorner" }, String(echo.custo)),
       ),

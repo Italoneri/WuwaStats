@@ -27,6 +27,12 @@ export const api = {
   analisar: (entrada) => pedir("/api/analisar", json("POST", entrada)),
   extrair: (form) => pedir("/api/extrair", { method: "POST", body: form }),
   mapear: (pedido) => pedir("/api/aliases", json("POST", pedido)),
+  imagens: () => pedir("/api/imagens"),
+  enviarImagem: (categoria, chave, arquivo) => {
+    const form = new FormData();
+    form.append("arquivo", arquivo);
+    return pedir(`/api/imagens/${categoria}/${encodeURIComponent(chave)}`, { method: "PUT", body: form });
+  },
   captura: {
     teclas: () => pedir("/api/captura/teclas"),
     iniciar: (build) => pedir("/api/captura/iniciar", json("POST", { build })),
@@ -306,4 +312,59 @@ export function miniaturaAmpliavel(src, legenda, reserva, classe = "") {
   const imagem = el("img", { src, alt: "", loading: "lazy", onerror: () => botao.replaceWith(reserva) });
   botao.append(imagem);
   return botao;
+}
+
+// ---------- Imagens do catálogo (personagens, echos, armas) ----------
+
+const imagensDisponiveis = { personagens: new Set(), echoes: new Set(), armas: new Set() };
+const versaoImagem = new Map(); // força o navegador a buscar de novo depois de trocar
+
+export async function carregarImagens() {
+  try {
+    const lista = await api.imagens();
+    for (const [categoria, chaves] of Object.entries(lista)) imagensDisponiveis[categoria] = new Set(chaves);
+  } catch (erro) {
+    console.warn("imagens: lista indisponível; usando placeholders", erro);
+  }
+}
+
+const srcImagem = (categoria, chave) => `/api/imagens/${categoria}/${encodeURIComponent(chave)}?v=${versaoImagem.get(`${categoria}/${chave}`) ?? 0}`;
+
+/** Imagem do catálogo quando existe, senão o placeholder. Com `trocavel`, um botão envia outra imagem. */
+export function figura(categoria, chave, reserva, { trocavel = false, rotulo = chave } = {}) {
+  const caixa = el("div", { class: "figura" });
+  const desenhar = () => {
+    const tem = chave && imagensDisponiveis[categoria].has(chave);
+    const conteudo = tem ? el("img", { class: "foto", src: srcImagem(categoria, chave), alt: rotulo ?? "", loading: "lazy" }) : reserva;
+    caixa.replaceChildren(conteudo, trocavel && chave ? botaoTrocar(categoria, chave, rotulo, caixa, desenhar) : null);
+  };
+  desenhar();
+  return caixa;
+}
+
+function botaoTrocar(categoria, chave, rotulo, caixa, redesenhar) {
+  const entrada = el("input", {
+    class: "sr",
+    type: "file",
+    accept: "image/png,image/jpeg,image/webp",
+    onchange: async (e) => {
+      const arquivo = e.target.files[0];
+      if (!arquivo) return;
+      try {
+        await api.enviarImagem(categoria, chave, arquivo);
+        imagensDisponiveis[categoria].add(chave);
+        versaoImagem.set(`${categoria}/${chave}`, Date.now());
+        redesenhar();
+      } catch (erro) {
+        caixa.title = erro.message;
+        caixa.classList.add("figura-erro");
+      }
+    },
+  });
+  return el(
+    "label",
+    { class: "trocar", title: "Trocar imagem", "aria-label": `Trocar imagem de ${rotulo}` },
+    entrada,
+    icone(ICONES.captura, 15, { espessura: 2 }),
+  );
 }

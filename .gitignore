@@ -8,6 +8,11 @@ input/
 fotos/
 cache/
 
+# Dados pessoais gerados pela interface: imagens enviadas, análises salvas, backups do editor de builds
+data/imagens/
+data/historico/
+data/backups/
+
 # Python
 .venv/
 __pycache__/

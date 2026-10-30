@@ -1,7 +1,7 @@
 // Tela 2 · Personagem: perfis de GET /api/builds e, dentro de cada um, as variantes por condição.
 
 import {
-  ICONES, api, avisoErro, el, elemento, estrelas, icone, iconeArma, moldura, parametro, rotulador, rotuloCondicao, silhueta,
+  ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, figura, icone, iconeArma, moldura, parametro, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
 // Peso → estrelas de prioridade. Peso 0 não aparece: a build ignora o status.
@@ -18,7 +18,7 @@ carregar();
 
 async function carregar() {
   try {
-    const [personagens, builds, catalogo] = await Promise.all([api.personagens(), api.builds(), api.catalogo()]);
+    const [personagens, builds, catalogo] = await Promise.all([api.personagens(), api.builds(), api.catalogo(), carregarImagens()]);
     const chave = parametro("nome");
     const personagem = personagens.find((p) => p.chave === chave);
     if (!personagem) throw new Error(`Personagem '${chave ?? ""}' não encontrado.`);
@@ -53,7 +53,7 @@ function cabecalho({ personagem, builds }) {
     el(
       "div",
       { class: "ph", style: { width: "208px", height: "260px", borderRadius: "14px", borderColor: personagem.raridade === 5 ? "#6B5A2E" : "#3A2F52", placeItems: "end center", overflow: "hidden" } },
-      silhueta(cor.cor, "", "78%"),
+      figura("personagens", personagem.chave, silhueta(cor.cor, "", "78%"), { trocavel: true, rotulo: personagem.nome }),
     ),
     el(
       "div",
@@ -142,13 +142,13 @@ function tabelaConstrucao(build, perfil, rotulo) {
     el("div", { class: "thead" }, "Construção"),
     linha(
       "Melhor arma",
-      el("span", { class: "ph", style: { width: "40px", height: "40px", borderRadius: "8px" } }, icone(ICONES.imagem, 18)),
+      el("span", { class: "ph", style: { width: "40px", height: "40px", borderRadius: "8px", overflow: "hidden" } }, figura("armas", armas?.melhor, icone(ICONES.imagem, 18), { trocavel: true, rotulo: rotulo.arma(armas?.melhor) })),
       armas?.melhor ? el("span", { class: "lilac" }, rotulo.arma(armas.melhor)) : mudo("Não cadastrada"),
     ),
     linha(
       "Armas alternativas",
       alternativas.length
-        ? el("div", { class: "alts" }, alternativas.map((a) => el("span", { class: "alt" }, el("span", { class: "ph", style: { width: "26px", height: "26px", borderRadius: "6px" } }), rotulo.arma(a))))
+        ? el("div", { class: "alts" }, alternativas.map((a) => el("span", { class: "alt" }, el("span", { class: "ph", style: { width: "26px", height: "26px", borderRadius: "6px", overflow: "hidden" } }, figura("armas", a, null)), rotulo.arma(a))))
         : mudo("Nenhuma cadastrada"),
     ),
     linha(
@@ -159,7 +159,7 @@ function tabelaConstrucao(build, perfil, rotulo) {
     linha("Padrão de custo", el("span", { style: { display: "flex", gap: "8px" } }, perfil.custos.map((c) => el("span", { class: "cost" }, String(c))))),
     linha(
       "Eco Principal",
-      el("span", { class: "ph echoic" }, icone(ICONES.echo, 18), el("span", { class: "costcorner", "aria-label": "Custo 4" }, "4")),
+      el("span", { class: "ph echoic" }, figura("echoes", perfil.echo_principal, icone(ICONES.echo, 18), { trocavel: true, rotulo: rotulo.echo(perfil.echo_principal) }), el("span", { class: "costcorner", "aria-label": "Custo 4" }, "4")),
       perfil.echo_principal ? el("strong", {}, rotulo.echo(perfil.echo_principal)) : mudo("Livre"),
     ),
   );

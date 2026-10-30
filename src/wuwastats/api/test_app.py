@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 from wuwastats.api.app import criar_app
 from wuwastats.config import Settings
 from wuwastats.conftest import FIXTURES, TelaFalsa
+from wuwastats.gamedata.test_imagens import imagem
 from wuwastats.vision.client import ConfiguracaoAusente, ModeloVisao
 from wuwastats.vision.image import Imagem
 
@@ -282,3 +283,31 @@ class TestCaptura:
 
         assert resposta.status_code == 503
         assert tela.escutas == []
+
+
+class TestImagens:
+    def test_envia_lista_e_serve_a_imagem(self, cliente: TestClient) -> None:
+        png = imagem("JPEG")
+
+        envio = cliente.put("/api/imagens/personagens/Suoming", files={"arquivo": ("s.jpg", png, "image/jpeg")})
+        lista = cliente.get("/api/imagens").json()
+        servida = cliente.get("/api/imagens/personagens/Suoming")
+
+        assert envio.status_code == 204
+        assert lista == {"personagens": ["Suoming"], "echoes": [], "armas": []}
+        assert (servida.status_code, servida.headers["content-type"]) == (200, "image/png")
+        assert servida.content.startswith(b"\x89PNG")
+
+    @pytest.mark.parametrize(
+        ("metodo", "caminho", "arquivo", "status"),
+        [
+            ("get", "/api/imagens/personagens/Suoming", None, 404),
+            ("put", "/api/imagens/personagens/Ninguem", imagem("PNG"), 404),
+            ("put", "/api/imagens/sets/Moonlit Clouds", imagem("PNG"), 422),
+            ("put", "/api/imagens/armas/Test Weapon", b"texto", 422),
+        ],
+    )
+    def test_erros(self, cliente: TestClient, metodo: str, caminho: str, arquivo: bytes | None, status: int) -> None:
+        arquivos = {"arquivo": ("a.png", arquivo, "image/png")} if arquivo is not None else None
+
+        assert cliente.request(metodo, caminho, files=arquivos).status_code == status

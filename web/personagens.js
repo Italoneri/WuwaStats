@@ -1,6 +1,6 @@
 // Tela 1 · Personagens: lista de GET /api/personagens com busca e filtros.
 
-import { ICONES, api, avisoErro, el, elemento, estrelas, icone, iconeArma, moldura, silhueta } from "./comum.js";
+import { ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, figura, icone, iconeArma, moldura, silhueta } from "./comum.js";
 
 const TODOS = "todos";
 const filtros = { el: TODOS, wp: TODOS, rar: TODOS, q: "", aberto: false };
@@ -11,7 +11,8 @@ carregar();
 
 async function carregar() {
   try {
-    personagens = ordenar(await api.personagens());
+    const [lista] = await Promise.all([api.personagens(), carregarImagens()]);
+    personagens = ordenar(lista);
     desenhar();
   } catch (erro) {
     principal.replaceChildren(el("div", { class: "wrap" }, avisoErro(erro)));
@@ -165,7 +166,7 @@ function cartao(p) {
     el(
       "div",
       { class: `portrait${p.raridade === 5 ? " r5" : ""}` },
-      silhueta(cor.cor),
+      figura("personagens", p.chave, silhueta(cor.cor), { rotulo: p.nome }),
       el("span", { class: "badge el", title: p.elemento.nome }, icone(cor.d, 16, { espessura: 2, cor: cor.cor })),
       el("span", { class: "badge wp", title: p.tipo_arma.nome }, icone(iconeArma(p.tipo_arma.chave), 16)),
     ),
