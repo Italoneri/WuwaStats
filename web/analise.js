@@ -23,6 +23,10 @@ const estado = {
   edicao: null, // { echo, sub } (sub = índice novo para adicionar) | { echo, completo: true } | { novo: true }
   mapeados: [],
   erro: null,
+  salvas: [], // análises salvas desta build
+  comparacao: null, // { salva, analise } da análise salva escolhida para comparar
+  apagando: null, // id aguardando a confirmação de apagar
+  avisoHistorico: null,
 };
 
 const principal = moldura("analise");
@@ -39,6 +43,7 @@ async function carregar() {
     estado.rotulo = rotulador(catalogo);
     estado.build = builds.find((b) => b.chave === estado.entrada.build);
     estado.personagem = personagens.find((p) => p.chave === estado.build?.personagem);
+    estado.salvas = await api.historico.listar(estado.entrada.build);
     lembrarPagina("analise", `analise.html${location.search}`);
     await reanalisar();
   } catch (erro) {
@@ -49,17 +54,23 @@ async function carregar() {
 function fonteDaUrl() {
   const sessao = parametro("sessao");
   if (sessao) return { tipo: "sessao", id: sessao };
+  const historico = parametro("historico");
+  if (historico) return { tipo: "historico", id: historico };
   return parametro("origem") === "upload" ? { tipo: "upload" } : null;
 }
 
 function chaveEdicoes() {
-  return `wuwastats:analise:${estado.fonte.tipo === "sessao" ? estado.fonte.id : "upload"}`;
+  return `wuwastats:analise:${estado.fonte.tipo === "upload" ? "upload" : `${estado.fonte.tipo}-${estado.fonte.id}`}`;
 }
 
 /** Edições anteriores (mesma sessão/envio) têm prioridade sobre o que veio do servidor. */
 async function carregarOrigem() {
   const salvo = lerSessao(chaveEdicoes());
   if (salvo) return salvo;
+  if (estado.fonte.tipo === "historico") {
+    const salva = await api.historico.ler(estado.fonte.id);
+    return { entrada: salva.entrada, leitura: salva.leitura, prints: null };
+  }
   if (estado.fonte.tipo === "upload") {
     const extracao = lerSessao(CHAVE_UPLOAD);
     if (!extracao?.entrada) throw new Error("O envio manual não está mais disponível. Envie os prints de novo na Captura.");
@@ -127,7 +138,11 @@ function voltar() {
   return el("a", { class: "back", href: `captura.html?build=${encodeURIComponent(build)}${sessao}` }, icone(ICONES.voltar, 18, { espessura: 2 }), "Voltar para a captura");
 }
 
-function desenharSemEntrada() {
+async function desenharSemEntrada() {
+  const salvas = await api.historico.listar().catch((erro) => {
+    console.warn("histórico indisponível", erro);
+    return [];
+  });
   principal.replaceChildren(
     el(
       "div",
@@ -137,9 +152,17 @@ function desenharSemEntrada() {
         "div",
         { class: "vazio-msg" },
         el("strong", {}, "Nenhuma análise aberta"),
-        el("p", {}, "Capture os echos (F8/F9) ou envie os prints na página de Captura."),
+        el("p", {}, "Capture os echos ou envie os prints na página de Captura, ou reabra uma análise salva."),
         el("a", { class: "chip on", href: "captura.html" }, "Ir para a captura"),
       ),
+      salvas.length
+        ? el(
+            "section",
+            { class: "panel", style: { padding: "22px", marginTop: "24px" } },
+            el("h2", { class: "label" }, "Análises salvas"),
+            el("ul", { class: "salvas" }, salvas.map((s) => el("li", {}, el("strong", {}, s.nome), resumoSalva(s), el("span", { class: "acoes" }, el("a", { class: "btn sm", href: `analise.html?historico=${encodeURIComponent(s.id)}` }, "Abrir"))))),
+          )
+        : null,
     ),
   );
 }
@@ -159,6 +182,7 @@ function desenhar() {
       estado.erro ? avisoErro(new Error(estado.erro)) : null,
       analise ? folha(analise) : null,
       analise ? abaixo(analise) : null,
+      analise ? historico() : null,
     ),
   );
 }
@@ -647,4 +671,136 @@ function condicao(chave, analise) {
     el("div", { style: { display: "flex", gap: "8px" }, role: "group", "aria-label": perguntaCondicao(chave) }, botao(true, "Sim"), botao(false, "Não")),
     el("p", { style: { margin: "12px 0 0", fontSize: "13px", color: "var(--mudo)" } }, nota),
   );
+}
+
+// ---------- Histórico: salvar, reabrir e comparar ----------
+
+const dataCurta = (iso) => new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+
+function resumoSalva(s) {
+  return [
+    el("span", { class: "quando" }, `${s.build.replaceAll("_", " ")} · ${dataCurta(s.criado_em)}`),
+    el("span", { class: "mono" }, `${s.score_medio_pct.toFixed(1)}`),
+    el("span", { class: "grade", style: { fontSize: "18px", color: corNota(s.nota_media) } }, s.nota_media),
+  ];
+}
+
+function historico() {
+  return el(
+    "section",
+    { class: "panel historico", "aria-labelledby": "hist-t" },
+    el(
+      "div",
+      {},
+      el("h2", { id: "hist-t", style: { margin: 0, fontSize: "18px", fontWeight: 800 } }, "Histórico desta build"),
+      el("p", { style: { margin: "4px 0 0", fontSize: "13px", color: "var(--mudo)" } }, "Salve a análise antes de trocar um echo para comparar o antes e o depois."),
+      formularioSalvar(),
+      estado.avisoHistorico ? el("p", { style: { margin: "10px 0 0", fontSize: "14px", color: "var(--verde)" } }, estado.avisoHistorico) : null,
+      estado.salvas.length ? el("ul", { class: "salvas" }, estado.salvas.map(linhaSalva)) : el("p", { style: { margin: "14px 0 0", fontSize: "14px", color: "var(--mudo)" } }, "Nenhuma análise salva desta build."),
+    ),
+    el("div", {}, estado.comparacao ? tabelaComparacao() : el("p", { style: { margin: 0, fontSize: "14px", color: "var(--mudo)" } }, "Escolha uma análise salva e clique em Comparar.")),
+  );
+}
+
+function formularioSalvar() {
+  const nome = el("input", { class: "campo", maxlength: "80", placeholder: "Nome (opcional), ex.: antes de trocar o echo 5", "aria-label": "Nome da análise" });
+  const salvar = async () => {
+    try {
+      const resumo = await api.historico.salvar({ nome: nome.value, entrada: estado.entrada, leitura: estado.leitura });
+      estado.salvas = [resumo, ...estado.salvas];
+      estado.avisoHistorico = `✓ Salva como "${resumo.nome}".`;
+    } catch (erro) {
+      estado.erro = erro.message;
+    }
+    desenhar();
+  };
+  return el("div", { class: "salvar", onkeydown: (e) => e.key === "Enter" && salvar() }, nome, el("button", { class: "btn sm on", type: "button", onclick: salvar }, "Salvar análise"));
+}
+
+function linhaSalva(s) {
+  const comparando = estado.comparacao?.salva.id === s.id;
+  const confirmando = estado.apagando === s.id;
+  return el(
+    "li",
+    {},
+    el("strong", {}, s.nome),
+    resumoSalva(s),
+    el(
+      "span",
+      { class: "acoes" },
+      el("button", { class: `btn sm${comparando ? " on" : ""}`, type: "button", "aria-pressed": String(comparando), onclick: () => comparar(s) }, "Comparar"),
+      el("a", { class: "btn sm", href: `analise.html?historico=${encodeURIComponent(s.id)}` }, "Abrir"),
+      el("button", { class: "btn sm", type: "button", onclick: () => apagar(s, confirmando) }, confirmando ? "Confirmar" : "Apagar"),
+    ),
+  );
+}
+
+async function comparar(resumo) {
+  if (estado.comparacao?.salva.id === resumo.id) {
+    estado.comparacao = null;
+    return desenhar();
+  }
+  try {
+    const salva = await api.historico.ler(resumo.id);
+    estado.comparacao = { salva, analise: await api.analisar(salva.entrada) };
+  } catch (erro) {
+    estado.erro = erro.message;
+  }
+  desenhar();
+}
+
+async function apagar(resumo, confirmado) {
+  if (!confirmado) {
+    estado.apagando = resumo.id;
+    return desenhar();
+  }
+  try {
+    await api.historico.apagar(resumo.id);
+    estado.salvas = estado.salvas.filter((s) => s.id !== resumo.id);
+    if (estado.comparacao?.salva.id === resumo.id) estado.comparacao = null;
+  } catch (erro) {
+    estado.erro = erro.message;
+  }
+  estado.apagando = null;
+  desenhar();
+}
+
+function tabelaComparacao() {
+  const { salva, analise: antes } = estado.comparacao;
+  const agora = estado.analise;
+  const r = estado.rotulo;
+  const nomeEcho = (e) => (e ? r.echo(e.nome) ?? e.nome_lido ?? "Echo sem nome" : "—");
+  const linhas = [
+    ["Score médio", antes.conjunto.score_medio_pct, agora.conjunto.score_medio_pct, `${antes.conjunto.nota_media} → ${agora.conjunto.nota_media}`],
+    ["CV", antes.conjunto.cv, agora.conjunto.cv],
+    ["CV c/ principal", antes.conjunto.cv_com_principal, agora.conjunto.cv_com_principal],
+    ["Regen total", antes.conjunto.regen.total, agora.conjunto.regen.total],
+    ...Array.from({ length: Math.max(antes.echos.length, agora.echos.length) }, (_, i) => [
+      `Echo ${i + 1}: ${nomeEcho(antes.echos[i])}${nomeEcho(antes.echos[i]) === nomeEcho(agora.echos[i]) ? "" : ` → ${nomeEcho(agora.echos[i])}`}`,
+      antes.echos[i]?.score_pct ?? null,
+      agora.echos[i]?.score_pct ?? null,
+      `${antes.echos[i]?.nota ?? "—"} → ${agora.echos[i]?.nota ?? "—"}`,
+    ]),
+  ];
+  return el(
+    "div",
+    {},
+    el("h3", { style: { margin: 0, fontSize: "16px", fontWeight: 800 } }, `Comparando com "${salva.nome}"`),
+    el("p", { style: { margin: "4px 0 0", fontSize: "13px", color: "var(--mudo)" } }, `Salva em ${dataCurta(salva.criado_em)}, recalculada com os pesos atuais.`),
+    el(
+      "table",
+      { class: "comparacao" },
+      el("thead", {}, el("tr", {}, ["", "Salva", "Agora", "Diferença", "Nota"].map((t) => el("th", { scope: "col" }, t)))),
+      el("tbody", {}, linhas.map(([rotulo, a, b, nota]) => el("tr", {}, el("th", { scope: "row", style: { fontWeight: 600 } }, rotulo), el("td", { class: "mono" }, numero(a)), el("td", { class: "mono" }, numero(b)), el("td", { class: "mono" }, diferenca(a, b)), el("td", {}, nota ?? "")))),
+    ),
+  );
+}
+
+const numero = (v) => (v === null || v === undefined ? "—" : Number(v).toFixed(1));
+
+function diferenca(antes, agora) {
+  if (antes === null || agora === null || antes === undefined || agora === undefined) return "—";
+  const d = agora - antes;
+  if (Math.abs(d) < 0.05) return el("span", { style: { color: "var(--mudo)" } }, "0.0");
+  return el("span", { class: d > 0 ? "delta-mais" : "delta-menos" }, `${d > 0 ? "+" : ""}${d.toFixed(1)}`);
 }

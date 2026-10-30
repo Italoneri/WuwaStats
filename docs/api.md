@@ -433,6 +433,33 @@ cache do navegador não mostrar o antigo.
 `regen_total_informado` vêm da tela do personagem, se lida. Os que falharam devem ser preenchidos na análise.
 `409` se nenhum echo foi lido.
 
+## Análises salvas
+
+Entradas corrigidas guardadas para reabrir depois e comparar o antes e o depois de trocar um echo, em
+`data/historico/<id>.json`. Guarda a **entrada**, não o resultado: ao reabrir, rode `POST /api/analisar` com ela
+(os pesos atuais valem). `score_medio_pct`/`nota_media` são os do momento em que foi salva, só para a lista.
+
+### `POST /api/historico`
+
+```json
+{ "nome": "antes de trocar o echo 5", "entrada": { /* EntradaBuild */ }, "leitura": { /* leitura da tela do personagem, opcional */ } }
+```
+
+`201` com o **ResumoAnaliseSalva**. `nome` vazio vira "<build> · dd/mm hh:mm". `404` se a build não existe.
+
+```json
+{ "id": "20261030-193000-a1b2c3", "nome": "antes de trocar o echo 5", "build": "Suoming_DPS",
+  "criado_em": "2026-10-30T19:30:00-03:00", "score_medio_pct": 42.6, "nota_media": "B" }
+```
+
+### `GET /api/historico?build=Suoming_DPS`
+
+Lista de **ResumoAnaliseSalva**, mais recentes primeiro. Sem `build`, todas.
+
+### `GET /api/historico/{id}` e `DELETE /api/historico/{id}`
+
+O resumo + `entrada` + `leitura`; ou apaga (`204`). `404` se não existe.
+
 ## Imagens do catálogo
 
 Imagens de personagens, echos e armas enviadas pelo usuário, em `data/imagens/<categoria>/<chave>.png`.

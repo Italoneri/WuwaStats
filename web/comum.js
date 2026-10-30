@@ -27,6 +27,12 @@ export const api = {
   analisar: (entrada) => pedir("/api/analisar", json("POST", entrada)),
   extrair: (form) => pedir("/api/extrair", { method: "POST", body: form }),
   mapear: (pedido) => pedir("/api/aliases", json("POST", pedido)),
+  historico: {
+    salvar: (pedido) => pedir("/api/historico", json("POST", pedido)),
+    listar: (build) => pedir(build ? `/api/historico?build=${encodeURIComponent(build)}` : "/api/historico"),
+    ler: (id) => pedir(`/api/historico/${encodeURIComponent(id)}`),
+    apagar: (id) => pedir(`/api/historico/${encodeURIComponent(id)}`, { method: "DELETE" }),
+  },
   imagens: () => pedir("/api/imagens"),
   enviarImagem: (categoria, chave, arquivo) => {
     const form = new FormData();

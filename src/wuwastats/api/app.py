@@ -25,6 +25,7 @@ from wuwastats.api.contracts import (
     montar_catalogo,
     resumir_build,
 )
+from wuwastats.api.historico import rotas_historico
 from wuwastats.api.imagens import rotas_imagens
 from wuwastats.api.repositorio import RepositorioDados
 from wuwastats.captura.servico import (
@@ -45,6 +46,7 @@ from wuwastats.domain.models import MAX_ECHOS, Condicoes, EntradaBuild
 from wuwastats.domain.report import Analise
 from wuwastats.domain.tables import GameData, Perfil
 from wuwastats.gamedata.aliases import AliasInvalido
+from wuwastats.gamedata.historico import AnaliseSalvaInexistente, HistoricoAnalises
 from wuwastats.gamedata.imagens import ImagemInexistente, ImagemRecusada, ImagensDoCatalogo
 from wuwastats.gamedata.loader import GameDataError
 from wuwastats.vision.cache import CacheVisao
@@ -71,6 +73,7 @@ STATUS_POR_ERRO: dict[type[Exception], int] = {
     ConfiguracaoAusente: 503,
     ImagemInexistente: 404,
     ImagemRecusada: 422,
+    AnaliseSalvaInexistente: 404,
 }
 
 
@@ -193,8 +196,12 @@ def criar_app(
             raise ErroApi(422, "dados de jogo inválidos; mantidos os anteriores", erro.erros) from erro
 
     teclas: dict[Acao, str] = {acao: atalho.rotulo for acao, atalho in configuracao.atalhos_captura.items()}
+    def perfil_da_build(build: str) -> Perfil:
+        return _perfil(repositorio.dados, build)
+
+    app.include_router(rotas_historico(HistoricoAnalises(configuracao.data_dir), perfil_da_build, lambda: repositorio.dados))
     app.include_router(rotas_imagens(ImagensDoCatalogo(configuracao.data_dir), lambda: repositorio.dados))
-    app.include_router(rotas_captura(captura, lambda build: _perfil(repositorio.dados, build), teclas))
+    app.include_router(rotas_captura(captura, perfil_da_build, teclas))
 
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")

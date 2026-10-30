@@ -311,3 +311,40 @@ class TestImagens:
         arquivos = {"arquivo": ("a.png", arquivo, "image/png")} if arquivo is not None else None
 
         assert cliente.request(metodo, caminho, files=arquivos).status_code == status
+
+
+class TestHistorico:
+    def test_salva_lista_reabre_e_apaga(self, cliente: TestClient, entrada: dict[str, Any]) -> None:
+        leitura = {"personagem": "Suoming", "arma": "Arma Teste", "atributos": []}
+
+        salvo = cliente.post("/api/historico", json={"nome": "antes da troca", "entrada": entrada, "leitura": leitura})
+        resumo = salvo.json()
+        lista = cliente.get("/api/historico", params={"build": "Suoming_DPS"}).json()
+        outra_build = cliente.get("/api/historico", params={"build": "Suoming_SubDPS"}).json()
+        completo = cliente.get(f"/api/historico/{resumo['id']}").json()
+        apagado = cliente.delete(f"/api/historico/{resumo['id']}")
+
+        assert salvo.status_code == 201
+        assert (resumo["nome"], resumo["build"]) == ("antes da troca", "Suoming_DPS")
+        assert (resumo["score_medio_pct"], resumo["nota_media"]) == (42.6, "B")
+        assert [r["id"] for r in lista] == [resumo["id"]]
+        assert outra_build == []
+        assert completo["entrada"]["echos"][0]["nome"] == entrada["echos"][0]["nome"]
+        assert completo["leitura"]["arma"] == "Arma Teste"
+        assert apagado.status_code == 204
+        assert cliente.get(f"/api/historico/{resumo['id']}").status_code == 404
+
+    def test_nome_vazio_vira_build_com_data(self, cliente: TestClient, entrada: dict[str, Any]) -> None:
+        resumo = cliente.post("/api/historico", json={"entrada": entrada}).json()
+
+        assert resumo["nome"].startswith("Suoming_DPS · ")
+
+    @pytest.mark.parametrize("analise_id", ["..%2F..%2F.env", "20261030-120000-zzzzzz", "nao-existe"])
+    def test_id_invalido_ou_inexistente_responde_404(self, cliente: TestClient, analise_id: str) -> None:
+        assert cliente.get(f"/api/historico/{analise_id}").status_code == 404
+
+    def test_build_inexistente_nao_e_salva(self, cliente: TestClient, entrada: dict[str, Any]) -> None:
+        resposta = cliente.post("/api/historico", json={"entrada": entrada | {"build": "Ninguem"}})
+
+        assert resposta.status_code == 404
+        assert cliente.get("/api/historico").json() == []
