@@ -222,6 +222,18 @@ class TestCaptura:
         assert entrada["condicoes"] == {"arma_assinatura": True}
         assert entrada["regen_total_informado"] == 118.4
 
+    def test_serve_a_imagem_do_espaco(self, cliente: TestClient, tela: TelaFalsa) -> None:
+        sessao = self._iniciar(cliente)
+        tela.apertar("echo", b"echo")
+
+        imagem = cliente.get(f"/api/captura/{sessao}/imagens/0")
+        vazio = cliente.get(f"/api/captura/{sessao}/imagens/personagem")
+        invalido = cliente.get(f"/api/captura/{sessao}/imagens/../../.env")
+
+        assert (imagem.status_code, imagem.content, imagem.headers["content-type"]) == (200, b"echo", "image/png")
+        assert vazio.status_code == 404
+        assert invalido.status_code == 404
+
     def test_esvaziar_espacos(self, cliente: TestClient, tela: TelaFalsa) -> None:
         sessao = self._iniciar(cliente)
         tela.apertar("echo", b"echo")

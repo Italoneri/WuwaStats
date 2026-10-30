@@ -4,7 +4,15 @@ from pathlib import Path
 
 import pytest
 
-from wuwastats.captura.servico import CapturaFalhou, Evento, Executar, SemEchoLido, ServicoCaptura, SessaoInexistente
+from wuwastats.captura.servico import (
+    CapturaFalhou,
+    Evento,
+    Executar,
+    SemEchoLido,
+    SemImagem,
+    ServicoCaptura,
+    SessaoInexistente,
+)
 from wuwastats.captura.sessao import EchoLido, Falhou, PersonagemLido, Vazio
 from wuwastats.conftest import TelaFalsa
 from wuwastats.domain.tables import GameData
@@ -184,6 +192,32 @@ def test_parar_solta_os_atalhos_e_encerra_quem_esta_ouvindo(servico: ServicoCapt
     assert tela.escutas[-1].parada
     assert eventos[-1].tipo == "encerrada"
     assert [e.tipo for e in _ouvir(servico, sessao.id)] == ["estado", "encerrada"]
+
+
+def test_serve_o_print_de_cada_espaco_mesmo_depois_de_parar(servico: ServicoCaptura, tela: TelaFalsa) -> None:
+    sessao = servico.iniciar("Suoming_DPS")
+    tela.apertar("echo", b"echo")
+    tela.apertar("personagem", b"tela")
+    servico.parar()
+
+    assert servico.imagem(sessao.id, 0).read_bytes() == b"echo"
+    assert servico.imagem(sessao.id, "personagem").read_bytes() == b"tela"
+    with pytest.raises(SemImagem):
+        servico.imagem(sessao.id, 1)
+
+
+def test_nova_sessao_e_desligar_apagam_os_prints(servico: ServicoCaptura, tela: TelaFalsa) -> None:
+    antiga = servico.iniciar("Suoming_DPS")
+    tela.apertar("echo")
+    arquivo = servico.imagem(antiga.id, 0)
+
+    nova = servico.iniciar("Suoming_DPS")
+    tela.apertar("echo")
+    servico.desligar()
+
+    assert not arquivo.exists()
+    with pytest.raises(SemImagem):
+        servico.imagem(nova.id, 0)
 
 
 def test_iniciar_outra_sessao_encerra_a_anterior(servico: ServicoCaptura) -> None:

@@ -1,6 +1,6 @@
 // Tela 3 · Captura: liga os atalhos no servidor e acompanha os 5 espaços de echo + o do personagem pelos eventos (SSE).
 
-import { ICONES, api, avisoErro, el, icone, lembrarPagina, moldura, parametro, silhueta } from "./comum.js";
+import { ICONES, api, avisoErro, el, icone, lembrarPagina, miniaturaAmpliavel, moldura, parametro, silhueta } from "./comum.js";
 
 const TOTAL_ECHOS = 5;
 const TIPOS_EVENTO = ["estado", "print_recebido", "leitura_iniciada", "lido", "falhou", "ir_para_analise", "erro_captura", "encerrada"];
@@ -296,7 +296,7 @@ function espacoEcho(espaco, i) {
       alvo ? el("span", { class: "selo lilas" }, "Próximo F8") : null,
       comSessao ? el("span", { class: "grip", title: "Arraste para reordenar", "aria-hidden": "true" }, icone(ICONES.grip, 16, { espessura: 3 })) : null,
     ),
-    espaco.estado === "vazio" ? el("div", { class: "emptybox" }, el("span", { class: "kbd" }, estado.teclas.echo), `Aperte ${estado.teclas.echo} no jogo`) : miniatura(espaco, rotulo),
+    espaco.estado === "vazio" ? el("div", { class: "emptybox" }, el("span", { class: "kbd" }, estado.teclas.echo), `Aperte ${estado.teclas.echo} no jogo`) : miniatura(espaco, rotulo, String(i)),
     el(
       "div",
       { class: "sfoot" },
@@ -334,7 +334,7 @@ function espacoPersonagem(espaco) {
     el("div", { class: "shead" }, el("span", { class: "slot-nome" }, "Personagem"), el("span", { class: "selo lilas" }, estado.teclas.personagem)),
     espaco.estado === "vazio"
       ? el("div", { class: "emptybox wide" }, el("span", { class: "kbd" }, estado.teclas.personagem), `Aperte ${estado.teclas.personagem} no jogo`)
-      : miniatura(espaco, "tela do personagem", true),
+      : miniatura(espaco, "tela do personagem", "personagem", true),
     el(
       "div",
       { class: "sfoot" },
@@ -362,19 +362,25 @@ function textoEspaco(visual, detalhe) {
   return el("div", { class: "stext" }, el("span", { class: `stitle ${visual.tom}` }, visual.titulo), detalhe ? el("span", { class: "sdet" }, detalhe) : null);
 }
 
-/** Placeholder da miniatura: a imagem real do print não é servida. */
-function miniatura(espaco, rotulo, larga = false) {
+/** Print real servido pela sessão; o desenho de placeholder fica de reserva se a imagem não carregar. */
+function miniatura(espaco, rotulo, idEspaco, larga = false) {
   const lendo = PENDENTES.has(espaco.estado);
   const barras = [70, 45, 82, 64, 76, 58, 70].map((largura) => el("i", { style: { width: `${largura}%` } }));
-  return el(
+  const reserva = el(
     "div",
-    { class: `shot${larga ? " wide" : ""}${espaco.estado === "lendo" ? " reading" : ""}`, role: "img", "aria-label": `Miniatura do print do ${rotulo}` },
+    { style: { display: "flex", flexDirection: larga ? "row" : "column", gap: larga ? "14px" : "9px", padding: "18px 16px", height: "100%" } },
     larga
       ? [
           el("div", { style: { flex: "0 0 42%", borderRadius: "6px", background: "#241D33", display: "grid", placeItems: "end center", overflow: "hidden" } }, silhueta("#B57BFF", "", "80%")),
           el("div", { style: { flex: 1, display: "flex", flexDirection: "column", gap: "9px", paddingTop: "6px" } }, barras),
         ]
       : [icone(ICONES.echo, 34, { espessura: 1.6, cor: "#5A4C78" }), ...barras],
+  );
+  const src = `/api/captura/${encodeURIComponent(estado.sessao.id)}/imagens/${idEspaco}?captura=${espaco.captura}`;
+  return el(
+    "div",
+    { class: `shot com-imagem${larga ? " wide" : ""}${espaco.estado === "lendo" ? " reading" : ""}` },
+    miniaturaAmpliavel(src, `Print do ${rotulo}`, reserva),
     lendo ? el("div", { class: "ov" }, el("span", { class: "spin", style: { display: "grid" } }, icone(ICONES.girando, 30, { espessura: 2.4, cor: "#C4B1FF" }))) : null,
     espaco.estado === "lido" ? el("span", { class: "okb", "aria-hidden": "true" }, icone(ICONES.ok, 16, { espessura: 3 })) : null,
   );

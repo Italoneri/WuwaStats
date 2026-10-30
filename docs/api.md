@@ -375,7 +375,8 @@ Corpo `{ "build": "Suoming_DPS" }`. Liga os atalhos e devolve a **Sessao** nova.
 
 ### `POST /api/captura/parar`
 
-Solta os atalhos e encerra a sessão (ela continua consultável, com `ativa: false`). `204`.
+Solta os atalhos e encerra a sessão (ela continua consultável, com `ativa: false`). Os prints continuam disponíveis
+até iniciar outra sessão ou o servidor desligar. `204`.
 
 ### `GET /api/captura/{sessao}`
 
@@ -419,6 +420,12 @@ Esvaziam o espaço. Devolvem a **Sessao**.
 ### `POST /api/captura/{sessao}/echos/{indice}/refazer`
 
 Marca o espaço como destino do próximo F8 (o print atual fica até lá). Devolve a **Sessao**.
+
+### `GET /api/captura/{sessao}/imagens/{espaco}`
+
+O print (PNG) que está no espaço: `0` a `4` ou `personagem`. `404` se o espaço está vazio ou o print já foi apagado.
+O mesmo espaço muda de print (Refazer, reordenar): acrescente `?captura=N` (o número da captura no espaço) para o
+cache do navegador não mostrar o antigo.
 
 ### `GET /api/captura/{sessao}/entrada`
 

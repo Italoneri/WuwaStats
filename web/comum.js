@@ -283,3 +283,27 @@ export function hrefsMemorizados() {
     return {};
   }
 }
+
+// ---------- Ampliar imagem ----------
+
+/** Abre a imagem em tela cheia (Esc, clique fora ou no X fecham). */
+export function ampliar(src, legenda) {
+  const fechar = () => dialogo.close();
+  const dialogo = el(
+    "dialog",
+    { class: "lightbox", "aria-label": legenda, onclose: () => dialogo.remove(), onclick: (e) => e.target === dialogo && fechar() },
+    el("button", { class: "ibtn lightbox-fechar", type: "button", "aria-label": "Fechar", onclick: fechar }, icone(ICONES.fechar, 20, { espessura: 2 })),
+    el("img", { src, alt: legenda, onerror: (e) => e.target.replaceWith(el("p", {}, "O print não está mais disponível (o servidor apaga os prints ao iniciar outra captura ou desligar).")) }),
+    el("p", {}, legenda),
+  );
+  document.body.append(dialogo);
+  dialogo.showModal();
+}
+
+/** Botão-miniatura que amplia ao clicar. Se a imagem falhar, mostra o conteúdo reserva. */
+export function miniaturaAmpliavel(src, legenda, reserva, classe = "") {
+  const botao = el("button", { type: "button", class: `mini ${classe}`.trim(), title: "Ampliar", "aria-label": `Ampliar ${legenda}`, onclick: () => ampliar(src, legenda) });
+  const imagem = el("img", { src, alt: "", loading: "lazy", onerror: () => botao.replaceWith(reserva) });
+  botao.append(imagem);
+  return botao;
+}

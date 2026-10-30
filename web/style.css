@@ -267,3 +267,17 @@ a.btn.desligado { opacity: .45; pointer-events: none; }
   .sheet { padding: 16px; }
   .attrs { grid-template-columns: 1fr; }
 }
+
+/* --- Miniaturas e ampliação --- */
+.mini { display: block; padding: 0; border: 0; background: transparent; cursor: zoom-in; overflow: hidden; }
+.mini img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shot.com-imagem { padding: 0; }
+.shot.com-imagem .mini { position: absolute; inset: 0; }
+.shot.com-imagem .mini img { object-fit: cover; object-position: center top; }
+.lightbox { max-width: min(96vw, 1600px); max-height: 94vh; padding: 16px; border-radius: 14px; border: 1px solid var(--borda-forte); background: var(--painel); color: var(--texto); }
+.lightbox::backdrop { background: rgba(5, 3, 10, .82); }
+.lightbox img { display: block; max-width: 100%; max-height: calc(94vh - 90px); margin: 0 auto; border-radius: 8px; }
+.lightbox p { margin: 10px 0 0; text-align: center; font-size: 14px; color: var(--mudo); }
+.lightbox-fechar { position: absolute; top: 8px; right: 8px; background: var(--painel-2); }
+.btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: var(--lilas); font-size: 13px; font-weight: 700; cursor: zoom-in; }
+.btn-print:hover { color: #DDD2FF; }

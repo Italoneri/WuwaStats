@@ -1,7 +1,7 @@
 // Tela 4 · Análise: POST /api/analisar a cada mudança na entrada. A entrada vem da sessão de captura ou do envio manual.
 
 import {
-  ICONES, QUALIDADES, api, avisoErro, corNota, el, elemento, estrelas, formatarValor, icone, iconeStat, lembrarPagina, moldura,
+  ICONES, QUALIDADES, ampliar, api, avisoErro, corNota, el, elemento, estrelas, formatarValor, icone, iconeStat, lembrarPagina, moldura,
   parametro, perguntaCondicao, qualidade, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
@@ -14,7 +14,8 @@ const CATEGORIAS = { stats: "status", echoes: "echos", sets: "sets" };
 const estado = {
   fonte: null, // { tipo: "sessao", id } | { tipo: "upload" }
   entrada: null,
-  leitura: null, // leitura da tela do personagem (F9), se houver
+  leitura: null, // leitura da tela do personagem, se houver
+  prints: null, // { echos: [{ espaco, captura } | null], personagem } — de onde veio cada echo na sessão de captura
   analise: null,
   build: null,
   personagem: null,
@@ -62,10 +63,23 @@ async function carregarOrigem() {
   if (estado.fonte.tipo === "upload") {
     const extracao = lerSessao(CHAVE_UPLOAD);
     if (!extracao?.entrada) throw new Error("O envio manual não está mais disponível. Envie os prints de novo na Captura.");
-    return { entrada: extracao.entrada, leitura: extracao.personagem?.tipo === "ok" ? extracao.personagem.leitura : null };
+    return { entrada: extracao.entrada, leitura: extracao.personagem?.tipo === "ok" ? extracao.personagem.leitura : null, prints: null };
   }
   const [entrada, sessao] = await Promise.all([api.captura.entrada(estado.fonte.id), api.captura.estado(estado.fonte.id)]);
-  return { entrada, leitura: sessao.personagem.estado === "lido" ? sessao.personagem.leitura : null };
+  return { entrada, leitura: sessao.personagem.estado === "lido" ? sessao.personagem.leitura : null, prints: printsDaSessao(sessao) };
+}
+
+/** A entrada da sessão traz só os echos lidos, na ordem dos espaços: o k-ésimo echo é o k-ésimo espaço lido. */
+function printsDaSessao(sessao) {
+  const echos = sessao.echos.flatMap((e, i) => (e.estado === "lido" ? [{ espaco: String(i), captura: e.captura }] : []));
+  const personagem = sessao.personagem.estado === "vazio" ? null : { espaco: "personagem", captura: sessao.personagem.captura };
+  return { echos, personagem };
+}
+
+function verPrint(print, legenda) {
+  if (!print || estado.fonte.tipo !== "sessao") return null;
+  const src = `/api/captura/${encodeURIComponent(estado.fonte.id)}/imagens/${print.espaco}?captura=${print.captura}`;
+  return () => ampliar(src, legenda);
 }
 
 function lerSessao(chave) {
@@ -80,7 +94,7 @@ function lerSessao(chave) {
 
 function salvarEdicoes() {
   try {
-    sessionStorage.setItem(chaveEdicoes(), JSON.stringify({ entrada: estado.entrada, leitura: estado.leitura }));
+    sessionStorage.setItem(chaveEdicoes(), JSON.stringify({ entrada: estado.entrada, leitura: estado.leitura, prints: estado.prints }));
   } catch (erro) {
     console.warn("análise: edições não serão lembradas ao recarregar", erro);
   }
@@ -180,6 +194,7 @@ function colunaEsquerda(analise) {
     { style: { display: "flex", flexDirection: "column", gap: "16px" } },
     el("div", { class: "ph", style: { width: "100%", aspectRatio: "4 / 5", borderRadius: "14px", placeItems: "end center", overflow: "hidden", borderColor: "#3A2F52" } }, silhueta(cor, "", "80%")),
     painelArma(),
+    botaoPrintPersonagem(),
     el(
       "div",
       { class: "panel", style: { padding: "18px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", borderColor: "var(--borda-hover)" } },
@@ -193,6 +208,11 @@ function colunaEsquerda(analise) {
       el("span", { class: "grade", style: { fontSize: "76px", color: corNota(nota) } }, nota),
     ),
   );
+}
+
+function botaoPrintPersonagem() {
+  const abrir = verPrint(estado.prints?.personagem, "Print da tela do personagem");
+  return abrir ? el("button", { class: "btn-print", type: "button", onclick: abrir }, icone(ICONES.imagem, 16), "Ver print da tela do personagem") : null;
 }
 
 function painelArma() {
@@ -341,6 +361,7 @@ function cartaoEcho(echo) {
       avisos.length
         ? el("button", { class: "wbtn", type: "button", "aria-label": `Precisa de revisão: ${avisos.map((p) => p.mensagem).join(" ")}` }, icone(ICONES.atencao, 16, { espessura: 2.2 }), el("span", { class: "tip", "aria-hidden": "true" }, avisos.map((p) => p.mensagem).join("\n")))
         : null,
+      botaoPrintEcho(i),
       el("button", { class: "ibtn", type: "button", title: "Editar nome, custo, set e principal", "aria-label": `Editar echo ${i + 1}`, onclick: () => editar({ echo: i, completo: true }) }, icone("M4 20h4L19 9l-4-4L4 16zM14 6l4 4", 15)),
     ),
     el(
@@ -370,6 +391,11 @@ function cartaoEcho(echo) {
       el("span", { class: "grade", style: { color: corNota(echo.nota) } }, echo.nota),
     ),
   );
+}
+
+function botaoPrintEcho(i) {
+  const abrir = verPrint(estado.prints?.echos[i], `Print do echo ${i + 1}`);
+  return abrir ? el("button", { class: "ibtn", type: "button", title: "Ver o print", "aria-label": `Ver o print do echo ${i + 1}`, onclick: abrir }, icone(ICONES.imagem, 15)) : null;
 }
 
 function editar(edicao) {
@@ -435,7 +461,10 @@ function editorSubstat(i, j, analisado) {
 
 function cartaoNovo() {
   if (estado.edicao?.novo) {
-    return cartaoFormulario("Novo echo", null, null, (novo, posicao) => mudarEntrada((en) => en.echos.splice(posicao, 0, { ...novo, substatus: [] })));
+    return cartaoFormulario("Novo echo", null, null, (novo, posicao) => {
+      estado.prints?.echos.splice(posicao, 0, null);
+      return mudarEntrada((en) => en.echos.splice(posicao, 0, { ...novo, substatus: [] }));
+    });
   }
   return el(
     "div",

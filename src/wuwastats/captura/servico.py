@@ -25,6 +25,7 @@ from wuwastats.captura.sessao import (
     Lendo,
     PersonagemLido,
     Sessao,
+    Vazio,
     atualizar_echo,
     atualizar_personagem,
     encerrar,
@@ -63,6 +64,10 @@ class SessaoInexistente(Exception):
 
 
 class SemEchoLido(Exception):
+    pass
+
+
+class SemImagem(Exception):
     pass
 
 
@@ -120,6 +125,7 @@ class ServicoCaptura:
     def iniciar(self, build: str) -> Sessao:
         extrator = self._criar_extrator()  # sem IA configurada não há leitura imediata: falha antes de ligar os atalhos
         self.parar()
+        self._apagar_prints()
         escuta = self._ferramentas.escutar_atalhos(
             {"echo": self._capturar_echo, "personagem": self._capturar_personagem, "analise": self._ir_para_analise}
         )
@@ -131,16 +137,36 @@ class ServicoCaptura:
             return self._sessao
 
     def parar(self) -> None:
+        """Os prints ficam (miniaturas da análise) até a próxima sessão ou o servidor desligar."""
         with self._trava:
-            escuta, pasta, sessao = self._escuta, self._pasta, self._sessao
-            self._escuta, self._pasta = None, None
+            escuta, sessao = self._escuta, self._sessao
+            self._escuta = None
             if sessao is not None and sessao.ativa:
                 self._sessao = encerrar(sessao)
                 self._publicar(Evento(tipo="encerrada", sessao=self._sessao))
         if escuta is not None:
             escuta.parar()
+
+    def desligar(self) -> None:
+        self.parar()
+        self._apagar_prints()
+
+    def _apagar_prints(self) -> None:
+        with self._trava:
+            pasta, self._pasta = self._pasta, None
         if pasta is not None:
             shutil.rmtree(pasta, onexc=_avisar_limpeza)
+
+    def imagem(self, sessao_id: str, espaco: Local) -> Path:
+        with self._trava:
+            sessao = self._exigir(sessao_id)
+            conteudo = sessao.personagem if espaco == "personagem" else sessao.echos[espaco]
+            if isinstance(conteudo, Vazio) or self._pasta is None:
+                raise SemImagem(f"o espaço {espaco} não tem print")
+            arquivo = self._pasta / f"{conteudo.captura}.png"
+        if not arquivo.is_file():
+            raise SemImagem(f"o print do espaço {espaco} não está mais no disco")
+        return arquivo
 
     def estado(self, sessao_id: str) -> Sessao:
         with self._trava:

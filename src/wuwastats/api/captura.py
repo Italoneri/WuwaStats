@@ -6,10 +6,10 @@ from typing import Annotated
 
 from fastapi import APIRouter
 from fastapi import Path as Caminho
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field
 
-from wuwastats.captura.servico import Evento, ServicoCaptura
+from wuwastats.captura.servico import Evento, Local, ServicoCaptura
 from wuwastats.captura.sessao import Sessao
 from wuwastats.captura.teclas import Acao
 from wuwastats.domain.models import MAX_ECHOS, EntradaBuild
@@ -17,6 +17,7 @@ from wuwastats.domain.tables import Perfil
 
 PING_S = 15
 IndiceEcho = Annotated[int, Caminho(ge=0, lt=MAX_ECHOS, description="Posição do espaço de echo (0 = echo principal)")]
+Espaco = Annotated[str, Caminho(pattern=rf"^([0-{MAX_ECHOS - 1}]|personagem)$", description="0 a 4 ou 'personagem'")]
 
 
 class PedidoCaptura(BaseModel):
@@ -82,6 +83,13 @@ def rotas_captura(servico: ServicoCaptura, perfil_da_build: Callable[[str], Perf
     @rotas.post("/{sessao}/echos/{indice}/refazer")
     def refazer(sessao: str, indice: IndiceEcho) -> Sessao:
         return servico.refazer(sessao, indice)
+
+    @rotas.get("/{sessao}/imagens/{espaco}", response_class=FileResponse)
+    def imagem(sessao: str, espaco: Espaco) -> FileResponse:
+        """O mesmo espaço muda de print: a página põe ?captura=N na URL para o cache do navegador não confundir."""
+        local: Local = "personagem" if espaco == "personagem" else int(espaco)
+        cabecalhos = {"Cache-Control": "private, max-age=3600"}
+        return FileResponse(servico.imagem(sessao, local), media_type="image/png", headers=cabecalhos)
 
     @rotas.get("/{sessao}/entrada")
     def entrada(sessao: str) -> EntradaBuild:

@@ -32,6 +32,7 @@ from wuwastats.captura.servico import (
     Escuta,
     FerramentasCaptura,
     SemEchoLido,
+    SemImagem,
     ServicoCaptura,
     SessaoInexistente,
 )
@@ -60,6 +61,7 @@ ERROS: dict[int | str, dict[str, object]] = {
 # Erros de domínio que atravessam as rotas sem tratamento local (o Starlette escolhe pelo tipo mais específico).
 STATUS_POR_ERRO: dict[type[Exception], int] = {
     SessaoInexistente: 404,
+    SemImagem: 404,
     OrdemInvalida: 422,
     SemEchoLido: 409,
     CapturaFalhou: 409,
@@ -107,7 +109,7 @@ def criar_app(
     @asynccontextmanager
     async def ciclo_de_vida(_app: FastAPI) -> AsyncIterator[None]:
         yield
-        captura.parar()  # solta os atalhos para o resto do sistema
+        captura.desligar()  # solta os atalhos e apaga os prints temporários
         leituras.shutdown(wait=False, cancel_futures=True)
 
     app = FastAPI(
