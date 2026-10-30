@@ -38,6 +38,9 @@ RAW = f"https://raw.githubusercontent.com/{REPOSITORIO}"
 TIMEOUT_S = 60
 TENTATIVAS = 3
 
+# Os outros tipos são entradas especiais que reaproveitam o nome de echos normais com outra raridade e outros sets.
+TIPO_ECHO_NORMAL = 1
+
 # Caminhos conferidos na versão 3.7. Se um 404 aparecer, a pasta mudou de nome: procure o arquivo no repositório.
 CAMINHO_ECHOS = "BinData/phantom/phantomitem.json"
 CAMINHO_RARIDADES = "BinData/phantom/phantomrarity.json"
@@ -77,6 +80,7 @@ class EchoFonte(_Fonte):
     chave_nome: str = Field(alias="MonsterName")
     raridade: int = Field(alias="Rarity")
     grupos_set: list[int] = Field(alias="FetterGroup")
+    tipo: int = Field(alias="PhantomType")
 
 
 class RaridadeFonte(_Fonte):
@@ -379,12 +383,15 @@ def _texto_pt(tabelas: TabelasFonte, chave: str, parametros: list[str] | None = 
 def _montar_echoes(tabelas: TabelasFonte, nome_por_grupo: Mapping[int, str], avisos: list[str]) -> dict[str, EchoImportado]:
     """A fonte tem uma linha por qualidade/variante do mesmo echo; agrupa pelo nome em inglês."""
     custo_por_raridade = {raridade.raridade: raridade.custo for raridade in tabelas.raridades}
+    normais = [echo for echo in tabelas.echos if echo.tipo == TIPO_ECHO_NORMAL]
+    especiais = Counter(echo.tipo for echo in tabelas.echos if echo.tipo != TIPO_ECHO_NORMAL)
+    avisos.extend(f"{total} linhas de echo com PhantomType {tipo} ignoradas" for tipo, total in sorted(especiais.items()))
     variantes: defaultdict[str, list[EchoFonte]] = defaultdict(list)
-    for echo in tabelas.echos:
+    for echo in normais:
         nome = tabelas.textos_en.get(echo.chave_nome, "").strip()
         if nome:
             variantes[nome].append(echo)
-    sem_nome = len(tabelas.echos) - sum(len(linhas) for linhas in variantes.values())
+    sem_nome = len(normais) - sum(len(linhas) for linhas in variantes.values())
     if sem_nome:
         avisos.append(f"{sem_nome} linhas de echo sem nome em inglês foram ignoradas")
     return {

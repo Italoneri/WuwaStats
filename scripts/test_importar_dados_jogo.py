@@ -33,11 +33,17 @@ STATS = NameIndex.build({"energy_regen": ["Energy Regen"], "atk_pct": ["ATK"], "
 
 
 def _tabelas(textos_pt: dict[str, str] | None) -> TabelasFonte:
-    def echo(nome: str, raridade: int, grupos: list[int]) -> EchoFonte:
-        return EchoFonte.model_validate({"MonsterName": nome, "Rarity": raridade, "FetterGroup": grupos})
+    def echo(nome: str, raridade: int, grupos: list[int], tipo: int = 1) -> EchoFonte:
+        return EchoFonte.model_validate({"MonsterName": nome, "Rarity": raridade, "FetterGroup": grupos, "PhantomType": tipo})
 
     return TabelasFonte(
-        echos=[echo("M_Nuvem", 0, [8]), echo("M_Nuvem", 0, [8]), echo("M_Gulpuff", 0, [8]), echo("M_Gulpuff", 2, [9])],
+        echos=[
+            echo("M_Nuvem", 0, [8]),
+            echo("M_Nuvem", 0, [8]),
+            echo("M_Gulpuff", 0, [8]),
+            echo("M_Gulpuff", 0, [8]),
+            echo("M_Gulpuff", 2, [9], tipo=2),
+        ],
         raridades=[RaridadeFonte.model_validate({"Rare": r, "Cost": c}) for r, c in [(0, 1), (1, 3), (2, 4)]],
         grupos_set=[
             _grupo(8, {2: 15, 5: 16}),
@@ -96,8 +102,13 @@ def test_agrupa_variantes_do_echo_pelo_nome_em_ingles() -> None:
     catalogo = montar_catalogo(_tabelas(TEXTOS_PT), STATS)
 
     assert catalogo.echoes["Cloudy"] == EchoImportado(nome_pt="Nublado", custos=frozenset({1}), sets=("Moonlit Clouds",))
-    assert catalogo.echoes["Gulpuff"].custos == {1, 4}
-    assert catalogo.echoes["Gulpuff"].sets == ("Moonlit Clouds", "Lingering Tunes")
+
+
+def test_ignora_linha_especial_que_reaproveita_nome_de_echo_normal() -> None:
+    catalogo = montar_catalogo(_tabelas(TEXTOS_PT), STATS)
+
+    assert catalogo.echoes["Gulpuff"] == EchoImportado(nome_pt="Baiagul", custos=frozenset({1}), sets=("Moonlit Clouds",))
+    assert "1 linhas de echo com PhantomType 2 ignoradas" in catalogo.avisos
 
 
 def test_sem_textmap_pt_os_nomes_pt_ficam_vazios() -> None:

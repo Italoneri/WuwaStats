@@ -113,28 +113,12 @@
       ],
       "status": "ok"
     },
-    "Brant": {
-      "nome_pt": "Brant",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
     "Calamity Effigy": {
       "nome_pt": "Efígie da Calamidade",
       "custo": 4,
       "sets": [
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
-      ],
-      "status": "ok"
-    },
-    "Calcharo": {
-      "nome_pt": "Calcharo",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -145,22 +129,6 @@
         "Tidebreaking Courage",
         "Empyrean Anthem",
         "Crown of Valor"
-      ],
-      "status": "ok"
-    },
-    "Camellya": {
-      "nome_pt": "Camellya",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
-    "Cantarella": {
-      "nome_pt": "Cantarella",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -180,30 +148,6 @@
       "sets": [
         "Moonlit Clouds",
         "Sierra Gale"
-      ],
-      "status": "ok"
-    },
-    "Carlotta": {
-      "nome_pt": "Carlotta",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
-    "Cartethyia": {
-      "nome_pt": "Cartethyia",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
-    "Changli": {
-      "nome_pt": "Changli",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -313,9 +257,7 @@
       "custo": 3,
       "sets": [
         "Midnight Veil",
-        "Frosty Resolve",
-        "Molten Rift",
-        "Void Thunder"
+        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -377,8 +319,7 @@
       "nome_pt": "Insone",
       "custo": 4,
       "sets": [
-        "Havoc Eclipse",
-        "Tidebreaking Courage"
+        "Havoc Eclipse"
       ],
       "status": "ok"
     },
@@ -457,14 +398,12 @@
     },
     "Flautist": {
       "nome_pt": "Flautista",
-      "custo": null,
+      "custo": 3,
       "sets": [
         "Lingering Tunes",
-        "Void Thunder",
-        "Midnight Veil",
-        "Eternal Radiance"
+        "Void Thunder"
       ],
-      "status": "TODO: a fonte lista custos [1, 3] para variantes deste echo; escolha um"
+      "status": "ok"
     },
     "Flora Drone": {
       "nome_pt": "Drone Flora",
@@ -666,13 +605,12 @@
     },
     "Gulpuff": {
       "nome_pt": "Baiagul",
-      "custo": null,
+      "custo": 1,
       "sets": [
         "Celestial Light",
-        "Freezing Frost",
-        "Midnight Veil"
+        "Freezing Frost"
       ],
-      "status": "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"
+      "status": "ok"
     },
     "Havoc Drake": {
       "nome_pt": "Draco Aniquilante",
@@ -819,23 +757,13 @@
       ],
       "status": "ok"
     },
-    "Jinhsi": {
-      "nome_pt": "Jinhsi",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
     "Jué": {
       "nome_pt": "Jué",
-      "custo": null,
+      "custo": 4,
       "sets": [
-        "Celestial Light",
-        "Tidebreaking Courage",
-        "Empyrean Anthem"
+        "Celestial Light"
       ],
-      "status": "TODO: a fonte lista custos [1, 4] para variantes deste echo; escolha um"
+      "status": "ok"
     },
     "Kerasaur": {
       "nome_pt": "Ceratossauro",
@@ -974,10 +902,7 @@
       "custo": 1,
       "sets": [
         "Tidebreaking Courage",
-        "Frosty Resolve",
-        "Moonlit Clouds",
-        "Lingering Tunes",
-        "Celestial Light"
+        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -1360,8 +1285,7 @@
       "nome_pt": "Divergente: Beringal-feiliano",
       "custo": 4,
       "sets": [
-        "Sierra Gale",
-        "Rejuvenating Glow"
+        "Sierra Gale"
       ],
       "status": "ok"
     },
@@ -1398,9 +1322,7 @@
       "custo": 1,
       "sets": [
         "Celestial Light",
-        "Freezing Frost",
-        "Frosty Resolve",
-        "Empyrean Anthem"
+        "Freezing Frost"
       ],
       "status": "ok"
     },
@@ -1533,13 +1455,12 @@
     },
     "Phantom: Rocksteady Guardian": {
       "nome_pt": "Divergente: Guardião Rochafirme",
-      "custo": null,
+      "custo": 3,
       "sets": [
         "Rejuvenating Glow",
-        "Celestial Light",
-        "Frosty Resolve"
+        "Celestial Light"
       ],
-      "status": "TODO: a fonte lista custos [3, 4] para variantes deste echo; escolha um"
+      "status": "ok"
     },
     "Phantom: Sentry Construct": {
       "nome_pt": "Divergente: Constructo de Sentinela",
@@ -1629,14 +1550,6 @@
       "sets": [
         "Pact of Neonlight Leap",
         "Rite of Gilded Revelation"
-      ],
-      "status": "ok"
-    },
-    "Phoebe": {
-      "nome_pt": "Phoebe",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -1755,14 +1668,6 @@
       ],
       "status": "ok"
     },
-    "Roccia": {
-      "nome_pt": "Roccia",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
     "Rocksteady Guardian": {
       "nome_pt": "Guardião Rochafirme",
       "custo": 3,
@@ -1845,14 +1750,6 @@
         "Trailblazing Star",
         "Chromatic Foam",
         "Wishes of Quiet Snowfall"
-      ],
-      "status": "ok"
-    },
-    "Shorekeeper": {
-      "nome_pt": "Guardiã da Costa",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
       ],
       "status": "ok"
     },
@@ -1977,8 +1874,7 @@
       "nome_pt": "Mefítico tempestuoso",
       "custo": 4,
       "sets": [
-        "Void Thunder",
-        "Empyrean Anthem"
+        "Void Thunder"
       ],
       "status": "ok"
     },
@@ -2013,9 +1909,7 @@
       "sets": [
         "Lingering Tunes",
         "Rejuvenating Glow",
-        "Havoc Eclipse",
-        "Celestial Light",
-        "Freezing Frost"
+        "Havoc Eclipse"
       ],
       "status": "ok"
     },
@@ -2131,24 +2025,13 @@
       ],
       "status": "ok"
     },
-    "Zani": {
-      "nome_pt": "Zani",
-      "custo": 4,
-      "sets": [
-        "Frosty Resolve"
-      ],
-      "status": "ok"
-    },
     "Zig Zag": {
       "nome_pt": "Zigue-zague",
       "custo": 1,
       "sets": [
         "Moonlit Clouds",
         "Lingering Tunes",
-        "Celestial Light",
-        "Midnight Veil",
-        "Empyrean Anthem",
-        "Frosty Resolve"
+        "Celestial Light"
       ],
       "status": "ok"
     },
