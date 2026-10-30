@@ -56,6 +56,8 @@ def _variante(campo: str, valor: object) -> Callable[[Json], None]:
         ("stat_aliases.json", lambda c: c["sets"].__setitem__("Set Fantasma", []), "Set Fantasma: não existe"),
         ("stat_aliases.json", lambda c: c["stats"]["crit_rate"].append("Dano CRIT"), "'dano crit' aponta para"),
         ("sets.json", lambda c: c["sets"]["Moonlit Clouds"]["bonus"]["2"].__setitem__("Sorte", 1), "Sorte"),
+        ("notas.json", lambda c: c["faixas"].reverse(), "ordem decrescente"),
+        ("notas.json", lambda c: c["faixas"].pop(), "última faixa precisa ter min 0"),
     ],
 )
 def test_acusa_erro_apontando_arquivo_e_campo(

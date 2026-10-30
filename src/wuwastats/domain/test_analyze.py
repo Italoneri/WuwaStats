@@ -27,6 +27,13 @@ class TestEntradaLimpa:
 
         assert [e.score_pct for e in analise.echos] == [80.4, 51.3, 37.0, 37.9, 6.3]
 
+    def test_atribui_nota_por_echo_e_ao_conjunto(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        analise = _analisar(entrada_suoming, dados)
+
+        assert [e.nota for e in analise.echos] == ["SS", "B", "C", "C", "C"]
+        assert (analise.conjunto.score_medio_pct, analise.conjunto.nota_media) == (42.6, "B")
+        assert {c.indice: c.nota for c in analise.candidatos_troca}[0] == "SS"
+
     def test_ajusta_valor_lido_e_informa_tier(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         dano_crit = _analisar(entrada_suoming, dados).echos[0].substatus[1]
 

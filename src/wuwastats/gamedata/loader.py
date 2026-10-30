@@ -13,6 +13,7 @@ from wuwastats.domain.names import NameIndex, fold, is_pct_flat_pair, is_percent
 from wuwastats.domain.tables import (
     BuildSpec,
     EchoInfo,
+    FaixaNota,
     GameData,
     MainStatTable,
     Perfil,
@@ -95,6 +96,7 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
         echo_names=echo_names,
         set_names=set_names,
         perfis={nome: resolvedor.perfil(nome, raw) for nome, raw in arquivos.characters.items()},
+        notas=tuple(FaixaNota(nota=f.nota, min=f.min) for f in arquivos.notas.faixas),
     )
 
 

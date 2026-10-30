@@ -110,6 +110,25 @@ class AliasesFile(_Estrito):
     sets: dict[str, list[str]]
 
 
+class FaixaNotaRaw(_Estrito):
+    nota: str = Field(min_length=1)
+    min: float = Field(ge=0, le=100)
+
+
+class NotasFile(_Estrito):
+    meta: Meta = Field(alias="_meta")
+    faixas: list[FaixaNotaRaw] = Field(min_length=1)
+
+    @field_validator("faixas")
+    @classmethod
+    def _cobre_de_0_a_100(cls, faixas: list[FaixaNotaRaw]) -> list[FaixaNotaRaw]:
+        if any(atual.min >= anterior.min for anterior, atual in pairwise(faixas)):
+            raise ValueError("faixas devem estar em ordem decrescente de min, sem repetição")
+        if faixas[-1].min != 0:
+            raise ValueError("a última faixa precisa ter min 0 para todo score ter nota")
+        return faixas
+
+
 class BuildSpecRaw(_Estrito):
     escala: Escala
     regen_energia_min: float = Field(ge=100)
@@ -162,3 +181,4 @@ class ArquivosDeDados(BaseModel):
     echoes: EchoesFile
     stat_aliases: AliasesFile
     characters: dict[str, PerfilRaw]
+    notas: NotasFile

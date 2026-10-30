@@ -64,6 +64,12 @@ class Perfil:
 
 
 @dataclass(frozen=True)
+class FaixaNota:
+    nota: str
+    min: float
+
+
+@dataclass(frozen=True)
 class GameData:
     substats: Mapping[str, SubstatTable]
     main_stats: Mapping[Custo, MainStatTable]
@@ -74,3 +80,4 @@ class GameData:
     echo_names: NameIndex
     set_names: NameIndex
     perfis: Mapping[str, Perfil]
+    notas: tuple[FaixaNota, ...]  # ordem decrescente de min; a última tem min 0

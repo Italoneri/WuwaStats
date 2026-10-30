@@ -14,7 +14,7 @@ from wuwastats.domain.report import (
     SubstatValido,
     problema,
 )
-from wuwastats.domain.score import MAX_SUBSTATUS, crit_value, pontos, score_pct
+from wuwastats.domain.score import MAX_SUBSTATUS, crit_value, nota, pontos, score_pct
 from wuwastats.domain.tables import BuildSpec, GameData
 from wuwastats.domain.validate import posicao_pct, snap
 
@@ -35,6 +35,7 @@ def analisar_echo(indice: int, echo: EchoEntrada, ctx: ContextoEcho) -> EchoAnal
     analisados = [_analisar_substatus(i, lido, ctx) for i, lido in enumerate(echo.substatus)]
     substatus = [substat for substat, _ in analisados]
     validos = [s for s in substatus if isinstance(s, SubstatValido)]
+    score = score_pct(sum(s.pontos for s in validos), ctx.melhor_caso)
     problemas = [
         *problemas_nome,
         *problemas_set,
@@ -51,7 +52,8 @@ def analisar_echo(indice: int, echo: EchoEntrada, ctx: ContextoEcho) -> EchoAnal
         set_lido=echo.set,
         principal=principal,
         substatus=substatus,
-        score_pct=score_pct(sum(s.pontos for s in validos), ctx.melhor_caso),
+        score_pct=score,
+        nota=nota(score, ctx.dados.notas),
         cv=crit_value((s.stat, s.valor) for s in validos),
         revisao=any(p.severidade == "revisao" for p in problemas),
         problemas=problemas,

@@ -117,6 +117,7 @@ class EchoAnalise(_Saida):
     principal: PrincipalAnalise
     substatus: list[Substat]
     score_pct: float
+    nota: str
     cv: float
     revisao: bool
     problemas: list[Problema]
@@ -164,6 +165,7 @@ class ConjuntoAnalise(_Saida):
     cv: float
     cv_com_principal: float
     score_medio_pct: float
+    nota_media: str
     regen: RegenAnalise
     custos: CustosAnalise
     set: SetAnalise
@@ -175,6 +177,7 @@ class CandidatoTroca(_Saida):
     indice: int
     nome: str | None
     score_pct: float
+    nota: str
     motivos: list[str]
 
 

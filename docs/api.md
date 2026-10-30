@@ -144,7 +144,7 @@ Campos extras são rejeitados (422).
               "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "pesos": { "crit_rate": 1.0 } },
   "echos": [ /* EchoAnalise */ ],
   "conjunto": { /* ConjuntoAnalise */ },
-  "candidatos_troca": [ { "indice": 4, "nome": null, "score_pct": 6.3, "motivos": ["Principal hp_pct; a build pede atk_pct no custo 1.", "Score 6.3%."] } ],
+  "candidatos_troca": [ { "indice": 4, "nome": null, "score_pct": 6.3, "nota": "C", "motivos": ["Principal hp_pct; a build pede atk_pct no custo 1.", "Score 6.3%."] } ],
   "nomes_desconhecidos": [ { "categoria": "sets", "nome_lido": "Nuvens ao Luar", "echos": [0, 1] } ],
   "revisao": false
 }
@@ -171,6 +171,7 @@ Campos extras são rejeitados (422).
                  "valido_para_custo": true, "recomendado": true },
   "substatus": [ /* Substat */ ],
   "score_pct": 80.4,
+  "nota": "SS",
   "cv": 33.6,
   "revisao": false,
   "problemas": [ /* Problema */ ]
@@ -181,6 +182,7 @@ Campos extras são rejeitados (422).
 - `principal.valor_esperado`: valor no nível máximo para o custo; `null` se o status não pode ser principal nesse custo.
 - `principal.recomendado`: se está entre os principais pedidos pela build (`null` = build não define para esse custo).
 - `score_pct` (0–100): `Σ peso × valor/máximo` dos substatus ÷ melhor caso possível da build (5 maiores pesos no máximo). O mesmo echo tem scores diferentes em builds diferentes. O principal não entra no score.
+- `nota`: faixa de `score_pct` definida em `data/notas.json` (hoje SSS, SS, S, A, B, C).
 - `cv`: Crit Value dos substatus = `2 × Taxa CRIT + Dano CRIT`.
 
 #### Substat (união discriminada por `tipo`)
@@ -205,7 +207,7 @@ Campos extras são rejeitados (422).
 
 ```json
 {
-  "cv": 114.6, "cv_com_principal": 158.6, "score_medio_pct": 42.6,
+  "cv": 114.6, "cv_com_principal": 158.6, "score_medio_pct": 42.6, "nota_media": "B",
   "regen": { "base": 100, "echos": 35.2, "sets": 10, "externa": 0, "total": 145.2, "minimo": 110,
              "atinge": true, "informado": null, "diferenca_informado": null },
   "custos": { "esperado": [4,3,3,1,1], "atual": [4,3,3,1,1], "ok": true },

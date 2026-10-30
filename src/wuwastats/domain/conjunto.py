@@ -17,7 +17,7 @@ from wuwastats.domain.report import (
     SubstatValido,
     problema,
 )
-from wuwastats.domain.score import crit_value
+from wuwastats.domain.score import crit_value, nota
 from wuwastats.domain.tables import BuildSpec, GameData, SetInfo
 
 REGEN_BASE = 100.0
@@ -34,10 +34,12 @@ def analisar_conjunto(
     custos = _custos(echos, spec)
     set_ = _set(pecas, bonus, spec, dados)
     echo_principal = _echo_principal(echos, spec)
+    score_medio = round(fmean(e.score_pct for e in echos), 1)
     return ConjuntoAnalise(
         cv=round(sum(e.cv for e in echos), 2),
         cv_com_principal=round(sum(e.cv for e in echos) + crit_value((e.principal.stat, e.principal.valor) for e in echos), 2),
-        score_medio_pct=round(fmean(e.score_pct for e in echos), 1),
+        score_medio_pct=score_medio,
+        nota_media=nota(score_medio, dados.notas),
         regen=regen,
         custos=custos,
         set=set_,

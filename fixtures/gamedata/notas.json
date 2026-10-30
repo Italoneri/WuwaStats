@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "descricao": "Nota (SSS…C) de um score_pct (0–100): vale a primeira faixa com score >= min. Ordem decrescente de min; a última faixa precisa ter min 0. Valores iniciais copiados do design."
+  },
+  "faixas": [
+    { "nota": "SSS", "min": 85 },
+    { "nota": "SS", "min": 75 },
+    { "nota": "S", "min": 65 },
+    { "nota": "A", "min": 55 },
+    { "nota": "B", "min": 40 },
+    { "nota": "C", "min": 0 }
+  ]
+}

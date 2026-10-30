@@ -51,6 +51,7 @@ def candidatos_troca(echos: Sequence[EchoAnalise]) -> list[CandidatoTroca]:
             indice=e.indice,
             nome=e.nome or e.nome_lido,
             score_pct=e.score_pct,
+            nota=e.nota,
             motivos=[*problemas_de_build(e), f"Score {e.score_pct}%."],
         )
         for e in ordenados
