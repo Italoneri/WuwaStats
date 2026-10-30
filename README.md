@@ -31,7 +31,7 @@ Prints que falharem aparecem no resumo com o motivo; preencha esses echos à mã
 A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura, escolha a build e clique em
 **Iniciar captura**: o servidor passa a escutar as teclas enquanto você joga, e cada print é lido pela IA na hora.
 
-| Tecla | O que faz |
+| Tecla (padrão) | O que faz |
 |---|---|
 | F8 | print do echo aberto → próximo espaço vazio (ou o marcado com "Refazer"); o 1º espaço é o echo principal |
 | F9 | print da tela do personagem (arma, nível, atributos totais) → substitui o anterior |
@@ -44,7 +44,10 @@ A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura
 - O servidor só lê a tela. Escuta F8–F10 com `RegisterHotKey` enquanto a captura estiver ligada, e por isso essas teclas
   não chegam ao jogo nesse período. Ele nunca envia cliques nem teclas ao jogo, e um teste falha se alguém incluir uma API
   que faça isso. Parar a captura (ou derrubar o servidor) solta as teclas.
-- Se os atalhos não responderem com o jogo em foco, rode o servidor num terminal como administrador.
+- O jogo pode engolir as teclas comuns enquanto está em foco (nem o PrtSc funciona). Combinações com a tecla Windows
+  costumam passar: troque os atalhos no `.env` (`CAPTURA_TECLA_ECHO=Win+Shift+E` etc.; aceita Ctrl, Alt, Shift, Win +
+  F1–F24, A–Z, 0–9, Num0–Num9). A página mostra as teclas configuradas.
+- Se mesmo assim os atalhos não responderem com o jogo em foco, rode o servidor num terminal como administrador.
 
 ## Dados de jogo
 

@@ -1,6 +1,6 @@
 """Tela, atalhos globais e bipe no Windows. Só importar com sys.platform == "win32".
 
-Só lê a tela: escuta F8/F9/F10 com RegisterHotKey, localiza a janela pelo título e captura a área dela com mss.
+Só lê a tela: escuta os atalhos configurados com RegisterHotKey, localiza a janela pelo título e captura a área dela com mss.
 Nunca envia cliques nem teclas ao jogo (test_windows.py falha se alguém usar uma API que faça isso).
 """
 
@@ -17,9 +17,9 @@ import mss
 import mss.exception
 import mss.tools
 
-from wuwastats.captura.servico import CapturaFalhou, FerramentasCaptura, Sinal, Tecla
+from wuwastats.captura.servico import CapturaFalhou, FerramentasCaptura, Sinal
+from wuwastats.captura.teclas import Acao, Atalho
 
-TECLAS: dict[Tecla, int] = {"F8": 0x77, "F9": 0x78, "F10": 0x79}
 MOD_NOREPEAT = 0x4000
 WM_HOTKEY = 0x0312
 PM_REMOVE = 0x0001
@@ -31,11 +31,11 @@ TIMEOUT_REGISTRO_S = 5
 logger = logging.getLogger(__name__)
 
 
-def ferramentas_windows(titulo_janela: str) -> FerramentasCaptura:
+def ferramentas_windows(titulo_janela: str, atalhos: Mapping[Acao, Atalho]) -> FerramentasCaptura:
     _ativar_dpi_real()
     return FerramentasCaptura(
         capturar_tela=lambda: capturar_janela(titulo_janela),
-        escutar_atalhos=EscutaAtalhos.iniciar,
+        escutar_atalhos=lambda acoes: EscutaAtalhos.iniciar(acoes, atalhos),
         sinalizar=sinalizar,
     )
 
@@ -65,16 +65,17 @@ def sinalizar(sinal: Sinal) -> None:
 class EscutaAtalhos:
     """RegisterHotKey vale para a thread que registrou: a fila de mensagens é lida nessa mesma thread."""
 
-    def __init__(self, acoes: Mapping[Tecla, Callable[[], None]]) -> None:
+    def __init__(self, acoes: Mapping[Acao, Callable[[], None]], atalhos: Mapping[Acao, Atalho]) -> None:
         self._acoes = dict(acoes)
+        self._atalhos = dict(atalhos)
         self._parar = threading.Event()
         self._registrado = threading.Event()
         self._erro: CapturaFalhou | None = None
         self._thread = threading.Thread(target=self._escutar, name="atalhos", daemon=True)
 
     @classmethod
-    def iniciar(cls, acoes: Mapping[Tecla, Callable[[], None]]) -> "EscutaAtalhos":
-        escuta = cls(acoes)
+    def iniciar(cls, acoes: Mapping[Acao, Callable[[], None]], atalhos: Mapping[Acao, Atalho]) -> "EscutaAtalhos":
+        escuta = cls(acoes, atalhos)
         escuta._thread.start()
         if not escuta._registrado.wait(TIMEOUT_REGISTRO_S):
             escuta.parar()
@@ -93,9 +94,10 @@ class EscutaAtalhos:
         por_id = dict(enumerate(self._acoes.items(), start=1))
         registrados: list[int] = []
         try:
-            for identificador, (tecla, _acao) in por_id.items():
-                if not user32.RegisterHotKey(None, identificador, MOD_NOREPEAT, TECLAS[tecla]):
-                    self._erro = CapturaFalhou(f"não consegui registrar {tecla}: outro programa já usa esse atalho")
+            for identificador, (acao, _funcao) in por_id.items():
+                atalho = self._atalhos[acao]
+                if not user32.RegisterHotKey(None, identificador, atalho.modificadores | MOD_NOREPEAT, atalho.tecla):
+                    self._erro = CapturaFalhou(f"não consegui registrar {atalho.rotulo}: outro programa já usa esse atalho")
                     return
                 registrados.append(identificador)
             self._registrado.set()
@@ -105,7 +107,7 @@ class EscutaAtalhos:
                 user32.UnregisterHotKey(None, identificador)
             self._registrado.set()
 
-    def _ler_mensagens(self, user32: ctypes.WinDLL, por_id: Mapping[int, tuple[Tecla, Callable[[], None]]]) -> None:
+    def _ler_mensagens(self, user32: ctypes.WinDLL, por_id: Mapping[int, tuple[Acao, Callable[[], None]]]) -> None:
         """PeekMessage + sleep: deixa a thread checar o pedido de parada."""
         mensagem = wintypes.MSG()
         while not self._parar.is_set():
@@ -113,11 +115,11 @@ class EscutaAtalhos:
                 time.sleep(0.05)
                 continue
             if mensagem.message == WM_HOTKEY and mensagem.wParam in por_id:
-                tecla, acao = por_id[mensagem.wParam]
+                acao, funcao = por_id[mensagem.wParam]
                 try:
-                    acao()
+                    funcao()
                 except Exception:
-                    logger.exception("atalho %s falhou", tecla)  # a escuta continua: a próxima tecla ainda deve funcionar
+                    logger.exception("atalho de %s falhou", acao)  # a escuta continua: a próxima tecla ainda deve funcionar
 
 
 # --- Janela (só leitura) ---

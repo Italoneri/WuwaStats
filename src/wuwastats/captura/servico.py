@@ -36,14 +36,16 @@ from wuwastats.captura.sessao import (
     refazer,
     reordenar,
 )
+from wuwastats.captura.teclas import Acao
 from wuwastats.domain.models import EntradaBuild, StatLido
 from wuwastats.domain.tables import Perfil
 from wuwastats.vision.extract import EchoExtraido, Extrator, PersonagemExtraido
 
-Tecla = Literal["F8", "F9", "F10"]
 Sinal = Literal["ok", "erro"]
 Local = int | Literal["personagem"]
-TipoEvento = Literal["estado", "print_recebido", "leitura_iniciada", "lido", "falhou", "f10", "erro_captura", "encerrada"]
+TipoEvento = Literal[
+    "estado", "print_recebido", "leitura_iniciada", "lido", "falhou", "ir_para_analise", "erro_captura", "encerrada"
+]
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +73,7 @@ class Escuta(Protocol):
 @dataclass(frozen=True)
 class FerramentasCaptura:
     capturar_tela: Callable[[], bytes]
-    escutar_atalhos: Callable[[Mapping[Tecla, Callable[[], None]]], Escuta]
+    escutar_atalhos: Callable[[Mapping[Acao, Callable[[], None]]], Escuta]
     sinalizar: Callable[[Sinal], None]
 
 
@@ -118,7 +120,9 @@ class ServicoCaptura:
     def iniciar(self, build: str) -> Sessao:
         extrator = self._criar_extrator()  # sem IA configurada não há leitura imediata: falha antes de ligar os atalhos
         self.parar()
-        escuta = self._ferramentas.escutar_atalhos({"F8": self._f8, "F9": self._f9, "F10": self._f10})
+        escuta = self._ferramentas.escutar_atalhos(
+            {"echo": self._capturar_echo, "personagem": self._capturar_personagem, "analise": self._ir_para_analise}
+        )
         with self._trava:
             self._sessao = Sessao(id=uuid.uuid4().hex[:12], build=build)
             self._pasta = Path(tempfile.mkdtemp(prefix="wuwastats-captura-"))
@@ -180,17 +184,17 @@ class ServicoCaptura:
 
     # --- Atalhos (rodam na thread da escuta) ---
 
-    def _f8(self) -> None:
+    def _capturar_echo(self) -> None:
         self._receber_print(receber_echo, self._ler_echo)
 
-    def _f9(self) -> None:
+    def _capturar_personagem(self) -> None:
         self._receber_print(_receber_personagem, self._ler_personagem)
 
-    def _f10(self) -> None:
+    def _ir_para_analise(self) -> None:
         with self._trava:
             if self._sessao is None or not self._sessao.ativa:
                 return
-            self._publicar(Evento(tipo="f10", sessao=self._sessao))
+            self._publicar(Evento(tipo="ir_para_analise", sessao=self._sessao))
         self._ferramentas.sinalizar("ok")
 
     def _receber_print(

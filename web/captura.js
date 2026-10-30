@@ -3,7 +3,7 @@
 import { ICONES, api, avisoErro, el, icone, lembrarPagina, moldura, parametro, silhueta } from "./comum.js";
 
 const TOTAL_ECHOS = 5;
-const TIPOS_EVENTO = ["estado", "print_recebido", "leitura_iniciada", "lido", "falhou", "f10", "erro_captura", "encerrada"];
+const TIPOS_EVENTO = ["estado", "print_recebido", "leitura_iniciada", "lido", "falhou", "ir_para_analise", "erro_captura", "encerrada"];
 const PENDENTES = new Set(["recebido", "lendo"]);
 const CHAVE_UPLOAD = "wuwastats:upload";
 
@@ -17,6 +17,7 @@ const VISUAL = {
 
 const estado = {
   builds: [],
+  teclas: { echo: "F8", personagem: "F9", analise: "F10" },
   nomePorPersonagem: new Map(),
   build: parametro("build"),
   sessao: null,
@@ -35,7 +36,8 @@ carregar();
 
 async function carregar() {
   try {
-    const [builds, personagens] = await Promise.all([api.builds(), api.personagens()]);
+    const [builds, personagens, teclas] = await Promise.all([api.builds(), api.personagens(), api.captura.teclas()]);
+    estado.teclas = teclas;
     estado.builds = builds;
     estado.nomePorPersonagem = new Map(personagens.map((p) => [p.chave, p.nome]));
     await retomarSessao(parametro("sessao"));
@@ -126,14 +128,14 @@ function aoEvento(evento) {
   }
   if (evento.tipo === "erro_captura") estado.erro = evento.motivo;
   if (evento.tipo === "encerrada") desconectar(); // sem isso o EventSource reconecta sozinho
-  if (evento.tipo === "f10") return irParaAnalise();
+  if (evento.tipo === "ir_para_analise") return irParaAnalise();
   desenhar();
 }
 
 function irParaAnalise() {
   const falta = motivoParaNaoAnalisar();
   if (falta) {
-    estado.erro = `F10: ${falta}`;
+    estado.erro = `${estado.teclas.analise}: ${falta}`;
     return desenhar();
   }
   location.href = `analise.html?sessao=${encodeURIComponent(estado.sessao.id)}`;
@@ -230,9 +232,9 @@ function atalhos() {
     "div",
     { class: "strip", "aria-label": "Atalhos no jogo" },
     el("span", { class: "label" }, "Atalhos no jogo"),
-    atalho("F8", "Capturar echo"),
-    atalho("F9", "Tela do personagem"),
-    atalho("F10", "Ver análise"),
+    atalho(estado.teclas.echo, "Capturar echo"),
+    atalho(estado.teclas.personagem, "Tela do personagem"),
+    atalho(estado.teclas.analise, "Ver análise"),
   );
 }
 
@@ -294,7 +296,7 @@ function espacoEcho(espaco, i) {
       alvo ? el("span", { class: "selo lilas" }, "Próximo F8") : null,
       comSessao ? el("span", { class: "grip", title: "Arraste para reordenar", "aria-hidden": "true" }, icone(ICONES.grip, 16, { espessura: 3 })) : null,
     ),
-    espaco.estado === "vazio" ? el("div", { class: "emptybox" }, el("span", { class: "kbd" }, "F8"), "Aperte F8 no jogo") : miniatura(espaco, rotulo),
+    espaco.estado === "vazio" ? el("div", { class: "emptybox" }, el("span", { class: "kbd" }, estado.teclas.echo), `Aperte ${estado.teclas.echo} no jogo`) : miniatura(espaco, rotulo),
     el(
       "div",
       { class: "sfoot" },
@@ -304,7 +306,7 @@ function espacoEcho(espaco, i) {
         : [
             el(
               "button",
-              { class: "ibtn", type: "button", title: "Refazer: o próximo F8 vem para este espaço", "aria-label": `Refazer ${rotulo}`, disabled: estado.ocupado, onclick: () => alterar((id) => api.captura.refazer(id, i)) },
+              { class: "ibtn", type: "button", title: `Refazer: o próximo ${estado.teclas.echo} vem para este espaço`, "aria-label": `Refazer ${rotulo}`, disabled: estado.ocupado, onclick: () => alterar((id) => api.captura.refazer(id, i)) },
               icone(ICONES.refazer, 16, { espessura: 2 }),
             ),
             el(
@@ -329,9 +331,9 @@ function espacoPersonagem(espaco) {
   return el(
     "div",
     { class: `slot ${visual.classe}` },
-    el("div", { class: "shead" }, el("span", { class: "slot-nome" }, "Personagem"), el("span", { class: "selo lilas" }, "F9")),
+    el("div", { class: "shead" }, el("span", { class: "slot-nome" }, "Personagem"), el("span", { class: "selo lilas" }, estado.teclas.personagem)),
     espaco.estado === "vazio"
-      ? el("div", { class: "emptybox wide" }, el("span", { class: "kbd" }, "F9"), "Aperte F9 no jogo")
+      ? el("div", { class: "emptybox wide" }, el("span", { class: "kbd" }, estado.teclas.personagem), `Aperte ${estado.teclas.personagem} no jogo`)
       : miniatura(espaco, "tela do personagem", true),
     el(
       "div",
@@ -341,7 +343,7 @@ function espacoPersonagem(espaco) {
         ? null
         : el(
             "button",
-            { class: "ibtn", type: "button", title: "Remover (ou aperte F9 de novo para substituir)", "aria-label": "Remover print da tela do personagem", disabled: estado.ocupado, onclick: () => alterar((id) => api.captura.esvaziarPersonagem(id)) },
+            { class: "ibtn", type: "button", title: `Remover (ou aperte ${estado.teclas.personagem} de novo para substituir)`, "aria-label": "Remover print da tela do personagem", disabled: estado.ocupado, onclick: () => alterar((id) => api.captura.esvaziarPersonagem(id)) },
             icone(ICONES.fechar, 16, { espessura: 2 }),
           ),
     ),
@@ -487,7 +489,7 @@ function rodape() {
         "Ir para a análise ",
         el("span", { "aria-hidden": "true" }, "→"),
       ),
-      el("span", { class: "kbd", "aria-label": "Atalho F10" }, "F10"),
+      el("span", { class: "kbd", "aria-label": `Atalho ${estado.teclas.analise}` }, estado.teclas.analise),
     ),
   );
 }

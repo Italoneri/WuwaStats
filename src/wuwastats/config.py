@@ -3,6 +3,8 @@ from pathlib import Path
 from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from wuwastats.captura.teclas import Acao, Atalho, ler_atalho
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 Recorte = tuple[float, float, float, float]
@@ -22,11 +24,29 @@ class Settings(BaseSettings):
     nvidia_max_tokens: int = Field(default=1024, gt=0)
     nvidia_concorrencia: int = Field(default=2, ge=1, le=5)
 
-    # Título exato da janela do jogo, para a captura por atalho (F8/F9).
+    # Título exato da janela do jogo, para a captura por atalho.
     captura_titulo_janela: str = "Wuthering Waves"
+    # Atalhos globais da captura: "F8", "Ctrl+Shift+E", "Num1"... (ver captura/teclas.py)
+    captura_tecla_echo: str = "F8"
+    captura_tecla_personagem: str = "F9"
+    captura_tecla_analise: str = "F10"
 
     # Recorte do painel do echo em frações da imagem: [x0, y0, x1, y1]. Vazio = imagem inteira.
     echo_recorte: Recorte | None = None
+
+    @field_validator("captura_tecla_echo", "captura_tecla_personagem", "captura_tecla_analise")
+    @classmethod
+    def _atalho_valido(cls, texto: str) -> str:
+        ler_atalho(texto)
+        return texto
+
+    @property
+    def atalhos_captura(self) -> dict[Acao, Atalho]:
+        return {
+            "echo": ler_atalho(self.captura_tecla_echo),
+            "personagem": ler_atalho(self.captura_tecla_personagem),
+            "analise": ler_atalho(self.captura_tecla_analise),
+        }
 
     @field_validator("echo_recorte")
     @classmethod

@@ -331,8 +331,9 @@ Resposta:
 
 ## Captura no servidor
 
-O servidor escuta F8 (echo), F9 (tela do personagem) e F10 enquanto uma sessão estiver ativa, e lê cada print com a IA
-assim que ele chega. Uma sessão por vez: iniciar outra encerra a anterior. Só Windows (fora dele, `iniciar` responde 501).
+O servidor escuta três atalhos globais enquanto uma sessão estiver ativa (padrão F8 = echo, F9 = tela do personagem,
+F10 = ir para a análise; configuráveis no `.env` com `CAPTURA_TECLA_ECHO`, `CAPTURA_TECLA_PERSONAGEM` e
+`CAPTURA_TECLA_ANALISE`, ex.: `Win+Shift+E`) e lê cada print com a IA assim que ele chega. Uma sessão por vez: iniciar outra encerra a anterior. Só Windows (fora dele, `iniciar` responde 501).
 
 ### Sessao
 
@@ -362,6 +363,10 @@ Resposta de todos os endpoints abaixo que mudam ou consultam a sessão.
   (a leitura de um print removido é descartada).
 - `alvo_f8`: espaço marcado com "Refazer". Sem marca, o F8 vai para o primeiro espaço vazio; com os 5 ocupados, vira
   `erro_captura`.
+
+### `GET /api/captura/teclas`
+
+Atalhos configurados, para a página mostrar as teclas certas: `{ "echo": "F8", "personagem": "F9", "analise": "F10" }`.
 
 ### `POST /api/captura/iniciar`
 
@@ -397,7 +402,7 @@ Todo evento traz a **Sessao** completa depois da mudança: basta redesenhar a pa
 | `lido` | leitura ok | `espaco`, `nome` (echo ou personagem), `principal` (só echo) |
 | `falhou` | leitura falhou | `espaco`, `motivo` |
 | `erro_captura` | o print nem foi tirado (jogo fora de foco, espaços cheios...) | `motivo` |
-| `f10` | F10 pressionado | — |
+| `ir_para_analise` | atalho de análise pressionado | — |
 | `encerrada` | sessão parada ou substituída; o stream fecha | — |
 
 `espaco` é o índice do echo (0–4) ou `"personagem"`.

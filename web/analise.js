@@ -207,7 +207,7 @@ function painelArma() {
       "div",
       { style: { display: "flex", flexDirection: "column", gap: "3px", minWidth: 0 } },
       el("span", { style: { fontSize: "17px", fontWeight: 800, color: leitura?.arma ? "var(--lilas)" : "var(--mudo)" } }, leitura?.arma ?? "Arma não lida"),
-      el("span", { style: { fontSize: "13px", color: "var(--mudo)" } }, detalhes.length ? detalhes.join(" · ") : leitura ? "Nível e rank não visíveis" : "Aperte F9 na tela do personagem"),
+      el("span", { style: { fontSize: "13px", color: "var(--mudo)" } }, detalhes.length ? detalhes.join(" · ") : leitura ? "Nível e rank não visíveis" : "Capture a tela do personagem"),
       arma ? el("span", { class: "estrelas", style: { fontSize: "13px" }, "aria-label": `${arma.raridade} estrelas` }, estrelas(arma.raridade)) : null,
     ),
   );
@@ -257,7 +257,7 @@ function atributos() {
           el("span", { class: `mono ${a.valor === 0 ? "zero" : "gold"}` }, formatarValor(a.valor, a.percentual)),
         ),
       )
-    : el("p", { style: { margin: 0, fontSize: "14px", color: "var(--mudo)", gridColumn: "1 / -1" } }, "Atributos totais aparecem aqui com o print da tela do personagem (F9).");
+    : el("p", { style: { margin: 0, fontSize: "14px", color: "var(--mudo)", gridColumn: "1 / -1" } }, "Atributos totais aparecem aqui com o print da tela do personagem.");
   return el("div", { class: "attrs", style: { paddingTop: "14px", borderTop: "1px solid var(--borda)" } }, conteudo);
 }
 

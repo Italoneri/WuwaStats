@@ -67,7 +67,7 @@ def test_f8_le_o_print_na_hora_e_avisa_cada_passo(servico: ServicoCaptura, tela:
     sessao = servico.iniciar("Suoming_DPS")
     eventos = _ouvir(servico, sessao.id)
 
-    tela.apertar("F8")
+    tela.apertar("echo")
 
     assert _resumo(eventos) == [("estado", None), ("print_recebido", 0), ("leitura_iniciada", 0), ("lido", 0)]
     assert (eventos[-1].nome, eventos[-1].principal and eventos[-1].principal.valor) == ("Suhsin", 44.0)
@@ -79,7 +79,7 @@ def test_leitura_que_falha_marca_o_espaco_com_o_motivo(servico: ServicoCaptura, 
     sessao = servico.iniciar("Suoming_DPS")
     eventos = _ouvir(servico, sessao.id)
 
-    tela.apertar("F8", b"borrado")
+    tela.apertar("echo", b"borrado")
 
     espaco = servico.estado(sessao.id).echos[0]
     assert isinstance(espaco, Falhou)
@@ -89,8 +89,8 @@ def test_leitura_que_falha_marca_o_espaco_com_o_motivo(servico: ServicoCaptura, 
 
 def test_f9_le_a_tela_do_personagem_e_usa_a_arma_na_entrada(servico: ServicoCaptura, tela: TelaFalsa, dados: GameData) -> None:
     sessao = servico.iniciar("Suoming_DPS")
-    tela.apertar("F8")
-    tela.apertar("F9", b"tela")
+    tela.apertar("echo")
+    tela.apertar("personagem", b"tela")
 
     estado = servico.estado(sessao.id)
     entrada = servico.entrada(sessao.id, dados.perfis.__getitem__)
@@ -103,9 +103,9 @@ def test_erro_ao_capturar_a_janela_avisa_a_pagina_e_bipa(servico: ServicoCaptura
     sessao = servico.iniciar("Suoming_DPS")
     eventos = _ouvir(servico, sessao.id)
 
-    tela.apertar("F8")
+    tela.apertar("echo")
     tela.proximo_print = CapturaFalhou("o jogo não está em primeiro plano")
-    tela.apertar("F8")
+    tela.apertar("echo")
 
     assert eventos[-1].tipo == "erro_captura"
     assert eventos[-1].motivo == "o jogo não está em primeiro plano"
@@ -115,10 +115,10 @@ def test_erro_ao_capturar_a_janela_avisa_a_pagina_e_bipa(servico: ServicoCaptura
 def test_sexto_print_vira_erro_de_captura(servico: ServicoCaptura, tela: TelaFalsa) -> None:
     sessao = servico.iniciar("Suoming_DPS")
     for _ in range(5):
-        tela.apertar("F8")
+        tela.apertar("echo")
     eventos = _ouvir(servico, sessao.id)
 
-    tela.apertar("F8")
+    tela.apertar("echo")
 
     assert eventos[-1].tipo == "erro_captura"
     assert "espaços de echo estão ocupados" in (eventos[-1].motivo or "")
@@ -126,13 +126,13 @@ def test_sexto_print_vira_erro_de_captura(servico: ServicoCaptura, tela: TelaFal
 
 def test_refazer_e_reordenar_avisam_o_novo_estado(servico: ServicoCaptura, tela: TelaFalsa) -> None:
     sessao = servico.iniciar("Suoming_DPS")
-    tela.apertar("F8")
-    tela.apertar("F8", b"borrado")
+    tela.apertar("echo")
+    tela.apertar("echo", b"borrado")
     eventos = _ouvir(servico, sessao.id)
 
     servico.reordenar(sessao.id, [1, 0, 2, 3, 4])
     servico.refazer(sessao.id, 0)
-    tela.apertar("F8", b"echo")
+    tela.apertar("echo", b"echo")
 
     estado = servico.estado(sessao.id)
     assert [type(e) for e in estado.echos[:2]] == [EchoLido, EchoLido]
@@ -143,7 +143,7 @@ def test_leitura_de_print_ja_removido_e_descartada(tela: TelaFalsa, dados: GameD
     adiado = Adiado()
     servico = _servico(tela, dados, tmp_path, executar=adiado)
     sessao = servico.iniciar("Suoming_DPS")
-    tela.apertar("F8")
+    tela.apertar("echo")
     servico.esvaziar_echo(sessao.id, 0)
     eventos = _ouvir(servico, sessao.id)
 
@@ -157,22 +157,22 @@ def test_leitura_de_sessao_antiga_nao_vaza_para_a_nova(tela: TelaFalsa, dados: G
     adiado = Adiado()
     servico = _servico(tela, dados, tmp_path, executar=adiado)
     servico.iniciar("Suoming_DPS")
-    tela.apertar("F8")
+    tela.apertar("echo")
     nova = servico.iniciar("Suoming_DPS")
-    tela.apertar("F8", b"borrado")
+    tela.apertar("echo", b"borrado")
 
     adiado.rodar()
 
     assert isinstance(servico.estado(nova.id).echos[0], Falhou)
 
 
-def test_f10_avisa_a_pagina(servico: ServicoCaptura, tela: TelaFalsa) -> None:
+def test_atalho_de_analise_avisa_a_pagina(servico: ServicoCaptura, tela: TelaFalsa) -> None:
     sessao = servico.iniciar("Suoming_DPS")
     eventos = _ouvir(servico, sessao.id)
 
-    tela.apertar("F10")
+    tela.apertar("analise")
 
-    assert eventos[-1].tipo == "f10"
+    assert eventos[-1].tipo == "ir_para_analise"
 
 
 def test_parar_solta_os_atalhos_e_encerra_quem_esta_ouvindo(servico: ServicoCaptura, tela: TelaFalsa) -> None:
@@ -208,7 +208,7 @@ def test_sem_ia_configurada_nem_liga_os_atalhos(tela: TelaFalsa) -> None:
 
 def test_entrada_sem_echo_lido_e_recusada(servico: ServicoCaptura, tela: TelaFalsa, dados: GameData) -> None:
     sessao = servico.iniciar("Suoming_DPS")
-    tela.apertar("F8", b"borrado")
+    tela.apertar("echo", b"borrado")
 
     with pytest.raises(SemEchoLido):
         servico.entrada(sessao.id, dados.perfis.__getitem__)

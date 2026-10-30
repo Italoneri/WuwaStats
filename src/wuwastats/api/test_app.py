@@ -204,14 +204,14 @@ class TestCaptura:
 
     def test_fluxo_completo_monta_a_entrada_na_ordem_dos_espacos(self, cliente: TestClient, tela: TelaFalsa) -> None:
         sessao = self._iniciar(cliente)
-        tela.apertar("F8", b"echo")
-        tela.apertar("F8", b"lixo")
-        tela.apertar("F9", b"tela")
+        tela.apertar("echo", b"echo")
+        tela.apertar("echo", b"lixo")
+        tela.apertar("personagem", b"tela")
         self._esperar(cliente, sessao, lambda e: e["echos"][1]["estado"] == "falhou" and e["personagem"]["estado"] == "lido")
 
         reordenado = cliente.post(f"/api/captura/{sessao}/reordenar", json={"ordem": [1, 0, 2, 3, 4]}).json()
         refazer = cliente.post(f"/api/captura/{sessao}/echos/0/refazer").json()
-        tela.apertar("F8", b"echo")
+        tela.apertar("echo", b"echo")
         estado = self._esperar(cliente, sessao, lambda e: e["echos"][0]["estado"] == "lido")
         entrada = cliente.get(f"/api/captura/{sessao}/entrada").json()
 
@@ -224,8 +224,8 @@ class TestCaptura:
 
     def test_esvaziar_espacos(self, cliente: TestClient, tela: TelaFalsa) -> None:
         sessao = self._iniciar(cliente)
-        tela.apertar("F8", b"echo")
-        tela.apertar("F9", b"tela")
+        tela.apertar("echo", b"echo")
+        tela.apertar("personagem", b"tela")
 
         cliente.delete(f"/api/captura/{sessao}/echos/0")
         estado = cliente.delete(f"/api/captura/{sessao}/personagem").json()

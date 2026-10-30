@@ -5,7 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from wuwastats.captura.servico import CapturaFalhou, FerramentasCaptura, Sinal, Tecla
+from wuwastats.captura.servico import CapturaFalhou, FerramentasCaptura, Sinal
+from wuwastats.captura.teclas import Acao
 from wuwastats.config import PROJECT_ROOT, Settings
 from wuwastats.domain.models import EchoEntrada, EntradaBuild
 from wuwastats.domain.tables import GameData
@@ -49,7 +50,7 @@ def com_echo(entrada: EntradaBuild, indice: int, **campos: object) -> EntradaBui
 
 @dataclass
 class EscutaFalsa:
-    acoes: Mapping[Tecla, Callable[[], None]]
+    acoes: Mapping[Acao, Callable[[], None]]
     parada: bool = False
 
     def parar(self) -> None:
@@ -58,7 +59,7 @@ class EscutaFalsa:
 
 @dataclass
 class TelaFalsa:
-    """Faz o papel do jogo: 'proximo_print' é o que o F8/F9 vai capturar; apertar() simula a tecla."""
+    """Faz o papel do jogo: 'proximo_print' é o que o atalho vai capturar; apertar() simula a tecla da ação."""
 
     proximo_print: bytes | CapturaFalhou = b"echo"
     sinais: list[Sinal] = field(default_factory=list)
@@ -67,17 +68,17 @@ class TelaFalsa:
     def ferramentas(self) -> FerramentasCaptura:
         return FerramentasCaptura(capturar_tela=self._capturar, escutar_atalhos=self._escutar, sinalizar=self.sinais.append)
 
-    def apertar(self, tecla: Tecla, print_: bytes | None = None) -> None:
+    def apertar(self, acao: Acao, print_: bytes | None = None) -> None:
         if print_ is not None:
             self.proximo_print = print_
-        self.escutas[-1].acoes[tecla]()
+        self.escutas[-1].acoes[acao]()
 
     def _capturar(self) -> bytes:
         if isinstance(self.proximo_print, CapturaFalhou):
             raise self.proximo_print
         return self.proximo_print
 
-    def _escutar(self, acoes: Mapping[Tecla, Callable[[], None]]) -> EscutaFalsa:
+    def _escutar(self, acoes: Mapping[Acao, Callable[[], None]]) -> EscutaFalsa:
         self.escutas.append(EscutaFalsa(acoes))
         return self.escutas[-1]
 

@@ -36,6 +36,7 @@ from wuwastats.captura.servico import (
     SessaoInexistente,
 )
 from wuwastats.captura.sessao import OrdemInvalida
+from wuwastats.captura.teclas import Acao
 from wuwastats.config import PROJECT_ROOT, Settings
 from wuwastats.domain.analyze import analisar
 from wuwastats.domain.models import MAX_ECHOS, Condicoes, EntradaBuild
@@ -106,7 +107,7 @@ def criar_app(
     @asynccontextmanager
     async def ciclo_de_vida(_app: FastAPI) -> AsyncIterator[None]:
         yield
-        captura.parar()  # solta F8/F9/F10 para o resto do sistema
+        captura.parar()  # solta os atalhos para o resto do sistema
         leituras.shutdown(wait=False, cancel_futures=True)
 
     app = FastAPI(
@@ -185,7 +186,8 @@ def criar_app(
         except GameDataError as erro:
             raise ErroApi(422, "dados de jogo inválidos; mantidos os anteriores", erro.erros) from erro
 
-    app.include_router(rotas_captura(captura, lambda build: _perfil(repositorio.dados, build)))
+    teclas: dict[Acao, str] = {acao: atalho.rotulo for acao, atalho in configuracao.atalhos_captura.items()}
+    app.include_router(rotas_captura(captura, lambda build: _perfil(repositorio.dados, build), teclas))
 
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")
@@ -210,7 +212,7 @@ def _ferramentas_do_sistema(configuracao: Settings) -> FerramentasCaptura:
     if sys.platform == "win32":
         from wuwastats.captura.windows import ferramentas_windows  # usa APIs que só existem no Windows
 
-        return ferramentas_windows(configuracao.captura_titulo_janela)
+        return ferramentas_windows(configuracao.captura_titulo_janela, configuracao.atalhos_captura)
 
     def indisponivel(*_args: object) -> Escuta:
         raise CapturaIndisponivel("a captura por atalho só funciona no Windows; envie os prints pela página")

@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from wuwastats.captura.servico import Evento, ServicoCaptura
 from wuwastats.captura.sessao import Sessao
+from wuwastats.captura.teclas import Acao
 from wuwastats.domain.models import MAX_ECHOS, EntradaBuild
 from wuwastats.domain.tables import Perfil
 
@@ -32,8 +33,13 @@ class PedidoOrdem(BaseModel):
     )
 
 
-def rotas_captura(servico: ServicoCaptura, perfil_da_build: Callable[[str], Perfil]) -> APIRouter:
+def rotas_captura(servico: ServicoCaptura, perfil_da_build: Callable[[str], Perfil], teclas: dict[Acao, str]) -> APIRouter:
     rotas = APIRouter(prefix="/api/captura", tags=["captura"])
+
+    @rotas.get("/teclas")
+    def atalhos() -> dict[Acao, str]:
+        """Atalhos configurados no .env, para a página mostrar as teclas certas."""
+        return teclas
 
     @rotas.post("/iniciar")
     def iniciar(pedido: PedidoCaptura) -> Sessao:

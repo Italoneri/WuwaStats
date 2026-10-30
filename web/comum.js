@@ -28,6 +28,7 @@ export const api = {
   extrair: (form) => pedir("/api/extrair", { method: "POST", body: form }),
   mapear: (pedido) => pedir("/api/aliases", json("POST", pedido)),
   captura: {
+    teclas: () => pedir("/api/captura/teclas"),
     iniciar: (build) => pedir("/api/captura/iniciar", json("POST", { build })),
     parar: () => pedir("/api/captura/parar", { method: "POST" }),
     estado: (sessao) => pedir(`/api/captura/${encodeURIComponent(sessao)}`),
