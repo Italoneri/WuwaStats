@@ -14,11 +14,11 @@ from wuwastats.config import Recorte
 from wuwastats.domain.models import MAX_ECHOS, Condicoes, EchoEntrada, EntradaBuild
 from wuwastats.domain.tables import GameData, Perfil
 from wuwastats.domain.variants import detectar_condicoes
-from wuwastats.vision.cache import CacheVisao, ChaveCache, TipoPrint
+from wuwastats.vision.cache import CacheVisao, ChaveCache
 from wuwastats.vision.client import ModeloVisao
 from wuwastats.vision.image import ImagemInvalida, carregar_imagem, e_imagem
 from wuwastats.vision.parse import ErroLeitura, LeituraPersonagem, parse_echo, parse_personagem
-from wuwastats.vision.prompt import PROMPT_PERSONAGEM, prompt_echo
+from wuwastats.vision.prompt import PROMPT_PERSONAGEM, TipoPrint, prompt_echo
 
 PREFIXO_PRINT_PERSONAGEM = "personagem"
 

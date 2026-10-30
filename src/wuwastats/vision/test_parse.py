@@ -65,5 +65,16 @@ def test_le_tela_do_personagem() -> None:
     assert leitura == LeituraPersonagem(personagem="Suoming", arma="Arma Teste", regen_energia_total=125.4)
 
 
+def test_le_atributos_nivel_e_rank_da_tela_do_personagem() -> None:
+    resposta = """{"personagem": "Suoming", "nivel": "90", "arma": "Penumbra Abissal", "arma_nivel": 90.0, "arma_rank": 1,
+        "atributos": [{"stat": "HP", "valor": "13245"}, {"stat": "Dano CRIT", "valor": "273,2%"}]}"""
+
+    leitura = parse_personagem(resposta)
+
+    assert isinstance(leitura, LeituraPersonagem)
+    assert (leitura.nivel, leitura.arma_nivel, leitura.arma_rank) == (90, 90, 1)
+    assert [(a.stat, a.valor, a.percentual) for a in leitura.atributos] == [("HP", 13245.0, None), ("Dano CRIT", 273.2, True)]
+
+
 def test_tela_do_personagem_aceita_campos_nulos() -> None:
     assert parse_personagem('{"arma": null}') == LeituraPersonagem()

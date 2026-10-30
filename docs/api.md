@@ -310,7 +310,10 @@ Resposta:
         "resposta_bruta": "Não consegui ler." }
     ],
     "personagem": { "tipo": "ok", "arquivo": "personagem.png", "do_cache": false,
-                    "leitura": { "personagem": "Suoming", "arma": "...", "regen_energia_total": 131.2 } }
+                    "leitura": { "personagem": "Suoming", "nivel": 90, "arma": "Penumbra Abissal", "arma_nivel": 90,
+                                 "arma_rank": 1, "regen_energia_total": 131.2,
+                                 "atributos": [ { "stat": "HP", "valor": 13245, "percentual": false },
+                                                { "stat": "Dano CRIT", "valor": 273.2, "percentual": true } ] } }
   },
   "analise": { /* Analise dos echos lidos; null se nenhum */ }
 }
@@ -319,6 +322,8 @@ Resposta:
 - `extracao.echos[i]` corresponde ao i-ésimo arquivo enviado (`arquivo` é `1.png`, `2.png`... no servidor).
 - Echos que falharam **não** entram em `entrada`: a interface deve permitir preenchê-los à mão e reanalisar.
 - `do_cache`: a resposta veio do cache (sem gastar crédito da API).
+- `leitura.atributos`: atributos totais da tela, na ordem e com o nome como aparecem no jogo (só para exibição).
+  Campos que a IA não conseguiu ler vêm `null` (`[]` em `atributos`).
 - Com o print do personagem, `entrada.condicoes.arma_assinatura` é detectada comparando a arma lida com `armas_assinatura` da build, e `entrada.regen_total_informado` vem da tela.
 
 ## `POST /api/aliases`

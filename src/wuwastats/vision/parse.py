@@ -41,6 +41,7 @@ def _texto_ou_nulo(valor: object) -> object:
 
 
 Numero = Annotated[float, BeforeValidator(_numero)]
+InteiroOpcional = Annotated[int | None, BeforeValidator(_inteiro)]
 TextoOpcional = Annotated[str | None, BeforeValidator(_texto_ou_nulo)]
 
 
@@ -71,8 +72,12 @@ class EchoIA(_Leniente):
 
 class LeituraPersonagem(_Leniente):
     personagem: TextoOpcional = None
+    nivel: InteiroOpcional = None
     arma: TextoOpcional = None
+    arma_nivel: InteiroOpcional = None
+    arma_rank: InteiroOpcional = None
     regen_energia_total: Numero | None = None
+    atributos: list[StatIA] = Field(default=[], description="Atributos totais da tela, com o nome como aparece no jogo.")
 
 
 def parse_echo(resposta: str) -> EchoEntrada | ErroLeitura:

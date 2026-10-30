@@ -7,11 +7,8 @@ import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Literal
 
-from wuwastats.vision.prompt import PROMPT_VERSAO
-
-TipoPrint = Literal["echo", "personagem"]
+from wuwastats.vision.prompt import PROMPT_VERSAO, TipoPrint
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +22,7 @@ class ChaveCache:
     @property
     def caminho_relativo(self) -> Path:
         modelo = re.sub(r"[^A-Za-z0-9._-]+", "_", self.modelo)
-        return Path(self.tipo) / f"{self.sha256}-{modelo}-v{PROMPT_VERSAO}.json"
+        return Path(self.tipo) / f"{self.sha256}-{modelo}-v{PROMPT_VERSAO[self.tipo]}.json"
 
 
 @dataclass(frozen=True)
@@ -50,7 +47,7 @@ class CacheVisao:
         registro = {
             "tipo": chave.tipo,
             "modelo": chave.modelo,
-            "prompt_versao": PROMPT_VERSAO,
+            "prompt_versao": PROMPT_VERSAO[chave.tipo],
             "criado_em": datetime.now(UTC).isoformat(),
             "resposta": resposta,
         }
