@@ -5,6 +5,7 @@
 
 # Prints e cache da IA de visão (créditos limitados, dados pessoais)
 input/
+fotos/
 cache/
 
 # Python
