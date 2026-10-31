@@ -18,7 +18,7 @@ def test_escolhe_variante_pela_arma(
     resolucao = resolver_build(dados.perfis["Suoming_DPS"], Condicoes(arma_assinatura=arma_assinatura))
 
     assert resolucao.variante == variante
-    assert resolucao.spec.set == set_
+    assert resolucao.spec.sets == {set_: 5}
     assert resolucao.spec.echo_principal == echo_principal
     assert resolucao.condicoes_pendentes == ()
 

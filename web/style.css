@@ -360,3 +360,11 @@ label.chip input { accent-color: var(--lilas-forte); }
 .build-texto p { margin: 0 0 14px; }
 .build-texto p:last-child { margin-bottom: 0; }
 .build-texto strong { color: var(--texto); font-weight: 700; }
+
+/* --- Sets da build (um set ou combinação) --- */
+.sets-build { display: flex; flex-direction: column; gap: 10px; }
+.set-build { display: flex; align-items: center; gap: 12px; }
+.set-icone { width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; overflow: hidden; }
+.sets-editor { display: flex; flex-direction: column; gap: 8px; }
+.set-editor-linha { display: grid; grid-template-columns: minmax(0, 1fr) 120px 30px; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
+.set-editor-linha .ibtn { width: 30px; height: 30px; }

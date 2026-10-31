@@ -27,7 +27,6 @@ CodigoProblema = Literal[
     "regen_insuficiente",
     "principal_valor_divergente",
     "regen_divergente",
-    "set_pecas_desconhecidas",
 ]
 
 # revisao: leitura provavelmente errada, precisa de correção manual
@@ -52,7 +51,6 @@ SEVERIDADE: dict[CodigoProblema, Severidade] = {
     "regen_insuficiente": "build",
     "principal_valor_divergente": "aviso",
     "regen_divergente": "aviso",
-    "set_pecas_desconhecidas": "aviso",
 }
 
 
@@ -147,11 +145,16 @@ class BonusSet(_Saida):
     stats: dict[str, float]
 
 
-class SetAnalise(_Saida):
-    esperado: str | None
-    pecas_necessarias: int | None
+class SetPedido(_Saida):
+    set: str
+    pecas_necessarias: int
     pecas_equipadas: int
-    ok: bool | None
+    ok: bool
+
+
+class SetAnalise(_Saida):
+    pedidos: list[SetPedido] = Field(description="Um por set da build (combinação: 3 + 2); vazio = set livre.")
+    ok: bool | None = Field(description="Todos os pedidos atendidos; null se a build não pede set.")
     bonus_ativos: list[BonusSet]
 
 
@@ -194,7 +197,7 @@ class PerfilAplicado(_Saida):
     escala: Escala
     regen_energia_min: float
     custos: list[Custo]
-    set: str | None
+    sets: dict[str, int] = Field(description="Set → peças pedidas; vazio = set livre.")
     echo_principal: str | None
     principais: dict[Custo, list[str]]
     estrelas: dict[str, int] = Field(description="1 a 3 por substatus, na ordem de prioridade da build.")

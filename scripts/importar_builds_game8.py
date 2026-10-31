@@ -61,8 +61,7 @@ class BlocoGame8:
     titulo: str
     melhor_arma: str | None
     alternativas: tuple[str, ...]
-    sets: tuple[str, ...]
-    sonata: str  # texto da célula, ex.: "3-pc : Dream of the Lost 2-pc : Havoc Eclipse"
+    sets: tuple[tuple[str, int | None], ...]  # (set, peças); peças None = o site não diz
     custos: tuple[int, ...]
     echo_principal: str | None
     principais: Mapping[str, str]  # "4" / "3" / "1" → texto da célula ("Crit DMG or Crit Rate")
@@ -254,14 +253,21 @@ def _ler_bloco(titulo: str, trecho: str) -> BlocoGame8 | None:
         titulo=titulo,
         melhor_arma=next(iter(_links(linhas.get("Best Weapon", ""))), None),
         alternativas=_links(linhas.get("Alt. Weapons", "")),
-        sets=_links(linhas.get("Sonata Effect", "")),
-        sonata=_texto(linhas.get("Sonata Effect", "")),
+        sets=_sets_da_celula(linhas.get("Sonata Effect", "")),
         custos=tuple(int(c) for c in re.findall(r"\b[134]\b", _texto(linhas.get("Cost Pattern", "")))),
         echo_principal=next(iter(_links(linhas.get("Main Echo", ""))), None),
         principais=_principais(estatisticas),
         substatus=_substatus(estatisticas),
         texto=_texto(trecho.split(estatisticas, 1)[-1]) if estatisticas else "",
     )
+
+
+def _sets_da_celula(celula: str) -> tuple[tuple[str, int | None], ...]:
+    """'5-pc: Heart of Sworn Vigil' ou '3-pc : Dream of the Lost 2-pc : Havoc Eclipse' → [(set, peças), ...]."""
+    combinacao = re.findall(r"(\d)\s*-\s*pc\s*:?\s*(.+?)(?=\s*\d\s*-\s*pc|$)", _texto(celula))
+    if combinacao:
+        return tuple((nome.strip(), int(pecas)) for pecas, nome in combinacao)
+    return tuple((nome, None) for nome in _links(celula))
 
 
 def _principais(tabela: str) -> dict[str, str]:
@@ -298,7 +304,7 @@ def montar_build(personagem: str, bloco: BlocoGame8, dados: GameData) -> BuildGe
         "regen_energia_min": regen or REGEN_PADRAO,
         "custos": list(bloco.custos),
         "echo_principal": _nome(dados.echo_names, dados.echoes, bloco.echo_principal, "echo", avisos),
-        "set": _set(bloco, dados, avisos),
+        "sets": _sets(bloco, dados, avisos),
         "principais": {custo: stats for custo, stats in principais.items() if stats},
         "estrelas": _estrelas(bloco.substatus, dados, avisos),
     }
@@ -327,11 +333,17 @@ def _armas(bloco: BlocoGame8, dados: GameData, avisos: list[str]) -> dict[str, A
     return {"melhor": melhor, "alternativas": [a for a in alternativas if a]}
 
 
-def _set(bloco: BlocoGame8, dados: GameData, avisos: list[str]) -> str | None:
-    """A build guarda um set só: em combinações (3 peças + 2 de outro) fica o primeiro e o aviso registra o resto."""
-    if len(bloco.sets) > 1:
-        avisos.append(f"o Game8 combina sets ({bloco.sonata}); a build guarda só {bloco.sets[0]}")
-    return _nome(dados.set_names, dados.sets, next(iter(bloco.sets), None), "set", avisos)
+def _sets(bloco: BlocoGame8, dados: GameData, avisos: list[str]) -> dict[str, int] | None:
+    """Set → peças. Sem número no site, vale o tamanho do set (um set só: todas as peças dele)."""
+    sets: dict[str, int] = {}
+    for nome, pecas in bloco.sets:
+        chave = _nome(dados.set_names, dados.sets, nome, "set", avisos)
+        tamanho = pecas or (dados.sets[chave].pecas if chave else None)
+        if chave and tamanho is None:
+            avisos.append(f"set '{nome}': o site não diz quantas peças e sets.json não sabe o tamanho")
+        if chave and tamanho:
+            sets[chave] = tamanho
+    return sets or None
 
 
 def _nome(indice: NameIndex, catalogo: Mapping[str, object], nome: str | None, tipo: str, avisos: list[str]) -> str | None:

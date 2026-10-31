@@ -23,7 +23,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Suhsin the Inevitable",
-    "set": "Heart of Sworn Vigil",
+    "sets": {
+      "Heart of Sworn Vigil": 5
+    },
     "principais": {
       "4": [
         "Dano CRIT",
@@ -70,7 +72,9 @@
       1
     ],
     "echo_principal": "Soulfrayer",
-    "set": "Heart of Sworn Vigil",
+    "sets": {
+      "Heart of Sworn Vigil": 5
+    },
     "principais": {
       "4": [
         "Dano CRIT",
@@ -117,7 +121,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "Dano CRIT",
@@ -160,7 +166,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Suhsin the Inevitable",
-    "set": "Heart of Sworn Vigil",
+    "sets": {
+      "Heart of Sworn Vigil": 5
+    },
     "principais": {
       "4": [
         "Dano CRIT",
@@ -204,7 +212,9 @@
       1
     ],
     "echo_principal": "Soulfrayer",
-    "set": "Flash of Electric Reflection",
+    "sets": {
+      "Flash of Electric Reflection": 5
+    },
     "principais": {
       "4": [
         "Dano CRIT",
@@ -251,7 +261,9 @@
       1
     ],
     "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "Bônus de Cura",
@@ -293,7 +305,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_dmg",
@@ -337,7 +351,9 @@
       1
     ],
     "echo_principal": "Sigillum",
-    "set": "Trailblazing Star",
+    "sets": {
+      "Trailblazing Star": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -361,50 +377,6 @@
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
-  "Augusta_Electro_DPS": {
-    "personagem": "Augusta",
-    "armas": {
-      "melhor": "Thunderflare Dominion",
-      "alternativas": [
-        "Verdant Summit",
-        "Ages of Harvest",
-        "Aureate Zenith"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 120,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "The False Sovereign",
-    "set": "Crown of Valor",
-    "principais": {
-      "4": [
-        "crit_dmg",
-        "crit_rate"
-      ],
-      "3": [
-        "electro_dmg",
-        "atk_pct"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "heavy_atk_dmg": 2,
-      "atk_pct": 2,
-      "energy_regen": 1,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Crown of Valor 2-pc : Void Thunder); a build guarda só Crown of Valor"
-  },
   "Baizhi_Full_Support": {
     "personagem": "Baizhi",
     "armas": {
@@ -425,7 +397,9 @@
       1
     ],
     "echo_principal": "Bell-Borne Geochelone",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -465,7 +439,9 @@
       1
     ],
     "echo_principal": "Dragon of Dirge",
-    "set": "Tidebreaking Courage",
+    "sets": {
+      "Tidebreaking Courage": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -509,7 +485,9 @@
       1
     ],
     "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -549,7 +527,9 @@
       1
     ],
     "echo_principal": "Nightmare: Thundering Mephis",
-    "set": "Void Thunder",
+    "sets": {
+      "Void Thunder": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -592,7 +572,9 @@
       1
     ],
     "echo_principal": "Nightmare: Crownless",
-    "set": "Havoc Eclipse",
+    "sets": {
+      "Havoc Eclipse": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -635,7 +617,9 @@
       1
     ],
     "echo_principal": "Lorelei",
-    "set": "Midnight Veil",
+    "sets": {
+      "Midnight Veil": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -678,7 +662,9 @@
       1
     ],
     "echo_principal": "Hecate",
-    "set": "Empyrean Anthem",
+    "sets": {
+      "Empyrean Anthem": 5
+    },
     "principais": {
       "4": [
         "crit_rate"
@@ -720,7 +706,9 @@
       1
     ],
     "echo_principal": "Sentry Construct",
-    "set": "Frosty Resolve",
+    "sets": {
+      "Frosty Resolve": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -764,7 +752,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Fleurdelys",
-    "set": "Windward Pilgrimage",
+    "sets": {
+      "Windward Pilgrimage": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -803,7 +793,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Fleurdelys",
-    "set": "Windward Pilgrimage",
+    "sets": {
+      "Windward Pilgrimage": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -845,7 +837,9 @@
       1
     ],
     "echo_principal": "Nightmare: Inferno Rider",
-    "set": "Molten Rift",
+    "sets": {
+      "Molten Rift": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -868,94 +862,6 @@
     },
     "status": "ok"
   },
-  "Chisa_Havoc_Bane_Support": {
-    "personagem": "Chisa",
-    "armas": {
-      "melhor": "Kumokiri",
-      "alternativas": [
-        "Wildfire Mark",
-        "Lustrous Razor",
-        "Autumntrace"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 100,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Reminiscence: Threnodian - Leviathan",
-    "set": "Thread of Severed Fate",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "atk_pct",
-        "havoc_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 3,
-      "liberation_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Thread of Severed Fate 2-pc : Havoc Eclipse); a build guarda só Thread of Severed Fate; o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
-  "Chisa_Healer_Support_w_Negative_Status_ATK_DPS": {
-    "personagem": "Chisa",
-    "armas": {
-      "melhor": "Kumokiri",
-      "alternativas": [
-        "Wildfire Mark",
-        "Lustrous Razor",
-        "Autumntrace"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 100,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "atk_pct",
-        "havoc_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 3,
-      "atk_pct": 2,
-      "liberation_dmg": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
   "Chixia_Fusion_DPS": {
     "personagem": "Chixia",
     "armas": {
@@ -976,7 +882,9 @@
       1
     ],
     "echo_principal": "Nightmare: Inferno Rider",
-    "set": "Molten Rift",
+    "sets": {
+      "Molten Rift": 5
+    },
     "principais": {
       "4": [
         "crit_dmg",
@@ -1019,7 +927,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Fleurdelys",
-    "set": "Gusts of Welkin",
+    "sets": {
+      "Gusts of Welkin": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1062,7 +972,9 @@
       1
     ],
     "echo_principal": "Nightmare: Crownless",
-    "set": "Havoc Eclipse",
+    "sets": {
+      "Havoc Eclipse": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1104,7 +1016,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Denia",
-    "set": "Chromatic Foam",
+    "sets": {
+      "Chromatic Foam": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1147,7 +1061,9 @@
       1
     ],
     "echo_principal": "Hyvatia",
-    "set": "Pact of Neonlight Leap",
+    "sets": {
+      "Pact of Neonlight Leap": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1190,7 +1106,9 @@
       1
     ],
     "echo_principal": "Voidwing Moth",
-    "set": "Reel of Spliced Memories",
+    "sets": {
+      "Reel of Spliced Memories": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1233,7 +1151,9 @@
       1
     ],
     "echo_principal": "Nightmare: Inferno Rider",
-    "set": "Molten Rift",
+    "sets": {
+      "Molten Rift": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1256,49 +1176,6 @@
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
-  "Galbrena_Fusion_Echo_Skill_DPS": {
-    "personagem": "Galbrena",
-    "armas": {
-      "melhor": "Lux & Umbra",
-      "alternativas": [
-        "Phasic Homogenizer",
-        "Static Mist",
-        "Solar Flame"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 120,
-    "custos": [
-      3,
-      4,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Corrosaurus",
-    "set": "Flamewing's Shadow",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "fusion_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "heavy_atk_dmg": 2,
-      "energy_regen": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Flamewing's Shadow 2-pc : Flaming Clawprint); a build guarda só Flamewing's Shadow"
-  },
   "Hiyuki_Glacio_Chafe_DPS": {
     "personagem": "Hiyuki",
     "armas": {
@@ -1319,7 +1196,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Threnodian - Voidborne Construct",
-    "set": "Wishes of Quiet Snowfall",
+    "sets": {
+      "Wishes of Quiet Snowfall": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1343,49 +1222,6 @@
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
-  "Iuno_Aero_Sub_DPS": {
-    "personagem": "Iuno",
-    "armas": {
-      "melhor": "Moongazer's Sigil",
-      "alternativas": [
-        "Verity's Handle",
-        "Blazing Justice",
-        "Solsworn Ciphers"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 120,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Lady of the Sea",
-    "set": "Crown of Valor",
-    "principais": {
-      "4": [
-        "crit_dmg",
-        "crit_rate"
-      ],
-      "3": [
-        "aero_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "liberation_dmg": 2,
-      "atk_pct": 2,
-      "energy_regen": 1,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Crown of Valor 2-pc : Sierra Gale); a build guarda só Crown of Valor"
-  },
   "Jianxin_Crowd_Control_Sub_DPS": {
     "personagem": "Jianxin",
     "armas": {
@@ -1406,7 +1242,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1449,7 +1287,9 @@
       1
     ],
     "echo_principal": "Myriad Snare: Rustfire Chassis",
-    "set": "Lamp of Nether Road",
+    "sets": {
+      "Lamp of Nether Road": 5
+    },
     "principais": {
       "4": [
         "crit_dmg",
@@ -1489,7 +1329,9 @@
       1
     ],
     "echo_principal": "Myriad Snare: Rustfire Chassis",
-    "set": "Lamp of Nether Road",
+    "sets": {
+      "Lamp of Nether Road": 5
+    },
     "principais": {
       "4": [
         "crit_dmg",
@@ -1529,7 +1371,9 @@
       1
     ],
     "echo_principal": "Jué",
-    "set": "Celestial Light",
+    "sets": {
+      "Celestial Light": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1573,7 +1417,9 @@
       1
     ],
     "echo_principal": "Nightmare: Feilian Beringal",
-    "set": "Sierra Gale",
+    "sets": {
+      "Sierra Gale": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1616,7 +1462,9 @@
       1
     ],
     "echo_principal": "Sentry Construct",
-    "set": "Frosty Resolve",
+    "sets": {
+      "Frosty Resolve": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1658,7 +1506,9 @@
       1
     ],
     "echo_principal": "Glommoth",
-    "set": "Wishes of Quiet Snowfall",
+    "sets": {
+      "Wishes of Quiet Snowfall": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1701,7 +1551,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1744,7 +1596,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1788,7 +1642,9 @@
       1
     ],
     "echo_principal": "Lioness of Glory",
-    "set": "Flaming Clawprint",
+    "sets": {
+      "Flaming Clawprint": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1830,7 +1686,9 @@
       1
     ],
     "echo_principal": "Twin Nova: Nebulous Cannon",
-    "set": "Rite of Gilded Revelation",
+    "sets": {
+      "Rite of Gilded Revelation": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1873,7 +1731,9 @@
       1
     ],
     "echo_principal": "Hyvatia",
-    "set": "Pact of Neonlight Leap",
+    "sets": {
+      "Pact of Neonlight Leap": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1917,7 +1777,9 @@
       1
     ],
     "echo_principal": "Twin Nova: Nebulous Cannon",
-    "set": "Rite of Gilded Revelation",
+    "sets": {
+      "Rite of Gilded Revelation": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -1961,7 +1823,9 @@
       1
     ],
     "echo_principal": "Reactor Husk",
-    "set": "Halo of Starry Radiance",
+    "sets": {
+      "Halo of Starry Radiance": 5
+    },
     "principais": {
       "4": [
         "healing_bonus"
@@ -2001,7 +1865,9 @@
       1
     ],
     "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus"
@@ -2041,7 +1907,9 @@
       1
     ],
     "echo_principal": "Hecate",
-    "set": "Empyrean Anthem",
+    "sets": {
+      "Empyrean Anthem": 5
+    },
     "principais": {
       "4": [
         "crit_rate"
@@ -2084,7 +1952,9 @@
       1
     ],
     "echo_principal": "Capitaneus",
-    "set": "Eternal Radiance",
+    "sets": {
+      "Eternal Radiance": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2127,7 +1997,9 @@
       1
     ],
     "echo_principal": "Capitaneus",
-    "set": "Eternal Radiance",
+    "sets": {
+      "Eternal Radiance": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2150,48 +2022,6 @@
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
-  "Phrolova_Havoc_DPS": {
-    "personagem": "Phrolova",
-    "armas": {
-      "melhor": "Lethean Elegy",
-      "alternativas": [
-        "Stringmaster",
-        "Whispers of Sirens",
-        "Cosmic Ripples"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 100,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Nightmare: Hecate",
-    "set": "Dream of the Lost",
-    "principais": {
-      "4": [
-        "crit_dmg",
-        "crit_rate"
-      ],
-      "3": [
-        "havoc_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_dmg": 3,
-      "crit_rate": 2,
-      "skill_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Dream of the Lost 2-pc : Havoc Eclipse); a build guarda só Dream of the Lost; o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
   "Qingxiao_Aero_Tune_Strain_DPS": {
     "personagem": "Qingxiao",
     "armas": {
@@ -2212,7 +2042,9 @@
       1
     ],
     "echo_principal": "Calamity Effigy",
-    "set": "Heart of Evil's Purge",
+    "sets": {
+      "Heart of Evil's Purge": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2238,135 +2070,6 @@
     },
     "status": "ok"
   },
-  "Qiuyuan_Full_Echo_Sub_DPS": {
-    "personagem": "Qiuyuan",
-    "armas": {
-      "melhor": "Emerald Sentence",
-      "alternativas": [
-        "Emerald of Genesis",
-        "Red Spring",
-        "Lumingloss"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 130,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Reminiscence: Fenrico",
-    "set": "Law of Harmony",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "aero_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 3,
-      "heavy_atk_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 combina sets (3-pc : Law of Harmony 2-pc : Sierra Gale); a build guarda só Law of Harmony"
-  },
-  "Qiuyuan_Hypercarry_Sub_DPS": {
-    "personagem": "Qiuyuan",
-    "armas": {
-      "melhor": "Emerald Sentence",
-      "alternativas": [
-        "Emerald of Genesis",
-        "Red Spring",
-        "Lumingloss"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 130,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "aero_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 3,
-      "heavy_atk_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "ok"
-  },
-  "Qiuyuan_Aero_Heavy_Attack_DMG_DPS": {
-    "personagem": "Qiuyuan",
-    "armas": {
-      "melhor": "Emerald Sentence",
-      "alternativas": [
-        "Emerald of Genesis",
-        "Red Spring",
-        "Lumingloss"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 100,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "echo_principal": "Nightmare: Feilian Beringal",
-    "set": "Sierra Gale",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "aero_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "heavy_atk_dmg": 3,
-      "energy_regen": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
   "Roccia_Havoc_Sub_DPS": {
     "personagem": "Roccia",
     "armas": {
@@ -2387,7 +2090,9 @@
       1
     ],
     "echo_principal": "Nightmare: Impermanence Heron",
-    "set": "Midnight Veil",
+    "sets": {
+      "Midnight Veil": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2431,7 +2136,9 @@
       1
     ],
     "echo_principal": "Reminiscence: Fleurdelys",
-    "set": "Windward Pilgrimage",
+    "sets": {
+      "Windward Pilgrimage": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2474,7 +2181,9 @@
       1
     ],
     "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -2516,7 +2225,9 @@
       1
     ],
     "echo_principal": "Soulfrayer",
-    "set": "Flash of Electric Reflection",
+    "sets": {
+      "Flash of Electric Reflection": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2559,7 +2270,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2602,7 +2315,9 @@
       1
     ],
     "echo_principal": "Dreamless",
-    "set": "Havoc Eclipse",
+    "sets": {
+      "Havoc Eclipse": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2645,7 +2360,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2689,7 +2406,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2733,7 +2452,9 @@
       1
     ],
     "echo_principal": "Nameless Explorer",
-    "set": "Sound of True Name",
+    "sets": {
+      "Sound of True Name": 5
+    },
     "principais": {
       "4": [
         "crit_dmg",
@@ -2776,7 +2497,9 @@
       1
     ],
     "echo_principal": "Forbidden Bastion",
-    "set": "Song of Feathered Trace",
+    "sets": {
+      "Song of Feathered Trace": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -2817,7 +2540,9 @@
       1
     ],
     "echo_principal": "Bell-Borne Geochelone",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2859,7 +2584,9 @@
       1
     ],
     "echo_principal": "Fallacy of No Return",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -2899,7 +2626,9 @@
       1
     ],
     "echo_principal": "Nightmare: Thundering Mephis",
-    "set": "Void Thunder",
+    "sets": {
+      "Void Thunder": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2942,7 +2671,9 @@
       1
     ],
     "echo_principal": "Bell-Borne Geochelone",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -2984,7 +2715,9 @@
       1
     ],
     "echo_principal": "Thousand-Puppet Pavilion",
-    "set": "Song of Feathered Trace",
+    "sets": {
+      "Song of Feathered Trace": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3027,7 +2760,9 @@
       1
     ],
     "echo_principal": "Impermanence Heron",
-    "set": "Moonlit Clouds",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3071,7 +2806,9 @@
       1
     ],
     "echo_principal": "Bell-Borne Geochelone",
-    "set": "Rejuvenating Glow",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
     "principais": {
       "4": [
         "healing_bonus",
@@ -3112,7 +2849,9 @@
       1
     ],
     "echo_principal": "Nightmare: Tempest Mephis",
-    "set": "Empyrean Anthem",
+    "sets": {
+      "Empyrean Anthem": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3154,7 +2893,9 @@
       1
     ],
     "echo_principal": "Capitaneus",
-    "set": "Eternal Radiance",
+    "sets": {
+      "Eternal Radiance": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3197,7 +2938,9 @@
       1
     ],
     "echo_principal": "Nightmare: Lampylumen Myriad",
-    "set": "Empyrean Anthem",
+    "sets": {
+      "Empyrean Anthem": 5
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3217,6 +2960,419 @@
       "basic_atk_dmg": 3,
       "energy_regen": 2,
       "atk_pct": 1,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Augusta_Electro_DPS": {
+    "personagem": "Augusta",
+    "armas": {
+      "melhor": "Thunderflare Dominion",
+      "alternativas": [
+        "Verdant Summit",
+        "Ages of Harvest",
+        "Aureate Zenith"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 120,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "The False Sovereign",
+    "sets": {
+      "Crown of Valor": 3,
+      "Void Thunder": 2
+    },
+    "principais": {
+      "4": [
+        "crit_dmg",
+        "crit_rate"
+      ],
+      "3": [
+        "electro_dmg",
+        "atk_pct"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "heavy_atk_dmg": 2,
+      "atk_pct": 2,
+      "energy_regen": 1,
+      "atk_flat": 1
+    },
+    "status": "ok"
+  },
+  "Chisa_Havoc_Bane_Support": {
+    "personagem": "Chisa",
+    "armas": {
+      "melhor": "Kumokiri",
+      "alternativas": [
+        "Wildfire Mark",
+        "Lustrous Razor",
+        "Autumntrace"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 100,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Reminiscence: Threnodian - Leviathan",
+    "sets": {
+      "Thread of Severed Fate": 3,
+      "Havoc Eclipse": 2
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "atk_pct",
+        "havoc_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 3,
+      "liberation_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Chisa_Healer_Support_w_Negative_Status_ATK_DPS": {
+    "personagem": "Chisa",
+    "armas": {
+      "melhor": "Kumokiri",
+      "alternativas": [
+        "Wildfire Mark",
+        "Lustrous Razor",
+        "Autumntrace"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 100,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Fallacy of No Return",
+    "sets": {
+      "Rejuvenating Glow": 5
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "atk_pct",
+        "havoc_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 3,
+      "atk_pct": 2,
+      "liberation_dmg": 2,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Galbrena_Fusion_Echo_Skill_DPS": {
+    "personagem": "Galbrena",
+    "armas": {
+      "melhor": "Lux & Umbra",
+      "alternativas": [
+        "Phasic Homogenizer",
+        "Static Mist",
+        "Solar Flame"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 120,
+    "custos": [
+      3,
+      4,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Corrosaurus",
+    "sets": {
+      "Flamewing's Shadow": 3,
+      "Flaming Clawprint": 2
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "fusion_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "heavy_atk_dmg": 2,
+      "energy_regen": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "ok"
+  },
+  "Iuno_Aero_Sub_DPS": {
+    "personagem": "Iuno",
+    "armas": {
+      "melhor": "Moongazer's Sigil",
+      "alternativas": [
+        "Verity's Handle",
+        "Blazing Justice",
+        "Solsworn Ciphers"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 120,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Lady of the Sea",
+    "sets": {
+      "Crown of Valor": 3,
+      "Sierra Gale": 2
+    },
+    "principais": {
+      "4": [
+        "crit_dmg",
+        "crit_rate"
+      ],
+      "3": [
+        "aero_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "liberation_dmg": 2,
+      "atk_pct": 2,
+      "energy_regen": 1,
+      "atk_flat": 1
+    },
+    "status": "ok"
+  },
+  "Phrolova_Havoc_DPS": {
+    "personagem": "Phrolova",
+    "armas": {
+      "melhor": "Lethean Elegy",
+      "alternativas": [
+        "Stringmaster",
+        "Whispers of Sirens",
+        "Cosmic Ripples"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 100,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Nightmare: Hecate",
+    "sets": {
+      "Dream of the Lost": 3,
+      "Havoc Eclipse": 2
+    },
+    "principais": {
+      "4": [
+        "crit_dmg",
+        "crit_rate"
+      ],
+      "3": [
+        "havoc_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_dmg": 3,
+      "crit_rate": 2,
+      "skill_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Qiuyuan_Full_Echo_Sub_DPS": {
+    "personagem": "Qiuyuan",
+    "armas": {
+      "melhor": "Emerald Sentence",
+      "alternativas": [
+        "Emerald of Genesis",
+        "Red Spring",
+        "Lumingloss"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 130,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Reminiscence: Fenrico",
+    "sets": {
+      "Law of Harmony": 3,
+      "Sierra Gale": 2
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "aero_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 3,
+      "heavy_atk_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "ok"
+  },
+  "Qiuyuan_Hypercarry_Sub_DPS": {
+    "personagem": "Qiuyuan",
+    "armas": {
+      "melhor": "Emerald Sentence",
+      "alternativas": [
+        "Emerald of Genesis",
+        "Red Spring",
+        "Lumingloss"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 130,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Impermanence Heron",
+    "sets": {
+      "Moonlit Clouds": 5
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "aero_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 3,
+      "heavy_atk_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "ok"
+  },
+  "Qiuyuan_Aero_Heavy_Attack_DMG_DPS": {
+    "personagem": "Qiuyuan",
+    "armas": {
+      "melhor": "Emerald Sentence",
+      "alternativas": [
+        "Emerald of Genesis",
+        "Red Spring",
+        "Lumingloss"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 100,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Nightmare: Feilian Beringal",
+    "sets": {
+      "Sierra Gale": 5
+    },
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "aero_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "heavy_atk_dmg": 3,
+      "energy_regen": 2,
+      "atk_pct": 2,
       "atk_flat": 1
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
@@ -3241,7 +3397,11 @@
       1
     ],
     "echo_principal": "Reminiscence - Nightmare: Adam Smasher",
-    "set": "Shadow of Shattered Dreams",
+    "sets": {
+      "Shadow of Shattered Dreams": 1,
+      "Rite of Gilded Revelation": 2,
+      "Reel of Spliced Memories": 2
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3262,7 +3422,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Rite of Gilded Revelation 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams; o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
   "Rebecca_Heavy_Attack_Buffer_Sub_DPS": {
     "personagem": "Rebecca",
@@ -3284,7 +3444,11 @@
       1
     ],
     "echo_principal": "Reminiscence - Nightmare: Adam Smasher",
-    "set": "Shadow of Shattered Dreams",
+    "sets": {
+      "Shadow of Shattered Dreams": 1,
+      "Void Thunder": 2,
+      "Reel of Spliced Memories": 2
+    },
     "principais": {
       "4": [
         "crit_rate",
@@ -3305,6 +3469,6 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Void Thunder 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams"
+    "status": "ok"
   }
 }

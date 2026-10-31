@@ -63,7 +63,7 @@ def test_le_so_blocos_de_build_e_ignora_a_tabela_da_arma() -> None:
     bloco = blocos[0]
     assert (bloco.titulo, bloco.melhor_arma) == ("Electro DPS Build", "Test Weapon")
     assert bloco.alternativas == ("Alt Weapon", "Arma Fantasma")
-    assert (bloco.sets, bloco.custos, bloco.echo_principal) == (("Moonlit Clouds",), (4, 3, 3, 1, 1), "Suhsin")
+    assert (bloco.sets, bloco.custos, bloco.echo_principal) == ((("Moonlit Clouds", 5),), (4, 3, 3, 1, 1), "Suhsin")
     assert bloco.principais == {"4": "Crit DMG or Crit Rate", "3": "Electro DMG and ATK", "1": "ATK%"}
     assert bloco.substatus == (("CRIT DMG", 3), ("Energy Regen", 2), ("Flat ATK", 1), ("Sorte", 1))
 
@@ -75,29 +75,45 @@ def test_monta_build_com_chaves_do_catalogo_e_marca_o_que_nao_reconheceu(dados: 
     assert build.perfil["armas"] == {"melhor": "Test Weapon", "alternativas": ["Alt Weapon"]}
     assert build.perfil["principais"] == {"4": ["crit_dmg", "crit_rate"], "3": ["electro_dmg", "atk_pct"], "1": ["atk_pct"]}
     assert build.perfil["estrelas"] == {"crit_dmg": 3, "energy_regen": 2, "atk_flat": 1}
+    assert build.perfil["sets"] == {"Moonlit Clouds": 5}
     assert (build.perfil["escala"], build.perfil["regen_energia_min"]) == ("ATQ", 115)
     assert build.avisos == ["arma 'Arma Fantasma' não está no catálogo", "substatus 'Sorte' não reconhecido"]
     assert build.perfil["status"].startswith("TODO: arma 'Arma Fantasma'")
 
 
-def test_sem_meta_de_regen_fica_100_com_todo(dados: GameData) -> None:
-    bloco = BlocoGame8(
+def _bloco(texto: str = "Aim for 120% Energy Regen.", sets: tuple[tuple[str, int | None], ...] = ()) -> BlocoGame8:
+    return BlocoGame8(
         titulo="Healer Build",
         melhor_arma=None,
         alternativas=(),
-        sets=(),
-        sonata="",
+        sets=sets,
         custos=(4, 3, 3, 1, 1),
         echo_principal=None,
         principais={"1": "HP%"},
         substatus=(),
-        texto="Heals the team.",
+        texto=texto,
     )
 
-    build = montar_build("Shorekeeper", bloco, dados)
+
+def test_sem_meta_de_regen_fica_100_com_todo(dados: GameData) -> None:
+    build = montar_build("Shorekeeper", _bloco(texto="Heals the team."), dados)
 
     assert (build.perfil["regen_energia_min"], build.perfil["escala"]) == (100, "HP")
     assert build.avisos == ["o Game8 não cita meta de Regen. de Energia; ficou 100"]
+
+
+def test_le_e_guarda_combinacao_de_sets() -> None:
+    celula = f"<b>3-pc</b> : {_link('Moonlit Clouds')} <b>2-pc</b> : {_link('Heart of Sworn Vigil')}"
+    pagina = PAGINA.replace(f"<b>5-pc</b>: {_link('Moonlit Clouds')}", celula)
+
+    assert ler_blocos(pagina)[0].sets == (("Moonlit Clouds", 3), ("Heart of Sworn Vigil", 2))
+
+
+def test_set_sem_numero_de_pecas_usa_o_tamanho_do_set(dados: GameData) -> None:
+    build = montar_build("Shorekeeper", _bloco(sets=(("Moonlit Clouds", None), ("Heart of Sworn Vigil", None))), dados)
+
+    assert build.perfil["sets"] == {"Moonlit Clouds": 5}
+    assert build.avisos == ["set 'Heart of Sworn Vigil': o site não diz quantas peças e sets.json não sabe o tamanho"]
 
 
 @pytest.mark.parametrize(

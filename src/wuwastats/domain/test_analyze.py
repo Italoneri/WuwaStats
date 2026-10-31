@@ -1,3 +1,4 @@
+import dataclasses
 from typing import get_args
 
 import pytest
@@ -140,7 +141,7 @@ class TestNomesDesconhecidos:
             ("stats", "Sorte", (1,)),
         }
         assert analise.echos[0].set is None
-        assert analise.conjunto.set.pecas_equipadas == 3
+        assert analise.conjunto.set.pedidos[0].pecas_equipadas == 3
 
     def test_nome_desconhecido_nao_exige_revisao(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         analise = _analisar(com_echo(entrada_suoming, 0, nome="Eco Misterioso"), dados)
@@ -177,7 +178,7 @@ class TestConjunto:
     def test_echos_com_mesmo_nome_contam_uma_peca(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         entrada = com_echo(entrada_suoming, 1, nome="Suhsin", custo=4, principal={"stat": "Taxa CRIT", "valor": 22})
 
-        assert _analisar(entrada, dados).conjunto.set.pecas_equipadas == 4
+        assert _analisar(entrada, dados).conjunto.set.pedidos[0].pecas_equipadas == 4
 
     def test_condicao_pendente_aparece_no_relatorio(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         entrada = entrada_suoming.model_copy(update={"condicoes": Condicoes()})
@@ -185,7 +186,8 @@ class TestConjunto:
         analise = _analisar(entrada, dados)
 
         assert analise.condicoes_pendentes == ["arma_assinatura"]
-        assert analise.conjunto.set.esperado is None
+        assert analise.conjunto.set.pedidos == []
+        assert analise.conjunto.set.ok is None
 
     def test_cobra_echo_principal_da_variante(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         entrada = com_echo(entrada_suoming, 0, nome="Soulfrayer")
@@ -194,4 +196,35 @@ class TestConjunto:
         conjunto = _analisar(entrada, dados).conjunto
 
         assert conjunto.echo_principal.ok is False
-        assert {"echo_principal_fora_da_build", "set_pecas_desconhecidas"} <= {p.codigo for p in conjunto.problemas}
+        assert "echo_principal_fora_da_build" in {p.codigo for p in conjunto.problemas}
+
+
+class TestCombinacaoDeSets:
+    """Build que pede 3 peças de um set + 2 de outro: cada parte é conferida à parte."""
+
+    def _analisar_combinacao(self, dados: GameData, entrada: EntradaBuild) -> Analise:
+        perfil = dados.perfis["Suoming_SubDPS"]
+        base = dataclasses.replace(perfil.base, sets={"Moonlit Clouds": 3, "Heart of Sworn Vigil": 2})
+        return analisar(entrada.model_copy(update={"build": "Suoming_SubDPS"}), dataclasses.replace(perfil, base=base), dados)
+
+    def test_combinacao_completa_passa(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        entrada = com_echo(com_echo(entrada_suoming, 3, set="Heart of Sworn Vigil"), 4, set="Heart of Sworn Vigil")
+
+        conjunto = self._analisar_combinacao(dados, entrada).conjunto
+
+        assert [(p.set, p.pecas_equipadas, p.ok) for p in conjunto.set.pedidos] == [
+            ("Moonlit Clouds", 3, True),
+            ("Heart of Sworn Vigil", 2, True),
+        ]
+        assert conjunto.set.ok is True
+
+    def test_parte_que_falta_vira_problema(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        entrada = com_echo(entrada_suoming, 4, set="Heart of Sworn Vigil")
+
+        analise = self._analisar_combinacao(dados, entrada)
+
+        assert analise.conjunto.set.ok is False
+        assert [p.mensagem for p in analise.conjunto.problemas if p.codigo == "set_incompleto"] == [
+            "1/2 peças de Heart of Sworn Vigil."
+        ]
+        assert "set_fora_da_build" not in _codigos(analise, 4)

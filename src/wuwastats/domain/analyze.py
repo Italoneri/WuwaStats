@@ -90,7 +90,7 @@ def perfil_aplicado(spec: BuildSpec) -> PerfilAplicado:
         escala=spec.escala,
         regen_energia_min=spec.regen_energia_min,
         custos=list(spec.custos),
-        set=spec.set,
+        sets=dict(spec.sets),
         echo_principal=spec.echo_principal,
         principais={custo: sorted(stats) for custo, stats in spec.principais.items()},
         estrelas=dict(spec.estrelas),

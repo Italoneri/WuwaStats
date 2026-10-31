@@ -54,7 +54,7 @@ def test_lista_builds_com_condicoes_das_variantes_e_explicacao(cliente: TestClie
     builds = {b["chave"]: b for b in cliente.get("/api/builds").json()}
 
     assert builds["Suoming_DPS"]["condicoes"] == ["arma_assinatura"]
-    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["set"] == "Heart of Sworn Vigil"
+    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["sets"] == {"Heart of Sworn Vigil": 5}
     assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["estrelas"] == builds["Suoming_DPS"]["base"]["estrelas"]
     assert builds["Suoming_DPS"]["armas"] == {"melhor": "Test Weapon", "alternativas": ["Alt Weapon"]}
     assert builds["Suoming_SubDPS"]["condicoes"] == []
@@ -376,7 +376,7 @@ class TestEditorDeBuilds:
         assert perfil["principais"]["3"] == ["electro_dmg", "atk_pct"]
         assert perfil["armas"]["alternativas"] == ["Alt Weapon"]
         assert perfil["armas_assinatura"] == ["Test Weapon"]
-        assert perfil["variantes"][1] == {"condicao": {"arma_assinatura": False}, "set": "Moonlit Clouds"}
+        assert perfil["variantes"][1] == {"condicao": {"arma_assinatura": False}, "sets": {"Moonlit Clouds": 5}}
 
     def test_salva_faz_backup_e_recarrega(self, cliente: TestClient, settings: Settings) -> None:
         perfil = self._perfil(cliente) | {"regen_energia_min": 125}
@@ -405,7 +405,7 @@ class TestEditorDeBuilds:
         ("mudanca", "trecho"),
         [
             ({"estrelas": {"Sorte": 3}}, "characters.json › Suoming_DPS › estrelas › Sorte"),
-            ({"set": "Set Inexistente"}, "characters.json › Suoming_DPS › set"),
+            ({"sets": {"Set Inexistente": 5}}, "characters.json › Suoming_DPS › sets › Set Inexistente"),
             ({"regen_energia_min": 50}, "body › regen_energia_min"),
             ({"custos": [4, 4, 4, 1, 1]}, "custo total 14"),
         ],

@@ -96,7 +96,9 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
     _conferir_elenco(arquivos.resonators, arquivos.weapons, erros)
     ressonador_names = _indice_pt({nome: r.nome_pt for nome, r in arquivos.resonators.ressonadores.items()}, "resonators", erros)
     arma_names = _indice_pt({nome: a.nome_pt for nome, a in arquivos.weapons.armas.items()}, "weapons", erros)
-    resolvedor = _Resolvedor(stat_names, echo_names, set_names, ressonador_names, arma_names, main_stats, erros)
+    pecas_dos_sets = {nome: raw.pecas for nome, raw in arquivos.sets.sets.items()}
+    nomes = (stat_names, echo_names, set_names, ressonador_names, arma_names)
+    resolvedor = _Resolvedor(*nomes, main_stats, pecas_dos_sets, erros)
     return GameData(
         substats=substats,
         main_stats=main_stats,
@@ -188,6 +190,7 @@ class _Resolvedor:
     ressonador_names: NameIndex
     arma_names: NameIndex
     main_stats: Mapping[Custo, MainStatTable]
+    pecas_dos_sets: Mapping[str, int | None]
     erros: list[str]
 
     def set_info(self, nome: str, raw: SetRaw) -> SetInfo:
@@ -240,7 +243,7 @@ class _Resolvedor:
             escala=raw.escala,
             regen_energia_min=raw.regen_energia_min,
             custos=tuple(raw.custos),
-            set=self._nome(self.set_names, raw.set, f"{onde} › set"),
+            sets=self._sets(raw.sets, f"{onde} › sets"),
             echo_principal=self._nome(self.echo_names, raw.echo_principal, f"{onde} › echo_principal"),
             principais={
                 CUSTO_POR_CHAVE[chave]: self._principais(chave, nomes, f"{onde} › principais › {chave}")
@@ -248,6 +251,18 @@ class _Resolvedor:
             },
             estrelas=self._stats(raw.estrelas, f"{onde} › estrelas"),
         )
+
+    def _sets(self, pedidos: Mapping[str, int], onde: str) -> dict[str, int]:
+        """Nenhum set pode pedir mais peças do que tem (a soma até 5 o schema já conferiu)."""
+        sets: dict[str, int] = {}
+        for nome, pecas in pedidos.items():
+            chave = self._nome(self.set_names, nome, f"{onde} › {nome}")
+            maximo = self.pecas_dos_sets.get(chave) if chave else None
+            if chave and maximo is not None and pecas > maximo:
+                self.erros.append(f"{onde} › {nome}: {chave} tem {maximo} peças; a build pede {pecas}")
+            if chave:
+                sets[chave] = pecas
+        return sets
 
     def _nome(self, indice: NameIndex, nome: str | None, onde: str) -> str | None:
         if nome is None:

@@ -81,11 +81,11 @@ Lista de builds (perfis em `data/characters.json`).
     "personagem": "Suoming",
     "condicoes": ["arma_assinatura"],
     "armas": { "melhor": "Unspoken Rue", "alternativas": [] },
-    "base": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "set": null, "echo_principal": null,
+    "base": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "sets": {}, "echo_principal": null,
               "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
     "variantes": [
-      { "condicao": { "arma_assinatura": true }, "perfil": { "set": "Heart of Sworn Vigil", "...": "..." } },
-      { "condicao": { "arma_assinatura": false }, "perfil": { "set": "Moonlit Clouds", "...": "..." } }
+      { "condicao": { "arma_assinatura": true }, "perfil": { "sets": { "Heart of Sworn Vigil": 5 }, "...": "..." } },
+      { "condicao": { "arma_assinatura": false }, "perfil": { "sets": { "Moonlit Clouds": 5 }, "...": "..." } }
     ],
     "descricao": "Suoming é uma DPS **Electro** que tira a maior parte do dano do **Ataque Básico**. [...]"
   }
@@ -95,6 +95,7 @@ Lista de builds (perfis em `data/characters.json`).
 - `base` e `variantes[].perfil` têm o formato de `perfil` da **Analise**. O perfil da variante já vem completo
   (base + o que a variante sobrescreve).
 - `condicoes`: chaves que a interface pode precisar perguntar. Hoje só existe `arma_assinatura` (booleano).
+- `sets`: set → peças pedidas. Um set só: `{ "Heart of Sworn Vigil": 5 }`; combinação: `{ "Dream of the Lost": 3, "Havoc Eclipse": 2 }`; `{}` = set livre.
 - `armas`: recomendação para a tela do personagem (não entra no cálculo); chaves de `catalogo.armas`.
   `null` se a build não define.
 - `descricao`: explicação da build, mostrada abaixo das tabelas. Parágrafos separados por linha em branco (`\n\n`) e
@@ -194,7 +195,7 @@ Campos extras são rejeitados (422).
   "personagem": "Suoming",
   "variante": 1,
   "condicoes_pendentes": [],
-  "perfil": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "set": "Moonlit Clouds",
+  "perfil": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "sets": { "Moonlit Clouds": 5 },
               "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
   "echos": [ /* EchoAnalise */ ],
   "conjunto": { /* ConjuntoAnalise */ },
@@ -266,7 +267,7 @@ Campos extras são rejeitados (422).
   "regen": { "base": 100, "echos": 35.2, "sets": 10, "externa": 0, "total": 145.2, "minimo": 110,
              "atinge": true, "informado": null, "diferenca_informado": null },
   "custos": { "esperado": [4,3,3,1,1], "atual": [4,3,3,1,1], "ok": true },
-  "set": { "esperado": "Moonlit Clouds", "pecas_necessarias": 5, "pecas_equipadas": 5, "ok": true,
+  "set": { "pedidos": [ { "set": "Moonlit Clouds", "pecas_necessarias": 5, "pecas_equipadas": 5, "ok": true } ], "ok": true,
            "bonus_ativos": [ { "set": "Moonlit Clouds", "pecas": 2, "stats": { "energy_regen": 10.0 } } ] },
   "echo_principal": { "esperado": null, "atual": "Suhsin", "ok": null },
   "problemas": []
@@ -312,7 +313,6 @@ Campos extras são rejeitados (422).
 | `regen_insuficiente` | build | conjunto |
 | `principal_valor_divergente` | aviso | echo |
 | `regen_divergente` | aviso | conjunto |
-| `set_pecas_desconhecidas` | aviso | conjunto |
 
 ## `POST /api/extrair`
 

@@ -339,7 +339,13 @@ function resumo(analise) {
       el("label", { style: { display: "flex", alignItems: "center", gap: "8px", marginTop: "6px", fontSize: "13px", color: "var(--mudo)" } }, "Regen externa (arma, cadeia)", el("input", { class: "campo", type: "number", step: "0.1", style: { width: "80px" }, value: estado.entrada.regen_externa ?? 0, onchange: (e) => mudarEntrada((en) => { en.regen_externa = Number(e.target.value) || 0; }) })),
     ),
     linhaResumo(custos.ok, "Custos", el("span", { style: { display: "flex", flexDirection: "column", gap: "6px" } }, fileira("atual", custos.atual), fileira("pedido", custos.esperado))),
-    linhaResumo(set.ok, "Set", set.esperado ? r.set(set.esperado) : "Livre", " ", mudo(`· ${set.pecas_equipadas}/${set.pecas_necessarias ?? "?"} peças`)),
+    linhaResumo(
+      set.ok,
+      "Set",
+      set.pedidos.length
+        ? set.pedidos.flatMap((p, i) => [i ? " + " : null, r.set(p.set), " ", mudo(`${p.pecas_equipadas}/${p.pecas_necessarias} peças`)])
+        : "Livre",
+    ),
     linhaResumo(
       echoPrincipal.ok,
       "Eco principal",

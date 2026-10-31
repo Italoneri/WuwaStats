@@ -14,6 +14,7 @@ from wuwastats.domain.report import (
     Problema,
     RegenAnalise,
     SetAnalise,
+    SetPedido,
     SubstatValido,
     problema,
 )
@@ -32,7 +33,7 @@ def analisar_conjunto(
     bonus = bonus_ativos(pecas, dados.sets)
     regen = _regen(entrada, echos, bonus, spec)
     custos = _custos(echos, spec)
-    set_ = _set(pecas, bonus, spec, dados)
+    set_ = _set(pecas, bonus, spec)
     echo_principal = _echo_principal(echos, spec)
     score_medio = round(fmean(e.score_pct for e in echos), 1)
     return ConjuntoAnalise(
@@ -106,17 +107,14 @@ def _custos(echos: Sequence[EchoAnalise], spec: BuildSpec) -> CustosAnalise:
     )
 
 
-def _set(pecas: Mapping[str, int], bonus: list[BonusSet], spec: BuildSpec, dados: GameData) -> SetAnalise:
-    esperado = spec.set
-    necessarias = dados.sets[esperado].pecas if esperado else None
-    equipadas = pecas.get(esperado, 0) if esperado else 0
-    return SetAnalise(
-        esperado=esperado,
-        pecas_necessarias=necessarias,
-        pecas_equipadas=equipadas,
-        ok=None if necessarias is None else equipadas >= necessarias,
-        bonus_ativos=bonus,
-    )
+def _set(pecas: Mapping[str, int], bonus: list[BonusSet], spec: BuildSpec) -> SetAnalise:
+    """Cada set da build (um só ou combinação 3 + 2) é conferido à parte."""
+    pedidos = [_pedido(nome, necessarias, pecas.get(nome, 0)) for nome, necessarias in spec.sets.items()]
+    return SetAnalise(pedidos=pedidos, ok=all(p.ok for p in pedidos) if pedidos else None, bonus_ativos=bonus)
+
+
+def _pedido(nome: str, necessarias: int, equipadas: int) -> SetPedido:
+    return SetPedido(set=nome, pecas_necessarias=necessarias, pecas_equipadas=equipadas, ok=equipadas >= necessarias)
 
 
 def _echo_principal(echos: Sequence[EchoAnalise], spec: BuildSpec) -> EchoPrincipalAnalise:
@@ -157,15 +155,11 @@ def _problemas_custos(custos: CustosAnalise) -> list[Problema]:
 
 
 def _problemas_set(set_: SetAnalise) -> list[Problema]:
-    if set_.esperado is None:
-        return []
-    if set_.pecas_necessarias is None:
-        mensagem = f"Tamanho do set {set_.esperado} desconhecido em sets.json; não dá para conferir."
-        return [problema("set_pecas_desconhecidas", mensagem, "set")]
-    if set_.ok:
-        return []
-    mensagem = f"{set_.pecas_equipadas}/{set_.pecas_necessarias} peças de {set_.esperado}."
-    return [problema("set_incompleto", mensagem, "set")]
+    return [
+        problema("set_incompleto", f"{p.pecas_equipadas}/{p.pecas_necessarias} peças de {p.set}.", "set")
+        for p in set_.pedidos
+        if not p.ok
+    ]
 
 
 def _problemas_echo_principal(echo_principal: EchoPrincipalAnalise) -> list[Problema]:

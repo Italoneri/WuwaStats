@@ -6,10 +6,11 @@ const ESCALAS = ["ATQ", "DEF", "HP"];
 const CUSTOS = [4, 3, 1];
 const CHAVES_CUSTO = ["4", "3", "1"];
 const ESTRELAS_MAXIMAS = 3;
+const MAX_ECHOS = 5;
 const SETA_ACIMA = "m6 15 6-6 6 6";
 const SETA_ABAIXO = "m6 9 6 6 6-6";
 const CAMPOS_VARIANTE = [
-  { campo: "set", rotulo: "Set" },
+  { campo: "sets", rotulo: "Sets" },
   { campo: "echo_principal", rotulo: "Eco principal" },
   { campo: "regen_energia_min", rotulo: "Regen mínima" },
   { campo: "custos", rotulo: "Padrão de custo" },
@@ -64,6 +65,7 @@ function abrirNova(personagem) {
     escala: "ATQ",
     regen_energia_min: 100,
     custos: [4, 3, 3, 1, 1],
+    sets: {},
     principais: { 4: [], 3: [], 1: [] },
     estrelas: {},
     armas_assinatura: [],
@@ -129,7 +131,6 @@ async function apagar() {
 function semCamposVazios(perfil) {
   const limpo = structuredClone(perfil);
   for (const alvo of [limpo, ...limpo.variantes]) {
-    if (alvo.set === "") alvo.set = null;
     if (alvo.echo_principal === "") alvo.echo_principal = null;
   }
   if (limpo.armas && !limpo.armas.melhor && !limpo.armas.alternativas.length) limpo.armas = null;
@@ -243,10 +244,44 @@ function camposDeBuild(alvo, prefixo, apenas = null) {
   return [
     usar("regen_energia_min") ? linha("Regen mínima (%)", `${prefixo}regen_energia_min`, el("input", { class: "campo mono", type: "number", step: "1", min: "100", value: alvo.regen_energia_min, onchange: (e) => { alvo.regen_energia_min = Number(e.target.value); desenhar(); } })) : null,
     usar("custos") ? linha("Padrão de custo", `${prefixo}custos`, el("div", { style: { display: "flex", gap: "6px" } }, alvo.custos.map((c, i) => seletorCusto(alvo, i, c)))) : null,
-    usar("set") ? linha("Set", `${prefixo}set`, seletor(ordenar([...r.sets.keys()].map((k) => [k, r.set(k)])), alvo.set, (v) => { alvo.set = v || null; }, "Livre")) : null,
+    usar("sets") ? linha("Sets", `${prefixo}sets`, editorSets(alvo)) : null,
     usar("echo_principal") ? linha("Eco principal", `${prefixo}echo_principal`, seletor(ordenar([...r.echoes.keys()].map((k) => [k, r.echo(k)])), alvo.echo_principal, (v) => { alvo.echo_principal = v || null; }, "Livre")) : null,
     usar("principais") ? linha("Status principais", `${prefixo}principais`, editorPrincipais(alvo)) : null,
   ];
+}
+
+/** Um set (5 peças) ou combinação: cada set com quantas peças; a soma não passa de 5 echos. */
+function editorSets(alvo) {
+  const r = estado.rotulo;
+  const sets = alvo.sets ?? {};
+  const usadas = Object.values(sets).reduce((soma, n) => soma + n, 0);
+  const maximo = (chave) => r.sets.get(chave)?.pecas ?? MAX_ECHOS;
+  const mudar = (novos) => {
+    alvo.sets = novos;
+    desenhar();
+  };
+  const restantes = ordenar([...r.sets.keys()].filter((k) => !(k in sets)).map((k) => [k, r.set(k)]));
+  return el(
+    "div",
+    { class: "sets-editor" },
+    Object.entries(sets).map(([chave, pecas]) =>
+      el(
+        "div",
+        { class: "set-editor-linha" },
+        el("span", {}, r.set(chave)),
+        el(
+          "select",
+          { class: "campo mono", "aria-label": `Peças de ${r.set(chave)}`, onchange: (e) => mudar({ ...sets, [chave]: Number(e.target.value) }) },
+          Array.from({ length: maximo(chave) }, (_, i) => i + 1).map((n) => el("option", { value: n, selected: n === pecas }, `${n} ${n === 1 ? "peça" : "peças"}`)),
+        ),
+        el("button", { type: "button", class: "ibtn", "aria-label": `Tirar ${r.set(chave)}`, onclick: () => mudar(Object.fromEntries(Object.entries(sets).filter(([k]) => k !== chave))) }, icone(ICONES.fechar, 13, { espessura: 2 })),
+      ),
+    ),
+    usadas < MAX_ECHOS
+      ? seletor(restantes, null, (v) => v && mudar({ ...sets, [v]: Math.min(maximo(v), MAX_ECHOS - usadas) }), usadas ? "+ combinar com outro set…" : "Livre · escolher set…")
+      : null,
+    el("span", { class: "dica" }, `${usadas}/${MAX_ECHOS} peças pedidas`),
+  );
 }
 
 function seletorCusto(alvo, i, valor) {

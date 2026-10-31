@@ -9,8 +9,8 @@
     "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Elétrico", "ATQ%"], "1": ["ATQ%"] },
     "estrelas": { "Taxa CRIT": 3, "Dano CRIT": 3, "ATQ%": 2, "ATQ Básico": 2, "Regen. de Energia": 1 },
     "variantes": [
-      { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Suhsin" },
-      { "condicao": { "arma_assinatura": false }, "set": "Moonlit Clouds" }
+      { "condicao": { "arma_assinatura": true }, "sets": { "Heart of Sworn Vigil": 5 }, "echo_principal": "Suhsin" },
+      { "condicao": { "arma_assinatura": false }, "sets": { "Moonlit Clouds": 5 } }
     ],
     "descricao": "DPS **Electro** de Ataque Básico."
   },
@@ -20,7 +20,7 @@
     "regen_energia_min": 120,
     "custos": [4, 3, 3, 1, 1],
     "echo_principal": "Soulfrayer",
-    "set": "Moonlit Clouds",
+    "sets": { "Moonlit Clouds": 5 },
     "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Elétrico", "ATQ%"], "1": ["ATQ%"] },
     "estrelas": { "Taxa CRIT": 3, "Dano CRIT": 3, "Regen. de Energia": 2, "ATQ%": 2, "ATQ Básico": 1 }
   }

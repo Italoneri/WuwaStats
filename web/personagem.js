@@ -167,8 +167,7 @@ function tabelaConstrucao(build, perfil, rotulo) {
     ),
     linha(
       "Efeito Sonata",
-      el("span", { class: "ph", style: { width: "36px", height: "36px", borderRadius: "50%" } }, icone(ICONES.sonata, 16)),
-      perfil.set ? el("strong", {}, rotulo.set(perfil.set)) : mudo("Livre"),
+      Object.keys(perfil.sets).length ? listaDeSets(perfil.sets, rotulo) : [iconeDeSet(null, rotulo), mudo("Livre")],
     ),
     linha("Padrão de custo", el("span", { style: { display: "flex", gap: "8px" } }, perfil.custos.map((c) => el("span", { class: "cost" }, String(c))))),
     linha(
@@ -178,6 +177,19 @@ function tabelaConstrucao(build, perfil, rotulo) {
     ),
   );
 }
+
+/** Um set só ou combinação (3 peças de um + 2 de outro): cada set com o ícone e as peças pedidas. */
+function listaDeSets(sets, rotulo) {
+  return el(
+    "div",
+    { class: "sets-build" },
+    Object.entries(sets).map(([chave, pecas]) =>
+      el("span", { class: "set-build" }, iconeDeSet(chave, rotulo), el("strong", {}, rotulo.set(chave)), mudo(pecas === 1 ? "1 peça" : `${pecas} peças`)),
+    ),
+  );
+}
+
+const iconeDeSet = (chave, rotulo) => el("span", { class: "ph set-icone" }, figura("sets", chave, icone(ICONES.sonata, 16), { rotulo: rotulo.set(chave) }));
 
 const seloDeCusto = (custo) => (custo ? el("span", { class: "costcorner", "aria-label": `Custo ${custo}` }, String(custo)) : null);
 

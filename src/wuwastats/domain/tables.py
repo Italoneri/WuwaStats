@@ -55,7 +55,7 @@ class BuildSpec:
     escala: Escala
     regen_energia_min: float
     custos: tuple[Custo, ...]
-    set: str | None
+    sets: Mapping[str, int]  # set → peças pedidas; vazio = set livre
     echo_principal: str | None
     principais: Mapping[Custo, frozenset[str]]
     estrelas: Mapping[str, int]  # 1 a ESTRELAS_MAXIMAS; status fora daqui a build ignora

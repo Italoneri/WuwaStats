@@ -5,7 +5,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator
 
-from wuwastats.domain.models import ESTRELAS_MAXIMAS, Condicoes, Custo, Escala
+from wuwastats.domain.models import ESTRELAS_MAXIMAS, MAX_ECHOS, Condicoes, Custo, Escala
 
 CustoChave = Literal["1", "3", "4"]
 CUSTO_POR_CHAVE: dict[CustoChave, Custo] = {"1": 1, "3": 3, "4": 4}
@@ -13,6 +13,7 @@ CUSTO_MAXIMO = 12
 
 StatKey = Annotated[str, StringConstraints(pattern=r"^[a-z][a-z_]*$")]
 Estrelas = Annotated[int, Field(ge=1, le=ESTRELAS_MAXIMAS)]
+PecasDeSet = Annotated[int, Field(ge=1, le=MAX_ECHOS)]
 
 
 class _Estrito(BaseModel):
@@ -164,7 +165,8 @@ class BuildSpecRaw(_Estrito):
     escala: Escala
     regen_energia_min: float = Field(ge=100)
     custos: list[Custo] = Field(min_length=5, max_length=5)
-    set: str | None = None
+    # set → peças; vazio = set livre. Combinação: {"Dream of the Lost": 3, "Havoc Eclipse": 2}
+    sets: dict[str, PecasDeSet] = {}
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]]
     estrelas: dict[str, Estrelas]  # prioridade do substatus; a ordem das chaves desempata quem tem as mesmas estrelas
@@ -176,6 +178,13 @@ class BuildSpecRaw(_Estrito):
             raise ValueError(f"custo total {sum(custos)} passa do limite de {CUSTO_MAXIMO}")
         return custos
 
+    @field_validator("sets")
+    @classmethod
+    def _cabe_nos_echos(cls, sets: dict[str, int]) -> dict[str, int]:
+        if sum(sets.values()) > MAX_ECHOS:
+            raise ValueError(f"os sets pedem {sum(sets.values())} peças; a build só tem {MAX_ECHOS} echos")
+        return sets
+
 
 class VarianteRaw(_Estrito):
     """Cada campo preenchido sobrescreve o do perfil base quando a condição bate."""
@@ -184,7 +193,7 @@ class VarianteRaw(_Estrito):
     escala: Escala | None = None
     regen_energia_min: float | None = None
     custos: list[Custo] | None = None
-    set: str | None = None
+    sets: dict[str, PecasDeSet] | None = None
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]] | None = None
     estrelas: dict[str, Estrelas] | None = None

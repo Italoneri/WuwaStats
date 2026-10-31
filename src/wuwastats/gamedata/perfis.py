@@ -94,10 +94,13 @@ def _com_chaves(perfil: PerfilRaw, dados: GameData) -> PerfilRaw:
     def estrelas(valores: Mapping[str, int] | None) -> dict[str, int] | None:
         return None if valores is None else {stat(n): quantas for n, quantas in valores.items()}
 
+    def sets(valores: Mapping[str, int] | None) -> dict[str, int] | None:
+        return None if valores is None else {nome(dados.set_names, s) or s: pecas for s, pecas in valores.items()}
+
     def variante(v: VarianteRaw) -> VarianteRaw:
         return v.model_copy(
             update={
-                "set": nome(dados.set_names, v.set),
+                "sets": sets(v.sets),
                 "echo_principal": nome(dados.echo_names, v.echo_principal),
                 "principais": principais(v.principais),
                 "estrelas": estrelas(v.estrelas),
@@ -108,7 +111,7 @@ def _com_chaves(perfil: PerfilRaw, dados: GameData) -> PerfilRaw:
     return perfil.model_copy(
         update={
             "personagem": nome(dados.ressonador_names, perfil.personagem),
-            "set": nome(dados.set_names, perfil.set),
+            "sets": sets(perfil.sets),
             "echo_principal": nome(dados.echo_names, perfil.echo_principal),
             "principais": principais(perfil.principais),
             "estrelas": estrelas(perfil.estrelas),

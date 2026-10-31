@@ -79,9 +79,9 @@ def _resolver_set(echo: EchoEntrada, ctx: ContextoEcho) -> tuple[str | None, lis
     set_ = ctx.dados.set_names.resolve(echo.set)
     if set_ is None:
         return None, [problema("set_desconhecido", f"Set '{echo.set}' não está no dicionário.", "set")]
-    esperado = ctx.spec.set
-    if esperado is not None and set_ != esperado:
-        return set_, [problema("set_fora_da_build", f"Set {set_}; a build pede {esperado}.", "set")]
+    pedidos = ctx.spec.sets
+    if pedidos and set_ not in pedidos:
+        return set_, [problema("set_fora_da_build", f"Set {set_}; a build pede {' + '.join(pedidos)}.", "set")]
     return set_, []
 
 
