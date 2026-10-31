@@ -2,28 +2,41 @@
   "Suoming_DPS": {
     "personagem": "Suoming",
     "armas_assinatura": ["Unspoken Rue", "Penumbra Abissal"],
-    "armas": { "melhor": "Unspoken Rue", "alternativas": [], "status": "TODO: alternativas ainda não conferidas" },
+    "armas": { "melhor": "Unspoken Rue", "alternativas": ["Red Spring", "Emerald of Genesis", "Lumingloss"] },
     "escala": "ATQ",
     "regen_energia_min": 110,
     "custos": [4, 3, 3, 1, 1],
-    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
-    "pesos": { "Taxa CRIT": 1.0, "Dano CRIT": 1.0, "ATQ%": 0.8, "ATQ Básico": 0.7, "Regen. de Energia": 0.4, "DEF%": 0, "HP%": 0 },
-    "variantes": [
-      { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Reminiscence: Suhsin the Inevitable" },
-      { "condicao": { "arma_assinatura": false }, "set": "Moonlit Clouds" }
-    ],
-    "descricao": "Suoming é uma DPS **Electro** que tira a maior parte do dano do **Ataque Básico**. Como DPS principal ela passa mais tempo em campo, então os bônus de dano devem ficar com ela.\n\nOs atributos de **crítico** rendem mais que qualquer outro: role **Taxa CRIT** e **Dano CRIT** o máximo possível, equilibrando a proporção entre os dois conforme a arma. Nos echos de custo 3, prefira **Dano Voltaico**; nos substatus, depois dos críticos, busque **ATQ%** e **Bônus de Ataque Básico**.\n\nCom a arma assinatura, o echo principal **Reminiscência: Suhsin, a Inevitável** e o set **Coração da Vigia Jurada** concentram ainda mais bônus Electro nela. Sem a arma, use o set **Nuvens Enluaradas**."
+    "echo_principal": "Reminiscence: Suhsin the Inevitable",
+    "set": "Heart of Sworn Vigil",
+    "principais": { "4": ["Dano CRIT", "Taxa CRIT"], "3": ["Dano Voltaico"], "1": ["ATQ%"] },
+    "estrelas": { "Dano CRIT": 3, "Taxa CRIT": 3, "Regen. de Energia": 2, "ATQ Básico": 2, "ATQ%": 2, "atk_flat": 1 },
+    "descricao": "Como **DPS principal**, Suoming passa mais tempo em campo, então os bônus de dano devem ficar com ela. A build é a mesma da Sub-DPS, trocando o echo principal por **Reminiscência: Suhsin, a Inevitável**, que dá mais bônus de Dano Voltaico e aproveita bem o tempo extra em campo.\n\nO dano dela vem do **Ataque Básico**. Role **Dano CRIT** e **Taxa CRIT** o máximo possível, equilibrando a proporção entre os dois conforme a arma. Os dois echos de custo 3 vão de **Dano Voltaico**, e nos substatus, depois dos críticos, busque **Regen. de Energia**, **Bônus de Ataque Básico** e **ATQ%**."
   },
   "Suoming_SubDPS": {
     "personagem": "Suoming",
+    "armas_assinatura": ["Unspoken Rue", "Penumbra Abissal"],
+    "armas": { "melhor": "Unspoken Rue", "alternativas": ["Red Spring", "Emerald of Genesis", "Lumingloss"] },
+    "escala": "ATQ",
+    "regen_energia_min": 120,
+    "custos": [3, 4, 3, 1, 1],
+    "echo_principal": "Soulfrayer",
+    "set": "Heart of Sworn Vigil",
+    "principais": { "4": ["Dano CRIT", "Taxa CRIT"], "3": ["Dano Voltaico"], "1": ["ATQ%"] },
+    "estrelas": { "Dano CRIT": 3, "Taxa CRIT": 3, "Regen. de Energia": 2, "ATQ Básico": 2, "ATQ%": 2, "atk_flat": 1 },
+    "descricao": "Suoming rende mais montada como uma **DPS Electro** padrão, com o dano vindo do **Ataque Básico**. Como o **Unison** favorece times com dois DPS, vale reforçar o dano dela mesma e, ao mesmo tempo, fortalecer o próximo ressonador com o echo principal **Desfia-Alma** (custo 3, por isso a distribuição **3-4-3-1-1**).\n\nOs **críticos** dão o melhor retorno: busque **Dano CRIT** ou **Taxa CRIT** conforme a arma, equilibrando os dois. Os dois echos de custo 3 vão de **Dano Voltaico**, e nos substatus vale pegar **Bônus de Ataque Básico** sempre que der.\n\n**Coração da Vigia Jurada** com Desfia-Alma e **Nuvens Enluaradas** rendem quase o mesmo em times de Unison; esta versão é a preferida porque a habilidade do Desfia-Alma é mais fácil de usar na rotação."
+  },
+  "Suoming_SubDPS_Nuvens": {
+    "personagem": "Suoming",
+    "armas_assinatura": ["Unspoken Rue", "Penumbra Abissal"],
+    "armas": { "melhor": "Unspoken Rue", "alternativas": ["Red Spring", "Emerald of Genesis", "Lumingloss"] },
     "escala": "ATQ",
     "regen_energia_min": 120,
     "custos": [4, 3, 3, 1, 1],
-    "echo_principal": "Soulfrayer",
+    "echo_principal": "Impermanence Heron",
     "set": "Moonlit Clouds",
-    "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
-    "pesos": { "Taxa CRIT": 1.0, "Dano CRIT": 1.0, "Regen. de Energia": 0.8, "ATQ%": 0.7, "ATQ Básico": 0.5, "DEF%": 0, "HP%": 0 },
-    "descricao": "Nesta versão Suoming joga como **Sub-DPS**: entra, causa dano e passa o campo para o próximo ressonador já com bônus. O echo principal **Desfia-Alma** e o set **Nuvens Enluaradas** existem para fortalecer quem entra depois dela.\n\nOs **críticos** continuam em primeiro lugar, mas a **Regen. de Energia** sobe na prioridade: como ela sai de campo mais cedo, precisa da Liberação pronta a cada rotação (mínimo de **120%**). Depois disso, **ATQ%** e **Bônus de Ataque Básico**."
+    "principais": { "4": ["Dano CRIT", "Taxa CRIT"], "3": ["Dano Voltaico"], "1": ["ATQ%"] },
+    "estrelas": { "Dano CRIT": 3, "Taxa CRIT": 3, "Regen. de Energia": 2, "ATQ Básico": 2, "ATQ%": 2, "atk_flat": 1 },
+    "descricao": "Como **Sub-DPS**, Suoming também pode usar o set **Nuvens Enluaradas**, com desempenho quase igual ao do Coração da Vigia Jurada. O echo principal passa a ser **Garça-cambiante**, que é mais difícil de encaixar na rotação, por isso a versão com Desfia-Alma continua sendo a preferida.\n\nA vantagem é o acesso: Nuvens Enluaradas é um set que muitos jogadores já têm montado. Os status principais e a prioridade de substatus são os mesmos das outras builds dela."
   },
   "Hsin_DPS": {
     "personagem": "Hsin",
@@ -34,7 +47,7 @@
     "echo_principal": "Reminiscence: Suhsin the Inevitable",
     "set": "Heart of Sworn Vigil",
     "principais": { "4": ["Dano CRIT", "Taxa CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
-    "pesos": { "Dano CRIT": 1.0, "Taxa CRIT": 1.0, "Regen. de Energia": 0.8, "Hab. de Ressonância": 0.7, "ATQ%": 0.6, "atk_flat": 0.3 },
+    "estrelas": { "Dano CRIT": 3, "Taxa CRIT": 3, "Regen. de Energia": 2, "Hab. de Ressonância": 2, "ATQ%": 2, "atk_flat": 1 },
     "descricao": "Hsin é uma DPS de **Habilidade de Ressonância** que alterna entre dois modos, **Unison** e **Electro Flare**. Nos dois a build é a mesma, pensada para ela ficar em campo causando o dano principal.\n\nUse a distribuição **4-3-3-1-1**. No custo 4, **Dano CRIT** é o mais indicado com a arma assinatura, mas o ideal é manter a proporção entre Taxa e Dano CRIT equilibrada. Nos custo 3, um echo de **Dano Voltaico** e um de **ATQ%**, porque o set e o time já dão muito bônus de dano; nos custo 1, **ATQ%**.\n\nNos substatus, priorize **críticos**, **Bônus de Hab. de Ressonância** e **ATQ**. Mire em **115% a 120% de Regen. de Energia** para ter a Liberação disponível em toda rotação."
   },
   "Hsin_SubDPS": {
@@ -46,7 +59,7 @@
     "echo_principal": "Soulfrayer",
     "set": "Flash of Electric Reflection",
     "principais": { "4": ["Dano CRIT", "Taxa CRIT"], "3": ["Dano Voltaico", "ATQ%"], "1": ["ATQ%"] },
-    "pesos": { "Dano CRIT": 1.0, "Taxa CRIT": 1.0, "Regen. de Energia": 0.8, "Hab. de Ressonância": 0.7, "ATQ%": 0.6, "atk_flat": 0.3 },
+    "estrelas": { "Dano CRIT": 3, "Taxa CRIT": 3, "Regen. de Energia": 2, "Hab. de Ressonância": 2, "ATQ%": 2, "atk_flat": 1 },
     "descricao": "No modo **Electro Flare**, Hsin também funciona como **Sub-DPS**: além do próprio dano, ela dá bônus de **Dano Voltaico** ao ressonador que entra em seguida.\n\nA distribuição muda para **3-4-3-1-1** porque o echo principal **Desfia-Alma** (custo 3) reforça quem entra depois dela, e o set passa a ser **Clarão do Reflexo Relâmpago**. Fora isso, a prioridade é a mesma da build principal: **críticos**, **ATQ**, **Dano Voltaico** e **Bônus de Hab. de Ressonância**."
   },
   "Shorekeeper_Suporte": {
@@ -59,7 +72,7 @@
     "echo_principal": "Fallacy of No Return",
     "set": "Rejuvenating Glow",
     "principais": { "4": ["Bônus de Cura", "Dano CRIT"], "3": ["Regen. de Energia", "HP%"], "1": ["HP%"] },
-    "pesos": { "Regen. de Energia": 1.0, "HP%": 0.8, "Dano CRIT": 0.7, "Hab. de Ressonância": 0.3 },
+    "estrelas": { "Regen. de Energia": 3, "HP%": 2, "Dano CRIT": 2, "Hab. de Ressonância": 1 },
     "descricao": "A Guardiã da Costa é uma das melhores **curandeiras de suporte** do jogo: cura bastante, protege o time de nocaute e dá bônus de crítico e de dano. A cura escala com o **HP** dela, e os bônus de **Taxa CRIT** e **Dano CRIT** do campo da Liberação escalam com a **Regen. de Energia**, por isso esses dois atributos vêm primeiro.\n\nMire em **250% de Regen. de Energia**: é com esse valor que os bônus de crítico do campo chegam ao máximo. O campo só dá esses bônus depois de evoluído; no nível básico ele apenas cura. Ter um ressonador dentro do campo dá +10% de Regen. pela habilidade inerente, e o echo **Falácia Irreversível** dá outros +10%, o que facilita bastante chegar lá.\n\nA arma assinatura **Sinfonia Estelar** dá muita Regen. de Energia e torna a meta bem mais fácil. Sem ela, você vai depender de echos com Regen. no status principal e nos substatus."
   }
 }

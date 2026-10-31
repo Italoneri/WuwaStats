@@ -246,7 +246,7 @@ class _Resolvedor:
                 CUSTO_POR_CHAVE[chave]: self._principais(chave, nomes, f"{onde} › principais › {chave}")
                 for chave, nomes in raw.principais.items()
             },
-            pesos=self._stats(raw.pesos, f"{onde} › pesos"),
+            estrelas=self._stats(raw.estrelas, f"{onde} › estrelas"),
         )
 
     def _nome(self, indice: NameIndex, nome: str | None, onde: str) -> str | None:
@@ -271,8 +271,8 @@ class _Resolvedor:
             self.erros.append(f"{onde}: {invalidos} não podem ser principal de echo custo {custo}")
         return stats
 
-    def _stats(self, valores: Mapping[str, float], onde: str) -> dict[str, float]:
-        resolvidos: dict[str, float] = {}
+    def _stats[V](self, valores: Mapping[str, V], onde: str) -> dict[str, V]:
+        resolvidos: dict[str, V] = {}
         for nome, valor in valores.items():
             stat = self._stat(nome, f"{onde} › {nome}")
             if stat is None:

@@ -197,7 +197,7 @@ class PerfilAplicado(_Saida):
     set: str | None
     echo_principal: str | None
     principais: dict[Custo, list[str]]
-    pesos: dict[str, float]
+    estrelas: dict[str, int] = Field(description="1 a 3 por substatus, na ordem de prioridade da build.")
 
 
 class Analise(_Saida):

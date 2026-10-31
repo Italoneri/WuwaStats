@@ -4,12 +4,6 @@ import {
   ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, figura, icone, iconeArma, moldura, parametro, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
-// Peso → estrelas de prioridade. Peso 0 não aparece: a build ignora o status.
-const ESTRELAS_POR_PESO = [
-  { minimo: 0.9, estrelas: 3 },
-  { minimo: 0.6, estrelas: 2 },
-  { minimo: Number.MIN_VALUE, estrelas: 1 },
-];
 const CUSTOS = ["4", "3", "1"];
 
 const principal = moldura("personagens");
@@ -89,7 +83,7 @@ function semBuild(personagem) {
 
 function secaoBuild(build, contexto) {
   const secao = el("section", { class: "build", "aria-label": build.chave });
-  const redesenhar = () => secao.replaceChildren(...conteudoBuild(build, contexto, redesenhar));
+  const redesenhar = () => secao.replaceChildren(...conteudoBuild(build, contexto, redesenhar).filter(Boolean));
   redesenhar();
   return secao;
 }
@@ -179,11 +173,13 @@ function tabelaConstrucao(build, perfil, rotulo) {
     linha("Padrão de custo", el("span", { style: { display: "flex", gap: "8px" } }, perfil.custos.map((c) => el("span", { class: "cost" }, String(c))))),
     linha(
       "Eco Principal",
-      el("span", { class: "ph echoic" }, figura("echoes", perfil.echo_principal, icone(ICONES.echo, 18), { trocavel: true, rotulo: rotulo.echo(perfil.echo_principal) }), el("span", { class: "costcorner", "aria-label": "Custo 4" }, "4")),
+      el("span", { class: "ph echoic" }, figura("echoes", perfil.echo_principal, icone(ICONES.echo, 18), { trocavel: true, rotulo: rotulo.echo(perfil.echo_principal) }), seloDeCusto(rotulo.echoes.get(perfil.echo_principal)?.custo)),
       perfil.echo_principal ? el("strong", {}, rotulo.echo(perfil.echo_principal)) : mudo("Livre"),
     ),
   );
 }
+
+const seloDeCusto = (custo) => (custo ? el("span", { class: "costcorner", "aria-label": `Custo ${custo}` }, String(custo)) : null);
 
 function tabelaEstatisticas(perfil, rotulo) {
   return el(
@@ -204,7 +200,7 @@ function tabelaEstatisticas(perfil, rotulo) {
       ),
     ),
     el("div", { class: "subhead" }, "Prioridade de substatus"),
-    el("ol", { class: "prio" }, prioridade(perfil.pesos).map(({ stat, estrelas: n }, i) =>
+    el("ol", { class: "prio" }, prioridade(perfil.estrelas).map(({ stat, estrelas: n }, i) =>
       el(
         "li",
         {},
@@ -216,9 +212,9 @@ function tabelaEstatisticas(perfil, rotulo) {
   );
 }
 
-function prioridade(pesos) {
-  return Object.entries(pesos)
-    .filter(([, peso]) => peso > 0)
+/** Mais estrelas primeiro; entre iguais, a ordem da build (o sort é estável). */
+function prioridade(estrelas) {
+  return Object.entries(estrelas)
     .sort(([, a], [, b]) => b - a)
-    .map(([stat, peso]) => ({ stat, estrelas: ESTRELAS_POR_PESO.find((f) => peso >= f.minimo).estrelas }));
+    .map(([stat, n]) => ({ stat, estrelas: n }));
 }

@@ -38,7 +38,7 @@ def test_variante_herda_campos_do_perfil_base(dados: GameData) -> None:
 
     spec = resolver_build(perfil, Condicoes(arma_assinatura=True)).spec
 
-    assert spec.pesos == perfil.base.pesos
+    assert spec.estrelas == perfil.base.estrelas
     assert spec.custos == (4, 3, 3, 1, 1)
 
 

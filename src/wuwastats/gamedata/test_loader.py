@@ -21,7 +21,8 @@ def test_resolve_nomes_pt_br_do_perfil_para_chaves_internas(data_dir_copia: Path
     perfil = load_game_data(data_dir_copia).perfis["Suoming_DPS"]
 
     assert perfil.base.principais[3] == frozenset({"electro_dmg", "atk_pct"})
-    assert perfil.base.pesos["basic_atk_dmg"] == 0.7
+    assert perfil.base.estrelas["basic_atk_dmg"] == 2
+    assert perfil.base.pesos["basic_atk_dmg"] == pytest.approx(2 / 3)
 
 
 def test_arma_assinatura_do_catalogo_vale_por_todos_os_nomes_dela(data_dir_copia: Path) -> None:
@@ -57,7 +58,8 @@ def _variante(campo: str, valor: object) -> Callable[[Json], None]:
 @pytest.mark.parametrize(
     ("arquivo", "mudar", "trecho"),
     [
-        ("characters.json", _suoming("pesos", {"ATQ": 1.0}), "pesos › ATQ: status 'ATQ' desconhecido ou ambíguo"),
+        ("characters.json", _suoming("estrelas", {"ATQ": 3}), "estrelas › ATQ: status 'ATQ' desconhecido ou ambíguo"),
+        ("characters.json", _suoming("estrelas", {"Taxa CRIT": 4}), "estrelas › Taxa CRIT"),
         ("characters.json", _suoming("principais", {"1": ["Dano CRIT"]}), "principal de echo custo 1"),
         ("characters.json", _suoming("custos", [4, 4, 4, 1, 1]), "custo total 14"),
         ("characters.json", _suoming("custos", [4, 3, 3, 1]), "custos"),

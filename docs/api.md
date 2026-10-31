@@ -82,7 +82,7 @@ Lista de builds (perfis em `data/characters.json`).
     "condicoes": ["arma_assinatura"],
     "armas": { "melhor": "Unspoken Rue", "alternativas": [] },
     "base": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "set": null, "echo_principal": null,
-              "principais": { "4": ["crit_dmg", "crit_rate"] }, "pesos": { "crit_rate": 1.0 } },
+              "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
     "variantes": [
       { "condicao": { "arma_assinatura": true }, "perfil": { "set": "Heart of Sworn Vigil", "...": "..." } },
       { "condicao": { "arma_assinatura": false }, "perfil": { "set": "Moonlit Clouds", "...": "..." } }
@@ -195,7 +195,7 @@ Campos extras são rejeitados (422).
   "variante": 1,
   "condicoes_pendentes": [],
   "perfil": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "set": "Moonlit Clouds",
-              "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "pesos": { "crit_rate": 1.0 } },
+              "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
   "echos": [ /* EchoAnalise */ ],
   "conjunto": { /* ConjuntoAnalise */ },
   "candidatos_troca": [ { "indice": 4, "nome": null, "score_pct": 6.3, "nota": "C", "motivos": ["Principal hp_pct; a build pede atk_pct no custo 1.", "Score 6.3%."] } ],
@@ -235,7 +235,8 @@ Campos extras são rejeitados (422).
 - `nome`/`set` resolvidos (chave interna) ou `null` se desconhecidos; `*_lido` é o texto original.
 - `principal.valor_esperado`: valor no nível máximo para o custo; `null` se o status não pode ser principal nesse custo.
 - `principal.recomendado`: se está entre os principais pedidos pela build (`null` = build não define para esse custo).
-- `score_pct` (0–100): `Σ peso × valor/máximo` dos substatus ÷ melhor caso possível da build (5 maiores pesos no máximo). O mesmo echo tem scores diferentes em builds diferentes. O principal não entra no score.
+- `score_pct` (0–100): `Σ peso × valor/máximo` dos substatus ÷ melhor caso possível da build (5 maiores pesos no máximo).
+  O peso de cada substatus é `estrelas ÷ 3` (`perfil.estrelas`); sem estrela, 0. O mesmo echo tem scores diferentes em builds diferentes. O principal não entra no score.
 - `nota`: faixa de `score_pct` definida em `data/notas.json` (hoje SSS, SS, S, A, B, C).
 - `cv`: Crit Value dos substatus = `2 × Taxa CRIT + Dano CRIT`.
 
@@ -472,7 +473,7 @@ aparecem; numa variante, campo presente = substitui o da base.
 Corpo: o perfil (mesmo formato). Cria ou substitui a build `chave` (letras, números, `_` ou `-`). O servidor valida o
 `characters.json` inteiro com o loader numa cópia dos dados. Se passar, copia o arquivo anterior para
 `data/backups/characters-<data>.json`, grava de forma atômica, recarrega os dados e devolve o perfil salvo.
-`422` com `erros` (`characters.json › <chave> › pesos › X: motivo` ou `body › regen_energia_min: motivo`); nesse caso
+`422` com `erros` (`characters.json › <chave> › estrelas › X: motivo` ou `body › regen_energia_min: motivo`); nesse caso
 nada é gravado.
 
 ### `DELETE /api/perfis/{chave}`
@@ -483,7 +484,7 @@ Apaga a build, com o mesmo backup e validação. `204`; `404` se não existe.
 
 Entradas corrigidas guardadas para reabrir depois e comparar o antes e o depois de trocar um echo, em
 `data/historico/<id>.json`. Guarda a **entrada**, não o resultado: ao reabrir, rode `POST /api/analisar` com ela
-(os pesos atuais valem). `score_medio_pct`/`nota_media` são os do momento em que foi salva, só para a lista.
+(as estrelas atuais da build valem). `score_medio_pct`/`nota_media` são os do momento em que foi salva, só para a lista.
 
 ### `POST /api/historico`
 

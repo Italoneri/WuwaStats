@@ -7,6 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 Custo = Literal[1, 3, 4]
 Escala = Literal["ATQ", "DEF", "HP"]
 MAX_ECHOS = 5
+ESTRELAS_MAXIMAS = 3  # prioridade de substatus numa build: 1 a 3 estrelas
 
 
 class _Entrada(BaseModel):

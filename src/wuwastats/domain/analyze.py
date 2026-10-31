@@ -93,5 +93,5 @@ def perfil_aplicado(spec: BuildSpec) -> PerfilAplicado:
         set=spec.set,
         echo_principal=spec.echo_principal,
         principais={custo: sorted(stats) for custo, stats in spec.principais.items()},
-        pesos=dict(spec.pesos),
+        estrelas=dict(spec.estrelas),
     )

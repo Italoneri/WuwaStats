@@ -5,14 +5,14 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator
 
-from wuwastats.domain.models import Condicoes, Custo, Escala
+from wuwastats.domain.models import ESTRELAS_MAXIMAS, Condicoes, Custo, Escala
 
 CustoChave = Literal["1", "3", "4"]
 CUSTO_POR_CHAVE: dict[CustoChave, Custo] = {"1": 1, "3": 3, "4": 4}
 CUSTO_MAXIMO = 12
 
 StatKey = Annotated[str, StringConstraints(pattern=r"^[a-z][a-z_]*$")]
-Peso = Annotated[float, Field(ge=0)]
+Estrelas = Annotated[int, Field(ge=1, le=ESTRELAS_MAXIMAS)]
 
 
 class _Estrito(BaseModel):
@@ -167,7 +167,7 @@ class BuildSpecRaw(_Estrito):
     set: str | None = None
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]]
-    pesos: dict[str, Peso]
+    estrelas: dict[str, Estrelas]  # prioridade do substatus; a ordem das chaves desempata quem tem as mesmas estrelas
 
     @field_validator("custos")
     @classmethod
@@ -187,7 +187,7 @@ class VarianteRaw(_Estrito):
     set: str | None = None
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]] | None = None
-    pesos: dict[str, Peso] | None = None
+    estrelas: dict[str, Estrelas] | None = None
 
     @field_validator("condicao")
     @classmethod

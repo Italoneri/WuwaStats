@@ -91,8 +91,8 @@ def _com_chaves(perfil: PerfilRaw, dados: GameData) -> PerfilRaw:
     def principais(valores: Mapping[Any, list[str]] | None) -> dict[Any, list[str]] | None:
         return None if valores is None else {custo: [stat(n) for n in nomes] for custo, nomes in valores.items()}
 
-    def pesos(valores: Mapping[str, float] | None) -> dict[str, float] | None:
-        return None if valores is None else {stat(n): peso for n, peso in valores.items()}
+    def estrelas(valores: Mapping[str, int] | None) -> dict[str, int] | None:
+        return None if valores is None else {stat(n): quantas for n, quantas in valores.items()}
 
     def variante(v: VarianteRaw) -> VarianteRaw:
         return v.model_copy(
@@ -100,7 +100,7 @@ def _com_chaves(perfil: PerfilRaw, dados: GameData) -> PerfilRaw:
                 "set": nome(dados.set_names, v.set),
                 "echo_principal": nome(dados.echo_names, v.echo_principal),
                 "principais": principais(v.principais),
-                "pesos": pesos(v.pesos),
+                "estrelas": estrelas(v.estrelas),
             }
         )
 
@@ -111,7 +111,7 @@ def _com_chaves(perfil: PerfilRaw, dados: GameData) -> PerfilRaw:
             "set": nome(dados.set_names, perfil.set),
             "echo_principal": nome(dados.echo_names, perfil.echo_principal),
             "principais": principais(perfil.principais),
-            "pesos": pesos(perfil.pesos),
+            "estrelas": estrelas(perfil.estrelas),
             "armas_assinatura": list(dict.fromkeys(nome(dados.arma_names, a) or a for a in perfil.armas_assinatura)),
             "armas": None if armas is None else ArmasPerfilRaw(
                 melhor=nome(dados.arma_names, armas.melhor),

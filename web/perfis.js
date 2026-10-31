@@ -5,14 +5,16 @@ import { ICONES, api, avisoErro, el, icone, moldura, parametro, rotulador, rotul
 const ESCALAS = ["ATQ", "DEF", "HP"];
 const CUSTOS = [4, 3, 1];
 const CHAVES_CUSTO = ["4", "3", "1"];
-const PASSO_PESO = 0.05;
+const ESTRELAS_MAXIMAS = 3;
+const SETA_ACIMA = "m6 15 6-6 6 6";
+const SETA_ABAIXO = "m6 9 6 6 6-6";
 const CAMPOS_VARIANTE = [
   { campo: "set", rotulo: "Set" },
   { campo: "echo_principal", rotulo: "Eco principal" },
   { campo: "regen_energia_min", rotulo: "Regen mínima" },
   { campo: "custos", rotulo: "Padrão de custo" },
   { campo: "principais", rotulo: "Status principais" },
-  { campo: "pesos", rotulo: "Pesos" },
+  { campo: "estrelas", rotulo: "Estrelas" },
 ];
 
 const estado = {
@@ -63,7 +65,7 @@ function abrirNova(personagem) {
     regen_energia_min: 100,
     custos: [4, 3, 3, 1, 1],
     principais: { 4: [], 3: [], 1: [] },
-    pesos: {},
+    estrelas: {},
     armas_assinatura: [],
     variantes: [],
   };
@@ -129,13 +131,12 @@ function semCamposVazios(perfil) {
   for (const alvo of [limpo, ...limpo.variantes]) {
     if (alvo.set === "") alvo.set = null;
     if (alvo.echo_principal === "") alvo.echo_principal = null;
-    if (alvo.pesos) alvo.pesos = Object.fromEntries(Object.entries(alvo.pesos).filter(([, peso]) => peso > 0));
   }
   if (limpo.armas && !limpo.armas.melhor && !limpo.armas.alternativas.length) limpo.armas = null;
   return limpo;
 }
 
-/** "characters.json › Suoming_DPS › pesos › X: motivo" e "body › variantes › 0 › set: motivo" → campo do formulário. */
+/** "characters.json › Suoming_DPS › estrelas › X: motivo" e "body › variantes › 0 › set: motivo" → campo do formulário. */
 function distribuirErros(erro) {
   const mensagens = erro.message.split("\n- ");
   const lista = mensagens.length > 1 ? mensagens.slice(1) : [];
@@ -203,7 +204,7 @@ function formulario() {
       linha("Escala", "escala", seletor(ESCALAS.map((e) => [e, e]), p.escala, (v) => { p.escala = v; })),
       ...camposDeBuild(p, ""),
     ),
-    el("div", { class: "tcard" }, el("div", { class: "thead" }, "Pesos dos substatus"), el("div", { class: "subhead" }, "0 = a build ignora · 1 = o mais importante"), editorPesos(p, "pesos")),
+    el("div", { class: "tcard" }, el("div", { class: "thead" }, "Prioridade dos substatus"), el("div", { class: "subhead" }, "3 estrelas = o mais importante · clique de novo para tirar · setas mudam a ordem entre iguais"), editorEstrelas(p, "estrelas")),
     el("div", { class: "tcard" }, el("div", { class: "thead" }, "Armas"), ...camposDeArmas(p)),
     el("div", { class: "tcard" }, el("div", { class: "thead" }, "Variantes por condição"), variantes(p)),
   );
@@ -290,39 +291,74 @@ function editorPrincipais(alvo) {
   );
 }
 
-function editorPesos(alvo, campo) {
+/** Com estrela primeiro (mais estrelas no topo, na ordem da build); sem estrela no fim, por nome: a build ignora. */
+function editorEstrelas(alvo, campo) {
   const r = estado.rotulo;
-  const stats = [...r.stats.values()].filter((s) => s.substatus !== null).sort((a, b) => (alvo.pesos[b.chave] ?? 0) - (alvo.pesos[a.chave] ?? 0) || r.stat(a.chave).localeCompare(r.stat(b.chave), "pt-BR"));
+  const estrelas = alvo.estrelas ?? {};
+  const ordem = Object.keys(estrelas);
+  const livres = [...r.stats.values()]
+    .filter((s) => s.substatus !== null && !(s.chave in estrelas))
+    .map((s) => s.chave)
+    .sort((a, b) => r.stat(a).localeCompare(r.stat(b), "pt-BR"));
+  const mesmoNivel = (vizinho, stat) => vizinho !== undefined && estrelas[vizinho] === estrelas[stat];
   const erros = estado.erros.get(campo) ?? [];
   return el(
     "div",
-    { class: "pesos" },
-    stats.map((s) => {
-      const valor = alvo.pesos[s.chave] ?? 0;
-      const mostrador = el("span", { class: "mono peso-valor" }, valor.toFixed(2));
-      return el(
-        "label",
-        { class: "peso" },
-        el("span", {}, r.stat(s.chave)),
-        el("input", {
-          type: "range",
-          min: "0",
-          max: "1",
-          step: String(PASSO_PESO),
-          value: String(valor),
-          // sem redesenhar a cada movimento: o slider perderia o arraste
-          oninput: (e) => {
-            alvo.pesos = { ...alvo.pesos, [s.chave]: Number(e.target.value) };
-            mostrador.textContent = Number(e.target.value).toFixed(2);
-          },
-          onchange: () => desenhar(),
-        }),
-        mostrador,
-      );
-    }),
+    { class: "estrelas-editor" },
+    ordem.map((stat, i) => linhaEstrelas(alvo, stat, { acima: mesmoNivel(ordem[i - 1], stat) && ordem[i - 1], abaixo: mesmoNivel(ordem[i + 1], stat) && ordem[i + 1] })),
+    livres.length ? el("div", { class: "estrelas-separador" }, "Sem estrela · a build ignora") : null,
+    livres.map((stat) => linhaEstrelas(alvo, stat, {})),
     erros.map((m) => el("span", { class: "erro-campo" }, m)),
   );
 }
+
+function linhaEstrelas(alvo, stat, { acima, abaixo }) {
+  const nome = estado.rotulo.stat(stat);
+  const quantas = alvo.estrelas?.[stat] ?? 0;
+  const seta = (vizinho, d, rotulo) =>
+    el("button", { type: "button", class: "ibtn seta", disabled: !vizinho, "aria-label": `${rotulo} ${nome}`, onclick: () => trocarOrdem(alvo, stat, vizinho) }, icone(d, 14, { espessura: 2.2 }));
+  return el(
+    "div",
+    { class: `estrela-linha${quantas ? "" : " sem-estrela"}` },
+    el("span", { class: "setas" }, quantas ? [seta(acima, SETA_ACIMA, "Subir"), seta(abaixo, SETA_ABAIXO, "Descer")] : null),
+    el("span", { class: "estrela-nome" }, nome),
+    el(
+      "span",
+      { class: "estrela-botoes", role: "group", "aria-label": `Estrelas de ${nome}` },
+      Array.from({ length: ESTRELAS_MAXIMAS }, (_, i) => i + 1).map((n) =>
+        el(
+          "button",
+          {
+            type: "button",
+            class: `estrela${n <= quantas ? " acesa" : ""}`,
+            "aria-label": `${n} de ${ESTRELAS_MAXIMAS} estrelas`,
+            "aria-pressed": String(n === quantas),
+            title: n === quantas ? "Clique de novo para tirar" : `${n} de ${ESTRELAS_MAXIMAS}`,
+            onclick: () => darEstrelas(alvo, stat, n),
+          },
+          "★",
+        ),
+      ),
+    ),
+  );
+}
+
+/** Clicar na estrela que já está marcada tira as estrelas. Quem muda de nível entra no fim do novo nível. */
+function darEstrelas(alvo, stat, quantas) {
+  const { [stat]: atual, ...resto } = alvo.estrelas ?? {};
+  alvo.estrelas = ordenarPorEstrelas(quantas === atual ? resto : { ...resto, [stat]: quantas });
+  desenhar();
+}
+
+function trocarOrdem(alvo, stat, vizinho) {
+  const chaves = Object.keys(alvo.estrelas);
+  const [i, j] = [chaves.indexOf(stat), chaves.indexOf(vizinho)];
+  [chaves[i], chaves[j]] = [chaves[j], chaves[i]];
+  alvo.estrelas = Object.fromEntries(chaves.map((c) => [c, alvo.estrelas[c]]));
+  desenhar();
+}
+
+const ordenarPorEstrelas = (estrelas) => Object.fromEntries(Object.entries(estrelas).sort(([, a], [, b]) => b - a));
 
 // ---------- Armas ----------
 
@@ -403,8 +439,8 @@ function cartaoVariante(p, v, i) {
         ),
       ),
     ),
-    ...camposDeBuild(v, prefixo, marcados.filter((c) => c !== "pesos")),
-    marcados.includes("pesos") ? linha("Pesos", `${prefixo}pesos`, editorPesos(v, `${prefixo}pesos`)) : null,
+    ...camposDeBuild(v, prefixo, marcados.filter((c) => c !== "estrelas")),
+    marcados.includes("estrelas") ? linha("Estrelas", `${prefixo}estrelas`, editorEstrelas(v, `${prefixo}estrelas`)) : null,
   );
 }
 

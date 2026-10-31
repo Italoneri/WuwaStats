@@ -55,7 +55,7 @@ def test_lista_builds_com_condicoes_das_variantes_e_explicacao(cliente: TestClie
 
     assert builds["Suoming_DPS"]["condicoes"] == ["arma_assinatura"]
     assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["set"] == "Heart of Sworn Vigil"
-    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["pesos"] == builds["Suoming_DPS"]["base"]["pesos"]
+    assert builds["Suoming_DPS"]["variantes"][0]["perfil"]["estrelas"] == builds["Suoming_DPS"]["base"]["estrelas"]
     assert builds["Suoming_DPS"]["armas"] == {"melhor": "Test Weapon", "alternativas": ["Alt Weapon"]}
     assert builds["Suoming_SubDPS"]["condicoes"] == []
     assert builds["Suoming_SubDPS"]["armas"] is None
@@ -110,7 +110,7 @@ def test_analisa_entrada_manual(cliente: TestClient, entrada: dict[str, Any]) ->
 
     assert resposta.status_code == 200
     analise = resposta.json()
-    assert [e["score_pct"] for e in analise["echos"]] == [80.4, 51.3, 37.0, 37.9, 6.3]
+    assert [e["score_pct"] for e in analise["echos"]] == [80.4, 54.5, 35.5, 39.3, 5.6]
     assert analise["echos"][0]["substatus"][1]["tipo"] == "valido"
 
 
@@ -341,7 +341,7 @@ class TestHistorico:
 
         assert salvo.status_code == 201
         assert (resumo["nome"], resumo["build"]) == ("antes da troca", "Suoming_DPS")
-        assert (resumo["score_medio_pct"], resumo["nota_media"]) == (42.6, "B")
+        assert (resumo["score_medio_pct"], resumo["nota_media"]) == (43.1, "B")
         assert [r["id"] for r in lista] == [resumo["id"]]
         assert outra_build == []
         assert completo["entrada"]["echos"][0]["nome"] == entrada["echos"][0]["nome"]
@@ -372,7 +372,7 @@ class TestEditorDeBuilds:
     def test_lista_perfis_com_chaves_internas(self, cliente: TestClient) -> None:
         perfil = self._perfil(cliente)
 
-        assert perfil["pesos"]["crit_rate"] == 1.0
+        assert perfil["estrelas"]["crit_rate"] == 3
         assert perfil["principais"]["3"] == ["electro_dmg", "atk_pct"]
         assert perfil["armas"]["alternativas"] == ["Alt Weapon"]
         assert perfil["armas_assinatura"] == ["Test Weapon"]
@@ -404,7 +404,7 @@ class TestEditorDeBuilds:
     @pytest.mark.parametrize(
         ("mudanca", "trecho"),
         [
-            ({"pesos": {"Sorte": 1.0}}, "characters.json › Suoming_DPS › pesos › Sorte"),
+            ({"estrelas": {"Sorte": 3}}, "characters.json › Suoming_DPS › estrelas › Sorte"),
             ({"set": "Set Inexistente"}, "characters.json › Suoming_DPS › set"),
             ({"regen_energia_min": 50}, "body › regen_energia_min"),
             ({"custos": [4, 4, 4, 1, 1]}, "custo total 14"),

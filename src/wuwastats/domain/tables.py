@@ -3,7 +3,7 @@
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from wuwastats.domain.models import Condicoes, Custo, Escala
+from wuwastats.domain.models import ESTRELAS_MAXIMAS, Condicoes, Custo, Escala
 from wuwastats.domain.names import NameIndex
 
 
@@ -58,7 +58,12 @@ class BuildSpec:
     set: str | None
     echo_principal: str | None
     principais: Mapping[Custo, frozenset[str]]
-    pesos: Mapping[str, float]
+    estrelas: Mapping[str, int]  # 1 a ESTRELAS_MAXIMAS; status fora daqui a build ignora
+
+    @property
+    def pesos(self) -> dict[str, float]:
+        """Peso no score: 3 estrelas valem o triplo de 1."""
+        return {stat: estrelas / ESTRELAS_MAXIMAS for stat, estrelas in self.estrelas.items()}
 
 
 @dataclass(frozen=True)
