@@ -25,6 +25,9 @@ WM_HOTKEY = 0x0312
 PM_REMOVE = 0x0001
 ERROR_ACCESS_DENIED = 5
 DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = -4
+PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+TOKEN_QUERY = 0x0008
+TOKEN_ELEVATION = 20
 ENUM_WINDOWS_PROC = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
 TIMEOUT_REGISTRO_S = 5
 
@@ -35,9 +38,14 @@ def ferramentas_windows(titulo_janela: str, atalhos: Mapping[Acao, Atalho]) -> F
     _ativar_dpi_real()
     return FerramentasCaptura(
         capturar_tela=lambda: capturar_janela(titulo_janela),
-        escutar_atalhos=lambda acoes: EscutaAtalhos.iniciar(acoes, atalhos),
+        escutar_atalhos=lambda acoes: _escutar(titulo_janela, acoes, atalhos),
         sinalizar=sinalizar,
     )
+
+
+def _escutar(titulo: str, acoes: Mapping[Acao, Callable[[], None]], atalhos: Mapping[Acao, Atalho]) -> "EscutaAtalhos":
+    _exigir_privilegio_do_jogo(titulo)
+    return EscutaAtalhos.iniciar(acoes, atalhos)
 
 
 def capturar_janela(titulo: str) -> bytes:
@@ -144,12 +152,64 @@ def regiao_da_janela(titulo: str) -> dict[str, int]:
 
 def _localizar_janela(titulo: str) -> int:
     janelas = _janelas_visiveis()
-    encontradas = [hwnd for hwnd, texto in janelas.items() if texto.strip().casefold() == titulo.casefold()]
+    encontradas = _com_titulo(janelas, titulo)
     if encontradas:
         return encontradas[0]
     parecidas = sorted({texto for texto in janelas.values() if "wuthering" in texto.casefold()})
     dica = f" Janelas parecidas: {parecidas}; ajuste CAPTURA_TITULO_JANELA no .env." if parecidas else ""
     raise CapturaFalhou(f"janela '{titulo}' não encontrada.{dica}")
+
+
+def _com_titulo(janelas: Mapping[int, str], titulo: str) -> list[int]:
+    return [hwnd for hwnd, texto in janelas.items() if texto.strip().casefold() == titulo.casefold()]
+
+
+# --- Privilégio (só leitura) ---
+
+
+def _exigir_privilegio_do_jogo(titulo: str) -> None:
+    """Com um processo de administrador em foco, o Windows não entrega WM_HOTKEY a um processo comum: a tecla some sem erro.
+
+    Jogo fechado ou privilégio ilegível não bloqueiam: só recusa quando dá para saber que os atalhos não vão chegar.
+    """
+    janelas = _com_titulo(_janelas_visiveis(), titulo)
+    if not janelas or _token_elevado(_kernel32().GetCurrentProcess()):
+        return
+    if _jogo_elevado(janelas[0]):
+        raise CapturaFalhou(
+            "o jogo está rodando como administrador e o servidor não: com o jogo em foco o Windows não entrega os atalhos. "
+            "Feche o servidor e abra de novo num terminal como administrador."
+        )
+
+
+def _jogo_elevado(hwnd: int) -> bool:
+    kernel32 = _kernel32()
+    pid = wintypes.DWORD()
+    _user32().GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+    processo = kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid.value)
+    if not processo:
+        logger.warning("não consegui conferir se o jogo roda como administrador (erro %s)", ctypes.get_last_error())
+        return False
+    try:
+        return _token_elevado(processo)
+    finally:
+        kernel32.CloseHandle(processo)
+
+
+def _token_elevado(processo: int) -> bool:
+    advapi32, kernel32 = _advapi32(), _kernel32()
+    token = wintypes.HANDLE()
+    if not advapi32.OpenProcessToken(processo, TOKEN_QUERY, ctypes.byref(token)):
+        logger.warning("não consegui ler o token do processo %s (erro %s)", processo, ctypes.get_last_error())
+        return False
+    try:
+        elevacao, tamanho = wintypes.DWORD(), wintypes.DWORD()
+        lido = advapi32.GetTokenInformation(
+            token, TOKEN_ELEVATION, ctypes.byref(elevacao), ctypes.sizeof(elevacao), ctypes.byref(tamanho)
+        )
+        return bool(lido and elevacao.value)
+    finally:
+        kernel32.CloseHandle(token)
 
 
 def _janelas_visiveis() -> dict[int, str]:
@@ -187,12 +247,41 @@ def _user32() -> ctypes.WinDLL:
         "UnregisterHotKey": ([hwnd, ctypes.c_int], wintypes.BOOL),
         "PeekMessageW": ([ctypes.POINTER(wintypes.MSG), hwnd, wintypes.UINT, wintypes.UINT, wintypes.UINT], wintypes.BOOL),
         "SetProcessDpiAwarenessContext": ([ctypes.c_void_p], wintypes.BOOL),
+        "GetWindowThreadProcessId": ([hwnd, ctypes.POINTER(wintypes.DWORD)], wintypes.DWORD),
     }
+    return _assinar(user32, assinaturas)
+
+
+@cache
+def _kernel32() -> ctypes.WinDLL:
+    handle = wintypes.HANDLE
+    assinaturas: dict[str, tuple[list[type], type]] = {
+        "GetCurrentProcess": ([], handle),
+        "OpenProcess": ([wintypes.DWORD, wintypes.BOOL, wintypes.DWORD], handle),
+        "CloseHandle": ([handle], wintypes.BOOL),
+    }
+    return _assinar(ctypes.WinDLL("kernel32", use_last_error=True), assinaturas)
+
+
+@cache
+def _advapi32() -> ctypes.WinDLL:
+    handle = wintypes.HANDLE
+    assinaturas: dict[str, tuple[list[type], type]] = {
+        "OpenProcessToken": ([handle, wintypes.DWORD, ctypes.POINTER(handle)], wintypes.BOOL),
+        "GetTokenInformation": (
+            [handle, ctypes.c_int, ctypes.c_void_p, wintypes.DWORD, ctypes.POINTER(wintypes.DWORD)],
+            wintypes.BOOL,
+        ),
+    }
+    return _assinar(ctypes.WinDLL("advapi32", use_last_error=True), assinaturas)
+
+
+def _assinar(dll: ctypes.WinDLL, assinaturas: Mapping[str, tuple[list[type], type]]) -> ctypes.WinDLL:
     for nome, (argumentos, retorno) in assinaturas.items():
-        funcao = getattr(user32, nome)
+        funcao = getattr(dll, nome)
         funcao.argtypes = argumentos
         funcao.restype = retorno
-    return user32
+    return dll
 
 
 def _ativar_dpi_real() -> None:

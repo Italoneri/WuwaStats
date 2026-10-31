@@ -1,4 +1,5 @@
 import shutil
+import tempfile
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -20,6 +21,12 @@ GAMEDATA_FIXTURE = FIXTURES / "gamedata"
 def sem_env_local(monkeypatch: pytest.MonkeyPatch) -> None:
     """O .env de quem roda os testes (recorte, modelo, limites) não pode mudar o resultado."""
     monkeypatch.setitem(Settings.model_config, "env_file", None)
+
+
+@pytest.fixture(autouse=True)
+def temporarios_no_tmp_path(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """Sessão de captura que o teste não desliga deixaria a pasta dos prints no Temp do sistema a cada execução."""
+    monkeypatch.setattr(tempfile, "tempdir", str(tmp_path))
 
 
 @pytest.fixture(scope="session")

@@ -27,7 +27,7 @@ Todo erro (4xx/5xx) tem o mesmo formato:
 | Status | Quando |
 |---|---|
 | 404 | build inexistente (`erros` lista as disponíveis), sessão de captura inexistente ou substituída |
-| 409 | captura: atalho em uso por outro programa, nenhum echo lido ainda |
+| 409 | captura: atalho em uso por outro programa ou jogo como admin com o servidor sem admin, nenhum echo lido ainda |
 | 422 | corpo inválido (`erros` aponta campo › motivo), alias inválido, dados de jogo inválidos |
 | 501 | captura por atalho fora do Windows |
 | 503 | IA de visão não configurada (`.env` sem `NVIDIA_API_KEY`/`NVIDIA_VISION_MODEL`) |
@@ -371,7 +371,7 @@ Atalhos configurados, para a página mostrar as teclas certas: `{ "echo": "F8", 
 ### `POST /api/captura/iniciar`
 
 Corpo `{ "build": "Suoming_DPS" }`. Liga os atalhos e devolve a **Sessao** nova. `404` build inexistente,
-`409` atalho em uso por outro programa, `501` fora do Windows, `503` IA não configurada.
+`409` atalho em uso por outro programa ou jogo rodando como administrador com o servidor sem admin, `501` fora do Windows, `503` IA não configurada.
 
 ### `POST /api/captura/parar`
 

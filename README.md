@@ -28,7 +28,11 @@ Prints que falharem aparecem no resumo com o motivo; preencha esses echos à mã
 
 ### Captura por atalho (Windows)
 
-A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura, escolha a build e clique em
+A captura roda dentro do servidor (`uv run wuwastats serve`). **Rode o servidor num terminal como administrador**: o jogo
+roda como admin, e com ele em foco o Windows não entrega os atalhos a um processo comum (a tecla some sem bipe nem erro).
+Se o jogo já estiver aberto como admin e o servidor não, **Iniciar captura** recusa com essa explicação.
+
+Na página Captura, escolha a build e clique em
 **Iniciar captura**: o servidor passa a escutar as teclas enquanto você joga, e cada print é lido pela IA na hora.
 
 | Tecla (padrão) | O que faz |
@@ -47,8 +51,6 @@ A captura roda dentro do servidor (`uv run wuwastats serve`). Na página Captura
 - O jogo pode engolir as teclas comuns enquanto está em foco (nem o PrtSc funciona). Combinações com a tecla Windows
   costumam passar: troque os atalhos no `.env` (`CAPTURA_TECLA_ECHO=Win+Shift+E` etc.; aceita Ctrl, Alt, Shift, Win +
   F1–F24, A–Z, 0–9, Num0–Num9). A página mostra as teclas configuradas.
-- Se mesmo assim os atalhos não responderem com o jogo em foco, rode o servidor num terminal como administrador.
-
 ### Mais na interface
 
 - **Editor de builds** (menu lateral): pesos com sliders, Regen mínima, custos, principais, set, echo principal, armas e
