@@ -1,4 +1,4 @@
-"""Rotas das imagens do catálogo (personagens, echos, armas). Erros viram HTTP pelos handlers de app.py."""
+"""Rotas das imagens do catálogo (personagens, echos, armas, sets). Erros viram HTTP pelos handlers de app.py."""
 
 from collections.abc import Callable, Mapping
 from typing import Annotated
@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 from wuwastats.domain.tables import GameData
 from wuwastats.gamedata.imagens import MAX_BYTES_IMAGEM, CategoriaImagem, ImagemInexistente, ImagensDoCatalogo
 
-CATEGORIAS: tuple[CategoriaImagem, ...] = ("personagens", "echoes", "armas")
+CATEGORIAS: tuple[CategoriaImagem, ...] = ("personagens", "echoes", "armas", "sets")
 
 
 def rotas_imagens(imagens: ImagensDoCatalogo, dados_atuais: Callable[[], GameData]) -> APIRouter:
@@ -21,6 +21,7 @@ def rotas_imagens(imagens: ImagensDoCatalogo, dados_atuais: Callable[[], GameDat
             "personagens": dados.ressonadores,
             "echoes": dados.echoes,
             "armas": dados.armas,
+            "sets": dados.sets,
         }
         return por_categoria[categoria]
 

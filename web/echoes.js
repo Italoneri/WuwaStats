@@ -1,6 +1,6 @@
 // Echos: todos de GET /api/echoes com a imagem, para conferir à mão. Clicar abre o que o echo faz.
 
-import { ICONES, api, avisoErro, carregarImagens, el, figura, icone, moldura, temImagem } from "./comum.js";
+import { ICONES, api, avisoErro, carregarImagens, el, figura, icone, moldura, srcImagem, temImagem } from "./comum.js";
 
 const TODOS = "todos";
 const filtros = { custo: TODOS, semImagem: false, q: "" };
@@ -119,12 +119,13 @@ function cartao(echo) {
   const tem = temImagem("echoes", echo.chave);
   return el(
     "button",
-    { type: "button", class: "card echo-card", "aria-haspopup": "dialog", "aria-label": `${echo.nome}, custo ${echo.custo ?? "desconhecido"}`, onclick: () => abrir(echo) },
+    { type: "button", class: "card echo-card", "aria-haspopup": "dialog", "aria-label": descricao(echo), onclick: () => abrir(echo) },
     el(
       "div",
       { class: "echo-arte" },
       figura("echoes", echo.chave, reserva(), { rotulo: echo.nome }),
       el("span", { class: "cost sm echo-custo", title: "Custo" }, echo.custo ?? "?"),
+      simbolosDosSets(echo.sets),
     ),
     el(
       "div",
@@ -135,6 +136,20 @@ function cartao(echo) {
     ),
   );
 }
+
+function descricao(echo) {
+  const sets = echo.sets.length ? `, sets: ${echo.sets.map((s) => s.nome).join(", ")}` : "";
+  return `${echo.nome}, custo ${echo.custo ?? "desconhecido"}${sets}`;
+}
+
+/** Ícone colorido de cada set possível, como no jogo. Set sem ícone baixado fica de fora. */
+function simbolosDosSets(sets) {
+  const comIcone = sets.filter((s) => temImagem("sets", s.chave));
+  if (!comIcone.length) return null;
+  return el("div", { class: "echo-sets", "aria-hidden": "true" }, comIcone.map((s) => simboloDoSet(s)));
+}
+
+const simboloDoSet = (set) => el("img", { class: "simbolo-set", src: srcImagem("sets", set.chave), alt: "", title: set.nome, loading: "lazy" });
 
 /** Janela com o que o echo faz. A imagem pode ser trocada daqui; a grade se atualiza ao fechar. */
 function abrir(echo) {
@@ -172,7 +187,7 @@ function detalhes(echo) {
       "div",
       { class: "echo-tags" },
       el("span", { class: "chip" }, `Custo ${echo.custo ?? "?"}`),
-      echo.sets.map((s) => el("span", { class: "chip" }, icone(ICONES.sonata, 16), s.nome)),
+      echo.sets.map((s) => el("span", { class: "chip" }, temImagem("sets", s.chave) ? simboloDoSet(s) : icone(ICONES.sonata, 16), s.nome)),
     ),
     el("span", { class: "label" }, "Habilidade"),
     echo.habilidade

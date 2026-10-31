@@ -307,7 +307,7 @@ class TestImagens:
         servida = cliente.get("/api/imagens/personagens/Suoming")
 
         assert envio.status_code == 204
-        assert lista == {"personagens": ["Suoming"], "echoes": [], "armas": []}
+        assert lista == {"personagens": ["Suoming"], "echoes": [], "armas": [], "sets": []}
         assert (servida.status_code, servida.headers["content-type"]) == (200, "image/png")
         assert servida.content.startswith(b"\x89PNG")
 
@@ -316,7 +316,7 @@ class TestImagens:
         [
             ("get", "/api/imagens/personagens/Suoming", None, 404),
             ("put", "/api/imagens/personagens/Ninguem", imagem("PNG"), 404),
-            ("put", "/api/imagens/sets/Moonlit Clouds", imagem("PNG"), 422),
+            ("put", "/api/imagens/sonatas/Moonlit Clouds", imagem("PNG"), 422),
             ("put", "/api/imagens/armas/Test Weapon", b"texto", 422),
         ],
     )

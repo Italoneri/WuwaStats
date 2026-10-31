@@ -7,7 +7,7 @@ Gera data/echoes.json (com o que a habilidade de cada echo faz), data/sets.json,
 data/weapons.json, acrescenta os nomes PT-BR de echos e sets como aliases em data/stat_aliases.json (mapeamentos
 manuais ficam) e grava em data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de
 substituir os arquivos de verdade.
-Depois baixa de nanoka.cc os ícones de echos e armas que ainda não estão em data/imagens/ (ressonadores ficam à mão).
+Depois baixa de nanoka.cc os ícones de echos, armas e sets que ainda não estão em data/imagens/ (ressonadores ficam à mão).
 """
 
 import argparse
@@ -130,6 +130,7 @@ class GrupoSetFonte(_Fonte):
     id: int = Field(alias="Id")
     chave_nome: str = Field(alias="FetterGroupName")
     efeitos_por_pecas: list[PecasFonte] = Field(alias="FetterMap")
+    icone: str | None = Field(default=None, alias="FetterElementPath")
 
 
 class PropriedadeSomadaFonte(_Fonte):
@@ -228,6 +229,7 @@ class SetImportado:
     pecas: int
     bonus: dict[int, dict[str, float]]
     efeitos: dict[int, tuple[str, str | None]]
+    icone: str | None = None
 
 
 @dataclass(frozen=True)
@@ -438,7 +440,9 @@ def _montar_set(
         if status:
             bonus[item.pecas] = status
     pecas = max((item.pecas for item in grupo.efeitos_por_pecas), default=0)
-    return SetImportado(nome_pt=_texto_pt(tabelas, grupo.chave_nome), pecas=pecas, bonus=bonus, efeitos=descricoes)
+    return SetImportado(
+        nome_pt=_texto_pt(tabelas, grupo.chave_nome), pecas=pecas, bonus=bonus, efeitos=descricoes, icone=grupo.icone
+    )
 
 
 def _bonus_em_status(
@@ -843,6 +847,7 @@ def icones_do_catalogo(catalogo: Catalogo, elenco: Elenco) -> tuple[list[Icone],
     candidatos: list[tuple[CategoriaImagem, str, str | None]] = [
         *(("echoes", nome, echo.icone) for nome, echo in catalogo.echoes.items()),
         *(("armas", nome, arma.icone) for nome, arma in elenco.armas.items()),
+        *(("sets", nome, conjunto.icone) for nome, conjunto in catalogo.sets.items()),
     ]
     icones: list[Icone] = []
     avisos: list[str] = []

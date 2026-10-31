@@ -329,9 +329,9 @@ export function miniaturaAmpliavel(src, legenda, reserva, classe = "") {
   return botao;
 }
 
-// ---------- Imagens do catálogo (personagens, echos, armas) ----------
+// ---------- Imagens do catálogo (personagens, echos, armas, sets) ----------
 
-const imagensDisponiveis = { personagens: new Set(), echoes: new Set(), armas: new Set() };
+const imagensDisponiveis = { personagens: new Set(), echoes: new Set(), armas: new Set(), sets: new Set() };
 const versaoImagem = new Map(); // força o navegador a buscar de novo depois de trocar
 
 export async function carregarImagens() {
@@ -345,7 +345,7 @@ export async function carregarImagens() {
 
 export const temImagem = (categoria, chave) => imagensDisponiveis[categoria].has(chave);
 
-const srcImagem = (categoria, chave) => `/api/imagens/${categoria}/${encodeURIComponent(chave)}?v=${versaoImagem.get(`${categoria}/${chave}`) ?? 0}`;
+export const srcImagem = (categoria, chave) => `/api/imagens/${categoria}/${encodeURIComponent(chave)}?v=${versaoImagem.get(`${categoria}/${chave}`) ?? 0}`;
 
 /** Imagem do catálogo quando existe, senão o placeholder. Com `trocavel`, um botão envia outra imagem. */
 export function figura(categoria, chave, reserva, { trocavel = false, rotulo = chave } = {}) {

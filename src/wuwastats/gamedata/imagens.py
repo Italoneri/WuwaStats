@@ -1,4 +1,4 @@
-"""Imagens de personagens, echos e armas enviadas pelo usuário: data/imagens/<categoria>/<chave>.png.
+"""Imagens de personagens, echos, armas e sets enviadas pelo usuário: data/imagens/<categoria>/<chave>.png.
 
 Toda imagem aceita é decodificada e regravada como PNG: o que fica no disco é sempre uma imagem válida, sem metadados.
 """
@@ -12,7 +12,7 @@ from typing import Literal
 
 from PIL import Image, UnidentifiedImageError
 
-CategoriaImagem = Literal["personagens", "echoes", "armas"]
+CategoriaImagem = Literal["personagens", "echoes", "armas", "sets"]
 PASTA_IMAGENS = "imagens"
 MAX_BYTES_IMAGEM = 5 * 1024 * 1024
 LADO_MAXIMO_PX = 1024

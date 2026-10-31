@@ -323,15 +323,17 @@ def test_converte_caminho_de_textura_em_url_do_icone(caminho: str, esperado: str
     assert url_do_icone(caminho) == esperado
 
 
-def test_echo_e_arma_levam_o_icone_da_fonte() -> None:
+def test_echo_set_e_arma_levam_o_icone_da_fonte() -> None:
     com_echos, com_armas = _tabelas(None), _elenco_fonte()
     echos = [echo.model_copy(update={"icone": f"/Game/Aki/UI/E/{echo.chave_nome}.x"}) for echo in com_echos.echos]
+    grupos = [grupo.model_copy(update={"icone": f"/Game/Aki/UI/S/{grupo.id}.x"}) for grupo in com_echos.grupos_set]
     armas = [arma.model_copy(update={"icone": "/Game/Aki/UI/W/W_1.x"}) for arma in com_armas.armas]
 
-    catalogo = montar_catalogo(dataclasses.replace(com_echos, echos=echos), STATS)
+    catalogo = montar_catalogo(dataclasses.replace(com_echos, echos=echos, grupos_set=grupos), STATS)
     elenco = montar_elenco(dataclasses.replace(com_armas, armas=armas))
 
     assert catalogo.echoes["Cloudy"].icone == "/Game/Aki/UI/E/M_Nuvem.x"
+    assert catalogo.sets["Moonlit Clouds"].icone == "/Game/Aki/UI/S/8.x"
     assert elenco.armas["Unspoken Rue"].icone == "/Game/Aki/UI/W/W_1.x"
 
 

@@ -505,13 +505,13 @@ O resumo + `entrada` + `leitura`; ou apaga (`204`). `404` se não existe.
 
 ## Imagens do catálogo
 
-Imagens de personagens, echos e armas enviadas pelo usuário, em `data/imagens/<categoria>/<chave>.png`.
-`categoria` ∈ `personagens`, `echoes`, `armas`; `chave` é a chave do catálogo (`Suoming`,
+Imagens de personagens, echos, armas e sets (enviadas pelo usuário ou baixadas pelo importador), em `data/imagens/<categoria>/<chave>.png`.
+`categoria` ∈ `personagens`, `echoes`, `armas`, `sets`; `chave` é a chave do catálogo (`Suoming`,
 `Reminiscence: Suhsin the Inevitable`, `Unspoken Rue`), codificada na URL. Chave fora do catálogo: `404`.
 
 ### `GET /api/imagens`
 
-Quais chaves têm imagem: `{ "personagens": ["Suoming"], "echoes": [], "armas": [] }`. As outras usam placeholder.
+Quais chaves têm imagem: `{ "personagens": ["Suoming"], "echoes": [], "armas": [], "sets": [] }`. As outras usam placeholder.
 
 ### `GET /api/imagens/{categoria}/{chave}`
 
