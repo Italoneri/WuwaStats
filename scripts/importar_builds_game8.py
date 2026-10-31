@@ -335,14 +335,23 @@ def _set(bloco: BlocoGame8, dados: GameData, avisos: list[str]) -> str | None:
 
 
 def _nome(indice: NameIndex, catalogo: Mapping[str, object], nome: str | None, tipo: str, avisos: list[str]) -> str | None:
-    """As chaves do catálogo já são os nomes em inglês do jogo; o índice cobre grafias alternativas."""
+    """As chaves do catálogo já são os nomes em inglês do jogo; o índice cobre grafias alternativas.
+
+    O Game8 pontua diferente ('Reminiscence: Nightmare Adam Smasher' x 'Reminiscence - Nightmare: Adam Smasher'):
+    por último compara só letras e números.
+    """
     if not nome:
         return None
-    com_dois_pontos = nome.replace(" - ", ": ")  # Game8: 'Twin Nova - Nebulous Cannon'; jogo: 'Twin Nova: ...'
-    chave = next((n for n in (nome, com_dois_pontos) if n in catalogo), None) or indice.resolve(com_dois_pontos)
+    chave = nome if nome in catalogo else indice.resolve(nome)
+    if chave is None:
+        chave = next((c for c in catalogo if _sem_pontuacao(c) == _sem_pontuacao(nome)), None)
     if chave is None:
         avisos.append(f"{tipo} '{nome}' não está no catálogo")
     return chave
+
+
+def _sem_pontuacao(nome: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", fold(nome))
 
 
 def _principais_resolvidos(texto: str, custo: str, dados: GameData, avisos: list[str]) -> list[str]:

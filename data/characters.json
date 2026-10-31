@@ -1254,7 +1254,7 @@
       "basic_atk_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: principal de custo 1 'Energy Regen' não reconhecido; o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
   "Galbrena_Fusion_Echo_Skill_DPS": {
     "personagem": "Galbrena",
@@ -1723,48 +1723,6 @@
       "basic_atk_dmg": 1
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
-  "Lucy_Heavy_Attack_DMG_DPS": {
-    "personagem": "Lucy",
-    "armas": {
-      "melhor": "Spectral Trigger",
-      "alternativas": [
-        "Phasic Homogenizer",
-        "Lux & Umbra",
-        "Solar Flame"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 100,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "set": "Shadow of Shattered Dreams",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "spectro_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 2,
-      "heavy_atk_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: echo 'Reminiscence: Nightmare Adam Smasher' não está no catálogo; o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Rite of Gilded Revelation 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams; o Game8 não cita meta de Regen. de Energia; ficou 100"
   },
   "Lumi_Resonance_Skill_Sub_DPS": {
     "personagem": "Lumi",
@@ -2408,48 +2366,6 @@
       "atk_flat": 1
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
-  },
-  "Rebecca_Heavy_Attack_Buffer_Sub_DPS": {
-    "personagem": "Rebecca",
-    "armas": {
-      "melhor": "Skull Thrasher",
-      "alternativas": [
-        "Phasic Homogenizer",
-        "Spectrum Blaster",
-        "Static Mist"
-      ]
-    },
-    "escala": "ATQ",
-    "regen_energia_min": 125,
-    "custos": [
-      4,
-      3,
-      3,
-      1,
-      1
-    ],
-    "set": "Shadow of Shattered Dreams",
-    "principais": {
-      "4": [
-        "crit_rate",
-        "crit_dmg"
-      ],
-      "3": [
-        "electro_dmg"
-      ],
-      "1": [
-        "atk_pct"
-      ]
-    },
-    "estrelas": {
-      "crit_rate": 3,
-      "crit_dmg": 3,
-      "energy_regen": 2,
-      "basic_atk_dmg": 2,
-      "atk_pct": 2,
-      "atk_flat": 1
-    },
-    "status": "TODO: echo 'Reminiscence: Nightmare Adam Smasher' não está no catálogo; o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Void Thunder 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams"
   },
   "Roccia_Havoc_Sub_DPS": {
     "personagem": "Roccia",
@@ -3304,5 +3220,91 @@
       "atk_flat": 1
     },
     "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Lucy_Heavy_Attack_DMG_DPS": {
+    "personagem": "Lucy",
+    "armas": {
+      "melhor": "Spectral Trigger",
+      "alternativas": [
+        "Phasic Homogenizer",
+        "Lux & Umbra",
+        "Solar Flame"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 100,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Reminiscence - Nightmare: Adam Smasher",
+    "set": "Shadow of Shattered Dreams",
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "spectro_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 2,
+      "heavy_atk_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Rite of Gilded Revelation 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams; o Game8 não cita meta de Regen. de Energia; ficou 100"
+  },
+  "Rebecca_Heavy_Attack_Buffer_Sub_DPS": {
+    "personagem": "Rebecca",
+    "armas": {
+      "melhor": "Skull Thrasher",
+      "alternativas": [
+        "Phasic Homogenizer",
+        "Spectrum Blaster",
+        "Static Mist"
+      ]
+    },
+    "escala": "ATQ",
+    "regen_energia_min": 125,
+    "custos": [
+      4,
+      3,
+      3,
+      1,
+      1
+    ],
+    "echo_principal": "Reminiscence - Nightmare: Adam Smasher",
+    "set": "Shadow of Shattered Dreams",
+    "principais": {
+      "4": [
+        "crit_rate",
+        "crit_dmg"
+      ],
+      "3": [
+        "electro_dmg"
+      ],
+      "1": [
+        "atk_pct"
+      ]
+    },
+    "estrelas": {
+      "crit_rate": 3,
+      "crit_dmg": 3,
+      "energy_regen": 2,
+      "basic_atk_dmg": 2,
+      "atk_pct": 2,
+      "atk_flat": 1
+    },
+    "status": "TODO: o Game8 combina sets (1-pc : Shadow of Shattered Dreams 2-pc : Void Thunder 2-pc : Reel of Spliced Memories); a build guarda só Shadow of Shattered Dreams"
   }
 }
