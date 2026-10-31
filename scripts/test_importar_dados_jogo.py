@@ -1,4 +1,5 @@
 import dataclasses
+import io
 import json
 import shutil
 from pathlib import Path
@@ -8,12 +9,15 @@ import pytest
 from importar_dados_jogo import (
     ArmaFonte,
     ArmaImportada,
+    Catalogo,
     Categoria,
     Commit,
     EchoFonte,
     EchoImportado,
     EfeitoSetFonte,
     ElementoFonte,
+    Elenco,
+    FonteIndisponivel,
     GrupoSetFonte,
     PersonagemFonte,
     PropriedadeFonte,
@@ -24,14 +28,18 @@ from importar_dados_jogo import (
     gerar_echoes,
     gerar_sets,
     gravar_validado,
+    importar_icones,
     mesclar_aliases,
     montar_catalogo,
     montar_elenco,
     preencher,
+    url_do_icone,
 )
+from PIL import Image
 
 from wuwastats.config import PROJECT_ROOT
 from wuwastats.domain.names import NameIndex
+from wuwastats.gamedata.imagens import ImagensDoCatalogo
 from wuwastats.gamedata.loader import GameDataError, load_game_data
 from wuwastats.gamedata.schemas import AliasesFile, EchoesFile, SetsFile
 
@@ -253,6 +261,80 @@ def test_nao_toca_em_data_quando_o_resultado_nao_carrega(tmp_path: Path) -> None
         gravar_validado(data_dir, {"sets.json": sets})
 
     assert (data_dir / "sets.json").read_bytes() == antes
+
+
+@pytest.mark.parametrize(
+    ("caminho", "esperado"),
+    [
+        (
+            "/Game/Aki/UI/UIResources/Common/Image/IconMonsterGoods/T_IconMonsterGoods_011_UI.T_IconMonsterGoods_011_UI",
+            "https://static.nanoka.cc/assets/ww/UIResources/Common/Image/IconMonsterGoods/T_IconMonsterGoods_011_UI.webp",
+        ),
+        ("/Game/Aki/Outra/T_X.T_X", None),
+        ("", None),
+    ],
+)
+def test_converte_caminho_de_textura_em_url_do_icone(caminho: str, esperado: str | None) -> None:
+    assert url_do_icone(caminho) == esperado
+
+
+def test_echo_e_arma_levam_o_icone_da_fonte() -> None:
+    com_echos, com_armas = _tabelas(None), _elenco_fonte()
+    echos = [echo.model_copy(update={"icone": f"/Game/Aki/UI/E/{echo.chave_nome}.x"}) for echo in com_echos.echos]
+    armas = [arma.model_copy(update={"icone": "/Game/Aki/UI/W/W_1.x"}) for arma in com_armas.armas]
+
+    catalogo = montar_catalogo(dataclasses.replace(com_echos, echos=echos), STATS)
+    elenco = montar_elenco(dataclasses.replace(com_armas, armas=armas))
+
+    assert catalogo.echoes["Cloudy"].icone == "/Game/Aki/UI/E/M_Nuvem.x"
+    assert elenco.armas["Unspoken Rue"].icone == "/Game/Aki/UI/W/W_1.x"
+
+
+def test_baixa_so_icones_que_faltam_e_falha_vira_aviso(tmp_path: Path) -> None:
+    imagens = ImagensDoCatalogo(tmp_path)
+    imagens.salvar("echoes", "Cloudy", _webp("red"))
+    enviada_a_mao = imagens.caminho("echoes", "Cloudy").read_bytes()
+    catalogo = Catalogo(
+        echoes={
+            "Cloudy": EchoImportado(nome_pt=None, custos=frozenset({1}), sets=(), icone="/Game/Aki/UI/E/Cloudy.x"),
+            "Gulpuff": EchoImportado(nome_pt=None, custos=frozenset({1}), sets=(), icone="/Game/Aki/UI/E/Gulpuff.x"),
+            "Sem Icone": EchoImportado(nome_pt=None, custos=frozenset({1}), sets=()),
+        },
+        sets={},
+    )
+    elenco = Elenco(
+        elementos={},
+        tipos_arma={},
+        ressonadores={},
+        armas={"Unspoken Rue": ArmaImportada(nome_pt=None, tipo="sword", raridade=5, icone="/Game/Aki/UI/W/Rue.x")},
+    )
+    pedidas: list[str] = []
+
+    def baixar(url: str) -> bytes:
+        pedidas.append(url)
+        if url.endswith("Rue.webp"):
+            raise FonteIndisponivel(f"{url}: HTTP 503")
+        return _webp("blue")
+
+    avisos = importar_icones(imagens, catalogo, elenco, baixar)
+
+    assert sorted(pedidas) == [
+        "https://static.nanoka.cc/assets/ww/E/Gulpuff.webp",
+        "https://static.nanoka.cc/assets/ww/W/Rue.webp",
+    ]
+    assert imagens.caminho("echoes", "Cloudy").read_bytes() == enviada_a_mao
+    assert imagens.existe("echoes", "Gulpuff")
+    assert not imagens.existe("armas", "Unspoken Rue")
+    assert avisos == [
+        "ícone echoes 'Sem Icone': caminho '' fora de /Game/Aki/UI/; envie à mão",
+        "ícone armas 'Unspoken Rue': https://static.nanoka.cc/assets/ww/W/Rue.webp: HTTP 503",
+    ]
+
+
+def _webp(cor: str) -> bytes:
+    saida = io.BytesIO()
+    Image.new("RGB", (4, 4), cor).save(saida, format="WEBP")
+    return saida.getvalue()
 
 
 def _ler[T: EchoesFile | SetsFile](data_dir: Path, nome: str, modelo: type[T]) -> T:

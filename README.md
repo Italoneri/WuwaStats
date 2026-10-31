@@ -89,3 +89,6 @@ repositório para saber se há atualização.
 
 - Echos cujas variantes têm custos diferentes na fonte ficam com `custo: null` e TODO; o custo que você preencher à mão é mantido nas próximas importações.
 - Echos/sets que não existem mais na fonte são mantidos com TODO (podem estar em `characters.json`); renomeie ou remova.
+- Ícones de echos e armas: depois de gravar os dados, baixa de [nanoka.cc](https://ww.nanoka.cc) (mesmo caminho de textura
+  do campo `Icon` da fonte) os que ainda não estão em `data/imagens/`. Imagem que já existe, inclusive enviada à mão, nunca
+  é sobrescrita; para trocar, envie outra pela página. Ressonadores ficam de fora: a imagem deles é escolhida à mão.

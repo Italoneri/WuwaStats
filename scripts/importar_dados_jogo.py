@@ -6,6 +6,7 @@
 Gera data/echoes.json, data/sets.json, data/resonators.json e data/weapons.json, acrescenta os nomes PT-BR
 de echos e sets como aliases em data/stat_aliases.json (mapeamentos manuais ficam) e grava em
 data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de substituir os arquivos de verdade.
+Depois baixa de nanoka.cc os ícones de echos e armas que ainda não estão em data/imagens/ (ressonadores ficam à mão).
 """
 
 import argparse
@@ -16,7 +17,8 @@ import sys
 import tempfile
 import time
 from collections import Counter, defaultdict
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Mapping, Sequence
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -29,6 +31,7 @@ from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
 from wuwastats.config import PROJECT_ROOT
 from wuwastats.domain.names import NameIndex, fold, resolve_stat
 from wuwastats.gamedata.aliases import ARQUIVO_ALIASES, escrever_atomico
+from wuwastats.gamedata.imagens import CategoriaImagem, ImagemRecusada, ImagensDoCatalogo
 from wuwastats.gamedata.loader import GameDataError, load_game_data
 from wuwastats.gamedata.schemas import AliasesFile, EchoesFile, EchoRaw, SetRaw, SetsFile
 
@@ -37,6 +40,11 @@ API = f"https://api.github.com/repos/{REPOSITORIO}"
 RAW = f"https://raw.githubusercontent.com/{REPOSITORIO}"
 TIMEOUT_S = 60
 TENTATIVAS = 3
+
+# nanoka.cc serve as texturas do jogo pelo mesmo caminho dos campos Icon da fonte, em .webp.
+ICONES = "https://static.nanoka.cc/assets/ww"
+PREFIXO_UI_DO_JOGO = "/Game/Aki/UI/"
+DOWNLOADS_SIMULTANEOS = 8
 
 # Os outros tipos são entradas especiais que reaproveitam o nome de echos normais com outra raridade e outros sets.
 TIPO_ECHO_NORMAL = 1
@@ -91,6 +99,7 @@ class EchoFonte(_Fonte):
     raridade: int = Field(alias="Rarity")
     grupos_set: list[int] = Field(alias="FetterGroup")
     tipo: int = Field(alias="PhantomType")
+    icone: str | None = Field(default=None, alias="Icon")
 
 
 class RaridadeFonte(_Fonte):
@@ -146,6 +155,7 @@ class ArmaFonte(_Fonte):
     chave_nome: str = Field(alias="WeaponName")
     raridade: int = Field(alias="QualityId")
     tipo: int = Field(alias="WeaponType")
+    icone: str | None = Field(default=None, alias="Icon")
 
 
 class RepositorioApi(_Fonte):
@@ -193,6 +203,7 @@ class EchoImportado:
     nome_pt: str | None
     custos: frozenset[int]
     sets: tuple[str, ...]
+    icone: str | None = None
 
 
 @dataclass(frozen=True)
@@ -222,6 +233,7 @@ class ArmaImportada:
     nome_pt: str | None
     tipo: str
     raridade: int
+    icone: str | None = None
 
 
 @dataclass(frozen=True)
@@ -238,6 +250,13 @@ class Catalogo:
     echoes: dict[str, EchoImportado]
     sets: dict[str, SetImportado]
     avisos: list[str] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class Icone:
+    categoria: CategoriaImagem
+    chave: str
+    url: str
 
 
 # --- Fluxo principal ---
@@ -281,7 +300,9 @@ def main(argv: list[str] | None = None) -> int:
         print("\n".join(f"  - {linha}" for linha in erro.erros), file=sys.stderr)
         return 1
 
-    _relatorio(catalogo, elenco, tabelas, [*catalogo.avisos, *elenco.avisos, *avisos_echoes, *avisos_sets, *avisos_aliases])
+    avisos_icones = importar_icones(ImagensDoCatalogo(data_dir), catalogo, elenco)
+    avisos = [*catalogo.avisos, *elenco.avisos, *avisos_echoes, *avisos_sets, *avisos_aliases, *avisos_icones]
+    _relatorio(catalogo, elenco, tabelas, avisos)
     return 0
 
 
@@ -485,6 +506,7 @@ def _montar_echo(
         nome_pt=nomes_pt.most_common(1)[0][0] if nomes_pt else None,
         custos=frozenset(custo_por_raridade[linha.raridade] for linha in linhas if linha.raridade in custo_por_raridade),
         sets=tuple(nome_por_grupo[grupo] for grupo in grupos if grupo in nome_por_grupo),
+        icone=next((linha.icone for linha in linhas if linha.icone), None),
     )
 
 
@@ -537,7 +559,10 @@ def _armas(tabelas: TabelasFonte, tipos_arma: Mapping[int, Traducao], avisos: li
             avisos.append(f"arma '{arma.chave_nome}': nome '{nome}' vazio ou repetido, ignorada")
             continue
         armas[nome] = ArmaImportada(
-            nome_pt=_texto_pt(tabelas, arma.chave_nome), tipo=_chave(tipos_arma[arma.tipo]), raridade=arma.raridade
+            nome_pt=_texto_pt(tabelas, arma.chave_nome),
+            tipo=_chave(tipos_arma[arma.tipo]),
+            raridade=arma.raridade,
+            icone=arma.icone,
         )
     return dict(sorted(armas.items()))
 
@@ -753,7 +778,58 @@ def gravar_validado(data_dir: Path, arquivos: Mapping[str, object]) -> None:
         escrever_atomico(data_dir / nome, conteudo)
 
 
-def _relatorio(catalogo: Catalogo, elenco: Elenco, tabelas: TabelasFonte, avisos: list[str]) -> None:
+# --- Ícones ---
+
+
+def importar_icones(
+    imagens: ImagensDoCatalogo, catalogo: Catalogo, elenco: Elenco, baixar: Callable[[str], bytes] = _baixar
+) -> list[str]:
+    """Echos e armas que ainda não têm imagem: nada já no catálogo (inclusive enviado à mão) é sobrescrito.
+
+    Ressonadores ficam de fora: a imagem deles é escolhida à mão na página.
+    """
+    icones, avisos = icones_do_catalogo(catalogo, elenco)
+    faltando = [icone for icone in icones if not imagens.existe(icone.categoria, icone.chave)]
+    print(f"\nÍcones: {len(icones) - len(faltando)} já no catálogo, baixando {len(faltando)} de {ICONES}")
+    with ThreadPoolExecutor(max_workers=DOWNLOADS_SIMULTANEOS) as pool:
+        falhas = [falha for falha in pool.map(lambda icone: _salvar_icone(imagens, icone, baixar), faltando) if falha]
+    return [*avisos, *falhas]
+
+
+def icones_do_catalogo(catalogo: Catalogo, elenco: Elenco) -> tuple[list[Icone], list[str]]:
+    candidatos: list[tuple[CategoriaImagem, str, str | None]] = [
+        *(("echoes", nome, echo.icone) for nome, echo in catalogo.echoes.items()),
+        *(("armas", nome, arma.icone) for nome, arma in elenco.armas.items()),
+    ]
+    icones: list[Icone] = []
+    avisos: list[str] = []
+    for categoria, chave, caminho in candidatos:
+        url = url_do_icone(caminho or "")
+        if url is None:
+            avisos.append(f"ícone {categoria} '{chave}': caminho '{caminho or ''}' fora de {PREFIXO_UI_DO_JOGO}; envie à mão")
+            continue
+        icones.append(Icone(categoria=categoria, chave=chave, url=url))
+    return icones, avisos
+
+
+def url_do_icone(caminho: str) -> str | None:
+    """'/Game/Aki/UI/UIResources/.../T_X_UI.T_X_UI' → '<ICONES>/UIResources/.../T_X_UI.webp'."""
+    if not caminho.startswith(PREFIXO_UI_DO_JOGO):
+        return None
+    relativo = caminho.removeprefix(PREFIXO_UI_DO_JOGO).split(".", 1)[0]
+    return f"{ICONES}/{relativo}.webp"
+
+
+def _salvar_icone(imagens: ImagensDoCatalogo, icone: Icone, baixar: Callable[[str], bytes]) -> str | None:
+    """Devolve o aviso da falha: um ícone que não veio não cancela a importação."""
+    try:
+        imagens.salvar(icone.categoria, icone.chave, baixar(icone.url))
+    except (FonteIndisponivel, ImagemRecusada) as erro:
+        return f"ícone {icone.categoria} '{icone.chave}': {erro}"
+    return None
+
+
+def _relatorio(catalogo: Catalogo, elenco: Elenco, tabelas: TabelasFonte, avisos: Sequence[str]) -> None:
     sem_pt = sum(1 for echo in catalogo.echoes.values() if echo.nome_pt is None)
     print(
         f"\n{len(catalogo.echoes)} echos, {len(catalogo.sets)} sets, {len(elenco.ressonadores)} ressonadores "
