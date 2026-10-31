@@ -19,6 +19,7 @@ from importar_dados_jogo import (
     Elenco,
     FonteIndisponivel,
     GrupoSetFonte,
+    HabilidadeFonte,
     PersonagemFonte,
     PropriedadeFonte,
     RaridadeFonte,
@@ -29,6 +30,7 @@ from importar_dados_jogo import (
     gerar_sets,
     gravar_validado,
     importar_icones,
+    limpar_marcacao,
     mesclar_aliases,
     montar_catalogo,
     montar_elenco,
@@ -39,6 +41,7 @@ from PIL import Image
 
 from wuwastats.config import PROJECT_ROOT
 from wuwastats.domain.names import NameIndex
+from wuwastats.domain.tables import Traducao as TraducaoCarregada
 from wuwastats.gamedata.imagens import ImagensDoCatalogo
 from wuwastats.gamedata.loader import GameDataError, load_game_data
 from wuwastats.gamedata.schemas import AliasesFile, EchoesFile, SetsFile
@@ -125,6 +128,45 @@ def test_ignora_linha_especial_que_reaproveita_nome_de_echo_normal() -> None:
 
     assert catalogo.echoes["Gulpuff"] == EchoImportado(nome_pt="Baiagul", custos=frozenset({1}), sets=("Moonlit Clouds",))
     assert "1 linhas de echo com PhantomType 2 ignoradas" in catalogo.avisos
+
+
+def _com_habilidade(niveis: list[list[str]]) -> TabelasFonte:
+    base = _tabelas(TEXTOS_PT)
+    nuvem = base.echos[0].model_copy(update={"habilidade": 7})
+    habilidade = HabilidadeFonte.model_validate(
+        {
+            "PhantomSkillId": 7,
+            "DescriptionEx": "H_7",
+            "SimplyDescription": "R_7",
+            "LevelDescStrArray": [{"ArrayString": nivel} for nivel in niveis],
+        }
+    )
+    textos_en = {**base.textos_en, "H_7": "Deal {0} <color=Highlight>Aero DMG</color>.\n \n\n\nCD: {1}s", "R_7": "Deal Aero DMG."}
+    textos_pt = {**TEXTOS_PT, "H_7": "Causa {0} de dano aero.\n\nRecarga: {1} s"}
+    return dataclasses.replace(base, echos=[nuvem], habilidades=[habilidade], textos_en=textos_en, textos_pt=textos_pt)
+
+
+def test_habilidade_do_echo_usa_o_nivel_mais_alto_sem_a_marcacao_do_jogo() -> None:
+    catalogo = montar_catalogo(_com_habilidade([["10%", "8"], ["20%", "8"]]), STATS)
+
+    assert catalogo.echoes["Cloudy"].habilidade == ("Deal 20% Aero DMG.\n\nCD: 8s", "Causa 20% de dano aero.\n\nRecarga: 8 s")
+
+
+def test_habilidade_sem_niveis_usa_o_resumo_e_echo_sem_habilidade_vira_aviso() -> None:
+    assert montar_catalogo(_com_habilidade([]), STATS).echoes["Cloudy"].habilidade == ("Deal Aero DMG.", None)
+    assert "echo Gulpuff: a fonte não tem a descrição da habilidade" in montar_catalogo(_tabelas(None), STATS).avisos
+
+
+@pytest.mark.parametrize(
+    ("texto", "esperado"),
+    [
+        ("<size=40><color=Title>Core</color></size>\nHit", "Core\nHit"),
+        ("Below <50% HP, <SapTag=1>heal</SapTag>", "Below <50% HP, heal"),
+        ("a \n \n\n\nb ", "a\n\nb"),
+    ],
+)
+def test_limpa_marcacao_e_linhas_em_branco_repetidas(texto: str, esperado: str) -> None:
+    assert limpar_marcacao(texto) == esperado
 
 
 def test_sem_textmap_pt_os_nomes_pt_ficam_vazios() -> None:
@@ -241,12 +283,15 @@ def test_preenche_parametros_da_descricao(modelo: str, parametros: list[str], es
 def test_grava_so_depois_de_validar_o_conjunto(tmp_path: Path) -> None:
     data_dir = tmp_path / "data"
     shutil.copytree(GAMEDATA_FIXTURE, data_dir)
-    novos = {"Suhsin": EchoImportado(nome_pt="Suhsin PT", custos=frozenset({4}), sets=("Moonlit Clouds",))}
+    habilidade = ("Deal 20% Aero DMG.", "Causa 20% de dano aero.")
+    novos = {"Suhsin": EchoImportado(nome_pt="Suhsin PT", custos=frozenset({4}), sets=("Moonlit Clouds",), habilidade=habilidade)}
     echoes, _ = gerar_echoes(novos, _ler(data_dir, "echoes.json", EchoesFile), COMMIT)
 
     gravar_validado(data_dir, {"echoes.json": echoes})
 
-    assert load_game_data(data_dir).echoes["Suhsin"].custo == 4
+    suhsin = load_game_data(data_dir).echoes["Suhsin"]
+    assert suhsin.custo == 4
+    assert suhsin.habilidade == TraducaoCarregada(en="Deal 20% Aero DMG.", pt="Causa 20% de dano aero.")
     assert _json(data_dir / "echoes.json")["echoes"]["Suhsin"]["nome_pt"] == "Suhsin PT"
 
 

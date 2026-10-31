@@ -69,7 +69,7 @@ class MainStatsFile(_Estrito):
         return custos
 
 
-class EfeitoSetRaw(_Estrito):
+class TextoRaw(_Estrito):
     en: str
     pt: str | None = None
 
@@ -78,7 +78,7 @@ class SetRaw(_Estrito):
     nome_pt: str | None = None
     pecas: int | None = Field(ge=1)
     bonus: dict[int, dict[str, float]]
-    efeitos: dict[int, EfeitoSetRaw] = {}
+    efeitos: dict[int, TextoRaw] = {}
     status: str = "ok"
 
 
@@ -95,6 +95,7 @@ class EchoRaw(_Estrito):
     nome_pt: str | None = None
     custo: Custo | None = None
     sets: list[str] = []
+    habilidade: TextoRaw | None = None
     status: str = "ok"
 
 

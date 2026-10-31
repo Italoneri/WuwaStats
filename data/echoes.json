@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "descricao": "Catálogo de echos, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês; nome_pt também vira alias em stat_aliases.json. 'custo' null = desconhecido (não é conferido). 'sets' = sonatas possíveis. Para custo marcado como TODO, preencha à mão: a escolha sobrevive à próxima importação."
+    "descricao": "Catálogo de echos, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). Chave = nome em inglês; nome_pt também vira alias em stat_aliases.json. 'custo' null = desconhecido (não é conferido). 'sets' = sonatas possíveis. 'habilidade' = o que o echo faz, com os valores do nível mais alto. Para custo marcado como TODO, preencha à mão: a escolha sobrevive à próxima importação."
   },
   "echoes": {
     "Abyssal Gladius": {
@@ -11,6 +11,10 @@
         "Midnight Veil",
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Transform into Abyssal Gladius and attack enemies in front of you with the sword, dealing 268.20% Glacio DMG.\nHold the Echo Skill to maintain the Echo form for a while to slash enemies and cast a ranged attack forward, dealing 268.20% and 670.50% Glacio DMG respectively.\nCD: 15s.",
+        "pt": "Transforma o usuário no Gládio Abissal e ataca os inimigos à frente com a espada para causar 268.20% de Dano Criogênico.\nMantenha a habilidade de eco para manter a forma eco por um tempo para cortar inimigos e lançar à frente um ataque à distância para causar 268.20% e 670.50% de Dano Criogênico respectivamente.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Abyssal Mercator": {
@@ -20,6 +24,10 @@
         "Frosty Resolve",
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Transform into Abyssal Mercator and summon 3 Ice Spikes to attack enemies, each dealing 89.39% Glacio DMG.\nCD: 15s.",
+        "pt": "Transforma o usuário no Mercador Abissal e invoca 3 espículas de gelo para atacar inimigos — cada uma causa 89.39% de Dano Criogênico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Abyssal Patricius": {
@@ -29,6 +37,10 @@
         "Empyrean Anthem",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Transform into Abyssal Patricius and charge forward to attack enemies, dealing 268.20% Glacio DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus.\nCD: 15s.",
+        "pt": "Transforma o usuário no Patrício Abissal e avança para atacar inimigos e causar 268.20% de Dano Criogênico.\nO ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Criogênico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Aero Drake": {
@@ -39,6 +51,10 @@
         "Tidebreaking Courage",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Summon an Aero Drake to attack enemies, dealing 129.60% Aero DMG.\nCD: 8s.",
+        "pt": "Invoca um Draco Pneumático para atacar inimigos, causando 129.60% de Dano Pneumático.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Aero Predator": {
@@ -48,6 +64,10 @@
         "Void Thunder",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Summon an Aero Predator that throws a dart forward. The dart will bounce between enemies up to three times, dealing 28.80% Aero DMG each time it hits.\n\nCD: 8s",
+        "pt": "Convoque um Predador Pneumático que lança um dardo para frente. O dardo irá ricochetear entre os inimigos até três vezes, causando 28.80% de Dano Pneumático cada vez que atinge.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Aero Prism": {
@@ -57,6 +77,10 @@
         "Eternal Radiance",
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Summon an Aero Prism to attack enemies, dealing 19.26% Aero DMG.\nCD: 15s.",
+        "pt": "Invoca um Prisma Pneumático para atacar inimigos, causando 19.26% de Dano Pneumático.\nCD: 15s."
+      },
       "status": "ok"
     },
     "Aureate Picket": {
@@ -66,6 +90,10 @@
         "Heart of Evil's Purge",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to transform into an Aureate Picket, immediately recover 0.55% HP times plus an additional instance of 24 points of HP, then bash into enemies and deal 153.90% Aero DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para transformar-se em um Marquês Dourado, recuperar imediatamente 0.55% HP mais uma instância adicional de 24 pontos de HP, e então investir contra os inimigos, causando 153.90% de Dano Pneumático.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Autopuppet Scout": {
@@ -75,6 +103,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into Autopuppet Scout, dealing 272.00% Glacio DMG to the surroundings, and generate up to 3 Ice Walls to block off the enemies.\n\nCD: 15s",
+        "pt": "Transforme-se em Maquinete, causando 272.00% de Dano Criogênico aos arredores, e gere até 3 Paredes de Gelo para bloquear os inimigos.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Baby Roseshroom": {
@@ -84,6 +116,10 @@
         "Sierra Gale",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Summon a Baby Roseshroom that fires a laser, dealing 32.00%+64 Havoc DMG.\n\nCD: 8s",
+        "pt": "Convoque um Champirrosa Bebê que dispara um laser, causando 32.00%+64 de Dano Aniquilante.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Baby Viridblaze Saurian": {
@@ -94,6 +130,10 @@
         "Void Thunder",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into Baby Viridblaze Saurian to rest in place, and slowly restore HP.\n\nCD: 8s",
+        "pt": "Transforme-se em Verdelisco Bebê para descansar no lugar e restaurar lentamente o HP.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Bell-Borne Geochelone": {
@@ -103,6 +143,10 @@
         "Moonlit Clouds",
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Activate the protection of Bell-Borne Geochelone. Deal Glacio DMG based on 145.92% of the current character's DEF to nearby enemies, and obtain a Bell-Borne Shield that lasts for 15s\n\nThe Bell-Borne Shield provides 50.00% DMG Reduction and 10.00% DMG Boost for the current team members, and disappears after the current character is hit for 3 times.\n\nCD: 20s",
+        "pt": "Ative a proteção de Geobuti-sineiro. Cause Dano Criogênico baseado na 145.92% da DEF do Ressonante atual aos inimigos próximos, e obtenha um Escudo Sineiro que dura por 15 s\n\nO Escudo Sineiro fornece 50.00% de redução de dano e 10.00% de aumento de dano para os membros atuais da equipe, e desaparece após o Ressonante atual ser atingido por 3 vezes.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Bloomburst Puppet": {
@@ -111,6 +155,10 @@
       "sets": [
         "Heart of Sworn Vigil"
       ],
+      "habilidade": {
+        "en": "Summon a Bloomburst Puppet to startle the target, dealing 1 instance of 25.92% Glacio DMG, followed by 2 instances of 12.96% Glacio DMG and 1 instance of 77.76% Glacio DMG.\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Floro-Explosão, que intimida os inimigos e causa 1 instância de 25.92% de Dano Criogênico, seguida por 2 instâncias de 12.96% e 1 instância de 77.76% de Dano Criogênico.\nRecarga da habilidade: 8s"
+      },
       "status": "ok"
     },
     "Calamity Effigy": {
@@ -120,6 +168,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Transform into Calamity Effigy to deal 405.00% Aero DMG.\nThe Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus, and additionally gains 10.00% Aero DMG Bonus for 15s when inflicting Tune Strain - Shifting on the target.\nCD: 25s",
+        "pt": "Use a Habilidade de Eco para se transformar na Efígie da Calamidade e causar 405.00% de Dano Pneumático.\nQuando este Eco for equipado no espaço principal, ganha 10.00% de Bônus de Dano Pneumático e, adicionalmente, ganha 10.00% de Bônus de Dano Pneumático por 15s ao infligir [Tensão de Sintonia: Oscilação] no alvo. Recarga: 25s"
+      },
       "status": "ok"
     },
     "Calcified Junrock": {
@@ -130,6 +182,10 @@
         "Empyrean Anthem",
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Summon a Calcified Junrock that restores HP for nearby Resonators in the team by 2.52% of their Max HP, up to 5 times.\nCD: 15s",
+        "pt": "Invoca uma Novirrocha Calcificada que restaura HP para Ressonantes próximos da equipe em 2.52% do HP Máx., até 5 vezes.\nCD: 15s"
+      },
       "status": "ok"
     },
     "Capitaneus": {
@@ -140,6 +196,10 @@
         "Eternal Radiance",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon a Capitaneus to jump up and smash enemies, dealing 118.80% Spectro DMG. This attack generates 4 extra Merciless Judgements, each dealing 59.40% Spectro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus and 12.00% Heavy Attack DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca um Capitão para saltar e esmagar inimigos, causando 118.80% de Dano Fotônico. Este ataque gera 4 Julgamentos Impiedosos extras, cada um causando 59.40% de Dano Fotônico.\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Fotônico e 12.00% de bônus de dano de ATQ Pesado.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Carapace": {
@@ -149,6 +209,10 @@
         "Moonlit Clouds",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Transform into Carapace to perform a spinning attack that deals 112.00% Aero DMG, followed by a slash that deals 168.00% Aero DMG.\n\nCD: 15s",
+        "pt": "Transforme-se em Carapaça para realizar um ataque giratório que causa 112.00% de Dano Pneumático, seguido por um corte que causa 168.00% de Dano Pneumático.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Chasm Guardian": {
@@ -158,6 +222,10 @@
         "Lingering Tunes",
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Transform into Chasm Guardian to perform a Leap Strike that deals 273.60% Havoc DMG on hit. Current character loses 10.00% HP after the hit lands. Periodically restore current character's HP after 5s for up to 10.00% of their Max HP.\n\nCD: 15s",
+        "pt": "Transforme-se em Guardião do Abismo para realizar um Golpe de Salto que causa 273.60% de Dano Aniquilante ao acertar. O personagem atual perde 10.00% de HP após o acerto. Restaura periodicamente o HP do personagem atual após 5 s até 10.00% do seu máx. de HP.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Chest Mimic": {
@@ -168,6 +236,10 @@
         "Empyrean Anthem",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Summon a Chest Mimic to attack enemies with 3 consecutive strikes, each dealing 64.19% Spectro DMG.\nCD: 15s.",
+        "pt": "Invoca um Baú Mímico para atacar inimigos com 3 golpes consecutivos — cada um causa 64.19% de Dano Fotônico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Chirpuff": {
@@ -177,6 +249,10 @@
         "Havoc Eclipse",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Summon a Chirpuff that self-inflates and blasts a powerful gust of wind forward 3 times. Each blast inflicts 38.40% Aero DMG and pushes enemies backwards.\n\nCD: 8s",
+        "pt": "Convoque um Baiapiu que se infla e lança uma poderosa rajada de vento para frente 3 vezes. Cada rajada inflige 38.40% de Dano Pneumático e empurra os inimigos para trás.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Chop Chop": {
@@ -187,6 +263,10 @@
         "Empyrean Anthem",
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Summon a Chop Chop to perform a series of consecutive attacks. The first 6 strikes each deal 19.26% Fusion DMG and finishing strike deals 77.04% Fusion DMG.\nCD: 15s.",
+        "pt": "Invoca um Flutubo para realizar uma série de ataques consecutivos. Os primeiros 6 golpes causam cada 19.26% de Dano Térmico e o golpe final causa 77.04% de Dano Térmico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Chop Chop: Headless": {
@@ -196,6 +276,10 @@
         "Eternal Radiance",
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Summon a Chop Chop: Headless to attack enemies, dealing 129.60% Fusion DMG.\nCD: 8s.",
+        "pt": "Invoca um Flutubo: Céfalo para atacar inimigos e causar 129.60% de Dano Térmico.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Chop Chop: Leftless": {
@@ -205,6 +289,10 @@
         "Frosty Resolve",
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Summon a Chop Chop: Leftless to attack enemies, dealing 129.60% Spectro DMG.\nCD: 8s.",
+        "pt": "Invoca um Flutubo: Dextra para atacar inimigos e causar 129.60% de Dano Fotônico.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Chop Chop: Rightless": {
@@ -214,6 +302,10 @@
         "Tidebreaking Courage",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Summon a Chop Chop: Rightless to attack enemies, dealing 129.60% Havoc DMG.\nCD: 8s.",
+        "pt": "Invoca um Flutubo: Sinistra para atacar inimigos e causar 129.60% de Dano Aniquilante.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Clang Bang": {
@@ -223,6 +315,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Clang Bang that follows the enemy and eventually self-combusts, dealing 32.00%+64 Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Clang-bang que segue o inimigo e eventualmente se autodestrói, causando 32.00%+64 de Dano Criogênico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Corrosaurus": {
@@ -232,6 +328,10 @@
         "Flaming Clawprint",
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Summon a Corrosaurus to attack enemies, dealing 273.60% Fusion DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 20.00% Echo Skill DMG Bonus.\nCD: 20s",
+        "pt": "Invoca um Corrossauro para atacar inimigos, causando 273.60% de dano Térmico.\nO Ressonante com este Ecos equipado no espaço principal ganha 12.00% de Bônus de dano Térmico e 20.00% de Bônus de dano de habilidade de Ecos.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Crownless": {
@@ -240,6 +340,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Crownless and perform up to 4 consecutive attacks. The first 2 attacks deal 134.08% Havoc DMG each, the 3rd attack deals 100.56% Havoc DMG 2 times, and the 4th attack deals 67.04% Havoc DMG 3 times.\n\nAfter the transformation, increase current character's Havoc DMG by 12.00% and Resonance Skill DMG by 12.00% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Destronado e realize até 4 ataques consecutivos. Os primeiros 2 ataques causam 134.08% de Dano Aniquilante cada, o 3º ataque causa 100.56% de Dano Aniquilante 2 vezes, e o 4º ataque causa 67.04% de Dano Aniquilante 3 vezes.\n\nApós a transformação, aumente o Dano Aniquilante do personagem atual em 12.00% e o dano de habilidade de ressonância em 12.00% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Cruisewing": {
@@ -250,6 +354,10 @@
         "Moonlit Clouds",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Summon a Cruisewing that restores HP for all current team characters by 1.80% of their Max HPs plus an additional 80 points of HP, up to 4 times.\n\nCD: 8s",
+        "pt": "Convoque uma Asaveloz que restaura o HP de todos os Ressonantes atuais da equipe em 1.80% de seus máx. de HP mais 80 pontos adicionais de HP, até 4 vezes.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Cuddle Wuddle": {
@@ -259,6 +367,10 @@
         "Midnight Veil",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Transform into Cuddle Wuddle and attack enemies with 4 strikes dealing 46.98% Physical DMG and 1 strike dealing 125.28% Physical DMG.\nCD: 20s.",
+        "pt": "Transforma o usuário em Abraço-amasso e ataca inimigos com 4 golpes para causar 46.98% de dano físico e 1 golpe que causa 125.28% de dano físico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Cyan-Feathered Heron": {
@@ -268,6 +380,10 @@
         "Sierra Gale",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Cyan-Feathered Heron and charge at the enemies, dealing 236.80% Aero DMG; This Echo Skill interrupts enemy Special Skills upon dealing damage.\n\nCD: 15s",
+        "pt": "Transforme-se em Garça-plumazul e avance contra os inimigos, causando 236.80% de Dano Pneumático. Esta habilidade de eco interrompe habilidades especiais dos inimigos ao causar dano.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Devotee's Flesh": {
@@ -278,6 +394,10 @@
         "Windward Pilgrimage",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Summon a Devotee's Flesh to attack enemies, dealing 43.20% Aero DMG 3 times.\nCD: 8s",
+        "pt": "Invoca a Carne do Devoto para atacar inimigos, causando 43.20% de Dano Pneumático 3 vezes.\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Diamondclaw": {
@@ -287,6 +407,10 @@
         "Moonlit Clouds",
         "Lingering Tunes"
       ],
+      "habilidade": {
+        "en": "Transform into Crystal Scorpion and enter a Parry State. Counterattack when the Parry State is over, dealing 48.00%+96 Physical DMG.\nCD: 8s",
+        "pt": "Transforme-se em Cristaescórpio e entre em um estado de aparo. Contra-ataque quando o estado de aparo terminar, causando 48.00%+96 de dano físico.\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Diggy Duggy": {
@@ -296,6 +420,10 @@
         "Eternal Radiance",
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Transform into Diggy Duggy and jump up into the air to smash onto enemies, dealing 268.20% Physical DMG.\nCD: 15s.",
+        "pt": "Transforma o usuário em Digue-dugue e salta no ar para esmagar os inimigos e causar 268.20% de dano físico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Diurnus Knight": {
@@ -305,6 +433,10 @@
         "Eternal Radiance",
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Transform into Diurnus Knight and charge forward to attack enemies with the sword, dealing 268.20% Spectro DMG. DMG dealt to enemies inflicted by Spectro Frazzle is increased by 100.00%.\nCD: 15s.",
+        "pt": "Transforma o usuário no Cavaleiro Diurno e avança para atacar os inimigos com a espada e causar 268.20% de Dano Fotônico. O dano causado aos inimigos afetados por Estridência Fotônica aumenta em 100.00%.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Dragon of Dirge": {
@@ -313,6 +445,10 @@
       "sets": [
         "Tidebreaking Courage"
       ],
+      "habilidade": {
+        "en": "Transform into Dragon of Dirge and summon a Grief Rift lasting for 5s. Periodically deal 36.81% Fusion DMG to enemies within the area of effect.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Basic Attack DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Dragão Lamentoso e invoca uma fenda da dor que dura 5 s. Periodicamente causa 36.81% de Dano Térmico aos inimigos dentro da área de efeito.\nEste eco equipado no espaço principal do ressonante ganha 12.00% bônus de Dano Térmico e 12.00% de bônus de dano de ATQ Básico.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Dreamless": {
@@ -321,6 +457,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Dreamless and perform 6 consecutive strikes. The first 5 strikes deal 54.08% Havoc DMG each, and the last strike deal 270.40% Havoc DMG.\nThe DMG of this Echo Skill is increased by 50.00% during the first 5s after Rover: Havoc casts Resonance Liberation: Deadening Abyss.\n\nCD: 20s",
+        "pt": "Transforme-se em Insone e realize 6 golpes consecutivos. Os primeiros 5 golpes causam 54.08% de Dano Aniquilante cada, e o último golpe causa 270.40% de Dano Aniquilante.\nO dano desta habilidade de eco é aumentado em 50.00% durante os primeiros 5s após Rover\n: Aniquilante lançar Liberação de Ressonância: Abismo Mortal.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Dwarf Cassowary": {
@@ -330,6 +470,10 @@
         "Sierra Gale",
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Summon a Dwarf Cassowary that tracks and attacks the enemy, dealing 38.40% Physical DMG 3 time(s).\n\nCooldown: 8s",
+        "pt": "Invoca um casuar-anão que rastreia e ataca o inimigo, causando 38.40% de dano físico 3 vez(es).\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Electro Drake": {
@@ -340,6 +484,10 @@
         "Midnight Veil",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Summon an Electro Drake to attack enemies, dealing 43.20% Electro DMG 3 times.\nCD: 8s.",
+        "pt": "Invoca um Draco Voltaico para atacar inimigos, causando 43.20% de Dano Voltaico 3 vezes.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Electro Predator": {
@@ -349,6 +497,10 @@
         "Molten Rift",
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Summon an Electro Predator to shoot the enemy 5 times. The first 4 shots deals 17.28% Electro DMG, and the last deals 46.08% Electro DMG.\n\nCD: 8s",
+        "pt": "Convoque um Predador Voltaico para atirar no inimigo 5 vezes. Os primeiros 4 tiros causam 17.28% de Dano Voltaico, e o último causa 46.08% de Dano Voltaico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Excarat": {
@@ -358,6 +510,10 @@
         "Freezing Frost",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into an Excarat and tunnel underground to advance. In this state, you have the ability to change your direction and are immune to damage.\n\nCD: 8s",
+        "pt": "Transforme-se em um Exquilate e escave subterraneamente para avançar. Neste estado, você tem a capacidade de mudar de direção e é imune a danos.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Fae Ignis": {
@@ -368,6 +524,10 @@
         "Eternal Radiance",
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Summon a Fae Ignis to attack enemies, dealing 129.60% Havoc DMG.\nCD: 8s.",
+        "pt": "Invoca uma Ígnea-feérica para atacar inimigos e causar 129.60% de Dano Aniquilante.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Fallacy of No Return": {
@@ -376,6 +536,10 @@
       "sets": [
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Activate the Echo Skill to summon a fraction of the Fallacy of No Return's power and deal a blast to the surrounding area, inflicting Spectro DMG equal to 15.86% of max HP, after which the Resonator gains 10% bonus Energy Regen and all team members 10% bonus ATK for 20s.\nHold Echo Skill to unleash a series of flurry assaults at the cost of STA, each dealing Spectro DMG equal to 1.58% of max HP; Release to end the assail in a powerful blow, dealing Spectro DMG equal to 19.82% of max HP.\nCD: 20s",
+        "pt": "Ative a habilidade de eco para invocar uma fração do poder da Falácia Irreversível, causar uma explosão na área em volta e infligir Dano Fotônico igual a 15.86% do máx. de HP, após o qual o Ressonante ganha 10% de bônus em regen de energia e todos os membros da equipe 10% de bônus em ATQ por 20 s.\nSegure a habilidade de eco para desencadear uma série de ataques rápidos com o custo de VIG, cada um causando Dano Fotônico igual a 1.58% do máx. de HP. Solte para terminar o ataque com um golpe poderoso, causando Dano Fotônico igual a 19.82% do máx. de HP.\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Feilian Beringal": {
@@ -384,6 +548,10 @@
       "sets": [
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Transform into Feilian Beringal to perform a powerful kick. If the kick lands on an enemy, immediately perform a follow-up strike. The kick deals 231.84% Aero DMG, and the follow-up strike deals 283.36% Aero DMG.\n\nAfter the follow-up strike hits, the current character's Aero DMG increases by 12.00%, and the Heavy Attack DMG increases by 12.00% for 15s\n\nCD: 20s",
+        "pt": "Transforme-se em Beringal-feiliano para realizar um chute poderoso. Se o chute atingir um inimigo, execute imediatamente um golpe de acompanhamento. O chute causa 231.84% de Dano Pneumático, e o golpe de acompanhamento causa 283.36% de Dano Pneumático.\n\nApós o golpe de acompanhamento acertar, o Dano Pneumático do personagem atual aumenta em 12.00%, e o dano de ATQ Pesado aumenta em 12.00% por 15 s\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Fission Junrock": {
@@ -394,6 +562,10 @@
         "Void Thunder",
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Summon a Fission Junrock. Generate a Resonance Effect that restores 2% HP for friendly units each time. If not in combat, you can pick up minerals or plants nearby.\n\nCD: 15s",
+        "pt": "Convoque um Novirrocha Físsil. Gere um Efeito de Ressonância que restaura 2% de HP para unidades aliadas a cada vez. Se não estiver em combate, você pode coletar minerais ou plantas próximas.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Flautist": {
@@ -403,6 +575,10 @@
         "Lingering Tunes",
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Flautist, continuously emitting Electro lasers, dealing 53.28% Electro DMG for a total of 10 times. Gain 1 Concerto Energy every time a hit lands.\n\nCD: 15s",
+        "pt": "Transforme-se em Flautista, emitindo continuamente lasers Voltaicos, causando 53.28% de Dano Voltaico por um total de 10 vezes. Ganhe 1 de energia de concerto cada vez que um acerto ocorre.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Flora Drone": {
@@ -414,6 +590,10 @@
         "Sound of True Name",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Summon a Flora Drone, dealing 64.80% Aero DMG to enemies and healing Resonators within range by 3.60% of their Max HP plus an additional 160 HP.\n\nCD: 8s",
+        "pt": "Invoca um Drone Flora, causando 64.80% de Dano Pneumático a inimigos e curando Ressonantes dentro do alcance em 3.60% de seu máx. de HP mais 160 HP adicionais.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Flora Reindeer": {
@@ -423,6 +603,10 @@
         "Rite of Gilded Revelation",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Summon a Flora Reindeer to attack enemies within a large range, dealing 192.60% Aero DMG.\n\nCD: 15s.",
+        "pt": "Invoca uma Rena Flora para atacar inimigos em uma grande área, causando 192.60% de Dano Pneumático.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Fog Lionarch": {
@@ -433,6 +617,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Fog Lionarch to spit fire toward enemies, dealing 7 stages of 33.93% Fusion DMG.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar o Leão Soberano da Névoa para cuspir fogo nos inimigos, causando 7 estágios de 33.93% de Dano Térmico.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Fog Lionarch: Body": {
@@ -442,6 +630,10 @@
         "Song of Feathered Trace",
         "Heart of Sworn Vigil"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Fog Lionarch: Body to ram into enemies, dealing 192.60% Fusion DMG.\n\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar o Leão Soberano da Névoa para colidir contra os inimigos, causando 192.60% de Dano Térmico.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Fog Lionarch: Head": {
@@ -451,6 +643,10 @@
         "Song of Feathered Trace",
         "Heart of Sworn Vigil"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Fog Lionarch: Head to dart toward enemies, dealing 129.60% Fusion DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Leão Soberano da Névoa: Cabeça para avançar rapidamente contra os inimigos, causando 129.60% de Dano Térmico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Forbidden Bastion": {
@@ -461,6 +657,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Forbidden Bastion to bash over enemies, dealing 237.60% Glacio DMG.\n\nResonators with this Echo equipped in the main slot gain 10.00% Healing Bonus.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar o Pavilhão Proibido para esmagar os inimigos, causando 237.60% de Dano Criogênico.\n\nRessonantes com este Eco equipado no espaço principal ganham 10.00% de Bônus de Cura.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Formrender": {
@@ -470,6 +670,10 @@
         "Heart of Sworn Vigil",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Formrender, dealing 273.60% Fusion DMG.\nThe Resonator with this Echo equipped in the main slot gains 10.00% Energy Regen.\nCD: 20s",
+        "pt": "Usa a Habilidade de Eco para invocar um Quebra-Formas, causando 273.60% de Dano Térmico.\nO Ressonante com este Eco equipado em seu espaço principal ganha 10.00% de Regen. de Energia.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Frostbite Coleoid": {
@@ -479,6 +683,10 @@
         "Halo of Starry Radiance",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Summon a Frostbite Coleoid to punch enemies, dealing 192.60% Glacio DMG.\n\nCD: 15s.",
+        "pt": "Invoca um Coleóide de Geladura para socar inimigos, causando 192.60% de Dano Criogênico.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Frostscourge Stalker": {
@@ -488,6 +696,10 @@
         "Midnight Veil",
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Summon a Frostscourge Stalker to attack enemies, dealing 129.60% Glacio DMG.\nCD: 8s.",
+        "pt": "Invoca um Lobo-praga Gélido para atacar inimigos e causar 129.60% de Dano Criogênico.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Fusion Drake": {
@@ -497,6 +709,10 @@
         "Flaming Clawprint",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon a Fusion Drake to attack enemies, dealing 25.92% Fusion DMG 3 times.\nCD: 8s",
+        "pt": "Invoca um dragão de fusão para atacar inimigos, causando 25.92% de Dano Térmico 3 vezes.\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Fusion Dreadmane": {
@@ -506,6 +722,10 @@
         "Rejuvenating Glow",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Fusion Dreadmane that fiercely strikes the enemy, dealing 32.00%+64 Fusion DMG.\n\nCD: 8s",
+        "pt": "Convoque um Jubapavor Térmico que ataca ferozmente o inimigo, causando 32.00%+64 de Dano Térmico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Fusion Prism": {
@@ -516,6 +736,10 @@
         "Lingering Tunes",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Fusion Prism to fire a crystal shard, dealing 32.00%+64 Fusion DMG.\n\nCD: 8s",
+        "pt": "Convoque um Prisma Térmico para disparar um fragmento de cristal, causando 32.00%+64 de Dano Térmico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Fusion Warrior": {
@@ -526,6 +750,10 @@
         "Void Thunder",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into Fusion Warrior to perform a Counterattack. If the Counterattack is successful, the cooldown time of this skill will be reduced by 70.00%, and 288.00% Fusion DMG will be dealt.\n\nCD: 15s",
+        "pt": "Transforme-se em Guerreiro Térmico para realizar um contra-ataque. Se o contra-ataque for bem-sucedido, o tempo de recarga desta habilidade será reduzido em 70.00%, e 288.00% de Dano Térmico será causado.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Galescourge Stalker": {
@@ -535,6 +763,10 @@
         "Frosty Resolve",
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Summon a Galescourge Stalker that restores nearby party members' HP by 2.70% of their Max HP, up to 3 times.\nCD: 8s.",
+        "pt": "Invoca um Lobo-praga Eólico que restaura o HP dos membros próximos do grupo em 2.70% do seu máx. de HP — até 3 vezes.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Geospider S4": {
@@ -545,6 +777,10 @@
         "Halo of Starry Radiance",
         "Trailblazing Star"
       ],
+      "habilidade": {
+        "en": "Summon a Geospider S4 to attack enemies, dealing 51.84% Spectro DMG once and 77.76% Spectro DMG once.\n\n CD: 8s.",
+        "pt": "Invoca uma Georanha S4 para atacar inimigos, causando 51.84% de Dano Fotônico uma vez e 77.76% de Dano Fotônico uma vez.\n\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Glacio Drake": {
@@ -554,6 +790,10 @@
         "Gusts of Welkin",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon a Glacio Drake to attack enemies, dealing 25.92% Glacio DMG 5 times.\nCD: 8s.",
+        "pt": "Invoca um Draco Criogênico para atacar inimigos, causando 25.92% de Dano Criogênico 5 vezes.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Glacio Dreadmane": {
@@ -563,6 +803,10 @@
         "Moonlit Clouds",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Lacerate enemies as a Glacio Dreadmane, dealing 214.40% Glacio DMG on each hit. Equipped with 2 charges and can be cast mid-air. Glacio Dreadmane deals 20.00% more DMG while in mid-air and generates 6 Icicles upon landing, each dealing 32.00% Glacio DMG.\n\nCD: 20s",
+        "pt": "Lacere os inimigos como um Lobo-criogênico, causando 214.40% de Dano Criogênico à cada golpe. Equipado com 2 cargas e pode ser lançado no ar. Lobo-criogênico causa 20.00% de dano a mais enquanto está no ar e gera 6 Sincelos ao pousar, cada um causando 32.00% de Dano Criogênico.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Glacio Predator": {
@@ -572,6 +816,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Glacio Predator that throws an ice spear, dealing 46.08% Glacio DMG on hit. Deal 4.61% Glacio DMG up to 10 times during the charging time, and 23.04% Glacio DMG when the spear explodes.\n\nCD: 8s",
+        "pt": "Convoque um Predador Criogênico que lança uma lança de gelo, causando 46.08% de Dano Criogênico ao atingir. Cause 4.61% de Dano Criogênico até 10 vezes durante o tempo de carregamento, e 23.04% de Dano Criogênico quando a lança explodir.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Glacio Prism": {
@@ -582,6 +830,10 @@
         "Moonlit Clouds",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Glacio Prism that continuously fires three crystal shards, each dealing 38.40% Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Prisma Criogênico que dispara continuamente três fragmentos de cristal, cada um causando 38.40% de Dano Criogênico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Glommoth": {
@@ -591,6 +843,10 @@
         "Trailblazing Star",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Summon a Glommoth to stomp enemies, dealing 273.60% Glacio DMG.\nCasting Outro Skill within 15s after summoning Glommoth grants 12.00% Glacio DMG Bonus to the incoming Resonator for 15s.\nCD: 20s.",
+        "pt": "Invoca um Glommoth para esmagar inimigos, causando 273.60% de Dano Criogênico.\nUsar Habilidade Outro em até 15s após invocar o Glommoth concede 12.00% de Bônus de Dano Criogênico ao Ressonante seguinte por 15s.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Golden Junrock": {
@@ -601,6 +857,10 @@
         "Frosty Resolve",
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Summon a Golden Junrock that charges forward, dealing 129.60% Spectro DMG to enemies in its path.\nCD: 8s",
+        "pt": "Invoca uma Novirrocha Dourada que avança, causando 129.60% de Dano Fotônico aos inimigos em seu caminho.\nCD: 8s"
+      },
       "status": "ok"
     },
     "Gulpuff": {
@@ -610,6 +870,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Gulpuff that blows bubbles 5 times, each time dealing 23.04% Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Baiagul que sopra bolhas 5 vezes, cada vez causando 23.04% de Dano Criogênico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Havoc Drake": {
@@ -620,6 +884,10 @@
         "Windward Pilgrimage",
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Summon a Havoc Drake to attack enemies, dealing 129.60% Havoc DMG 3 times.\nCD: 8s",
+        "pt": "Invoca um dragão Aniquilante para atacar inimigos, causando 129.60% de Dano Aniquilante 3 vezes.\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Havoc Dreadmane": {
@@ -629,6 +897,10 @@
         "Molten Rift",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into a Havoc Dreadmane to perform up to 2 tail strikes. Each strike deals 116.64% Havoc DMG and inflicts an additional instance of 77.76% Havoc DMG upon hitting the target.\n\nCD: 15s",
+        "pt": "Transforme-se em um Lobo-Aniquilante para realizar até 2 golpes de cauda. Cada golpe causa 116.64% de Dano Aniquilante e inflige uma instância adicional de 77.76% de Dano Aniquilante ao atingir o alvo.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Havoc Prism": {
@@ -639,6 +911,10 @@
         "Celestial Light",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Summon a Havoc Prism to fire five crystal shards, each dealing 23.04% Havoc DMG.\n\nCD: 8s",
+        "pt": "Convoque um Prisma Aniquilante para disparar cinco fragmentos de cristal, cada um causando 23.04% de Dano Aniquilante.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Havoc Warrior": {
@@ -648,6 +924,10 @@
         "Celestial Light",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Havoc Warrior to attack up to 3 times, dealing 171.73% Havoc DMG each time.\n\nCD: 15s",
+        "pt": "Transforme-se em Guerreiro Aniquilante para atacar até 3 vezes, causando 171.73% de Dano Aniquilante cada vez.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Hecate": {
@@ -656,6 +936,10 @@
       "sets": [
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Summon 3 twirling Crescent Servants around you. Crescent Servants attack enemies with their spinning blades, dealing 45.59% Havoc DMG. Triggering a Counterattack with the Echo attacks resets the Crescent Servants' duration.\nThe Resonator with this Echo equipped in the main slot has their Coordinated Attack DMG increased by 40.00%.\nCD: 20s.",
+        "pt": "Invoca 3 servos crescentes giratórios ao seu redor. Os servos crescentes atacam os inimigos com suas lâminas giratórias para causar 45.59% de Dano Aniquilante. A adição de um contra-ataque aos ataques do eco reinicia a duração dos servos crescentes.\nEste eco equipado no espaço principal do ressonante tem seu dano de ATQ Coordenado aumentado em 40.00%.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Hoartoise": {
@@ -665,6 +949,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into Hoartoise and slowly restore HP. Use the Echo skill again to exit the transformation state.\n\nCD: 8s",
+        "pt": "Transforme-se em Geatuga e restaure lentamente o HP. Use a habilidade de eco novamente para sair do estado de transformação.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Hocus Pocus": {
@@ -674,6 +962,10 @@
         "Frosty Resolve",
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Summon a Hocus Pocus to attack enemies with 3 consecutive strikes, each dealing 43.20% Havoc DMG.\nCD: 8s.",
+        "pt": "Invoca um Abra Cadabra para atacar inimigos com 3 golpes consecutivos — cada um causa 43.20% de Dano Aniquilante.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Hoochief": {
@@ -683,6 +975,10 @@
         "Rejuvenating Glow",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Transform into Hoochief and smack the enemies, dealing 268.20% Aero DMG.\n\nCD: 15s",
+        "pt": "Transforme-se em Mico-Chefe e golpeie os inimigos, causando 268.20% de Dano Pneumático.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Hooscamp": {
@@ -692,6 +988,10 @@
         "Lingering Tunes",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Transform into Hooscamp Flinger and pounce at the enemies, dealing 48.00%+96 Aero DMG.\n\nCD: 8s",
+        "pt": "Transforme-se em Campemico Lançador e salte sobre os inimigos, causando 48.00%+96 de Dano Pneumático.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Hurriclaw": {
@@ -702,6 +1002,10 @@
         "Gusts of Welkin",
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Transform into Hurriclaw and charge forward, dealing 156.60% Aero DMG upon hit plus 156.60% Aero DMG with a sweep attack. Hold the Echo Skill to continue charging forward. Use Echo Skill again while charging to perform a sweep attack.\nCD: 20s.",
+        "pt": "Transforme-se em Furagarra e avance, causando 156.60% de Dano Pneumático ao atingir, além de 156.60% de Dano Pneumático com um ataque giratório. Mantenha pressionada a Habilidade de Eco para continuar avançando. Use a Habilidade de Eco novamente enquanto avança para realizar um ataque giratório.\nCD: 20s."
+      },
       "status": "ok"
     },
     "Hyvatia": {
@@ -711,6 +1015,10 @@
         "Pact of Neonlight Leap",
         "Rite of Gilded Revelation"
       ],
+      "habilidade": {
+        "en": "Summon Hyvatia to fire lasers at enemies from mid-air, dealing 27.36% Spectro DMG 10 times.\n\nCasting Outro Skill within 15s after summoning Hyvatia grants 10.00% All-Attribute DMG Bonus to the next Resonator using Intro Skill for 15s.\n\nCD: 20s.",
+        "pt": "Invoca Hyvatia para disparar lasers contra inimigos do ar, causando 27.36% de Dano Fotônico 10 vezes.\n\nLançar Habilidade Outro dentro de 15s após invocar Hyvatia concede 10.00% de bônus de dano de todos os atributos ao próximo Ressonante usando Habilidade Intro por 15s.\n\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Iceglint Dancer": {
@@ -721,6 +1029,10 @@
         "Wishes of Quiet Snowfall",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Transform into an Iceglint Dancer to attack enemies, dealing 205.20% Glacio DMG.\nCD: 8s.",
+        "pt": "Transforme-se em uma Dançarina de Gelo Cristalino para atacar inimigos, causando 205.20% Dano Criogênico.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Impermanence Heron": {
@@ -729,6 +1041,10 @@
       "sets": [
         "Moonlit Clouds"
       ],
+      "habilidade": {
+        "en": "Transform into Impermanence Heron to fly up and smack down, dealing 310.56% Havoc DMG.\n\nLong press to stay as Impermanence Heron and continuously spit flames, each attack dealing 55.73% Havoc DMG.\n\nOnce the initial attack lands on any enemy, the current character regains 10 Resonance Energy. If the current character uses their Outro Skill within the next 15s, the next character's damage dealt will be boosted by 12% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Garça-cambiante para voar e descer com força, causando 310.56% de Dano Aniquilante.\n\nPressione longamente para permanecer como Garça-cambiante e cuspir chamas continuamente, cada ataque causando 55.73% de Dano Aniquilante.\n\nUma vez que o ataque inicial atinge qualquer inimigo, o Ressonante atual recupera 10 de Energia de Ressonância. Se o Ressonante atual usar sua Habilidade Outro nos próximos 15 s, o dano causado pelo próximo Ressonante será aumentado em 12% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Inferno Rider": {
@@ -737,6 +1053,10 @@
       "sets": [
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into the Inferno Rider to launch up to 3 consecutive slashes in a row, each slash dealing 242.40%, 282.80%, and 282.80% Fusion DMG respectively.\n\nAfter the final hit, increase the current Resonator's Fusion DMG by 12.00% and Basic Attack DMG by 12.00% for 15s.\n\nLong press the Echo Skill to transform into the Inferno Rider and enter Riding Mode. When exiting Riding Mode, deal 282.80% Fusion DMG to enemies in front.\n\nCD: 20s",
+        "pt": "Transforme-se no Cavaleiro Infernal para lançar até 3 cortes consecutivos, cada corte causando 242.40%, 282.80% e 282.80% de Dano Térmico respectivamente.\n\nApós o golpe final, aumente o Dano Térmico do Ressonante atual em 12.00% e o dano de ATQ Básico em 12.00% por 15 s.\n\nPressione longamente a habilidade de eco para se transformar no Cavaleiro Infernal e entrar no Modo de Montaria. Ao sair do Modo de Montaria, cause 282.80% de Dano Térmico aos inimigos à frente.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Ironhoof": {
@@ -747,6 +1067,10 @@
         "Wishes of Quiet Snowfall",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Transform into an Ironhoof to charge at enemies, dealing 53.64% Fusion DMG. At the end of the charge, unleash a goring attack that deals 13.41% Fusion DMG 3 times and 174.33% Fusion DMG once.\n\nCD: 15s.",
+        "pt": "Transforma-se em Casco de Ferro para investir contra inimigos, causando 53.64% de Dano Térmico. No final da investida, solta um ataque perfurante que causa 13.41% de Dano Térmico 3 vezes e 174.33% de Dano Térmico uma vez.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Jade Nether Serpent": {
@@ -755,6 +1079,10 @@
       "sets": [
         "Heart of Sworn Vigil"
       ],
+      "habilidade": {
+        "en": "Summon a Jade Nether Serpent that bombards the target with fireballs, dealing 12.96% Fusion DMG 5 times, then 64.80% Fusion DMG once.\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar uma Serpente de Jade do Inframundo que bombardeia o alvo com bolas de fogo, causando 12.96% de Dano Térmico 5 vezes, e em seguida, causando 64.80% de Dano Térmico uma vez. Recarga: 8s"
+      },
       "status": "ok"
     },
     "Jué": {
@@ -763,6 +1091,10 @@
       "sets": [
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Summon Jué to the aid. Jué soars through the air, dealing 48.64% Spectro DMG, and summons thunderbolts that strike nearby enemies up to 5 times, each hit dealing 19.46% Spectro DMG. Jué then spirals downward, attacking surrounding enemies twice, each hit dealing 48.64% Spectro DMG.\nCasting this Echo Skill grants the Resonator a Blessing of Time effect that lasts 15s, during when:\n- The Resonator gains 16.00% Resonance Skill DMG Bonus.\n- When the Resonator's Resonance Skill hits the target, inflict 16.00% Spectro DMG 1 time per second for 15s, considered as the Resonator's Resonance Skill DMG.\nCD: 20s",
+        "pt": "Invoca Jué para ajudar. Jué dispara pelo ar, causando 48.64% Dano Fotônico, e invoca relâmpagos que atingem inimigos próximos até 5 vezes, cada golpe causando 19.46% de Dano Fotônico. Jué então espirala para baixo, atacando inimigos ao redor duas vezes, cada golpe causando 48.64% de Dano Fotônico.\nLançar esta habilidade de eco concede ao Ressonante um efeito de Bênção do Tempo que dura 15 s, durante o qual:\n- O Ressonante ganha 16.00% de bônus de dano de habilidade de ressonância.\n- Quando a habilidade de ressonância do Ressonante atinge o alvo, causa 16.00% de Dano Fotônico 1 vez por segundo por 15 s, considerado como dano de habilidade de ressonância do Ressonante.\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Kerasaur": {
@@ -773,6 +1105,10 @@
         "Flaming Clawprint",
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Transform into Kerasaur to leap into the air and slam down, dealing 268.20% Aero DMG. Shortly after hitting the target, cast Echo Skill again to charge at the target, dealing 268.20% Aero DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 15s",
+        "pt": "Transforma-se em Ceratossauro para saltar no ar e descer com força, causando 268.20% de Dano Pneumático. Logo após atingir o alvo, lança a Habilidade de Eco novamente para investir contra o alvo, causando 268.20% de Dano Pneumático.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de Bônus de Dano Pneumático e 12.00% de Bônus de Dano de Liberação de Ressonância.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Anger": {
@@ -782,6 +1118,10 @@
         "Heart of Evil's Purge",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Worry to attack enemies, dealing 129.60% Fusion DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Preocupação para atacar os inimigos, causando 129.60% de Dano Térmico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Fright": {
@@ -791,6 +1131,10 @@
         "Lamp of Nether Road",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Fright to attack enemies, dealing an instance of 51.84% Havoc DMG and an instance of 77.76% Havoc DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Medo para atacar os inimigos, causando uma instância de 51.84% de Dano Aniquilante e uma instância de 77.76% de Dano Aniquilante.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Grief": {
@@ -800,6 +1144,10 @@
         "Lamp of Nether Road",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Grief to attack enemies, dealing 129.60% Spectro DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Tristeza para atacar os inimigos, causando 129.60% de Dano Fotônico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Joy": {
@@ -809,6 +1157,10 @@
         "Song of Feathered Trace",
         "Heart of Sworn Vigil"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Joy to attack enemies, dealing 129.60% Physical DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Alegria para atacar os inimigos, causando 129.60% de Dano Físico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Reflection": {
@@ -818,6 +1170,10 @@
         "Heart of Evil's Purge",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Reflection to attack enemies, dealing 64.80% Electro DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Reflexão para atacar os inimigos, causando 64.80% de Dano Voltaico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kernel Puppet: Worry": {
@@ -827,6 +1183,10 @@
         "Heart of Evil's Purge",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Kernel Puppet: Worry to attack enemies, dealing 64.80% Glacio DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar o Maquinete do Núcleo: Preocupação para atacar os inimigos, causando 64.80% de Dano Criogênico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Kronablight": {
@@ -836,6 +1196,10 @@
         "Trailblazing Star",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Kronablight, soar into the air, and dive to deal 268.20% Electro DMG to the enemies.\nCD: 15s",
+        "pt": "Transforme-se em um Kronaflagelo, voe pelos ares e mergulhe para causar 268.20% Dano Voltaico aos inimigos.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "La Guardia": {
@@ -846,6 +1210,10 @@
         "Midnight Veil",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Transform into La Guardia and attack nearby targets, dealing 268.20% Physical DMG.\nHold the Echo Skill to maintain the Echo form for a while to slash enemies and cast a ranged attack forward. The slash deals 268.20% Physical DMG, and the ranged attack deals 17.87% Physical DMG up to 15 times.\nCD: 15s.",
+        "pt": "Transforma-se em La Guardia e ataca alvos próximos, causando 268.20% de Dano Físico.\nMantenha a Habilidade de Eco pressionada para manter a forma de Eco por um tempo e golpear inimigos, além de lançar um ataque à distância para frente. O golpe causa 268.20% de Dano Físico, e o ataque à distância causa 17.87% de Dano Físico até 15 vezes.\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Lady of the Sea": {
@@ -854,6 +1222,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Summon a Tidestorm to deal 13.68% Aero DMG ten times and 164.16% Aero DMG one time to enemies.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 20s",
+        "pt": "Invoca uma Tempestade de Maré para causar 13.68% de Dano Pneumático dez vezes e 164.16% de Dano Pneumático um vez aos inimigos.\nO Ressonante com este Ecos equipado no espaço principal ganha 12.00% de Bônus de Dano Pneumático e 12.00% de Bônus de dano de Liberação de Ressonância.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Lampylumen Myriad": {
@@ -862,6 +1234,10 @@
       "sets": [
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into Lampylumen Myriad. Perform up to 3 consecutive attacks.\n\nUnleash a freezing shock by performing consecutive forward strikes, with the initial two strikes inflicting 200.16% and 200.16% Glacio DMG respectively, and the final strike dealing 266.88% Glacio DMG. Enemies will be frozen on hit.\n\nEach shock increases the current character's Glacio DMG by 4.00% and Resonance Skill DMG dealt by 4.00% for 15s, stacking up to 3 times\n\nCD: 20s",
+        "pt": "Transforme-se em Miríade Lampilúmen. Realize até 3 ataques consecutivos.\n\nLibere um choque congelante realizando ataques consecutivos para frente, com os dois primeiros ataques infligindo 200.16% e 200.16% de Dano Criogênico respectivamente, e o ataque final causando 266.88% de Dano Criogênico. Inimigos serão congelados ao serem atingidos.\n\nCada choque aumenta o Dano Criogênico do personagem atual em 4.00% e o dano de habilidade de ressonância em 4.00% por 15 s, acumulando até 3 vezes\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Lava Larva": {
@@ -871,6 +1247,10 @@
         "Lingering Tunes",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Lava Larva that continuously attacks enemies, dealing 38.40% Fusion DMG with each hit. The Lava Larva disappears when the summoner is switched out or moves too far away.\n\nCD: 8s",
+        "pt": "Invoca uma larva-lava que ataca continuamente os inimigos, causando 38.40% de Dano Térmico a cada golpe. A larva-lava desaparece quando o invocador é trocado ou se afasta demais.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Lightcrusher": {
@@ -879,6 +1259,10 @@
       "sets": [
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Lunge forward as a Lightcrusher, dealing 135.36% Spectro DMG. Generate 6 Ablucence on hit. Each Ablucence explosion deals 15.04% Spectro DMG.\nHold the Echo Skill to stay in the Lightcrusher form, which allows you to leap up and pounce forward in the air for a short distance.\n\nCooldown: 15s",
+        "pt": "Avance como um esmaga-luz, causando 135.36% de Dano Fotônico. Gera 6 de Luz Residual ao acertar. Cada explosão de Luz Residual causa 15.04% de Dano Fotônico.\nMantenha a habilidade de eco para permanecer na forma de esmaga-luz, o que permite saltar e avançar no ar por uma curta distância.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Lioness of Glory": {
@@ -887,6 +1271,10 @@
       "sets": [
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Summon the Halberd of Glory to crush an area, dealing 82.08% Fusion DMG to nearby targets, and then blast off after a short delay, dealing 191.52% Fusion DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 20s",
+        "pt": "Invoca a Alabarda da Glória para esmagar uma área, causando 82.08% de Dano Térmico aos alvos próximos, e após uma breve pausa, explode causando 191.52% de Dano Térmico.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de Bônus de Dano Térmico e 12.00% de Bônus de Dano de Liberação de Ressonância.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Lorelei": {
@@ -895,6 +1283,10 @@
       "sets": [
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Transform into Lorelei and attack surrounding enemies, dealing 405.00% Havoc DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Lorelei e ataca os inimigos ao redor para causar 405.00% de Dano Aniquilante.\nEste eco equipado no espaço principal do ressonante ganha 12.00% de bônus de Dano Aniquilante e 12.00% de bônus de dano de ATQ Básico.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Lottie Lost": {
@@ -904,6 +1296,10 @@
         "Tidebreaking Courage",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Summon a Lottie Lost to attack enemies, dealing 129.60% Spectro DMG.\nCD: 8s.",
+        "pt": "Invoca uma Srta. Solitária para atacar inimigos e causar 129.60% de Dano Fotônico.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Lumiscale Construct": {
@@ -913,6 +1309,10 @@
         "Void Thunder",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into a Lumiscale Construct and enter a Parry Stance. If you are not attacked during the Parry Stance, slash to deal 553.60% Glacio DMG when the stance finishes. If attacked, counterattack instantly, dealing 553.60%+276.80% Glacio DMG. When hit with a Special Skill attack while in the Parry Stance, break the Special Skill and counterattack, dealing 553.60%+276.80% Glacio DMG.\n\nCD: 15s",
+        "pt": "Transforma-se num constructo lumescama e entre numa postura de aparo. Se você não for atacado durante a postura de aparo, corte para causar 553.60% de Dano Criogênico quando a postura terminar. Se atacado, contra-ataca instantaneamente, causando 553.60%+276.80% de Dano Criogênico. Quando atingido por um ataque de habilidade especial enquanto estiver na postura de aparo, quebre a habilidade especial e contra-ataca, causando 553.60%+276.80% de Dano Criogênico.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Mech Abomination": {
@@ -921,6 +1321,10 @@
       "sets": [
         "Lingering Tunes"
       ],
+      "habilidade": {
+        "en": "Strike enemies in front, dealing 48.64% Electro DMG, and summon Mech Waste to attack. Mech Waste deals 320.00% Electro DMG on hit and explodes after a while, dealing 160.00% Electro DMG.\n\nAfter casting this Echo Skill, increase the current character's ATK by 12.00% for 15s.\nDamage dealt by Mech Waste equals to the Resonator's Outro Skill DMG.\n\nCD: 20s",
+        "pt": "Ataca inimigos à frente, causando 48.64% de Dano Voltaico, e invoca Resíduos Mecânicos para atacar. Resíduos Mecânicos causam 320.00% de Dano Voltaico ao atingir e explodem após um tempo, causando 160.00% de Dano Voltaico.\n\nApós lançar esta habilidade de eco, aumenta o ATQ do Ressonante atual em 12.00% por 15 s.\nO dano causado por Resíduos Mecânicos é igual ao dano da Habilidade Outro do Ressonante.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Mining Drone": {
@@ -932,6 +1336,10 @@
         "Sound of True Name",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Transform into a Mining Drone to attack enemies, dealing 102.60% Havoc DMG twice.\nCD: 8s.",
+        "pt": "Transforma-se em Drone Minerador para atacar inimigos, causando 102.60% de Dano Aniquilante duas vezes.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Mining Reindeer": {
@@ -941,6 +1349,10 @@
         "Pact of Neonlight Leap",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Summon a Mining Reindeer to launch a charged attack at enemies, dealing 237.60% Electro DMG.\n\n CD: 20s.",
+        "pt": "Invoca uma Rena Mineradora para lançar um ATQ Carregado contra inimigos, causando 237.60% de Dano Voltaico.\n\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Mourning Aix": {
@@ -949,6 +1361,10 @@
       "sets": [
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Mourning Aix and perform 2 consecutive claw attacks, each attack dealing 157.44% and 236.16% Spectro DMG respectively.\n\nAfter the transformation, increase current character's Spectro DMG by 12.00% and Resonance Liberation DMG by 12.00% for 15s\n\nCD: 20s",
+        "pt": "Transforme-se em Aix Lamentoso e realize 2 ataques consecutivos com garras, cada ataque causando 157.44% e 236.16% de Dano Fotônico respectivamente.\n\nApós a transformação, aumente o Dano Fotônico do personagem atual em 12.00% e o dano de liberação de ressonância em 12.00% por 15 s\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Myriad Snare: Rustfire Chassis": {
@@ -958,6 +1374,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Summon Myriad Snare: Rustfire Chassis, dealing Fusion DMG equal to 10.20% of the Max HP on initial impact. During its duration, it repeatedly crushes enemies along its path up to 19 times, dealing Fusion DMG equal to 0.37% of the Max HP each time.\n\nResonators with this Echo equipped in the main slot gain 12.00% Fusion DMG Bonus and 12.00% Heavy Attack DMG Bonus.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar Prisão de Miríades: Corpo Decadente, causando inicialmente Dano Térmico igual a 10.20% do HP Máx. do Ressonante aos inimigos. Durante esse tempo, esmaga os inimigos em seu caminho repetidas vezes, até 19 vezes, causando Dano Térmico igual a 0.37% do HP Máx. do Ressonante a cada acerto.\nRessonantes com este Eco equipado no espaço principal ganham 12.00% de Bônus de Dano Térmico e 12.00% de Bônus de Dano de ATQ Pesado.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Nameless Explorer": {
@@ -967,6 +1387,10 @@
         "Sound of True Name",
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "Summon Nameless Explorer to attack enemies along its path, dealing 273.60% Aero DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 20.00% Echo Skill DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca Explorador Anônimo para atacar inimigos em seu caminho, causando 273.60% de Dano Pneumático.\nO Ressonante com este Eco equipado em seu espaço principal ganha 12.00% de Bônus de Dano Pneumático e 20.00% de Bônus de Dano de Habilidade de Eco.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Nightmare: Aero Predator": {
@@ -975,6 +1399,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Summon an Aero Predator that throws a dart forward. The dart will bounce between enemies up to three times, dealing 28.80% Aero DMG each time it hits.\n\nCD: 8s",
+        "pt": "Convoque um Predador Pneumático que lança um dardo para frente. O dardo irá ricochetear entre os inimigos até três vezes, causando 28.80% de Dano Pneumático cada vez que atinge.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Nightmare: Baby Roseshroom": {
@@ -983,6 +1411,10 @@
       "sets": [
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Summon a Baby Roseshroom that fires a laser, dealing 32.00%+64 Havoc DMG.\n\nCD: 8s",
+        "pt": "Convoque um Champirrosa Bebê que dispara um laser, causando 32.00%+64 de Dano Aniquilante.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Baby Viridblaze Saurian": {
@@ -991,6 +1423,10 @@
       "sets": [
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Transform into Baby Viridblaze Saurian to rest in place, and slowly restore HP.\n\nCD: 8s",
+        "pt": "Transforme-se em Verdelisco Bebê para descansar no lugar e restaurar lentamente o HP.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Chirpuff": {
@@ -999,6 +1435,10 @@
       "sets": [
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Summon a Chirpuff that self-inflates and blasts a powerful gust of wind forward 3 times. Each blast inflicts 38.40% Aero DMG and pushes enemies backwards.\n\nCD: 8s",
+        "pt": "Convoque um Baiapiu que se infla e lança uma poderosa rajada de vento para frente 3 vezes. Cada rajada inflige 38.40% de Dano Pneumático e empurra os inimigos para trás.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Crownless": {
@@ -1007,6 +1447,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Crownless and attack enemies in front, dealing 264.60% Havoc DMG. The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.\nThis skill has 3 initial charges, replenished once every 12s, max 3 charges. When Nightmare: Crownless hits a target, DMG dealt by this skill is increased by 20.00%. This effect lasts for 2s and does not stack.\nCD: 12s.",
+        "pt": "Transforma o usuário em Pesadelo: Destronado e ataca os inimigos à frente para causar 264.60% de Dano Aniquilante. Este eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Aniquilante e 12.00% de bônus de dano de ATQ Básico.\nEsta habilidade tem 3 cargas iniciais que recarregam uma vez a cada 12 s — máximo de 3 cargas. Quando Pesadelo: Destronado atinge um alvo, o dano causado por esta habilidade aumenta em 20.00%. Este efeito dura 2 s e não acumula.\nRecarga: 12 s."
+      },
       "status": "ok"
     },
     "Nightmare: Cyan-Feathered Heron": {
@@ -1015,6 +1459,10 @@
       "sets": [
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Transform into Cyan-Feathered Heron and charge at the enemies, dealing 236.80% Aero DMG; This Echo Skill interrupts enemy Special Skills upon dealing damage.\n\nCD: 15s",
+        "pt": "Transforme-se em Garça-plumazul e avance contra os inimigos, causando 236.80% de Dano Pneumático. Esta habilidade de eco interrompe habilidades especiais dos inimigos ao causar dano.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Dwarf Cassowary": {
@@ -1023,6 +1471,10 @@
       "sets": [
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Summon a Dwarf Cassowary that tracks and attacks the enemy, dealing 38.40% Physical DMG 3 time(s).\n\nCooldown: 8s",
+        "pt": "Invoca um casuar-anão que rastreia e ataca o inimigo, causando 38.40% de dano físico 3 vez(es).\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Electro Predator": {
@@ -1031,6 +1483,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Summon an Electro Predator to shoot the enemy 5 times. The first 4 shots deals 17.28% Electro DMG, and the last deals 46.08% Electro DMG.\n\nCD: 8s",
+        "pt": "Convoque um Predador Voltaico para atirar no inimigo 5 vezes. Os primeiros 4 tiros causam 17.28% de Dano Voltaico, e o último causa 46.08% de Dano Voltaico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Feilian Beringal": {
@@ -1039,6 +1495,10 @@
       "sets": [
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Summon a Nightmare: Feilian Beringal to attack enemies, dealing 164.16% Aero DMG. The remaining Whirlwind Beam will continuously attack surrounding enemies up to 5 times, each dealing 21.89% Aero DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca um Pesadelo: Beringal-feiliano para atacar os inimigos e causar 164.16% de Dano Pneumático. O raio turbilhão restante atacará continuamente os inimigos ao redor até 5 vezes — cada um causará 21.89% de Dano Pneumático.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de bônus de Dano Pneumático e 12.00% de bônus de dano de ATQ Pesado.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Nightmare: Glacio Predator": {
@@ -1047,6 +1507,10 @@
       "sets": [
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Summon a Glacio Predator that throws an ice spear, dealing 46.08% Glacio DMG on hit. Deal 4.61% Glacio DMG up to 10 times during the charging time, and 23.04% Glacio DMG when the spear explodes.\n\nCD: 8s",
+        "pt": "Convoque um Predador Criogênico que lança uma lança de gelo, causando 46.08% de Dano Criogênico ao atingir. Cause 4.61% de Dano Criogênico até 10 vezes durante o tempo de carregamento, e 23.04% de Dano Criogênico quando a lança explodir.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Gulpuff": {
@@ -1055,6 +1519,10 @@
       "sets": [
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Summon a Gulpuff that blows bubbles 5 times, each time dealing 23.04% Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Baiagul que sopra bolhas 5 vezes, cada vez causando 23.04% de Dano Criogênico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Nightmare: Havoc Warrior": {
@@ -1063,6 +1531,10 @@
       "sets": [
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Transform into Havoc Warrior to attack up to 3 times, dealing 171.73% Havoc DMG each time.\n\nCD: 15s",
+        "pt": "Transforme-se em Guerreiro Aniquilante para atacar até 3 vezes, causando 171.73% de Dano Aniquilante cada vez.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Hecate": {
@@ -1071,6 +1543,10 @@
       "sets": [
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Hecate. Leap up and smash down, dealing 3 stages of damage, each dealing Havoc DMG equal to 152.39% of her ATK.\nThe Resonator with the Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 20.00% Echo Skill DMG Bonus.\nCD: 25s",
+        "pt": "Transforme-se no Pesadelo: Hécate. Salta para cima e desce com força, causando dano em 3 fases, cada uma causando Dano Aniquilante equivalente a 152.39% do ATQ dela.\nO ressonante com o eco equipado no espaço principal ganha 12.00% de Bônus de Dano Aniquilante e 20.00% de Bônus de Dano de Habilidade de Eco.\nRecarga: 25s"
+      },
       "status": "ok"
     },
     "Nightmare: Impermanence Heron": {
@@ -1079,6 +1555,10 @@
       "sets": [
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Impermanence Heron and deliver up to 10 consecutive strikes to surrounding enemies, each dealing 40.50% Havoc DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Heavy Attack DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Pesadelo: Garça-cambiante e desfere até 10 golpes consecutivos em inimigos ao redor — cada um causa 40.50% de Dano Aniquilante.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Aniquilante e 12.00% de bônus de dano de ATQ Pesado.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Nightmare: Inferno Rider": {
@@ -1087,6 +1567,10 @@
       "sets": [
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Inferno Rider and jump to attack enemies in front, dealing 405.00% Fusion DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Skill DMG Bonus.\nHold Echo Skill to transform into Nightmare: Inferno Rider and enter Riding Mode. When exiting Riding Mode, deal 283.50% Fusion DMG to enemies in front.\nCD: 25s.",
+        "pt": "Transforma o usuário em Pesadelo: Cavaleiro Infernal e salta para atacar os inimigos à frente e causar 405.00% de Dano Térmico.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Térmico e 12.00% de bônus de dano de habilidade de ressonância.\nMantenha a habilidade de eco para transformar-se em Pesadelo: Cavaleiro Infernal e entrar no modo de montaria. Ao sair do modo de montaria, causa 283.50% de Dano Térmico aos inimigos à frente.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Nightmare: Kelpie": {
@@ -1096,6 +1580,10 @@
         "Gusts of Welkin",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Kelpie to attack nearby targets, dealing 405.00% Glacio DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Aero DMG Bonus. Switching out the Resonator with Outro Skill summons Nightmare: Kelpie to deal 405.00% Aero DMG.\nCD: 25s",
+        "pt": "Transforma-se em Pesadelo: Kelpie para atacar alvos próximos, causando 405.00% de Dano Criogênico.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de Bônus de Dano Criogênico e 12.00% de Bônus de Dano Pneumático. Ao trocar o ressonante com Habilidade Outro, Pesadelo: Kelpie é invocado para causar 405.00% de Dano Pneumático.\nRecarga: 25s"
+      },
       "status": "ok"
     },
     "Nightmare: Lampylumen Myriad": {
@@ -1105,6 +1593,10 @@
         "Frosty Resolve",
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Summon Nightmare: Lampylumen Myriad and attack surrounding enemies, dealing 273.60% Glacio DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and deals 30.00% more Coordinated Attack DMG.\nCD: 20s.",
+        "pt": "Transforma-se em Pesadelo: Miríade Lampilúmen e ataca inimigos ao redor, causando 273.60% de Dano Criogênico.\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Criogênico e causa 30.00% a mais de dano de ATQ Coordenado.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Nightmare: Mourning Aix": {
@@ -1113,6 +1605,10 @@
       "sets": [
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Summon a Nightmare: Mourning Aix to attack surrounding enemies, dealing 273.60% Spectro DMG. DMG dealt to enemies inflicted by Spectro Frazzle is increased by 100.00%.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca um Pesadelo: Aix Lamentoso para atacar inimigos ao redor e causar 273.60% de Dano Fotônico. O dano causado aos inimigos afetados por Estridência Fotônica aumenta em 100.00%.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Fotônico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Nightmare: Roseshroom": {
@@ -1121,6 +1617,10 @@
       "sets": [
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Summon a Roseshroom that fires a laser, dealing 57.07% Havoc DMG up to 3 times.\n\nCD: 15s",
+        "pt": "Convoque um Champirrosa que dispara um laser, causando 57.07% de Dano Aniquilante até 3 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Tambourinist": {
@@ -1129,6 +1629,10 @@
       "sets": [
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Summon a Tambourinist that plays out Melodies of Annihilation. Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times.\n\nCD: 15s",
+        "pt": "Invoque um Pandeirista que toca Melodias da Aniquilação. Qualquer ressonante na equipe ganha o seguinte efeito por 10s ao obter uma Melodia da Aniquilação: quando o ressonante acerta um alvo, o Pandeirista causa 14.40% de Dano Aniquilante ao alvo, até 10 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Tempest Mephis": {
@@ -1138,6 +1642,10 @@
         "Void Thunder",
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Tempest Mephis and attack surrounding enemies, dealing 405.00% Electro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Skill DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Pesadelo: Mefítico Tempestuoso e ataca os inimigos ao redor para causar 405.00% de Dano Voltaico.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Voltaico e 12.00% de bônus de dano de habilidade de ressonância.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Nightmare: Thundering Mephis": {
@@ -1146,6 +1654,10 @@
       "sets": [
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Thundering Mephis and attack enemies in front, dealing 405.00% Electro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Pesadelo: Mefítico Tonitruante e ataca inimigos à frente para causar 405.00% de Dano Voltaico.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Voltaico e 12.00% de bônus de dano de liberação de ressonância.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Nightmare: Tick Tack": {
@@ -1154,6 +1666,10 @@
       "sets": [
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Summon a Tick Tack that charges and bites the enemy. The charge from Tick Tack will deal 68.48% Havoc DMG to the enemy, and the bite will deal 102.72% Havoc DMG to the enemy. Reduces enemy Vibration Strength by up to 5.00% during 5s.\n\nCD: 15s",
+        "pt": "Convoque um Tic-tac que avança e morde o inimigo. O avanço do Tic-tac causará 68.48% de Dano Aniquilante ao inimigo, e a mordida causará 102.72% de Dano Aniquilante ao inimigo. Reduz a Força de Vibração do inimigo em até 5.00% durante 5 s.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Violet-Feathered Heron": {
@@ -1162,6 +1678,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Transform into Violet-Feathered Heron and enter a Parry Stance. Counterattack when the Parry stance is over, dealing 288.00% Electro DMG. If attacked during Parry Stance, you can counterattack in advance and additionally recover 5 Concerto Energy.\n\nCD: 15s",
+        "pt": "Transforme-se em Garça Roxiplumas e entre em uma postura de aparo. Contra-ataque quando a postura de aparo terminar, causando 288.00% de Dano Voltaico. Se atacado durante a postura de aparo, você pode contra-atacar antecipadamente e recuperar adicionalmente 5 de energia de concerto.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nightmare: Viridblaze Saurian": {
@@ -1170,6 +1690,10 @@
       "sets": [
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Summon a Viridblaze Saurian to continuously spit fire, dealing 17.12% Fusion DMG 10 times.\n\nCD: 15s",
+        "pt": "Convoque um Verdelisco para cuspir fogo continuamente, causando 17.12% de Dano Térmico 10 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Nimbus Wraith": {
@@ -1180,6 +1704,10 @@
         "Midnight Veil",
         "Flamewing's Shadow"
       ],
+      "habilidade": {
+        "en": "Summon a Nimbus Wraith that restores the active Resonator's HP by 2.70% of their Max HP, up to 4 times.\nCD: 15s.",
+        "pt": "Invoca um Espectro de Nimbo que restaura o HP do Ressonante ativo em 2.70% do seu máx. de HP — até 4 vezes.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Nocturnus Knight": {
@@ -1189,6 +1717,10 @@
         "Midnight Veil",
         "Empyrean Anthem"
       ],
+      "habilidade": {
+        "en": "Transform into Nocturnus Knight and strike enemies in front of you from the air, dealing 268.20% Havoc DMG.\nCD: 15s.",
+        "pt": "Transforma o usuário no Cavaleiro Noturno e ataca do ar os inimigos à frente do ar para causar 268.20% de Dano Aniquilante.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Phantom: Capitaneus": {
@@ -1198,6 +1730,10 @@
         "Gusts of Welkin",
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Summon a Capitaneus to jump up and smash enemies, dealing 118.80% Spectro DMG. This attack generates 4 extra Merciless Judgements, each dealing 59.40% Spectro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Spectro DMG Bonus and 12.00% Heavy Attack DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca um Capitão para saltar e esmagar inimigos, causando 118.80% de Dano Fotônico. Este ataque gera 4 Julgamentos Impiedosos extras, cada um causando 59.40% de Dano Fotônico.\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Fotônico e 12.00% de bônus de dano de ATQ Pesado.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Phantom: Chest Mimic": {
@@ -1208,6 +1744,10 @@
         "Empyrean Anthem",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Summon a Chest Mimic to attack enemies with 3 consecutive strikes, each dealing 64.19% Spectro DMG.\nCD: 15s.",
+        "pt": "Invoca um Baú Mímico para atacar inimigos com 3 golpes consecutivos — cada um causa 64.19% de Dano Fotônico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Phantom: Chop Chop": {
@@ -1218,6 +1758,10 @@
         "Empyrean Anthem",
         "Dream of the Lost"
       ],
+      "habilidade": {
+        "en": "Summon a Chop Chop to perform a series of consecutive attacks. The first 6 strikes each deal 19.26% Fusion DMG and finishing strike deals 77.04% Fusion DMG.\nCD: 15s.",
+        "pt": "Invoca um Flutubo para realizar uma série de ataques consecutivos. Os primeiros 6 golpes causam cada 19.26% de Dano Térmico e o golpe final causa 77.04% de Dano Térmico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Phantom: Clang Bang": {
@@ -1227,6 +1771,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Clang Bang that follows the enemy and eventually self-combusts, dealing 32.00%+64 Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Clang-bang que segue o inimigo e eventualmente se autodestrói, causando 32.00%+64 de Dano Criogênico.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Phantom: Crownless": {
@@ -1235,6 +1783,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Crownless and perform up to 4 consecutive attacks. The first 2 attacks deal 134.08% Havoc DMG each, the 3rd attack deals 100.56% Havoc DMG 2 times, and the 4th attack deals 67.04% Havoc DMG 3 times.\n\nAfter the transformation, increase current character's Havoc DMG by 12.00% and Resonance Skill DMG by 12.00% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Destronado e realize até 4 ataques consecutivos. Os primeiros 2 ataques causam 134.08% de Dano Aniquilante cada, o 3º ataque causa 100.56% de Dano Aniquilante 2 vezes, e o 4º ataque causa 67.04% de Dano Aniquilante 3 vezes.\n\nApós a transformação, aumente o Dano Aniquilante do personagem atual em 12.00% e o dano de habilidade de ressonância em 12.00% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Cuddle Wuddle": {
@@ -1244,6 +1796,10 @@
         "Midnight Veil",
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Transform into Cuddle Wuddle and attack enemies with 4 strikes dealing 46.98% Physical DMG and 1 strike dealing 125.28% Physical DMG.\nCD: 20s.",
+        "pt": "Transforma o usuário em Abraço-amasso e ataca inimigos com 4 golpes para causar 46.98% de dano físico e 1 golpe que causa 125.28% de dano físico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Phantom: Diggy Duggy": {
@@ -1254,6 +1810,10 @@
         "Lingering Tunes",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Diggy Duggy and jump up into the air to smash onto enemies, dealing 268.20% Physical DMG.\nCD: 15s.",
+        "pt": "Transforma o usuário em Digue-dugue e salta no ar para esmagar os inimigos e causar 268.20% de dano físico.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Phantom: Dreamless": {
@@ -1262,6 +1822,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Dreamless and perform 6 consecutive strikes. The first 5 strikes deal 54.08% Havoc DMG each, and the last strike deal 270.40% Havoc DMG.\nThe DMG of this Echo Skill is increased by 50.00% during the first 5s after Rover: Havoc casts Resonance Liberation: Deadening Abyss.\n\nCD: 20s",
+        "pt": "Transforme-se em Insone e realize 6 golpes consecutivos. Os primeiros 5 golpes causam 54.08% de Dano Aniquilante cada, e o último golpe causa 270.40% de Dano Aniquilante.\nO dano desta habilidade de eco é aumentado em 50.00% durante os primeiros 5s após Rover\n: Aniquilante lançar Liberação de Ressonância: Abismo Mortal.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Phantom: Fae Ignis": {
@@ -1271,6 +1835,10 @@
         "Midnight Veil",
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Summon a Fae Ignis to attack enemies, dealing 129.60% Havoc DMG.\nCD: 8s.",
+        "pt": "Invoca uma Ígnea-feérica para atacar inimigos e causar 129.60% de Dano Aniquilante.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Phantom: Fallacy of No Return": {
@@ -1279,6 +1847,10 @@
       "sets": [
         "Rejuvenating Glow"
       ],
+      "habilidade": {
+        "en": "Activate the Echo Skill to summon a fraction of the Fallacy of No Return's power and deal a blast to the surrounding area, inflicting Spectro DMG equal to 15.86% of max HP, after which the Resonator gains 10% bonus Energy Regen and all team members 10% bonus ATK for 20s.\nHold Echo Skill to unleash a series of flurry assaults at the cost of STA, each dealing Spectro DMG equal to 1.58% of max HP; Release to end the assail in a powerful blow, dealing Spectro DMG equal to 19.82% of max HP.\nCD: 20s",
+        "pt": "Ative a habilidade de eco para invocar uma fração do poder da Falácia Irreversível, causar uma explosão na área em volta e infligir Dano Fotônico igual a 15.86% do máx. de HP, após o qual o Ressonante ganha 10% de bônus em regen de energia e todos os membros da equipe 10% de bônus em ATQ por 20 s.\nSegure a habilidade de eco para desencadear uma série de ataques rápidos com o custo de VIG, cada um causando Dano Fotônico igual a 1.58% do máx. de HP. Solte para terminar o ataque com um golpe poderoso, causando Dano Fotônico igual a 19.82% do máx. de HP.\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Feilian Beringal": {
@@ -1287,6 +1859,10 @@
       "sets": [
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Transform into Feilian Beringal to perform a powerful kick. If the kick lands on an enemy, immediately perform a follow-up strike. The kick deals 231.84% Aero DMG, and the follow-up strike deals 283.36% Aero DMG.\n\nAfter the follow-up strike hits, the current character's Aero DMG increases by 12.00%, and the Heavy Attack DMG increases by 12.00% for 15s\n\nCD: 20s",
+        "pt": "Transforme-se em Beringal-feiliano para realizar um chute poderoso. Se o chute atingir um inimigo, execute imediatamente um golpe de acompanhamento. O chute causa 231.84% de Dano Pneumático, e o golpe de acompanhamento causa 283.36% de Dano Pneumático.\n\nApós o golpe de acompanhamento acertar, o Dano Pneumático do personagem atual aumenta em 12.00%, e o dano de ATQ Pesado aumenta em 12.00% por 15 s\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Forbidden Bastion": {
@@ -1297,6 +1873,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Forbidden Bastion to bash over enemies, dealing 237.60% Glacio DMG.\n\nResonators with this Echo equipped in the main slot gain 10.00% Healing Bonus.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar o Pavilhão Proibido para esmagar os inimigos, causando 237.60% de Dano Criogênico.\n\nRessonantes com este Eco equipado no espaço principal ganham 10.00% de Bônus de Cura.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Phantom: Glommoth": {
@@ -1306,6 +1886,10 @@
         "Trailblazing Star",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Summon a Glommoth to stomp enemies, dealing 273.60% Glacio DMG.\nCasting Outro Skill within 15s after summoning Glommoth grants 12.00% Glacio DMG Bonus to the incoming Resonator for 15s.\nCD: 20s.",
+        "pt": "Invoca um Glommoth para esmagar inimigos, causando 273.60% de Dano Criogênico.\nUsar Habilidade Outro em até 15s após invocar o Glommoth concede 12.00% de Bônus de Dano Criogênico ao Ressonante seguinte por 15s.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Phantom: Gulpuff": {
@@ -1315,6 +1899,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Gulpuff that blows bubbles 5 times, each time dealing 23.04% Glacio DMG.\n\nCD: 8s",
+        "pt": "Convoque um Baiagul que sopra bolhas 5 vezes, cada vez causando 23.04% de Dano Criogênico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Phantom: Hoartoise": {
@@ -1324,6 +1912,10 @@
         "Celestial Light",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into Hoartoise and slowly restore HP. Use the Echo skill again to exit the transformation state.\n\nCD: 8s",
+        "pt": "Transforme-se em Geatuga e restaure lentamente o HP. Use a habilidade de eco novamente para sair do estado de transformação.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Phantom: Iceglint Dancer": {
@@ -1332,6 +1924,10 @@
       "sets": [
         "Trailblazing Star"
       ],
+      "habilidade": {
+        "en": "Transform into an Iceglint Dancer to attack enemies, dealing 205.20% Glacio DMG.\nCD: 8s.",
+        "pt": "Transforme-se em uma Dançarina de Gelo Cristalino para atacar inimigos, causando 205.20% Dano Criogênico.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Phantom: Impermanence Heron": {
@@ -1340,6 +1936,10 @@
       "sets": [
         "Moonlit Clouds"
       ],
+      "habilidade": {
+        "en": "Transform into Impermanence Heron to fly up and smack down, dealing 310.56% Havoc DMG.\n\nLong press to stay as Impermanence Heron and continuously spit flames, each attack dealing 55.73% Havoc DMG.\n\nOnce the initial attack lands on any enemy, the current character regains 10 Resonance Energy. If the current character uses their Outro Skill within the next 15s, the next character's damage dealt will be boosted by 12% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Garça-cambiante para voar e descer com força, causando 310.56% de Dano Aniquilante.\n\nPressione longamente para permanecer como Garça-cambiante e cuspir chamas continuamente, cada ataque causando 55.73% de Dano Aniquilante.\n\nUma vez que o ataque inicial atinge qualquer inimigo, o Ressonante atual recupera 10 de Energia de Ressonância. Se o Ressonante atual usar sua Habilidade Outro nos próximos 15 s, o dano causado pelo próximo Ressonante será aumentado em 12% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Inferno Rider": {
@@ -1348,6 +1948,10 @@
       "sets": [
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into the Inferno Rider to launch up to 3 consecutive slashes in a row, each slash dealing 242.40%, 282.80%, and 282.80% Fusion DMG respectively.\n\nAfter the final hit, increase the current Resonator's Fusion DMG by 12.00% and Basic Attack DMG by 12.00% for 15s.\n\nLong press the Echo Skill to transform into the Inferno Rider and enter Riding Mode. When exiting Riding Mode, deal 282.80% Fusion DMG to enemies in front.\n\nCD: 20s",
+        "pt": "Transforme-se no Cavaleiro Infernal para lançar até 3 cortes consecutivos, cada corte causando 242.40%, 282.80% e 282.80% de Dano Térmico respectivamente.\n\nApós o golpe final, aumente o Dano Térmico do Ressonante atual em 12.00% e o dano de ATQ Básico em 12.00% por 15 s.\n\nPressione longamente a habilidade de eco para se transformar no Cavaleiro Infernal e entrar no Modo de Montaria. Ao sair do Modo de Montaria, cause 282.80% de Dano Térmico aos inimigos à frente.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Kerasaur": {
@@ -1357,6 +1961,10 @@
         "Windward Pilgrimage",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Transform into Kerasaur to leap into the air and slam down, dealing 268.20% Aero DMG. Shortly after hitting the target, cast Echo Skill again to charge at the target, dealing 268.20% Aero DMG.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Aero DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 15s",
+        "pt": "Transforma-se em Ceratossauro para saltar no ar e descer com força, causando 268.20% de Dano Pneumático. Logo após atingir o alvo, lança a Habilidade de Eco novamente para investir contra o alvo, causando 268.20% de Dano Pneumático.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de Bônus de Dano Pneumático e 12.00% de Bônus de Dano de Liberação de Ressonância.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Phantom: Kronaclaw": {
@@ -1366,6 +1974,10 @@
         "Trailblazing Star",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Kronaclaw and soar into the air to deal 8.04% Aero DMG up to 8 times and 24.13% Aero DMG 2 times, then dive to deal 155.55% Aero DMG 1 time.\nCD: 15s",
+        "pt": "Transforme-se em uma Kronagarra e voe pelo ar para causar 8.04% Dano Pneumático até 8 vezes e 24.13% Dano Pneumático 2 vezes, então mergulhe para causar 155.55% Dano Pneumático 1 vez.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Phantom: Lightcrusher": {
@@ -1374,6 +1986,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Lunge forward as a Lightcrusher, dealing 135.36% Spectro DMG. Generate 6 Ablucence on hit. Each Ablucence explosion deals 15.04% Spectro DMG.\nHold the Echo Skill to stay in the Lightcrusher form, which allows you to leap up and pounce forward in the air for a short distance.\n\nCooldown: 15s",
+        "pt": "Avance como um esmaga-luz, causando 135.36% de Dano Fotônico. Gera 6 de Luz Residual ao acertar. Cada explosão de Luz Residual causa 15.04% de Dano Fotônico.\nMantenha a habilidade de eco para permanecer na forma de esmaga-luz, o que permite saltar e avançar no ar por uma curta distância.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Phantom: Lorelei": {
@@ -1382,6 +1998,10 @@
       "sets": [
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Transform into Lorelei and attack surrounding enemies, dealing 405.00% Havoc DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Lorelei e ataca os inimigos ao redor para causar 405.00% de Dano Aniquilante.\nEste eco equipado no espaço principal do ressonante ganha 12.00% de bônus de Dano Aniquilante e 12.00% de bônus de dano de ATQ Básico.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Phantom: Lumiscale Construct": {
@@ -1391,6 +2011,10 @@
         "Void Thunder",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Transform into a Lumiscale Construct and enter a Parry Stance. If you are not attacked during the Parry Stance, slash to deal 553.60% Glacio DMG when the stance finishes. If attacked, counterattack instantly, dealing 553.60%+276.80% Glacio DMG. When hit with a Special Skill attack while in the Parry Stance, break the Special Skill and counterattack, dealing 553.60%+276.80% Glacio DMG.\n\nCD: 15s",
+        "pt": "Transforma-se num constructo lumescama e entre numa postura de aparo. Se você não for atacado durante a postura de aparo, corte para causar 553.60% de Dano Criogênico quando a postura terminar. Se atacado, contra-ataca instantaneamente, causando 553.60%+276.80% de Dano Criogênico. Quando atingido por um ataque de habilidade especial enquanto estiver na postura de aparo, quebre a habilidade especial e contra-ataca, causando 553.60%+276.80% de Dano Criogênico.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Phantom: Mourning Aix": {
@@ -1399,6 +2023,10 @@
       "sets": [
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Mourning Aix and perform 2 consecutive claw attacks, each attack dealing 157.44% and 236.16% Spectro DMG respectively.\n\nAfter the transformation, increase current character's Spectro DMG by 12.00% and Resonance Liberation DMG by 12.00% for 15s\n\nCD: 20s",
+        "pt": "Transforme-se em Aix Lamentoso e realize 2 ataques consecutivos com garras, cada ataque causando 157.44% e 236.16% de Dano Fotônico respectivamente.\n\nApós a transformação, aumente o Dano Fotônico do personagem atual em 12.00% e o dano de liberação de ressonância em 12.00% por 15 s\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Myriad Snare: Rustfire Chassis": {
@@ -1408,6 +2036,10 @@
         "Heart of Evil's Purge",
         "Lamp of Nether Road"
       ],
+      "habilidade": {
+        "en": "Summon Myriad Snare: Rustfire Chassis, dealing Fusion DMG equal to 10.20% of the Max HP on initial impact. During its duration, it repeatedly crushes enemies along its path up to 19 times, dealing Fusion DMG equal to 0.37% of the Max HP each time.\n\nResonators with this Echo equipped in the main slot gain 12.00% Fusion DMG Bonus and 12.00% Heavy Attack DMG Bonus.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar Prisão de Miríades: Corpo Decadente, causando inicialmente Dano Térmico igual a 10.20% do HP Máx. do Ressonante aos inimigos. Durante esse tempo, esmaga os inimigos em seu caminho repetidas vezes, até 19 vezes, causando Dano Térmico igual a 0.37% do HP Máx. do Ressonante a cada acerto.\nRessonantes com este Eco equipado no espaço principal ganham 12.00% de Bônus de Dano Térmico e 12.00% de Bônus de Dano de ATQ Pesado.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Phantom: Nightmare Crownless": {
@@ -1416,6 +2048,10 @@
       "sets": [
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Crownless and attack enemies in front, dealing 264.60% Havoc DMG. The Resonator with this Echo equipped in their main slot gains 12.00% Havoc DMG Bonus and 12.00% Basic Attack DMG Bonus.\nThis skill has 3 initial charges, replenished once every 12s, max 3 charges. When Nightmare: Crownless hits a target, DMG dealt by this skill is increased by 20.00%. This effect lasts for 2s and does not stack.\nCD: 12s.",
+        "pt": "Transforma o usuário em Pesadelo: Destronado e ataca os inimigos à frente para causar 264.60% de Dano Aniquilante. Este eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Aniquilante e 12.00% de bônus de dano de ATQ Básico.\nEsta habilidade tem 3 cargas iniciais que recarregam uma vez a cada 12 s — máximo de 3 cargas. Quando Pesadelo: Destronado atinge um alvo, o dano causado por esta habilidade aumenta em 20.00%. Este efeito dura 2 s e não acumula.\nRecarga: 12 s."
+      },
       "status": "ok"
     },
     "Phantom: Nightmare Inferno Rider": {
@@ -1424,6 +2060,10 @@
       "sets": [
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Transform into Nightmare: Inferno Rider and jump to attack enemies in front, dealing 405.00% Fusion DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Fusion DMG Bonus and 12.00% Resonance Skill DMG Bonus.\nHold Echo Skill to transform into Nightmare: Inferno Rider and enter Riding Mode. When exiting Riding Mode, deal 283.50% Fusion DMG to enemies in front.\nCD: 25s.",
+        "pt": "Transforma o usuário em Pesadelo: Cavaleiro Infernal e salta para atacar os inimigos à frente e causar 405.00% de Dano Térmico.\nEste eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Térmico e 12.00% de bônus de dano de habilidade de ressonância.\nMantenha a habilidade de eco para transformar-se em Pesadelo: Cavaleiro Infernal e entrar no modo de montaria. Ao sair do modo de montaria, causa 283.50% de Dano Térmico aos inimigos à frente.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Phantom: Nimbus Wraith": {
@@ -1433,6 +2073,10 @@
         "Empyrean Anthem",
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Summon a Nimbus Wraith that restores the active Resonator's HP by 2.70% of their Max HP, up to 4 times.\nCD: 15s.",
+        "pt": "Invoca um Espectro de Nimbo que restaura o HP do Ressonante ativo em 2.70% do seu máx. de HP — até 4 vezes.\nRecarga: 15 s."
+      },
       "status": "ok"
     },
     "Phantom: Questless Knight": {
@@ -1442,6 +2086,10 @@
         "Molten Rift",
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Questless Knight and smash the surrounding enemies, dealing 313.20% Electro DMG.\nCD: 20s.",
+        "pt": "Transforma o usuário no Cavaleiro Errante e esmaga os inimigos ao redor para causar 313.20% de Dano Voltaico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Phantom: Reactor Husk": {
@@ -1451,6 +2099,10 @@
         "Halo of Starry Radiance",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Reactor Husk, jumping into the air and unleashing a heavy slash that deals 351.00% Fusion DMG to enemies.\n\nThe Resonator with this Echo equipped in their main slot gain 10.00% Energy Regen.\n\n CD: 20s.",
+        "pt": "Transforma em um Reator Deteriorado, saltando no ar e desencadeando um golpe pesado que causa 351.00% de Dano Térmico a inimigos.\n\nO Ressonante com este Eco equipado em seu espaço principal ganha 10.00% de Regen. de Energia.\n\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Phantom: Rocksteady Guardian": {
@@ -1460,6 +2112,10 @@
         "Rejuvenating Glow",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Rocksteady Guardian and enter a Parry State. Upon being attacked, deal Spectro DMG equal to 8.29% of the Resonator's Max HP, and perform a follow-up attack that deals Spectro DMG equal to 8.29% of the Resonator's Max HP.\n\nUse the Echo Skill again to exit the transformation.\n\nIf the attack received is a Special Skill attack, interrupt the enemy's Special Skill, gain a Shield equal to 30% Max HP, and perform a two-stage follow-up attack, each dealing Spectro DMG equal to 5.52% of the Resonator's Max HP. These follow-up attacks simultaneously launch three ground-breaking waves, each dealing Spectro DMG equal to 4.59% of the Resonator's Max HP.\n\nCD: 15s",
+        "pt": "Transforme-se em Guardião Rochafirme e entre em um Estado de Aparo. Ao ser atacado, cause Dano Fotônico igual a 8.29% do máx. de HP do ressonante, e execute um ataque de acompanhamento que causa Dano Fotônico igual a 8.29% do máx. de HP do ressonante.\n\nUse a habilidade de eco novamente para sair da transformação.\n\nSe o ataque recebido for um ataque de habilidade especial, interrompa a habilidade especial do inimigo, ganhe um escudo igual a 30% do máx. de HP e execute um ataque de acompanhamento em duas etapas, cada uma causando Dano Fotônico igual a 5.52% do máx. de HP do ressonante. Esses ataques de acompanhamento lançam simultaneamente três ondas devastadoras, cada uma causando Dano Fotônico igual a 4.59% do máx. de HP do ressonante.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Phantom: Sentry Construct": {
@@ -1468,6 +2124,10 @@
       "sets": [
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Sentry Construct and attack enemies in front, dealing 405.00% Glacio DMG. Each time the Resonator with this Echo casts Resonance Liberation, it charges the Strike Capacitor.\nOnce Strike Capacitor is at max level, the Echo Skill cooldown will be reset. Use Echo Skill to transform into Sentry Construct and dive into enemies from the air, dealing 405.00% Glacio DMG and freezing the target.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Skill DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Constructo de Sentinela e ataca inimigos à frente para causar 405.00% de Dano Criogênico. Cada vez que o Ressonante com este Eco lança liberação de ressonância, carrega o capacitor de impacto.\nQuando o capacitor de impacto estiver no nível máximo, o tempo de recarga da habilidade de eco reiniciará. Use a habilidade de eco para se transformar em Constructo de Sentinela e mergulhar do ar nos inimigos e causar 405.00% de Dano Criogênico e congelar o alvo.\nO Ressonante com este eco equipado no espaço principal ganha 12.00% de bônus de Dano Criogênico e 12.00% de bônus de dano de habilidade de ressonância.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Phantom: Sigillum": {
@@ -1476,6 +2136,10 @@
       "sets": [
         "Trailblazing Star"
       ],
+      "habilidade": {
+        "en": "Summon Sigillum to unleash two attacks, dealing 68.40% and 205.20% Fusion DMG respectively.\nWhen equipped in the main slot by Aemeath, it grants 25.00% Resonance Liberation DMG Bonus.\nCD: 20s",
+        "pt": "Invoca Sigillum para desencadear dois ataques, causando 68.40% e 205.20% de Dano Térmico respectivamente.\nQuando equipado no espaço principal por Aemeath, concede 25.00% de Bônus de Dano de Liberação de Ressonância.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Phantom: Skywatch Lancer": {
@@ -1485,6 +2149,10 @@
         "Flash of Electric Reflection",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Summon a Skywatch Lancer to attack the target, dealing 32.09% Aero DMG 6 times.\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar um Atirador Vigiacéu para atacar o alvo, causando 32.09% de Dano Aniquilante 6 vezes. Recarga: 15s"
+      },
       "status": "ok"
     },
     "Phantom: Smiter": {
@@ -1493,6 +2161,10 @@
       "sets": [
         "Song of Feathered Trace"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Smiter to jab at enemies, dealing 7 instances of 19.26% Spectro DMG, and finish with an uppercut, dealing 57.78% Spectro DMG.\n\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar um Açoitador para desferir golpes rápidos nos inimigos, causando 7 instâncias de 19.26% de Dano Fotônico, e finalizar com um gancho, causando 57.78% de Dano Fotônico.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Phantom: Smolder": {
@@ -1501,6 +2173,10 @@
       "sets": [
         "Song of Feathered Trace"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Smolder to hurl fireballs toward enemies, dealing 192.60% Fusion DMG. If the fireball hits the ground, it explodes to deal 192.60% Fusion DMG to all enemies within the range.\n\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar Caçador Inextinguível para lançar bolas de fogo nos inimigos, causando 192.60% de Dano Térmico. Se a bola de fogo atingir o chão, ela explode e causa Dano Térmico igual a 192.60% aos inimigos dentro da área.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Phantom: The False Sovereign": {
@@ -1509,6 +2185,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Transform into the False Sovereign and dash forward in a spinning strike, dealing 55.35% Electro DMG 4 times.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Heavy Attack DMG Bonus. Upon casting Intro Skill, the False Sovereign is also summoned to deal 405.00% Electro DMG.\nStart with 2 charges. Gain 1 charge every 8s, up to 2 charges.\nCD: 8s",
+        "pt": "Transforme-se no Falso Soberano e arremeta à frente em um ataque giratório, causando 55.35% de dano Voltaico 4 vezes.\nO Ressonante com este Ecos equipado no espaço principal ganha 12.00% de Bônus de dano Voltaico e 12.00% de Bônus de dano de ATQ Pesado. Ao usar Habilidade Intro, o Falso Soberano também é invocado para causar 405.00% de dano Voltaico.\nComeça com 2 cargas. Ganha 1 carga a cada 8s, até 2 cargas.\nCD: 8s"
+      },
       "status": "ok"
     },
     "Phantom: Thundering Mephis": {
@@ -1517,6 +2197,10 @@
       "sets": [
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Thundering Mephis, engaging in a rapid assault of up to 6 strikes. The first 5 strikes deal 132.61% Electro DMG each, while the final strike inflicts 189.44% Electro DMG, with an additional 31.57% Electro DMG from the thunder.\n\nAfter the final hit, increase the current character's Electro DMG by 12.00% and Resonance Liberation DMG by 12.00% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Mefítico Tonitruante, engajando em um ataque rápido de até 6 golpes. Os primeiros 5 golpes causam 132.61% de Dano Voltaico cada, enquanto o golpe final inflige 189.44% de Dano Voltaico, com um adicional de 31.57% de Dano Voltaico do trovão.\n\nApós o golpe final, aumente o Dano Voltaico do personagem atual em 12.00% e o dano de liberação de ressonância em 12.00% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Phantom: Twin Nova - Collapsar Blade": {
@@ -1525,6 +2209,10 @@
       "sets": [
         "Rite of Gilded Revelation"
       ],
+      "habilidade": {
+        "en": "Transform into a Twin Nova: Collapsar Blade to rapidly fire at enemies for 5s, with each attack dealing 2.01% Electro DMG.\n\nThe Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Basic Attack DMG Bonus.\n\nCD: 8s.\n\nIf Twin Nova: Nebulous Cannon is equipped in another slot on the Resonator:\n- Casting Echo Skill in succession transforms you into Collapsar Blade and Nebulous Cannon alternately and is considered casting Echo skills of the same name.\n- DMG dealt by Twin Nova: Collapsar Blade becomes Spectro DMG. The Electro DMG Bonus gained from equipping it in the main slot is turned into Spectro DMG Bonus.\n- Casting Basic Attacks grants 1 {Cus:Sap,S=stack P=stacks SapTag=1} of Dyad Origins. Casting Resonance Skill grants 3 {Cus:Sap,S=stack P=stacks SapTag=2} of Dyad Origins. Dyad Origins can stack up to 6 times and lasts for 8s. Each stack increases Echo Skill DMG by 10%, and all stacks are cleared after this Echo Skill ends.\n- This skill is capped at 2 uses. Initially, this skill can be used 2 times, with 1 use added every 8s.",
+        "pt": "Transforma-se em Supernova Gêmea: Lâmina do Colapso para disparar rapidamente contra inimigos por 5s, com cada ataque causando 2.01% de Dano Voltaico.\n\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Voltaico e 12.00% de bônus de Dano de ATQ Básico.\n\nRecarga: 8s.\n\nSe Supernova Gêmea: Canhão de Nebulosa estiver equipado em outro espaço do Ressonante:\n- Lançar Habilidade de Eco sucessivamente transforma você em Lâmina do Colapso e Canhão de Nebulosa alternadamente e é considerado lançar habilidades de Eco de mesmo nome.\n- O dano causado por Supernova Gêmea: Lâmina do Colapso torna-se Dano Fotônico. O bônus de Dano Voltaico obtido ao equipá-lo no espaço principal é convertido em bônus de Dano Fotônico.\n- Lançar ATQs Básicos concede 1 {Cus:Sap,S=acúmulo P=acúmulos SapTag=1} de Origens da Díade. Lançar Habilidade de Ressonância concede 3 {Cus:Sap,S=acúmulo P=acúmulos SapTag=2} de Origens da Díade. Origens da Díade pode acumular até 6 vezes e dura por 8s. Cada acúmulo aumenta o dano de habilidade de Eco em 10%, e todos os acúmulos são removidos após esta habilidade de Eco terminar.\n- Esta habilidade é limitada a 2 usos. Inicialmente, esta habilidade pode ser usada 2 vezes, com 1 uso adicionado a cada 8s."
+      },
       "status": "ok"
     },
     "Phantom: Twin Nova - Nebulous Cannon": {
@@ -1533,6 +2221,10 @@
       "sets": [
         "Rite of Gilded Revelation"
       ],
+      "habilidade": {
+        "en": "Transform into a Twin Nova: Nebulous Cannon to slash enemies twice, with each attack dealing 80.51% Spectro DMG.\n\nThe Resonator with this Echo equipped in the main slot gains 12.00% Spectro DMG Bonus and 12.00% Basic Attack DMG Bonus.\n\nCD: 8s.\n\nIf Twin Nova: Collapsar Blade is equipped in another slot on the Resonator:\n- Casting Echo Skill in succession transforms you into Nebulous Cannon and Collapsar Blade alternately and is considered casting Echo skills of the same name. The DMG Bonus from the Echo in the main slot remains unchanged.\n- DMG dealt by Twin Nova: Collapsar Blade becomes Spectro DMG.\n- Casting Basic Attacks grants 1 {Cus:Sap,S=stack P=stacks SapTag=1} of Dyad Origins. Casting Resonance Skill grants 3 {Cus:Sap,S=stack P=stacks SapTag=2} of Dyad Origins. Dyad Origins can stack up to 6 times and lasts for 8s. Each stack increases Echo Skill DMG by 10%, and all stacks are cleared after this Echo Skill ends.\n-This skill is capped at 2 uses. Initially, this skill can be used 2 times, with 1 use added every 8s.",
+        "pt": "Transforma-se em Supernova Gêmea: Canhão de Nebulosa para cortar inimigos duas vezes, com cada ataque causando 80.51% de Dano Fotônico.\n\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Fotônico e 12.00% de bônus de Dano de ATQ Básico.\n\nRecarga: 8s.\n\nSe Supernova Gêmea: Lâmina do Colapso estiver equipado em outro espaço do Ressonante:\n- Lançar habilidade de Eco sucessivamente transforma você em Canhão de Nebulosa e Lâmina do Colapso alternadamente e é considerado lançar habilidades de Eco de mesmo nome. O bônus de dano do Eco no espaço principal permanece inalterado.\n- O dano causado por Supernova Gêmea: Lâmina do Colapso torna-se Dano Fotônico.\n- Lançar ATQs Básicos concede 1 {Cus:Sap,S=acúmulo P=acúmulos SapTag=1} de Origens da Díade. Lançar Habilidade de Ressonância concede 3 {Cus:Sap,S=acúmulo P=acúmulos SapTag=2} de Origens da Díade. Origens da Díade pode acumular até 6 vezes e dura por 8s. Cada acúmulo aumenta o dano de habilidade de Eco em 10%, e todos os acúmulos são removidos após esta habilidade de Eco terminar.\n- Esta habilidade é limitada a 2 usos. Inicialmente, esta habilidade pode ser usada 2 vezes, com 1 uso adicionado a cada 8s."
+      },
       "status": "ok"
     },
     "Phantom: Vitreum Dancer": {
@@ -1542,6 +2234,10 @@
         "Molten Rift",
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Vitreum Dancer and attack surrounding enemies, dealing 313.20% Electro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus.\nCD: 20s.",
+        "pt": "Transforma o usuário em Dançarina Vítrea e ataca inimigos ao redor para causar 313.20% de Dano Voltaico.\nEste Eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Voltaico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Phantom: Zip Zap": {
@@ -1551,6 +2247,10 @@
         "Pact of Neonlight Leap",
         "Rite of Gilded Revelation"
       ],
+      "habilidade": {
+        "en": "Summon a Zip Zap to launch spinning attacks at enemies, dealing 25.92% Electro DMG 5 times.\n\nCD: 8s.",
+        "pt": "Invoca um Zip Zap para lançar ataques giratórios contra inimigos, causando 25.92% de Dano Voltaico 5 vezes.\n\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Pilgrim's Shell": {
@@ -1560,6 +2260,10 @@
         "Windward Pilgrimage",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Transform into a Pilgrim's Shell to attack nearby enemies, dealing 268.20% Aero DMG.\nCD: 15s",
+        "pt": "Transforma-se em Carapaça do Peregrino para atacar inimigos próximos, causando 268.20% de Dano Pneumático.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Porcelain Picket": {
@@ -1569,6 +2273,10 @@
         "Lamp of Nether Road",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Porcelain Picket to slash forward, dealing 2 instances of 19.44% Aero DMG and 7 instances of 12.96% Aero DMG to enemies along the path.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar um Marquês de Porcelana para desferir um corte frontal, causando 2 instâncias de 19.44% de Dano Pneumático e 7 instâncias de 12.96% de Dano Pneumático aos inimigos pelo caminho.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Questless Knight": {
@@ -1578,6 +2286,10 @@
         "Frosty Resolve",
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Transform into Questless Knight and smash the surrounding enemies, dealing 313.20% Electro DMG.\nCD: 20s.",
+        "pt": "Transforma o usuário no Cavaleiro Errante e esmaga os inimigos ao redor para causar 313.20% de Dano Voltaico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Rage Against the Statue": {
@@ -1588,6 +2300,10 @@
         "Gusts of Welkin",
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Transform into Rage Against the Statue to attack enemies, dealing 313.20% Spectro DMG. Hold the Echo Skill to maintain the Echo form and charge towards enemies, dealing 469.80% Spectro DMG.\nCD: 20s.",
+        "pt": "Transforme-se em Fúria Contra a Estátua para atacar inimigos, causando 313.20% de Dano Fotônico. Mantenha pressionada a Habilidade de Eco para manter a forma de Eco e avançar contra os inimigos, causando 469.80% de Dano Fotônico.\nCD: 20s."
+      },
       "status": "ok"
     },
     "Reactor Husk": {
@@ -1597,6 +2313,10 @@
         "Halo of Starry Radiance",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Reactor Husk, jumping into the air and unleashing a heavy slash that deals 351.00% Fusion DMG to enemies.\n\nThe Resonator with this Echo equipped in their main slot gain 10.00% Energy Regen.\n\n CD: 20s.",
+        "pt": "Transforma em um Reator Deteriorado, saltando no ar e desencadeando um golpe pesado que causa 351.00% de Dano Térmico a inimigos.\n\nO Ressonante com este Eco equipado em seu espaço principal ganha 10.00% de Regen. de Energia.\n\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Reminiscence - Nightmare: Adam Smasher": {
@@ -1605,6 +2325,10 @@
       "sets": [
         "Shadow of Shattered Dreams"
       ],
+      "habilidade": {
+        "en": "Cast Echo Skill to deal 16 instances of Physical DMG equal to 10.26% of ATK to enemies within range.\nWhen Lucy or Rebecca has this Echo equipped in the main slot, their Crit. Rate is increased by 15% and they unlock special Echo Skills.\n\nIf equipped by Lucy:\n- {Cus:Ipt,Touch=Tap PC=Press Gamepad=Press} the Echo Skill button to deal Spectro DMG equal to 273.60% of ATK to nearby enemies.\n- Hold the Echo Skill button to deal Spectro DMG equal to 273.60% of ATK to nearby enemies and enter a special moving state, increasing Lucy's movement speed while slowing nearby enemies.\n\nIf equipped by Rebecca:\n- Cast Echo Skill to fire missiles, dealing 16 instances of Electro DMG equal to 17.10% of ATK to enemies.\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para causar 16 instâncias de Dano Físico equivalente a 10.26% do ATQ em inimigos dentro do alcance.\nQuando Lucy ou Rebecca equipa este Eco no slot principal, a Taxa CRIT é aumentada em 15% e elas desbloqueiam Habilidades de Eco especiais.\n\nSe equipado por Lucy:\n- {Cus:Ipt,Touch=Toque PC=Pressione Gamepad=Pressione} o botão de Habilidade de Eco para causar Dano Fotônico equivalente a 273.60% do ATQ a inimigos próximos.\n- Segure o botão de Habilidade de Eco para causar Dano Fotônico equivalente a 273.60% do ATQa inimigos próximos e entrar em um estado especial de movimento, aumentando a velocidade de deslocamento de Lucy e desacelerando os inimigos próximos.\n\nSe equipado por Rebecca:\n- Use a Habilidade de Eco para disparar mísseis, causando 16 instâncias de Dano Voltaico equivalente a 17.10% do ATQ aos inimigos.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Reminiscence: Denia": {
@@ -1613,6 +2337,10 @@
       "sets": [
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Summon \"Trickster\" to deal 273.60% Fusion DMG to enemies. Within the next 15s, casting Outro Skill grants the incoming Resonator 12.00% Fusion DMG Bonus for 15s.\nCD: 20s",
+        "pt": "Invoca \"Trapaceiro\" para causar 273.60% de Dano Térmico aos inimigos. Nos próximos 15s, usar Habilidade Outro concede ao Ressonante que entra 12.00% de Bônus de Dano Térmico por 15s.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Reminiscence: Fenrico": {
@@ -1622,6 +2350,10 @@
         "Dream of the Lost",
         "Law of Harmony"
       ],
+      "habilidade": {
+        "en": "Summon the Talons of Decree to attack nearby enemies, dealing 273.60% Aero DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Aero DMG Bonus and 12.00% Heavy Attack DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca as Garras do Decreto para atacar inimigos próximos, causando 273.60% de Dano Pneumático.\nO ressonante com este eco equipado no espaço principal ganha 12.00% de Bônus de Dano Pneumático e 12.00% de Bônus de Dano de ATQ Pesado.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Reminiscence: Fleurdelys": {
@@ -1631,6 +2363,10 @@
         "Gusts of Welkin",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon Windcleaver and attack the target, dealing 27.36% Aero DMG 8 times and 136.80% Aero DMG once.\nThe Resonator with this Echo equipped in the main slot gains 10.00% Aero DMG Bonus. When Resonator: Aero or Cartethyia equips this Echo, they gain 10.00% more Aero DMG Bonus.\nCD: 20s.",
+        "pt": "Invoca Quebra-vento e ataca o alvo, causando 27.36% de Dano Pneumático 8 vezes e 136.80% de Dano Pneumático uma vez.\nO Ressonante com este eco equipado no espaço principal ganha 10.00% de Bônus de Dano Pneumático. Quando o Ressonante: aéreo ou Cartethyia equipam este eco, ganham 10.00% a mais de Bônus de Dano Pneumático.\nRecarga: 20s."
+      },
       "status": "ok"
     },
     "Reminiscence: Kronaclaw": {
@@ -1640,6 +2376,10 @@
         "Trailblazing Star",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Kronaclaw and soar into the air to deal 8.04% Aero DMG up to 8 times and 24.13% Aero DMG 2 times, then dive to deal 155.55% Aero DMG 1 time.\nCD: 15s",
+        "pt": "Transforme-se em uma Kronagarra e voe pelo ar para causar 8.04% Dano Pneumático até 8 vezes e 24.13% Dano Pneumático 2 vezes, então mergulhe para causar 155.55% Dano Pneumático 1 vez.\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Reminiscence: Suhsin the Inevitable": {
@@ -1649,6 +2389,10 @@
         "Heart of Sworn Vigil",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Cast Echo Skill to deal 4 instances of 27.36% Electro DMG and 1 instance of 164.16% Electro DMG.\nWhen equipped by Hsin, the Echo Skill instead deals 5 instances of 8.20% Electro DMG and 1 instance of 232.56% Electro DMG to targets within a larger range.\nThe Resonator with this Echo equipped in their main slot gains 10.00% Electro DMG Bonus. Inflicting Electro Flare, gaining Unison, or triggering Unison Response grants the Resonator an extra 10.00% Electro DMG Bonus for 30s.\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para causar 4 instâncias de 27.36% e 1 instância de 164.16% de Dano Voltaico aos inimigos.\nQuando equipada por Hsin, a Habilidade de Eco passa a causar até 5 instâncias de 8.20% e 1 instância de 232.56% de Dano Voltaico aos inimigos em uma área maior.\nQuando esta Habilidade de Eco está equipada no espaço principal, seu Bônus de Dano Voltaico aumenta em 10.00%. Após aplicar [Clarão Voltaico] a um alvo, obter Uníssono ou acionar Resposta de Uníssono, seu Bônus de Dano Voltaico aumenta em mais 10.00% por 30s.\nRecarga da habilidade: 20s"
+      },
       "status": "ok"
     },
     "Reminiscence: Threnodian - Leviathan": {
@@ -1658,6 +2402,10 @@
         "Flamewing's Shadow",
         "Thread of Severed Fate"
       ],
+      "habilidade": {
+        "en": "Summon a Collapsing Horizon, dealing two instances of 131.04% Havoc DMG to the nearby enemies and obtaining the Core of Collapse for 15s.\n\nWhile it lasts, Core of Collapse deals 24.57% Havoc DMG when the active Resonator in the team deals damage. This effect can be triggered once every 0.5s, up to 8 {Cus:Sap,S=time P=times SapTag=3}. Enemies with Havoc Bane take 100% more DMG from this effect.\n\nThe Resonator with this Echo equipped in the main slot gains 12.00% Havoc DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\n\nCD: 25s",
+        "pt": "Invoca um Horizonte em Colapso, causando duas instâncias de 131.04% de Dano Aniquilante a inimigos próximos e obtendo o Núcleo do Colapso por 15s.\n\nEnquanto durar, o Núcleo do Colapso causa 24.57% de Dano Aniquilante quando o Ressonante ativo da equipe causa dano. Este efeito pode ser ativado uma vez a cada 0.5s, até 8 {Cus:Sap,S=vez P=vezes SapTag=3}. Inimigos com Ruina Aniquilante recebem 100% mais dano deste efeito.\n\nO Ressonante com este Ecos equipado no espaço principal ganha 12.00% de Bônus de Dano Aniquilante e 12.00% de Bônus de dano de Liberação de Ressonância.\n\nRecarga: 25s"
+      },
       "status": "ok"
     },
     "Reminiscence: Threnodian - Voidborne Construct": {
@@ -1666,6 +2414,10 @@
       "sets": [
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Summon Aleph-1's Creation to deal 21.88% Glacio DMG 5 times and 164.16% Glacio DMG 1 time to enemies.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Liberation DMG Bonus.\nCD: 20s",
+        "pt": "Invoca a Criação de Alefe-1 para causar 21.88% Dano Criogênico 5 vezes e 164.16% Dano Criogênico 1 vez aos inimigos.\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% Bônus de Dano Criogênico e 12.00% Bônus de Dano de Liberação de Ressonância.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Rocksteady Guardian": {
@@ -1675,6 +2427,10 @@
         "Rejuvenating Glow",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Transform into Rocksteady Guardian and enter a Parry State. Upon being attacked, deal Spectro DMG equal to 8.29% of the Resonator's Max HP, and perform a follow-up attack that deals Spectro DMG equal to 8.29% of the Resonator's Max HP.\n\nUse the Echo Skill again to exit the transformation.\n\nIf the attack received is a Special Skill attack, interrupt the enemy's Special Skill, gain a Shield equal to 30% Max HP, and perform a two-stage follow-up attack, each dealing Spectro DMG equal to 5.52% of the Resonator's Max HP. These follow-up attacks simultaneously launch three ground-breaking waves, each dealing Spectro DMG equal to 4.59% of the Resonator's Max HP.\n\nCD: 15s",
+        "pt": "Transforme-se em Guardião Rochafirme e entre em um Estado de Aparo. Ao ser atacado, cause Dano Fotônico igual a 8.29% do máx. de HP do ressonante, e execute um ataque de acompanhamento que causa Dano Fotônico igual a 8.29% do máx. de HP do ressonante.\n\nUse a habilidade de eco novamente para sair da transformação.\n\nSe o ataque recebido for um ataque de habilidade especial, interrompa a habilidade especial do inimigo, ganhe um escudo igual a 30% do máx. de HP e execute um ataque de acompanhamento em duas etapas, cada uma causando Dano Fotônico igual a 5.52% do máx. de HP do ressonante. Esses ataques de acompanhamento lançam simultaneamente três ondas devastadoras, cada uma causando Dano Fotônico igual a 4.59% do máx. de HP do ressonante.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Roseshroom": {
@@ -1684,6 +2440,10 @@
         "Freezing Frost",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Summon a Roseshroom that fires a laser, dealing 57.07% Havoc DMG up to 3 times.\n\nCD: 15s",
+        "pt": "Convoque um Champirrosa que dispara um laser, causando 57.07% de Dano Aniquilante até 3 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Sabercat Prowler": {
@@ -1694,6 +2454,10 @@
         "Halo of Starry Radiance",
         "Sound of True Name"
       ],
+      "habilidade": {
+        "en": "Summon a Sabercat Prowler to fire beams at enemies, dealing 192.60% Havoc DMG.\n\nCD: 15s.",
+        "pt": "Invoca um Espreitador Dente-de-sabre para disparar feixes contra inimigos, causando 192.60% de Dano Aniquilante.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Sabercat Reaver": {
@@ -1704,6 +2468,10 @@
         "Halo of Starry Radiance",
         "Sound of True Name"
       ],
+      "habilidade": {
+        "en": "Summon a Sabercat Reaver to attack enemies, dealing 192.60% Fusion DMG.\n\nCD: 15s.",
+        "pt": "Invoca um Saqueador Dente-de-sabre para atacar inimigos, causando 192.60% de Dano Térmico.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Sabyr Boar": {
@@ -1714,6 +2482,10 @@
         "Sierra Gale",
         "Freezing Frost"
       ],
+      "habilidade": {
+        "en": "Summon a Sabyr Boar to headbutt the enemy into the air, dealing 32.00%+64 Physical DMG.\n\nCD: 8s",
+        "pt": "Convoque um Javali-sabrino para cabecear o inimigo no ar, causando 32.00%+64 de dano físico.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Sacerdos": {
@@ -1723,6 +2495,10 @@
         "Gusts of Welkin",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon a Sacerdos to attack enemies, dealing 64.80% Aero DMG 2 times.\nCD: 8s.",
+        "pt": "Invoca um Sacerdote para atacar inimigos, causando 64.80% de Dano Pneumático 2 vezes.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Sagittario": {
@@ -1733,6 +2509,10 @@
         "Eternal Radiance",
         "Flaming Clawprint"
       ],
+      "habilidade": {
+        "en": "Transform into Sagittario to move a certain distance and perform a ranged attack, dealing 268.20% Spectro DMG.\nGetting attacked while moving in the Sagittario form triggers form triggers a damage avoiding enhanced Dodge Counter, dealing 268.20% Spectro DMG once and 53.64% Spectro DMG 5 times.\nCD: 15s.",
+        "pt": "Transforma-se em Sagitário para se mover uma certa distância e realizar um ataque à distância, causando 268.20% de Dano Fotônico.\nSer atacado enquanto se move na forma Sagitário ativa um Contra-ataque Evasivo aprimorado que evita dano, causando 268.20% de Dano Fotônico uma vez e 53.64% de Dano Fotônico 5 vezes.\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Sentry Construct": {
@@ -1741,6 +2521,10 @@
       "sets": [
         "Frosty Resolve"
       ],
+      "habilidade": {
+        "en": "Transform into Sentry Construct and attack enemies in front, dealing 405.00% Glacio DMG. Each time the Resonator with this Echo casts Resonance Liberation, it charges the Strike Capacitor.\nOnce Strike Capacitor is at max level, the Echo Skill cooldown will be reset. Use Echo Skill to transform into Sentry Construct and dive into enemies from the air, dealing 405.00% Glacio DMG and freezing the target.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Glacio DMG Bonus and 12.00% Resonance Skill DMG Bonus.\nCD: 25s.",
+        "pt": "Transforma o usuário em Constructo de Sentinela e ataca inimigos à frente para causar 405.00% de Dano Criogênico. Cada vez que o Ressonante com este Eco lança liberação de ressonância, carrega o capacitor de impacto.\nQuando o capacitor de impacto estiver no nível máximo, o tempo de recarga da habilidade de eco reiniciará. Use a habilidade de eco para se transformar em Constructo de Sentinela e mergulhar do ar nos inimigos e causar 405.00% de Dano Criogênico e congelar o alvo.\nO Ressonante com este eco equipado no espaço principal ganha 12.00% de bônus de Dano Criogênico e 12.00% de bônus de dano de habilidade de ressonância.\nRecarga: 25 s."
+      },
       "status": "ok"
     },
     "Shadow Stepper": {
@@ -1751,6 +2535,10 @@
         "Chromatic Foam",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Summon a Shadow Stepper to attack enemies, dealing 129.60% Havoc DMG.\nCD: 8s.",
+        "pt": "Invoca um Andador das Sombras para atacar inimigos, causando 129.60% de Dano Aniquilante.\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Sigillum": {
@@ -1759,6 +2547,10 @@
       "sets": [
         "Trailblazing Star"
       ],
+      "habilidade": {
+        "en": "Summon Sigillum to unleash two attacks, dealing 68.40% and 205.20% Fusion DMG respectively.\nWhen equipped in the main slot by Aemeath, it grants 25.00% Resonance Liberation DMG Bonus.\nCD: 20s",
+        "pt": "Invoca Sigillum para desencadear dois ataques, causando 68.40% e 205.20% de Dano Térmico respectivamente.\nQuando equipado no espaço principal por Aemeath, concede 25.00% de Bônus de Dano de Liberação de Ressonância.\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Skywatch Lancer": {
@@ -1768,6 +2560,10 @@
         "Flash of Electric Reflection",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Summon a Skywatch Lancer to attack the target, dealing 32.09% Aero DMG 6 times.\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar um Atirador Vigiacéu para atacar o alvo, causando 32.09% de Dano Aniquilante 6 vezes. Recarga: 15s"
+      },
       "status": "ok"
     },
     "Smiter": {
@@ -1776,6 +2572,10 @@
       "sets": [
         "Song of Feathered Trace"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Smiter to jab at enemies, dealing 7 instances of 19.26% Spectro DMG, and finish with an uppercut, dealing 57.78% Spectro DMG.\n\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar um Açoitador para desferir golpes rápidos nos inimigos, causando 7 instâncias de 19.26% de Dano Fotônico, e finalizar com um gancho, causando 57.78% de Dano Fotônico.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Smolder": {
@@ -1784,6 +2584,10 @@
       "sets": [
         "Song of Feathered Trace"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon Smolder to hurl fireballs toward enemies, dealing 192.60% Fusion DMG. If the fireball hits the ground, it explodes to deal 192.60% Fusion DMG to all enemies within the range.\n\nCD: 15s",
+        "pt": "Use a Habilidade de Eco para invocar Caçador Inextinguível para lançar bolas de fogo nos inimigos, causando 192.60% de Dano Térmico. Se a bola de fogo atingir o chão, ela explode e causa Dano Térmico igual a 192.60% aos inimigos dentro da área.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Snip Snap": {
@@ -1794,6 +2598,10 @@
         "Rejuvenating Glow",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Snip Snap that throws fireballs at the enemy, dealing 32.00%+64 Fusion DMG on-hit.\n\nCD: 8s",
+        "pt": "Convoque um Clic-clac que lança bolas de fogo no inimigo, causando 32.00%+64 de Dano Térmico ao atingir.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Soulfrayer": {
@@ -1803,6 +2611,10 @@
         "Heart of Sworn Vigil",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Soulfrayer, dealing 91.18% Electro DMG 3 times.\nCasting Outro Skill within 15s after summoning Soulfrayer grants 12.00% Electro DMG Bonus to the incoming Resonator for 15s.\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para invocar o Desfia-Alma, causando 3 instâncias de 91.18% de Dano Voltaico aos inimigos.\nSe uma Habilidade Outro for usada nos 15s seguintes, o próximo Ressonante a entrar em campo com uma Habilidade Intro recebe 12.00% de Bônus de Dano Voltaico por 15s.\nRecarga da habilidade: 20s"
+      },
       "status": "ok"
     },
     "Spacetrek Explorer": {
@@ -1813,6 +2625,10 @@
         "Chromatic Foam",
         "Sound of True Name"
       ],
+      "habilidade": {
+        "en": "Summon a Spacetrek Explorer to grant nearby active Resonators in the team a Shield equal to 10% of the summoner's Max HP for 4s.\n\nCD: 20s",
+        "pt": "Invoca um Explorador Sideral para conceder aos Ressonantes ativos próximos da equipe um escudo equivalente a 10% do máx. de HP do invocador por 4s.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Spearback": {
@@ -1822,6 +2638,10 @@
         "Lingering Tunes",
         "Moonlit Clouds"
       ],
+      "habilidade": {
+        "en": "Summon a Spearback to perform 5 consecutive attacks. The first 4 attacks deal 29.96% Physical DMG, and the last deals 51.36% Physical DMG.\n\nCD: 15s",
+        "pt": "Convoque um Costalança para realizar 5 ataques consecutivos. Os primeiros 4 ataques causam 29.96% de dano físico, e o último causa 51.36% de dano físico.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Spectro Drake": {
@@ -1831,6 +2651,10 @@
         "Flaming Clawprint",
         "Windward Pilgrimage"
       ],
+      "habilidade": {
+        "en": "Summon a Spectro Drake to attack enemies, dealing 43.20% Spectro DMG 3 times.\nCD: 8s",
+        "pt": "Invoca um dragão Fotônico para atacar inimigos, causando 43.20% de Dano Fotônico 3 vezes.\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Spectro Prism": {
@@ -1841,6 +2665,10 @@
         "Void Thunder",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Summon a Spectro Prism to emit a laser that hits the enemy up to 8 times, dealing 14.40% Spectro DMG each time.\n\nCD: 8s",
+        "pt": "Convoque um Prisma Fotônico para emitir um laser que atinge o inimigo até 8 vezes, causando 14.40% de Dano Fotônico cada vez.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Stone Picket": {
@@ -1850,6 +2678,10 @@
         "Lamp of Nether Road",
         "Flash of Electric Reflection"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to summon a Stone Picket, dealing 129.60% Aero DMG.\n\nCD: 8s",
+        "pt": "Use a Habilidade de Eco para invocar um Marquês de Pedra, causando 129.60% de Dano Pneumático.\n\nRecarga: 8s"
+      },
       "status": "ok"
     },
     "Stonewall Bracer": {
@@ -1859,6 +2691,10 @@
         "Rejuvenating Glow",
         "Moonlit Clouds"
       ],
+      "habilidade": {
+        "en": "Transform into Stonewall Bracer and charge forward, dealing 112.64% Physical DMG on-hit, then smash to deal 168.96% Physical DMG, and gain a shield of 10.00% of current character's Max HP that lasts 7s. Use the Echo skill again to exit the transformation state.\n\nCD: 15s",
+        "pt": "Transforme-se em Braçal Pétrea e avance, causando 112.64% de dano físico ao atingir, depois esmague para causar 168.96% de dano físico, e ganhe um escudo de 10.00% do máx. de HP do personagem atual que dura 7 s. Use a habilidade de Eco novamente para sair do estado de transformação.\n\nRecarga: 15s"
+      },
       "status": "ok"
     },
     "Tambourinist": {
@@ -1868,6 +2704,10 @@
         "Freezing Frost",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Summon a Tambourinist that plays out Melodies of Annihilation. Any Resonator on the team gains the following effect for 10s upon obtaining a Melody of Annihilation: When the Resonator hits a target, the Tambourinist deals 14.40% Havoc DMG to the target, up to 10 times.\n\nCD: 15s",
+        "pt": "Invoque um Pandeirista que toca Melodias da Aniquilação. Qualquer ressonante na equipe ganha o seguinte efeito por 10s ao obter uma Melodia da Aniquilação: quando o ressonante acerta um alvo, o Pandeirista causa 14.40% de Dano Aniquilante ao alvo, até 10 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Tempest Mephis": {
@@ -1876,6 +2716,10 @@
       "sets": [
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Tempest Mephis to perform tail swing attacks followed by a claw attack. The lightning strike summoned by the tail swing deals 102.48% Electro DMG each time, while the claw attack deals 175.68% Electro DMG.\n\nAfter the claw hit, increase the current character's Electro DMG by 12.00% and Heavy Attack DMG by 12.00% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Mefítico Tempestuoso para realizar ataques de balanço de cauda seguidos por um ataque de garra. O raio convocado pelo balanço de cauda causa 102.48% de Dano Voltaico cada vez, enquanto o ataque de garra causa 175.68% de Dano Voltaico.\n\nApós o golpe de garra, aumente o Dano Voltaico do personagem atual em 12.00% e o dano de ATQ Pesado em 12.00% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "The False Sovereign": {
@@ -1884,6 +2728,10 @@
       "sets": [
         "Crown of Valor"
       ],
+      "habilidade": {
+        "en": "Transform into the False Sovereign and dash forward in a spinning strike, dealing 55.35% Electro DMG 4 times.\nThe Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Heavy Attack DMG Bonus. Upon casting Intro Skill, the False Sovereign is also summoned to deal 405.00% Electro DMG.\nStart with 2 charges. Gain 1 charge every 8s, up to 2 charges.\nCD: 8s",
+        "pt": "Transforme-se no Falso Soberano e arremeta à frente em um ataque giratório, causando 55.35% de dano Voltaico 4 vezes.\nO Ressonante com este Ecos equipado no espaço principal ganha 12.00% de Bônus de dano Voltaico e 12.00% de Bônus de dano de ATQ Pesado. Ao usar Habilidade Intro, o Falso Soberano também é invocado para causar 405.00% de dano Voltaico.\nComeça com 2 cargas. Ganha 1 carga a cada 8s, até 2 cargas.\nCD: 8s"
+      },
       "status": "ok"
     },
     "Thousand-Puppet Pavilion": {
@@ -1893,6 +2741,10 @@
         "Song of Feathered Trace",
         "Flower of Tinged Yearning"
       ],
+      "habilidade": {
+        "en": "Use Echo Skill to attack nearby enemies, dealing 109.44% Havoc DMG and summoning 4 Blades of Thousand Memories that last 15s.\n\nWhile Blades of Thousand Memories last, when the Resonator inflicts Havoc Bane, consume 1 Blade of Thousand Memories to deal 41.04% Havoc DMG once to the target. This effect can be triggered once every 1s.\n\nResonators with this Echo equipped in the main slot gain 12.00% Havoc DMG and 12.00% Heavy Attack DMG bonuses.\n\nCD: 20s",
+        "pt": "Use a Habilidade de Eco para atacar os inimigos próximos, causando 109.44% de Dano Aniquilante e invocando 4 Lâminas das Mil Memórias que duram 15s.\n\nEnquanto as Lâminas das Mil Memórias durarem, quando o ressonante infligir Perdição de Devastação, consome 1 Lâmina das Mil Memórias para causar 41.04% de Dano Devastação uma vez ao alvo. Este efeito pode ser acionado uma vez a cada 1s.\n\nRessonantes com este Eco equipado no espaço principal ganham 12.00% de Dano Devastação e 12.00% de Dano de Ataque Pesado.\n\nRecarga: 20s"
+      },
       "status": "ok"
     },
     "Thundering Mephis": {
@@ -1901,6 +2753,10 @@
       "sets": [
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Thundering Mephis, engaging in a rapid assault of up to 6 strikes. The first 5 strikes deal 132.61% Electro DMG each, while the final strike inflicts 189.44% Electro DMG, with an additional 31.57% Electro DMG from the thunder.\n\nAfter the final hit, increase the current character's Electro DMG by 12.00% and Resonance Liberation DMG by 12.00% for 15s.\n\nCD: 20s",
+        "pt": "Transforme-se em Mefítico Tonitruante, engajando em um ataque rápido de até 6 golpes. Os primeiros 5 golpes causam 132.61% de Dano Voltaico cada, enquanto o golpe final inflige 189.44% de Dano Voltaico, com um adicional de 31.57% de Dano Voltaico do trovão.\n\nApós o golpe final, aumente o Dano Voltaico do personagem atual em 12.00% e o dano de liberação de ressonância em 12.00% por 15 s.\n\nRecarga: 20 s"
+      },
       "status": "ok"
     },
     "Tick Tack": {
@@ -1911,6 +2767,10 @@
         "Rejuvenating Glow",
         "Havoc Eclipse"
       ],
+      "habilidade": {
+        "en": "Summon a Tick Tack that charges and bites the enemy. The charge from Tick Tack will deal 68.48% Havoc DMG to the enemy, and the bite will deal 102.72% Havoc DMG to the enemy. Reduces enemy Vibration Strength by up to 5.00% during 5s.\n\nCD: 15s",
+        "pt": "Convoque um Tic-tac que avança e morde o inimigo. O avanço do Tic-tac causará 68.48% de Dano Aniquilante ao inimigo, e a mordida causará 102.72% de Dano Aniquilante ao inimigo. Reduz a Força de Vibração do inimigo em até 5.00% durante 5 s.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Traffic Illuminator": {
@@ -1921,6 +2781,10 @@
         "Sierra Gale",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Traffic Illuminator, immobilizing enemies for up to 1s. The immobilization will be lifted once the enemy is hit.\n\nCD: 15s",
+        "pt": "Invoque um Semaforoide, imobilizando os inimigos por até 1 s. A imobilização será removida assim que o inimigo for atingido.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Tremor Warrior": {
@@ -1931,6 +2795,10 @@
         "Chromatic Foam",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Transform into a Tremor Warrior and viciously attack enemies in the front, dealing 205.20% Electro DMG.\n\nCD: 8s.",
+        "pt": "Transforma em um Guerreiro Sísmico e ataca viciosamente inimigos à frente, causando 205.20% de Dano Voltaico.\n\nRecarga: 8s."
+      },
       "status": "ok"
     },
     "Twin Nova: Collapsar Blade": {
@@ -1941,6 +2809,10 @@
         "Trailblazing Star",
         "Sound of True Name"
       ],
+      "habilidade": {
+        "en": "Transform into a Twin Nova: Collapsar Blade to rapidly fire at enemies for 5s, with each attack dealing 2.01% Electro DMG.\n\nThe Resonator with this Echo equipped in the main slot gains 12.00% Electro DMG Bonus and 12.00% Basic Attack DMG Bonus.\n\nCD: 8s.\n\nIf Twin Nova: Nebulous Cannon is equipped in another slot on the Resonator:\n- Casting Echo Skill in succession transforms you into Collapsar Blade and Nebulous Cannon alternately and is considered casting Echo skills of the same name.\n- DMG dealt by Twin Nova: Collapsar Blade becomes Spectro DMG. The Electro DMG Bonus gained from equipping it in the main slot is turned into Spectro DMG Bonus.\n- Casting Basic Attacks grants 1 {Cus:Sap,S=stack P=stacks SapTag=1} of Dyad Origins. Casting Resonance Skill grants 3 {Cus:Sap,S=stack P=stacks SapTag=2} of Dyad Origins. Dyad Origins can stack up to 6 times and lasts for 8s. Each stack increases Echo Skill DMG by 10%, and all stacks are cleared after this Echo Skill ends.\n- This skill is capped at 2 uses. Initially, this skill can be used 2 times, with 1 use added every 8s.",
+        "pt": "Transforma-se em Supernova Gêmea: Lâmina do Colapso para disparar rapidamente contra inimigos por 5s, com cada ataque causando 2.01% de Dano Voltaico.\n\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Voltaico e 12.00% de bônus de Dano de ATQ Básico.\n\nRecarga: 8s.\n\nSe Supernova Gêmea: Canhão de Nebulosa estiver equipado em outro espaço do Ressonante:\n- Lançar Habilidade de Eco sucessivamente transforma você em Lâmina do Colapso e Canhão de Nebulosa alternadamente e é considerado lançar habilidades de Eco de mesmo nome.\n- O dano causado por Supernova Gêmea: Lâmina do Colapso torna-se Dano Fotônico. O bônus de Dano Voltaico obtido ao equipá-lo no espaço principal é convertido em bônus de Dano Fotônico.\n- Lançar ATQs Básicos concede 1 {Cus:Sap,S=acúmulo P=acúmulos SapTag=1} de Origens da Díade. Lançar Habilidade de Ressonância concede 3 {Cus:Sap,S=acúmulo P=acúmulos SapTag=2} de Origens da Díade. Origens da Díade pode acumular até 6 vezes e dura por 8s. Cada acúmulo aumenta o dano de habilidade de Eco em 10%, e todos os acúmulos são removidos após esta habilidade de Eco terminar.\n- Esta habilidade é limitada a 2 usos. Inicialmente, esta habilidade pode ser usada 2 vezes, com 1 uso adicionado a cada 8s."
+      },
       "status": "ok"
     },
     "Twin Nova: Nebulous Cannon": {
@@ -1950,6 +2822,10 @@
         "Rite of Gilded Revelation",
         "Chromatic Foam"
       ],
+      "habilidade": {
+        "en": "Transform into a Twin Nova: Nebulous Cannon to slash enemies twice, with each attack dealing 80.51% Spectro DMG.\n\nThe Resonator with this Echo equipped in the main slot gains 12.00% Spectro DMG Bonus and 12.00% Basic Attack DMG Bonus.\n\nCD: 8s.\n\nIf Twin Nova: Collapsar Blade is equipped in another slot on the Resonator:\n- Casting Echo Skill in succession transforms you into Nebulous Cannon and Collapsar Blade alternately and is considered casting Echo skills of the same name. The DMG Bonus from the Echo in the main slot remains unchanged.\n- DMG dealt by Twin Nova: Collapsar Blade becomes Spectro DMG.\n- Casting Basic Attacks grants 1 {Cus:Sap,S=stack P=stacks SapTag=1} of Dyad Origins. Casting Resonance Skill grants 3 {Cus:Sap,S=stack P=stacks SapTag=2} of Dyad Origins. Dyad Origins can stack up to 6 times and lasts for 8s. Each stack increases Echo Skill DMG by 10%, and all stacks are cleared after this Echo Skill ends.\n-This skill is capped at 2 uses. Initially, this skill can be used 2 times, with 1 use added every 8s.",
+        "pt": "Transforma-se em Supernova Gêmea: Canhão de Nebulosa para cortar inimigos duas vezes, com cada ataque causando 80.51% de Dano Fotônico.\n\nO Ressonante com este Eco equipado no espaço principal ganha 12.00% de bônus de Dano Fotônico e 12.00% de bônus de Dano de ATQ Básico.\n\nRecarga: 8s.\n\nSe Supernova Gêmea: Lâmina do Colapso estiver equipado em outro espaço do Ressonante:\n- Lançar habilidade de Eco sucessivamente transforma você em Canhão de Nebulosa e Lâmina do Colapso alternadamente e é considerado lançar habilidades de Eco de mesmo nome. O bônus de dano do Eco no espaço principal permanece inalterado.\n- O dano causado por Supernova Gêmea: Lâmina do Colapso torna-se Dano Fotônico.\n- Lançar ATQs Básicos concede 1 {Cus:Sap,S=acúmulo P=acúmulos SapTag=1} de Origens da Díade. Lançar Habilidade de Ressonância concede 3 {Cus:Sap,S=acúmulo P=acúmulos SapTag=2} de Origens da Díade. Origens da Díade pode acumular até 6 vezes e dura por 8s. Cada acúmulo aumenta o dano de habilidade de Eco em 10%, e todos os acúmulos são removidos após esta habilidade de Eco terminar.\n- Esta habilidade é limitada a 2 usos. Inicialmente, esta habilidade pode ser usada 2 vezes, com 1 uso adicionado a cada 8s."
+      },
       "status": "ok"
     },
     "Vanguard Junrock": {
@@ -1960,6 +2836,10 @@
         "Void Thunder",
         "Lingering Tunes"
       ],
+      "habilidade": {
+        "en": "Summon a Vanguard Junrock that charges forward, dealing 32.00%+64 Physical DMG to enemies in its path.\n\nCD: 8s",
+        "pt": "Convoque um Novirrocha Vanguarda que avança, causando 32.00%+64 de dano físico aos inimigos em seu caminho.\n\nRecarga: 8 s"
+      },
       "status": "ok"
     },
     "Violet-Feathered Heron": {
@@ -1969,6 +2849,10 @@
         "Molten Rift",
         "Void Thunder"
       ],
+      "habilidade": {
+        "en": "Transform into Violet-Feathered Heron and enter a Parry Stance. Counterattack when the Parry stance is over, dealing 288.00% Electro DMG. If attacked during Parry Stance, you can counterattack in advance and additionally recover 5 Concerto Energy.\n\nCD: 15s",
+        "pt": "Transforme-se em Garça Roxiplumas e entre em uma postura de aparo. Contra-ataque quando a postura de aparo terminar, causando 288.00% de Dano Voltaico. Se atacado durante a postura de aparo, você pode contra-atacar antecipadamente e recuperar adicionalmente 5 de energia de concerto.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Viridblaze Saurian": {
@@ -1978,6 +2862,10 @@
         "Moonlit Clouds",
         "Molten Rift"
       ],
+      "habilidade": {
+        "en": "Summon a Viridblaze Saurian to continuously spit fire, dealing 17.12% Fusion DMG 10 times.\n\nCD: 15s",
+        "pt": "Convoque um Verdelisco para cuspir fogo continuamente, causando 17.12% de Dano Térmico 10 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Vitreum Dancer": {
@@ -1987,6 +2875,10 @@
         "Empyrean Anthem",
         "Eternal Radiance"
       ],
+      "habilidade": {
+        "en": "Transform into Vitreum Dancer and attack surrounding enemies, dealing 313.20% Electro DMG.\nThe Resonator with this Echo equipped in their main slot gains 12.00% Electro DMG Bonus.\nCD: 20s.",
+        "pt": "Transforma o usuário em Dançarina Vítrea e ataca inimigos ao redor para causar 313.20% de Dano Voltaico.\nEste Eco equipado no espaço principal do ressonante concede 12.00% de bônus de Dano Voltaico.\nRecarga: 20 s."
+      },
       "status": "ok"
     },
     "Voidwing Moth": {
@@ -1995,6 +2887,10 @@
       "sets": [
         "Reel of Spliced Memories"
       ],
+      "habilidade": {
+        "en": "{Cus:Ipt,Touch=Tap PC=Press Gamepad=Press} Echo Skill to transform into Voidwing Moth, dealing 405.00% Spectro DMG to nearby enemies.\nHold Echo Skill to continuously attack, dealing up to 12 instances of 49.33% Spectro DMG.\nWithin 15s after using this Echo skill, casting Outro Skill increases the incoming Resonator's ATK by 12.00% for 15s.\nCD: 25s",
+        "pt": "{Cus:Ipt,Touch=Toque PC=Pressione Gamepad=Pressione} Habilidade de Eco para se transformar em Mariposa Asa do Vazio, causando 405.00% de Dano Fotônico a inimigos próximos.\nMantenha pressionada a Habilidade de Eco para atacar continuamente, causando até 12 instâncias de 49.33% de Dano Fotônico.\nDurante 15s após usar esta habilidade de Eco, usar Habilidade Outro aumenta o ATQ do Ressonante que entra em 12.00% por 15s.\nRecarga: 25s"
+      },
       "status": "ok"
     },
     "Voltscourge Stalker": {
@@ -2004,6 +2900,10 @@
         "Empyrean Anthem",
         "Midnight Veil"
       ],
+      "habilidade": {
+        "en": "Summon a Voltscourge Stalker to perform 3 stages of attacks on enemies, each dealing 43.20% Electro DMG.\nCD: 8s.",
+        "pt": "Invoca um Lobo-praga Voltaico para executar 3 fases de ataques nos inimigos — cada uma causa 43.20% de Dano Voltaico.\nRecarga: 8 s."
+      },
       "status": "ok"
     },
     "Whiff Whaff": {
@@ -2014,6 +2914,10 @@
         "Moonlit Clouds",
         "Sierra Gale"
       ],
+      "habilidade": {
+        "en": "Summon a Whiff Whaff that triggers an air explosion, dealing 51.36% Aero DMG and produce a Low-pressure Zone. The Low-pressure Zone continuously pulls enemies nearby towards the center for 2s, dealing 19.97% Aero DMG up to 6 times.\n\nCD: 15s",
+        "pt": "Convoque um Vapt-vupt que desencadeia uma explosão aérea, causando 51.36% de Dano Pneumático e produz uma Zona de Baixa Pressão. A Zona de Baixa Pressão puxa continuamente inimigos próximos para o centro por 2 s, causando 19.97% de Dano Pneumático até 6 vezes.\n\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Windlash Coleoid": {
@@ -2023,6 +2927,10 @@
         "Rite of Gilded Revelation",
         "Wishes of Quiet Snowfall"
       ],
+      "habilidade": {
+        "en": "Transform into a Windlash Coleoid to kick enemies, dealing 268.20% Aero DMG.\n\nCD: 15s.",
+        "pt": "Transforma-se em Coleóide Açoite-vento para chutar inimigos, causando 268.20% de Dano Pneumático.\n\nRecarga: 15s."
+      },
       "status": "ok"
     },
     "Zig Zag": {
@@ -2033,6 +2941,10 @@
         "Lingering Tunes",
         "Celestial Light"
       ],
+      "habilidade": {
+        "en": "Summon a Zig Zag that detonates Spectro energy, dealing 48.00%+96 Spectro DMG and creating a Stagnation Zone that lasts 1.8s.\nCD: 15s",
+        "pt": "Convoque um Zigue-zague que detona energia Fotônico, causando 48.00%+96 de Dano Fotônico e criando uma Zona de Estagnação que dura 1,8 s.\nRecarga: 15 s"
+      },
       "status": "ok"
     },
     "Zip Zap": {
@@ -2044,6 +2956,10 @@
         "Chromatic Foam",
         "Sound of True Name"
       ],
+      "habilidade": {
+        "en": "Summon a Zip Zap to launch spinning attacks at enemies, dealing 25.92% Electro DMG 5 times.\n\nCD: 8s.",
+        "pt": "Invoca um Zip Zap para lançar ataques giratórios contra inimigos, causando 25.92% de Dano Voltaico 5 vezes.\n\nRecarga: 8s."
+      },
       "status": "ok"
     }
   }

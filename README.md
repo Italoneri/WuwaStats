@@ -53,6 +53,8 @@ Na página Captura, escolha a build e clique em
   F1–F24, A–Z, 0–9, Num0–Num9). A página mostra as teclas configuradas.
 ### Mais na interface
 
+- **Echos** (menu lateral): todos os echos com a imagem, para conferir à mão; o filtro "Só sem imagem" mostra os que
+  faltam. Clicar abre o que o echo faz (habilidade com os valores do nível mais alto) e permite trocar a imagem.
 - **Editor de builds** (menu lateral): pesos com sliders, Regen mínima, custos, principais, set, echo principal, armas e
   variantes. Salvar valida com o mesmo loader dos dados, guarda o arquivo anterior em `data/backups/` e recarrega.
 - **Imagens**: passe o mouse no retrato do personagem, na arma ou no echo e clique na câmera para enviar uma imagem
@@ -70,7 +72,7 @@ Tudo em `data/`, editável à mão:
 | `substats.json` | valores discretos de cada substatus (índice = tier) |
 | `main_stats.json` | status principais por custo |
 | `sets.json` | sets, nome PT, peças, bônus que são status (ex.: Regen. de Energia) e texto de cada efeito — gerado |
-| `echoes.json` | catálogo de echos (nome PT, custo, sets possíveis) — gerado |
+| `echoes.json` | catálogo de echos (nome PT, custo, sets possíveis, o que a habilidade faz) — gerado |
 | `stat_aliases.json` | chave interna (inglês) → nomes do jogo (PT-BR) e alternativos |
 | `characters.json` | perfis de build (com `armas` recomendadas, opcional) |
 | `notas.json` | faixas de nota (SSS…C) pelo score |
@@ -82,7 +84,7 @@ Entradas com `"status": "TODO: ..."` ainda precisam ser conferidas num wiki atua
 
 ### Atualizar echos, sets, ressonadores e armas
 
-`scripts/importar_dados_jogo.py` baixa as tabelas de echos/sonatas e os textos EN/PT do repositório (branch padrão = versão
+`scripts/importar_dados_jogo.py` baixa as tabelas de echos (com a habilidade)/sonatas e os textos EN/PT do repositório (branch padrão = versão
 atual do jogo), regenera `echoes.json`, `sets.json`, `resonators.json` e `weapons.json` e acrescenta os nomes PT como aliases, sem apagar mapeamentos manuais.
 Tudo é validado numa cópia antes de tocar em `data/`. Compare `commit` em `fonte_dados_jogo.json` com o último commit do
 repositório para saber se há atualização.

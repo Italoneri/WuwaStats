@@ -69,6 +69,16 @@ class EchoCatalogo(ItemCatalogo):
     custo: Custo | None
 
 
+class EchoDetalhe(_Contrato):
+    chave: str
+    nome: str
+    custo: Custo | None
+    sets: list[Rotulo]
+    habilidade: str | None = Field(
+        description="O que o echo faz, com os valores do nível mais alto; PT-BR quando houver. Null se a fonte não tem."
+    )
+
+
 class ArmaCatalogo(ItemCatalogo):
     tipo: str
     raridade: int
@@ -130,6 +140,19 @@ def listar_personagens(dados: GameData) -> list[PersonagemResumo]:
             tem_perfil=nome in builds,
         )
         for nome, r in sorted(dados.ressonadores.items())
+    ]
+
+
+def listar_echoes(dados: GameData) -> list[EchoDetalhe]:
+    return [
+        EchoDetalhe(
+            chave=chave,
+            nome=_rotulo(dados.echo_names, chave),
+            custo=echo.custo,
+            sets=[Rotulo(chave=s, nome=_rotulo(dados.set_names, s)) for s in echo.sets],
+            habilidade=echo.habilidade.rotulo if echo.habilidade else None,
+        )
+        for chave, echo in sorted(dados.echoes.items())
     ]
 
 

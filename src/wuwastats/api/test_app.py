@@ -90,6 +90,19 @@ def test_catalogo_traz_rotulos_e_valores_discretos(cliente: TestClient) -> None:
     assert armas["Test Weapon"] == {"chave": "Test Weapon", "nomes": ["Arma Teste"], "tipo": "sword", "raridade": 5}
 
 
+def test_lista_echoes_com_sets_e_o_que_a_habilidade_faz(cliente: TestClient) -> None:
+    echoes = {e["chave"]: e for e in cliente.get("/api/echoes").json()}
+
+    assert echoes["Suhsin"] == {
+        "chave": "Suhsin",
+        "nome": "Suhsin",
+        "custo": None,
+        "sets": [{"chave": "Moonlit Clouds", "nome": "Moonlit Clouds"}],
+        "habilidade": "Convoca Suhsin, causando 50% de dano elétrico.",
+    }
+    assert echoes["Soulfrayer"]["habilidade"] is None
+
+
 def test_analisa_entrada_manual(cliente: TestClient, entrada: dict[str, Any]) -> None:
     resposta = cliente.post("/api/analisar", json=entrada)
 

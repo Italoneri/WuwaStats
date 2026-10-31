@@ -121,6 +121,27 @@ Tudo que a interface precisa para rótulos, seletores e validação visual.
 - `substatus`: valores discretos possíveis (posição no array = tier − 1); `null` se o status não existe como substatus.
 - `principal`: valor máximo como status principal, por custo (`"1"`, `"3"`, `"4"`).
 
+## `GET /api/echoes`
+
+Todos os echos de `data/echoes.json`, em ordem alfabética da chave, com o que cada um faz. Usado pela página Echos.
+
+```json
+[
+  {
+    "chave": "Crownless",
+    "nome": "Destronado",
+    "custo": 4,
+    "sets": [{ "chave": "Havoc Eclipse", "nome": "Eclipse Aniquilante" }],
+    "habilidade": "Transforme-se em Destronado e realize até 4 ataques consecutivos. [...]
+
+Recarga: 20 s"
+  }
+]
+```
+
+- `habilidade`: texto do jogo com os valores do nível mais alto, sem a marcação de estilo; PT-BR quando houver, senão
+  inglês. Use `white-space: pre-line` para manter os parágrafos. `null` se os dados do jogo não trazem a descrição.
+
 ## `POST /api/analisar`
 
 Corpo: **EntradaBuild**. Resposta: **Analise**.

@@ -1,4 +1,4 @@
-// Peças compartilhadas pelas 4 páginas: API, DOM, ícones e a moldura. Nenhuma regra de negócio aqui.
+// Peças compartilhadas pelas páginas: API, DOM, ícones e a moldura. Nenhuma regra de negócio aqui.
 
 // ---------- API ----------
 
@@ -24,6 +24,7 @@ export const api = {
   personagens: () => pedir("/api/personagens"),
   builds: () => pedir("/api/builds"),
   catalogo: () => pedir("/api/catalogo"),
+  echoes: () => pedir("/api/echoes"),
   analisar: (entrada) => pedir("/api/analisar", json("POST", entrada)),
   extrair: (form) => pedir("/api/extrair", { method: "POST", body: form }),
   mapear: (pedido) => pedir("/api/aliases", json("POST", pedido)),
@@ -247,6 +248,7 @@ export const perguntaCondicao = (chave) => ROTULO_CONDICAO[chave]?.pergunta ?? `
 
 const PAGINAS = [
   { id: "personagens", href: "index.html", rotulo: "Personagens" },
+  { id: "echo", href: "echoes.html", rotulo: "Echos" },
   { id: "captura", href: "captura.html", rotulo: "Captura" },
   { id: "analise", href: "analise.html", rotulo: "Análise" },
   { id: "builds", href: "perfis.html", rotulo: "Editor de builds" },
@@ -341,6 +343,8 @@ export async function carregarImagens() {
   }
 }
 
+export const temImagem = (categoria, chave) => imagensDisponiveis[categoria].has(chave);
+
 const srcImagem = (categoria, chave) => `/api/imagens/${categoria}/${encodeURIComponent(chave)}?v=${versaoImagem.get(`${categoria}/${chave}`) ?? 0}`;
 
 /** Imagem do catálogo quando existe, senão o placeholder. Com `trocavel`, um botão envia outra imagem. */
@@ -349,7 +353,8 @@ export function figura(categoria, chave, reserva, { trocavel = false, rotulo = c
   const desenhar = () => {
     const tem = chave && imagensDisponiveis[categoria].has(chave);
     const conteudo = tem ? el("img", { class: "foto", src: srcImagem(categoria, chave), alt: rotulo ?? "", loading: "lazy" }) : reserva;
-    caixa.replaceChildren(conteudo, trocavel && chave ? botaoTrocar(categoria, chave, rotulo, caixa, desenhar) : null);
+    const trocar = trocavel && chave ? botaoTrocar(categoria, chave, rotulo, caixa, desenhar) : null;
+    caixa.replaceChildren(...[conteudo, trocar].filter(Boolean));
   };
   desenhar();
   return caixa;

@@ -17,10 +17,12 @@ from wuwastats.api.captura import rotas_captura
 from wuwastats.api.contracts import (
     BuildResumo,
     Catalogo,
+    EchoDetalhe,
     Erro,
     PedidoAlias,
     PersonagemResumo,
     RespostaExtracao,
+    listar_echoes,
     listar_personagens,
     montar_catalogo,
     resumir_build,
@@ -156,6 +158,10 @@ def criar_app(
     @app.get("/api/personagens")
     def personagens(dados: Dados) -> list[PersonagemResumo]:
         return listar_personagens(dados)
+
+    @app.get("/api/echoes")
+    def echoes(dados: Dados) -> list[EchoDetalhe]:
+        return listar_echoes(dados)
 
     @app.get("/api/catalogo")
     def catalogo(dados: Dados) -> Catalogo:

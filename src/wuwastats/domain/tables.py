@@ -34,8 +34,20 @@ class SetInfo:
 
 
 @dataclass(frozen=True)
+class Traducao:
+    en: str
+    pt: str | None
+
+    @property
+    def rotulo(self) -> str:
+        return self.pt or self.en
+
+
+@dataclass(frozen=True)
 class EchoInfo:
     custo: Custo | None
+    sets: tuple[str, ...] = ()
+    habilidade: Traducao | None = None  # o que o echo faz, com os valores do nível mais alto
 
 
 @dataclass(frozen=True)
@@ -68,16 +80,6 @@ class Perfil:
     base: BuildSpec
     variantes: tuple[Variante, ...]
     armas: ArmasPerfil | None = None
-
-
-@dataclass(frozen=True)
-class Traducao:
-    en: str
-    pt: str | None
-
-    @property
-    def rotulo(self) -> str:
-        return self.pt or self.en
 
 
 @dataclass(frozen=True)

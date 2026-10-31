@@ -3,7 +3,12 @@
     "descricao": "Catálogo de echos. Chave = nome em inglês; nomes PT-BR ficam em stat_aliases.json. 'custo' null = desconhecido (não é conferido)."
   },
   "echoes": {
-    "Suhsin": { "custo": null, "status": "TODO: confirmar custo" },
+    "Suhsin": {
+      "custo": null,
+      "sets": ["Moonlit Clouds"],
+      "habilidade": { "en": "Summon Suhsin, dealing 50% Electro DMG.", "pt": "Convoca Suhsin, causando 50% de dano elétrico." },
+      "status": "TODO: confirmar custo"
+    },
     "Soulfrayer": { "custo": null, "status": "TODO: confirmar custo" }
   }
 }

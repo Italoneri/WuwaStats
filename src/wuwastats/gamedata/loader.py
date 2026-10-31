@@ -31,6 +31,7 @@ from wuwastats.gamedata.schemas import (
     ArquivosDeDados,
     BuildSpecRaw,
     CustoChave,
+    EchoRaw,
     PerfilRaw,
     ResonatorsFile,
     SetRaw,
@@ -100,7 +101,7 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
         substats=substats,
         main_stats=main_stats,
         sets={nome: resolvedor.set_info(nome, raw) for nome, raw in arquivos.sets.sets.items()},
-        echoes={nome: EchoInfo(custo=raw.custo) for nome, raw in arquivos.echoes.echoes.items()},
+        echoes={nome: _echo_info(raw) for nome, raw in arquivos.echoes.echoes.items()},
         echos_repetidos_contam=arquivos.sets.meta.echos_repetidos_contam,
         stat_names=stat_names,
         echo_names=echo_names,
@@ -117,6 +118,11 @@ def _montar(arquivos: ArquivosDeDados, erros: list[str]) -> GameData:
         ressonador_names=ressonador_names,
         arma_names=arma_names,
     )
+
+
+def _echo_info(raw: EchoRaw) -> EchoInfo:
+    habilidade = Traducao(en=raw.habilidade.en, pt=raw.habilidade.pt) if raw.habilidade else None
+    return EchoInfo(custo=raw.custo, sets=tuple(raw.sets), habilidade=habilidade)
 
 
 def _substats(arquivo: SubstatsFile) -> dict[str, SubstatTable]:

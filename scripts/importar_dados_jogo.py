@@ -3,9 +3,10 @@
     uv run python scripts/importar_dados_jogo.py              # branch padrão (= versão atual do jogo)
     uv run python scripts/importar_dados_jogo.py --ref 3.7    # branch ou commit específico
 
-Gera data/echoes.json, data/sets.json, data/resonators.json e data/weapons.json, acrescenta os nomes PT-BR
-de echos e sets como aliases em data/stat_aliases.json (mapeamentos manuais ficam) e grava em
-data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de substituir os arquivos de verdade.
+Gera data/echoes.json (com o que a habilidade de cada echo faz), data/sets.json, data/resonators.json e
+data/weapons.json, acrescenta os nomes PT-BR de echos e sets como aliases em data/stat_aliases.json (mapeamentos
+manuais ficam) e grava em data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de
+substituir os arquivos de verdade.
 Depois baixa de nanoka.cc os ícones de echos e armas que ainda não estão em data/imagens/ (ressonadores ficam à mão).
 """
 
@@ -51,6 +52,7 @@ TIPO_ECHO_NORMAL = 1
 
 # Caminhos conferidos na versão 3.7. Se um 404 aparecer, a pasta mudou de nome: procure o arquivo no repositório.
 CAMINHO_ECHOS = "BinData/phantom/phantomitem.json"
+CAMINHO_HABILIDADES = "BinData/phantom/phantomskill.json"
 CAMINHO_RARIDADES = "BinData/phantom/phantomrarity.json"
 CAMINHO_GRUPOS_SET = "BinData/phantom/phantomfettergroup.json"
 CAMINHO_EFEITOS_SET = "BinData/phantom/phantomfetter.json"
@@ -100,6 +102,18 @@ class EchoFonte(_Fonte):
     grupos_set: list[int] = Field(alias="FetterGroup")
     tipo: int = Field(alias="PhantomType")
     icone: str | None = Field(default=None, alias="Icon")
+    habilidade: int | None = Field(default=None, alias="SkillId")
+
+
+class NivelHabilidadeFonte(_Fonte):
+    parametros: list[str] = Field(alias="ArrayString")
+
+
+class HabilidadeFonte(_Fonte):
+    id: int = Field(alias="PhantomSkillId")
+    chave_descricao: str = Field(alias="DescriptionEx")
+    chave_resumo: str = Field(alias="SimplyDescription")
+    niveis: list[NivelHabilidadeFonte] = Field(alias="LevelDescStrArray")
 
 
 class RaridadeFonte(_Fonte):
@@ -196,6 +210,7 @@ class TabelasFonte:
     personagens: list[PersonagemFonte] = field(default_factory=list)
     elementos: list[ElementoFonte] = field(default_factory=list)
     armas: list[ArmaFonte] = field(default_factory=list)
+    habilidades: list[HabilidadeFonte] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -204,6 +219,7 @@ class EchoImportado:
     custos: frozenset[int]
     sets: tuple[str, ...]
     icone: str | None = None
+    habilidade: tuple[str, str | None] | None = None  # (en, pt)
 
 
 @dataclass(frozen=True)
@@ -340,6 +356,7 @@ def baixar_tabelas(sha: str) -> TabelasFonte:
         personagens=tabela(CAMINHO_PERSONAGENS, TypeAdapter(list[PersonagemFonte])),
         elementos=tabela(CAMINHO_ELEMENTOS, TypeAdapter(list[ElementoFonte])),
         armas=tabela(CAMINHO_ARMAS, TypeAdapter(list[ArmaFonte])),
+        habilidades=tabela(CAMINHO_HABILIDADES, TypeAdapter(list[HabilidadeFonte])),
     )
 
 
@@ -502,12 +519,37 @@ def _montar_echo(
     if len(nomes_pt) > 1:
         avisos.append(f"echo {nome}: nomes PT diferentes entre variantes {sorted(nomes_pt)}; usando o mais comum")
     grupos = dict.fromkeys(grupo for linha in linhas for grupo in linha.grupos_set)
+    habilidade = _habilidade(linhas, tabelas)
+    if habilidade is None:
+        avisos.append(f"echo {nome}: a fonte não tem a descrição da habilidade")
     return EchoImportado(
         nome_pt=nomes_pt.most_common(1)[0][0] if nomes_pt else None,
         custos=frozenset(custo_por_raridade[linha.raridade] for linha in linhas if linha.raridade in custo_por_raridade),
         sets=tuple(nome_por_grupo[grupo] for grupo in grupos if grupo in nome_por_grupo),
         icone=next((linha.icone for linha in linhas if linha.icone), None),
+        habilidade=habilidade,
     )
+
+
+def _habilidade(linhas: list[EchoFonte], tabelas: TabelasFonte) -> tuple[str, str | None] | None:
+    """Descrição com os valores do nível mais alto; sem tabela de níveis, o resumo (que não tem números)."""
+    por_id = {habilidade.id: habilidade for habilidade in tabelas.habilidades}
+    habilidade = next((por_id[linha.habilidade] for linha in linhas if linha.habilidade in por_id), None)
+    if habilidade is None:
+        return None
+    chave, parametros = (
+        (habilidade.chave_descricao, habilidade.niveis[-1].parametros) if habilidade.niveis else (habilidade.chave_resumo, [])
+    )
+    en = limpar_marcacao(preencher(tabelas.textos_en.get(chave, ""), parametros))
+    pt = _texto_pt(tabelas, chave, parametros)
+    return (en, limpar_marcacao(pt) if pt else None) if en else None
+
+
+def limpar_marcacao(texto: str) -> str:
+    """Tira as tags de estilo do jogo (<color=...>, <size=...>, <SapTag=...>) e as linhas em branco repetidas."""
+    sem_tags = re.sub(r"</?[A-Za-z][^<>]*>", "", texto)
+    linhas = "\n".join(linha.rstrip() for linha in sem_tags.splitlines())
+    return re.sub(r"\n{3,}", "\n\n", linhas).strip()
 
 
 def montar_elenco(tabelas: TabelasFonte) -> Elenco:
@@ -609,8 +651,8 @@ def gerar_echoes(novos: Mapping[str, EchoImportado], atual: EchoesFile, commit: 
         "descricao": (
             "Catálogo de echos, gerado por scripts/importar_dados_jogo.py (fonte em fonte_dados_jogo.json). "
             "Chave = nome em inglês; nome_pt também vira alias em stat_aliases.json. 'custo' null = desconhecido "
-            "(não é conferido). 'sets' = sonatas possíveis. Para custo marcado como TODO, preencha à mão: "
-            "a escolha sobrevive à próxima importação."
+            "(não é conferido). 'sets' = sonatas possíveis. 'habilidade' = o que o echo faz, com os valores do "
+            "nível mais alto. Para custo marcado como TODO, preencha à mão: a escolha sobrevive à próxima importação."
         )
     }
     return {"_meta": meta, "echoes": echoes}, avisos
@@ -620,7 +662,8 @@ def _echo_json(nome: str, echo: EchoImportado, anterior: EchoRaw | None, avisos:
     custo, status = _custo(echo.custos, anterior)
     if status != "ok":
         avisos.append(f"echo {nome}: {status}")
-    return {"nome_pt": echo.nome_pt, "custo": custo, "sets": list(echo.sets), "status": status}
+    habilidade = {"en": echo.habilidade[0], "pt": echo.habilidade[1]} if echo.habilidade else None
+    return {"nome_pt": echo.nome_pt, "custo": custo, "sets": list(echo.sets), "habilidade": habilidade, "status": status}
 
 
 def _custo(custos: frozenset[int], anterior: EchoRaw | None) -> tuple[int | None, str]:
