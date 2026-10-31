@@ -197,7 +197,7 @@ class _Resolvedor:
 
     def perfil(self, nome: str, raw: PerfilRaw) -> Perfil:
         onde = f"characters.json › {nome}"
-        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "armas", "variantes", "descricao"})
+        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "armas", "variantes", "descricao", "status"})
         variantes = (
             self._variante(base_campos, variante, f"{onde} › variantes › {indice}")
             for indice, variante in enumerate(raw.variantes)

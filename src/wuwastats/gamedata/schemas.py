@@ -212,6 +212,7 @@ class PerfilRaw(BuildSpecRaw):
     variantes: list[VarianteRaw] = []
     # Explicação da build para a página do personagem: parágrafos separados por linha em branco, **negrito** permitido.
     descricao: str | None = None
+    status: str = "ok"  # "TODO: ..." = algo a conferir à mão (ex.: gerado pelo importador do Game8)
 
 
 class ArquivosDeDados(BaseModel):

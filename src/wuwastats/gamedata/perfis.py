@@ -33,29 +33,29 @@ class ChaveDeBuildInvalida(ValueError):
 
 
 def perfis_editaveis(data_dir: Path, dados: GameData) -> dict[str, PerfilRaw]:
-    brutos = _ler(data_dir)
+    brutos = ler_perfis(data_dir)
     return {chave: _com_chaves(PerfilRaw.model_validate(raw), dados) for chave, raw in brutos.items()}
 
 
 def salvar_perfil(data_dir: Path, chave: str, perfil: PerfilRaw) -> GameData:
     if not CHAVE_VALIDA.match(chave):
         raise ChaveDeBuildInvalida("a chave da build deve ter letras, números, '_' ou '-' (até 60), ex.: Suoming_DPS")
-    perfis = _ler(data_dir)
-    return _gravar(data_dir, perfis | {chave: _serializar(perfil)})
+    perfis = ler_perfis(data_dir)
+    return gravar_perfis(data_dir, perfis | {chave: _serializar(perfil)})
 
 
 def apagar_perfil(data_dir: Path, chave: str) -> GameData:
-    perfis = _ler(data_dir)
+    perfis = ler_perfis(data_dir)
     if chave not in perfis:
         raise PerfilInexistente(f"build '{chave}' não existe em {ARQUIVO_PERFIS}")
-    return _gravar(data_dir, {k: v for k, v in perfis.items() if k != chave})
+    return gravar_perfis(data_dir, {k: v for k, v in perfis.items() if k != chave})
 
 
-def _ler(data_dir: Path) -> dict[str, Any]:
+def ler_perfis(data_dir: Path) -> dict[str, Any]:
     return json.loads((data_dir / ARQUIVO_PERFIS).read_text(encoding="utf-8"))
 
 
-def _gravar(data_dir: Path, perfis: Mapping[str, Any]) -> GameData:
+def gravar_perfis(data_dir: Path, perfis: Mapping[str, Any]) -> GameData:
     """Valida numa cópia dos JSON (GameDataError se inválido); só então faz backup e substitui o arquivo."""
     dados = _validar(data_dir, perfis)
     caminho = data_dir / ARQUIVO_PERFIS

@@ -12,6 +12,7 @@ uv run wuwastats analyze fixtures/entradas/suoming_dps.json
 uv run wuwastats extract input/ --build Suoming_DPS --saida input/entrada.json  # IA de visão
 uv run wuwastats alias sets "Moonlit Clouds" "<nome PT-BR>"
 uv run python scripts/importar_dados_jogo.py         # atualiza echos/sets a partir dos dados do jogo
+uv run python scripts/importar_builds_game8.py --simular  # builds dos guias do Game8 (sem --simular, grava)
 uv run pytest
 uvx ruff check src scripts && uvx pyright src scripts
 ```
@@ -94,3 +95,15 @@ repositório para saber se há atualização.
 - Ícones de echos, armas e sets: depois de gravar os dados, baixa de [nanoka.cc](https://ww.nanoka.cc) (mesmo caminho de textura
   dos campos de ícone da fonte) os que ainda não estão em `data/imagens/`. Imagem que já existe, inclusive enviada à mão, nunca
   é sobrescrita; para trocar, envie outra pela página. Ressonadores ficam de fora: a imagem deles é escolhida à mão.
+
+### Builds a partir do Game8
+
+`scripts/importar_builds_game8.py` lê os guias "Best Builds and Teams" do [Game8](https://game8.co/games/Wuthering-Waves) e
+gera uma build por bloco do guia: armas, set, padrão de custo, echo principal, status principais e estrelas dos substatus.
+
+- Personagem que já tem build fica intacto; `--personagem X --substituir` troca as builds dele. `--simular` só mostra o relatório.
+- Grava como o editor: valida tudo antes, guarda o arquivo anterior em `data/backups/` e escreve de forma atômica.
+- O que precisa de revisão fica em `status: "TODO: ..."`: meta de Regen. de Energia que o guia não cita (fica 100), nome
+  fora do catálogo, ou combinação de sets (3 peças + 2), já que a build guarda um set só.
+- O texto explicativo (`descricao`) não é gerado: é escrito à mão, com palavras próprias.
+- As páginas ficam em `cache/game8/`; `--atualizar` baixa de novo (por exemplo, depois de um patch).
