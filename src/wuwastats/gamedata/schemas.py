@@ -210,6 +210,8 @@ class PerfilRaw(BuildSpecRaw):
     armas_assinatura: list[str] = []
     armas: ArmasPerfilRaw | None = None
     variantes: list[VarianteRaw] = []
+    # Explicação da build para a página do personagem: parágrafos separados por linha em branco, **negrito** permitido.
+    descricao: str | None = None
 
 
 class ArquivosDeDados(BaseModel):

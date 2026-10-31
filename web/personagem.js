@@ -111,8 +111,18 @@ function conteudoBuild(build, { rotulo }, redesenhar) {
     ),
     build.variantes.length ? seletorDeVariante(build, escolhida, redesenhar) : null,
     el("div", { class: "tables" }, tabelaConstrucao(build, perfil, rotulo), tabelaEstatisticas(perfil, rotulo)),
+    textoDaBuild(build.descricao),
   ];
 }
+
+/** Parágrafos separados por linha em branco; **trecho** vira negrito. Só nós de texto: nada de innerHTML. */
+function textoDaBuild(descricao) {
+  if (!descricao) return null;
+  const paragrafos = descricao.split(/\n\s*\n/).map((p) => el("p", {}, negritos(p.trim())));
+  return el("div", { class: "build-texto" }, paragrafos);
+}
+
+const negritos = (texto) => texto.split("**").map((trecho, i) => (i % 2 ? el("strong", {}, trecho) : trecho));
 
 function seletorDeVariante(build, escolhida, redesenhar) {
   return el(

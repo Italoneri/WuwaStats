@@ -50,7 +50,7 @@ def entrada() -> dict[str, Any]:
     return json.loads((FIXTURES / "entradas" / "suoming_dps.json").read_text(encoding="utf-8"))
 
 
-def test_lista_builds_com_condicoes_das_variantes(cliente: TestClient) -> None:
+def test_lista_builds_com_condicoes_das_variantes_e_explicacao(cliente: TestClient) -> None:
     builds = {b["chave"]: b for b in cliente.get("/api/builds").json()}
 
     assert builds["Suoming_DPS"]["condicoes"] == ["arma_assinatura"]
@@ -59,6 +59,8 @@ def test_lista_builds_com_condicoes_das_variantes(cliente: TestClient) -> None:
     assert builds["Suoming_DPS"]["armas"] == {"melhor": "Test Weapon", "alternativas": ["Alt Weapon"]}
     assert builds["Suoming_SubDPS"]["condicoes"] == []
     assert builds["Suoming_SubDPS"]["armas"] is None
+    assert builds["Suoming_DPS"]["descricao"] == "DPS **Electro** de Ataque Básico."
+    assert builds["Suoming_SubDPS"]["descricao"] is None
 
 
 def test_lista_todos_os_personagens_e_indica_quem_tem_perfil(cliente: TestClient) -> None:

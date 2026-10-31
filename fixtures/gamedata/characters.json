@@ -11,7 +11,8 @@
     "variantes": [
       { "condicao": { "arma_assinatura": true }, "set": "Heart of Sworn Vigil", "echo_principal": "Suhsin" },
       { "condicao": { "arma_assinatura": false }, "set": "Moonlit Clouds" }
-    ]
+    ],
+    "descricao": "DPS **Electro** de Ataque Básico."
   },
   "Suoming_SubDPS": {
     "personagem": "Suoming",

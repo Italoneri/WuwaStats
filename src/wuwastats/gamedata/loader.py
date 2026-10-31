@@ -197,7 +197,7 @@ class _Resolvedor:
 
     def perfil(self, nome: str, raw: PerfilRaw) -> Perfil:
         onde = f"characters.json › {nome}"
-        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "armas", "variantes"})
+        base_campos = raw.model_dump(exclude={"personagem", "armas_assinatura", "armas", "variantes", "descricao"})
         variantes = (
             self._variante(base_campos, variante, f"{onde} › variantes › {indice}")
             for indice, variante in enumerate(raw.variantes)
@@ -208,6 +208,7 @@ class _Resolvedor:
             base=self._spec(raw, onde),
             variantes=tuple(v for v in variantes if v is not None),
             armas=self._armas(raw.armas, f"{onde} › armas") if raw.armas else None,
+            descricao=raw.descricao,
         )
 
     def _armas_assinatura(self, nomes: list[str]) -> frozenset[str]:

@@ -80,6 +80,7 @@ class Perfil:
     base: BuildSpec
     variantes: tuple[Variante, ...]
     armas: ArmasPerfil | None = None
+    descricao: str | None = None
 
 
 @dataclass(frozen=True)

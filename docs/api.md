@@ -86,7 +86,8 @@ Lista de builds (perfis em `data/characters.json`).
     "variantes": [
       { "condicao": { "arma_assinatura": true }, "perfil": { "set": "Heart of Sworn Vigil", "...": "..." } },
       { "condicao": { "arma_assinatura": false }, "perfil": { "set": "Moonlit Clouds", "...": "..." } }
-    ]
+    ],
+    "descricao": "Suoming é uma DPS **Electro** que tira a maior parte do dano do **Ataque Básico**. [...]"
   }
 ]
 ```
@@ -96,6 +97,8 @@ Lista de builds (perfis em `data/characters.json`).
 - `condicoes`: chaves que a interface pode precisar perguntar. Hoje só existe `arma_assinatura` (booleano).
 - `armas`: recomendação para a tela do personagem (não entra no cálculo); chaves de `catalogo.armas`.
   `null` se a build não define.
+- `descricao`: explicação da build, mostrada abaixo das tabelas. Parágrafos separados por linha em branco (`\n\n`) e
+  `**negrito**`; monte como texto, nunca como HTML. `null` se a build não tem.
 
 ## `GET /api/catalogo`
 

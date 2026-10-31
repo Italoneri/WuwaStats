@@ -31,6 +31,9 @@ class BuildResumo(_Contrato):
     armas: ArmasResumo | None = Field(description="Chaves de GET /api/catalogo (armas); null se a build não recomenda.")
     base: PerfilAplicado
     variantes: list[VarianteResumo]
+    descricao: str | None = Field(
+        description="Explicação da build: parágrafos separados por linha em branco, **negrito** permitido; null se não há."
+    )
 
 
 class Rotulo(_Contrato):
@@ -122,6 +125,7 @@ def resumir_build(chave: str, perfil: Perfil) -> BuildResumo:
         armas=ArmasResumo(melhor=armas.melhor, alternativas=list(armas.alternativas)) if armas else None,
         base=perfil_aplicado(perfil.base),
         variantes=variantes,
+        descricao=perfil.descricao,
     )
 
 
