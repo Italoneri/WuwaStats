@@ -250,6 +250,7 @@ class _Resolvedor:
                 for chave, nomes in raw.principais.items()
             },
             estrelas=self._stats(raw.estrelas, f"{onde} › estrelas"),
+            metas=tuple(raw.metas),
         )
 
     def _sets(self, pedidos: Mapping[str, int], onde: str) -> dict[str, int]:

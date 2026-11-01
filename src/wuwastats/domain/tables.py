@@ -3,6 +3,7 @@
 from collections.abc import Mapping
 from dataclasses import dataclass
 
+from wuwastats.domain.metas import MetaDeStatus, StatDeMeta
 from wuwastats.domain.models import ESTRELAS_MAXIMAS, Condicoes, Custo, Escala
 from wuwastats.domain.names import NameIndex
 
@@ -59,6 +60,10 @@ class BuildSpec:
     echo_principal: str | None
     principais: Mapping[Custo, frozenset[str]]
     estrelas: Mapping[str, int]  # 1 a ESTRELAS_MAXIMAS; status fora daqui a build ignora
+    metas: tuple[MetaDeStatus, ...]
+
+    def meta_de(self, stat: StatDeMeta) -> MetaDeStatus | None:
+        return next((meta for meta in self.metas if meta.stat == stat), None)
 
     @property
     def pesos(self) -> dict[str, float]:

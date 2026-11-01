@@ -40,6 +40,25 @@ def test_resolve_armas_do_perfil_em_qualquer_idioma_para_a_chave_em_ingles(data_
     assert (armas.melhor, armas.alternativas) == ("Test Weapon", ("Alt Weapon",))
 
 
+def test_carrega_metas_da_build(data_dir_copia: Path) -> None:
+    base = load_game_data(data_dir_copia).perfis["Suoming_DPS"].base
+
+    meta_crit = base.meta_de("crit_rate")
+    assert meta_crit is not None
+    assert (meta_crit.min, meta_crit.max, meta_crit.fonte) == (60, 80, "prydwen")
+    assert base.meta_de("crit_dmg") is None
+
+
+def test_variante_herda_ou_substitui_metas(data_dir_copia: Path) -> None:
+    _editar(data_dir_copia, "characters.json", lambda c: c["Suoming_DPS"]["variantes"][1].__setitem__("metas", []))
+
+    perfil = load_game_data(data_dir_copia).perfis["Suoming_DPS"]
+
+    assert perfil.variantes[0].spec.metas == perfil.base.metas
+    assert len(perfil.base.metas) == 2
+    assert perfil.variantes[1].spec.metas == ()
+
+
 def _editar(data_dir: Path, arquivo: str, mudar: Callable[[Json], None]) -> None:
     caminho = data_dir / arquivo
     conteudo = json.loads(caminho.read_text(encoding="utf-8"))
@@ -55,6 +74,9 @@ def _variante(campo: str, valor: object) -> Callable[[Json], None]:
     return lambda conteudo: conteudo["Suoming_DPS"]["variantes"][0].__setitem__(campo, valor)
 
 
+_META_CRIT: Json = {"stat": "crit_rate", "min": 60, "tipo": "rotacao", "fonte": "game8"}
+
+
 @pytest.mark.parametrize(
     ("arquivo", "mudar", "trecho"),
     [
@@ -67,6 +89,9 @@ def _variante(campo: str, valor: object) -> Callable[[Json], None]:
         ("characters.json", _suoming("sets", {"Moonlit Clouds": 3, "Heart of Sworn Vigil": 3}), "pedem 6 peças"),
         ("characters.json", _variante("sets", {"Moonlit Clouds": 5, "Heart of Sworn Vigil": 1}), "pedem 6 peças"),
         ("characters.json", _suoming("regen_energia_min", 90), "regen_energia_min"),
+        ("characters.json", _suoming("metas", [_META_CRIT, _META_CRIT]), "metas: Value error, meta de crit_rate repetida"),
+        ("characters.json", _suoming("metas", [_META_CRIT | {"max": 50}]), "metas › 0: Value error, max menor que min"),
+        ("characters.json", _variante("metas", [_META_CRIT, _META_CRIT]), "variantes › 0 › metas: Value error"),
         ("characters.json", _variante("condicao", {"sequencia": 2}), "sequencia"),
         ("characters.json", _variante("condicao", {}), "condição vazia"),
         ("characters.json", _variante("echo_principal", "Ninguém"), "variantes › 0 › echo_principal"),

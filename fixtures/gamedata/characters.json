@@ -5,6 +5,10 @@
     "armas": { "melhor": "Test Weapon", "alternativas": ["Arma Alternativa"] },
     "escala": "ATQ",
     "regen_energia_min": 110,
+    "metas": [
+      { "stat": "energy_regen", "min": 110, "tipo": "rotacao", "fonte": "game8", "explicacao": "Teste." },
+      { "stat": "crit_rate", "min": 60, "max": 80, "tipo": "rotacao", "fonte": "prydwen" }
+    ],
     "custos": [4, 3, 3, 1, 1],
     "principais": { "4": ["Taxa CRIT", "Dano CRIT"], "3": ["Dano Elétrico", "ATQ%"], "1": ["ATQ%"] },
     "estrelas": { "Taxa CRIT": 3, "Dano CRIT": 3, "ATQ%": 2, "ATQ Básico": 2, "Regen. de Energia": 1 },
@@ -18,6 +22,7 @@
     "personagem": "Suoming",
     "escala": "ATQ",
     "regen_energia_min": 120,
+    "metas": [{ "stat": "energy_regen", "min": 120, "max": 130, "tipo": "rotacao", "fonte": "game8" }],
     "custos": [4, 3, 3, 1, 1],
     "echo_principal": "Soulfrayer",
     "sets": { "Moonlit Clouds": 5 },

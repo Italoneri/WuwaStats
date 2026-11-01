@@ -5,6 +5,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator
 
+from wuwastats.domain.metas import MetaDeStatus, metas_unicas
 from wuwastats.domain.models import ESTRELAS_MAXIMAS, MAX_ECHOS, Condicoes, Custo, Escala
 
 CustoChave = Literal["1", "3", "4"]
@@ -170,6 +171,12 @@ class BuildSpecRaw(_Estrito):
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]]
     estrelas: dict[str, Estrelas]  # prioridade do substatus; a ordem das chaves desempata quem tem as mesmas estrelas
+    metas: list[MetaDeStatus] = []  # vazio = nenhuma fonte deu número (o status da build diz o que falta)
+
+    @field_validator("metas")
+    @classmethod
+    def _metas_unicas(cls, metas: list[MetaDeStatus]) -> list[MetaDeStatus]:
+        return metas_unicas(metas)
 
     @field_validator("custos")
     @classmethod
@@ -197,6 +204,12 @@ class VarianteRaw(_Estrito):
     echo_principal: str | None = None
     principais: dict[CustoChave, list[str]] | None = None
     estrelas: dict[str, Estrelas] | None = None
+    metas: list[MetaDeStatus] | None = None  # presente = substitui a lista inteira da base
+
+    @field_validator("metas")
+    @classmethod
+    def _metas_unicas(cls, metas: list[MetaDeStatus] | None) -> list[MetaDeStatus] | None:
+        return None if metas is None else metas_unicas(metas)
 
     @field_validator("condicao")
     @classmethod
