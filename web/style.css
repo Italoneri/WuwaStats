@@ -356,6 +356,9 @@ label.chip input { accent-color: var(--lilas-forte); }
 }
 
 /* --- Metas de status --- */
+.meta-editor { display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: 10px; border: 1px solid #2E263F; background: #1A1525; }
+.meta-editor-topo { display: grid; grid-template-columns: minmax(0, 1fr) 30px; align-items: center; gap: 8px; }
+.meta-editor-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .metas-build { margin-top: 20px; }
 .meta-explicacao { flex-basis: 100%; font-size: 14px; line-height: 1.5; color: var(--texto-2); }
 

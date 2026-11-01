@@ -1,8 +1,9 @@
 // Editor de builds: edita os perfis de characters.json. A validação é a do servidor (mesmo loader dos dados).
 
-import { ICONES, api, avisoErro, el, icone, moldura, parametro, rotulador, rotuloCondicao } from "./comum.js";
+import { ICONES, ROTULO_FONTE, ROTULO_TIPO_META, api, avisoErro, el, icone, moldura, parametro, rotuloMeta, rotulador, rotuloCondicao } from "./comum.js";
 
 const ESCALAS = ["ATQ", "DEF", "HP"];
+const STATS_DE_META = ["energy_regen", "crit_rate", "crit_dmg", "hp_flat", "atk_flat", "def_flat"];
 const CUSTOS = [4, 3, 1];
 const CHAVES_CUSTO = ["4", "3", "1"];
 const ESTRELAS_MAXIMAS = 3;
@@ -12,7 +13,7 @@ const SETA_ABAIXO = "m6 9 6 6 6-6";
 const CAMPOS_VARIANTE = [
   { campo: "sets", rotulo: "Sets" },
   { campo: "echo_principal", rotulo: "Eco principal" },
-  { campo: "regen_energia_min", rotulo: "Regen mínima" },
+  { campo: "metas", rotulo: "Metas de status" },
   { campo: "custos", rotulo: "Padrão de custo" },
   { campo: "principais", rotulo: "Status principais" },
   { campo: "estrelas", rotulo: "Estrelas" },
@@ -63,7 +64,7 @@ function abrirNova(personagem) {
   const perfil = {
     personagem,
     escala: "ATQ",
-    regen_energia_min: 100,
+    metas: [],
     custos: [4, 3, 3, 1, 1],
     sets: {},
     principais: { 4: [], 3: [], 1: [] },
@@ -242,12 +243,54 @@ function camposDeBuild(alvo, prefixo, apenas = null) {
   const r = estado.rotulo;
   const usar = (campo) => !apenas || apenas.includes(campo);
   return [
-    usar("regen_energia_min") ? linha("Regen mínima (%)", `${prefixo}regen_energia_min`, el("input", { class: "campo mono", type: "number", step: "1", min: "100", value: alvo.regen_energia_min, onchange: (e) => { alvo.regen_energia_min = Number(e.target.value); desenhar(); } })) : null,
+    usar("metas") ? linha("Metas de status", `${prefixo}metas`, editorMetas(alvo)) : null,
     usar("custos") ? linha("Padrão de custo", `${prefixo}custos`, el("div", { style: { display: "flex", gap: "6px" } }, alvo.custos.map((c, i) => seletorCusto(alvo, i, c)))) : null,
     usar("sets") ? linha("Sets", `${prefixo}sets`, editorSets(alvo)) : null,
     usar("echo_principal") ? linha("Eco principal", `${prefixo}echo_principal`, seletor(ordenar([...r.echoes.keys()].map((k) => [k, r.echo(k)])), alvo.echo_principal, (v) => { alvo.echo_principal = v || null; }, "Livre")) : null,
     usar("principais") ? linha("Status principais", `${prefixo}principais`, editorPrincipais(alvo)) : null,
   ];
+}
+
+/** Faixa de cada status (mín.–máx.), tipo, fonte e a frase do porquê. Campo vazio vira null, nunca 0. */
+function editorMetas(alvo) {
+  const r = estado.rotulo;
+  const metas = alvo.metas ?? [];
+  const mudar = (novas) => {
+    alvo.metas = novas;
+    desenhar();
+  };
+  const trocar = (i, campos) => mudar(metas.map((m, j) => (j === i ? { ...m, ...campos } : m)));
+  const numero = (texto) => (texto.trim() === "" ? null : Number(texto));
+  const livres = STATS_DE_META.filter((stat) => !metas.some((m) => m.stat === stat));
+  return el(
+    "div",
+    { class: "sets-editor" },
+    metas.map((m, i) =>
+      el(
+        "div",
+        { class: "meta-editor" },
+        el(
+          "div",
+          { class: "meta-editor-topo" },
+          el("select", { class: "campo", "aria-label": "Status", onchange: (e) => trocar(i, { stat: e.target.value }) }, STATS_DE_META.filter((s) => s === m.stat || livres.includes(s)).map((s) => el("option", { value: s, selected: s === m.stat }, rotuloMeta(s, r)))),
+          el("button", { type: "button", class: "ibtn", "aria-label": `Tirar meta de ${rotuloMeta(m.stat, r)}`, onclick: () => mudar(metas.filter((_, j) => j !== i)) }, icone(ICONES.fechar, 13, { espessura: 2 })),
+        ),
+        el(
+          "div",
+          { class: "meta-editor-grade" },
+          el("input", { class: "campo mono", type: "number", step: "any", "aria-label": "Mínimo", placeholder: "mín.", value: m.min ?? "", onchange: (e) => trocar(i, { min: numero(e.target.value) }) }),
+          el("input", { class: "campo mono", type: "number", step: "any", "aria-label": "Máximo", placeholder: "máx. (opcional)", value: m.max ?? "", onchange: (e) => trocar(i, { max: numero(e.target.value) }) }),
+          el("select", { class: "campo", "aria-label": "Tipo", onchange: (e) => trocar(i, { tipo: e.target.value }) }, Object.entries(ROTULO_TIPO_META).map(([v, rot]) => el("option", { value: v, selected: v === m.tipo }, rot))),
+          el("select", { class: "campo", "aria-label": "Fonte", onchange: (e) => trocar(i, { fonte: e.target.value }) }, Object.entries(ROTULO_FONTE).map(([v, rot]) => el("option", { value: v, selected: v === m.fonte }, rot))),
+        ),
+        el("input", { class: "campo", "aria-label": "Explicação", placeholder: "Por que essa faixa (uma frase)", value: m.explicacao ?? "", onchange: (e) => trocar(i, { explicacao: e.target.value.trim() || null }) }),
+      ),
+    ),
+    livres.length
+      ? el("button", { type: "button", class: "btn sm", style: { alignSelf: "flex-start" }, onclick: () => mudar([...metas, { stat: livres[0], min: livres[0] === "energy_regen" ? 100 : null, max: null, tipo: "rotacao", fonte: "game8", explicacao: null }]) }, "+ Adicionar meta")
+      : null,
+    metas.length ? null : el("span", { class: "dica" }, "Sem meta: nenhuma fonte deu número (anote no status da build)."),
+  );
 }
 
 /** Um set (5 peças) ou combinação: cada set com quantas peças; a soma não passa de 5 echos. */

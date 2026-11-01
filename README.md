@@ -56,7 +56,7 @@ Na página Captura, escolha a build e clique em
 
 - **Echos** (menu lateral): todos os echos com a imagem, para conferir à mão; o filtro "Só sem imagem" mostra os que
   faltam. Clicar abre o que o echo faz (habilidade com os valores do nível mais alto) e permite trocar a imagem.
-- **Editor de builds** (menu lateral): prioridade dos substatus em estrelas (1 a 3, ordem ajustável entre iguais), Regen mínima, custos, principais, set, echo principal, armas e
+- **Editor de builds** (menu lateral): prioridade dos substatus em estrelas (1 a 3, ordem ajustável entre iguais), metas de status (faixa, tipo, fonte e porquê), custos, principais, set, echo principal, armas e
   variantes. Salvar valida com o mesmo loader dos dados, guarda o arquivo anterior em `data/backups/` e recarrega.
 - **Imagens**: passe o mouse no retrato do personagem, na arma ou no echo e clique na câmera para enviar uma imagem
   (PNG/JPEG/WebP até 5 MB). Ficam em `data/imagens/`.
