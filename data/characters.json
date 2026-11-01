@@ -490,7 +490,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -525,7 +540,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Aemeath é uma DPS **Térmica** que tira o dano principalmente do **Dano Térmico** e da **Liberação de Ressonância**, e funciona tanto no modo de **Rompimento de Sintonia** quanto no de **Estouro Térmico**. O set **Estrela Desbravadora** foi feito para ela: dá Taxa CRIT e Dano Térmico sempre que ela inflige qualquer um dos dois efeitos. O echo principal é o **Sigillum**, que soma ainda mais Dano de Liberação.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 (ou **ATQ%**) e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos e chegue a **120% de Regen. de Energia**, o bastante para a Liberação estar pronta em toda rotação; depois, busque **Dano de Liberação de Ressonância** e **ATQ%**. A melhor arma é a **Estrela Polaris Eterna**; a **Gênese Esmeralda** é uma alternativa viável, já que tem bons status base e dá Regen. de Energia e ATQ."
   },
   "Baizhi_Full_Support": {
     "personagem": "Baizhi",
@@ -538,6 +554,16 @@
       ]
     },
     "escala": "HP",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 220,
+        "max": 230,
+        "tipo": "rotacao",
+        "explicacao": "Estimado com ela na S6; é o status mais importante dela.",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -566,7 +592,8 @@
       "hp_pct": 2,
       "hp_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Baizhi é uma **suporte** 4 estrelas completa: cura o time e, com a Habilidade Outro, amplifica todo tipo de dano do personagem que entra. A build usa o set **Brilho Rejuvenescedor**, que dá ATQ ao time quando ela cura, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **HP%** no custo 4, **Regen. de Energia** nos custo 3 e **HP%** nos custo 1, porque a cura dela escala com HP.\n\nNos substatus, **Regen. de Energia** vem primeiro, seguida de **HP%**. O dano próprio dela é baixo, então não vale investir em críticos. O Game8 não dá um número, mas o Prydwen estima **220–230% de Regen. de Energia**, de longe o status mais importante dela. As armas **Sinfonia Estelar** e **Variação** ajudam a chegar lá."
   },
   "Brant_Fusion_DPS": {
     "personagem": "Brant",
@@ -654,6 +681,14 @@
         "stat": "energy_regen",
         "min": 150,
         "tipo": "rotacao",
+        "explicacao": "Chegue nela antes de rolar ATQ.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "atk_flat",
+        "min": 1800,
+        "tipo": "rotacao",
+        "explicacao": "A cura dela escala com ATQ; acima disso, quanto mais melhor.",
         "fonte": "game8"
       }
     ],
@@ -685,7 +720,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Buling é uma **suporte** de cura: o kit gira em torno de curar e fortalecer o time, não de causar dano. Por isso ela usa o set **Brilho Rejuvenescedor**, que dá ATQ ao time quando ela cura, com o echo **Falácia Irreversível**, que dá Regen. de Energia a ela e ATQ a todos.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** no custo 4, que melhora muito a cura dela (troque por **ATQ%** se faltar ATQ), **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Regen. de Energia** vem primeiro, para as rotações ficarem consistentes, e depois **ATQ%**, já que a cura escala com ele. O Game8 recomenda **150% de Regen. de Energia** e mais de **1.800 de ATQ**, números que dá para alcançar até com armas 4 estrelas. Chegue primeiro à meta de Regen e só então role ATQ."
   },
   "Calcharo_Electro_DPS": {
     "personagem": "Calcharo",
@@ -698,6 +734,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "max": 160,
+        "tipo": "rotacao",
+        "explicacao": "120% com Lynae e Guardiã da Costa, 160% em troca rápida com Xiangli Yao e Guardiã da Costa; a S1 reduz cerca de 20%.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -729,7 +789,8 @@
       "liberation_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Calcharo é um DPS **Voltaico** hipercarry que escala com ATQ. O dano dele é mais espalhado que o dos personagens mais novos (algumas habilidades aproveitam **Dano de Ataque Básico** ou **Dano de Ataque Pesado**), mas a maior parte vem da **Liberação de Ressonância** e do estado fortalecido que ela ativa. A build usa o set **Trovão do Limbo** com o echo **Pesadelo: Mefítico Tonitruante**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos e depois busque **Regen. de Energia**, **ATQ%** e **Dano de Liberação de Ressonância**. O Game8 não dá um número, mas o Prydwen estima **120–160% de Regen. de Energia**: o menor valor num time com Lynae e Guardiã da Costa, o maior num time de troca rápida com Xiangli Yao e Guardiã da Costa. A S1 reduz essa necessidade em cerca de 20%. O **Espadão Luminazul** dá Regen. de Energia e Dano de Liberação, o que combina com ele."
   },
   "Camellya_Havoc_Main_DPS": {
     "personagem": "Camellya",
@@ -1231,6 +1292,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 115,
+        "tipo": "rotacao",
+        "explicacao": "Estimado com ela na S6.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 55,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Estimado com ela na S6.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1262,7 +1347,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Chixia é uma DPS **Térmica** hipercarry, feita para causar o máximo de dano possível. A build usa o set **Fenda Fundente** com o echo **Pesadelo: Cavaleiro Infernal**, e o foco é **Dano Térmico** e críticos.\n\nUse a distribuição **4-3-3-1-1**: **Dano CRIT** ou **Taxa CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Dano CRIT** vem primeiro, seguido de **Taxa CRIT**, **ATQ%**, **Dano de Liberação de Ressonância** e **Regen. de Energia**. A partir da S1, a Habilidade de Ressonância dela sempre acerta crítico, então dá para investir mais em Dano CRIT. O Game8 não dá um número, mas o Prydwen estima **115% de Regen. de Energia**. A melhor arma é **A Última Dança**, que tem muito Dano CRIT e deixa você focar Taxa CRIT nos echos."
   },
   "Ciaccona_Aero_Erosion_Sub_DPS": {
     "personagem": "Ciaccona",
@@ -1415,7 +1501,20 @@
         "stat": "energy_regen",
         "min": 125,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 270,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -1449,7 +1548,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Denia é a melhor sub-DPS de **Estouro Térmico** do jogo: aplica muitos acúmulos e dá vários buffs de Dano Térmico e de dano de Estouro Térmico, o que faz dela a parceira ideal de DPS que aproveitam esse efeito, como a Aemeath. A build usa o set **Espuma Cromática**, que passa Dano Térmico ao próximo personagem, com o echo **Reminiscência: Denia**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1. Esses status valem para qualquer modo que ela use.\n\nNos substatus, role o máximo de críticos possível, garantindo **125% de Regen. de Energia** para ter a Liberação em toda rotação. Depois vêm **Dano de Liberação de Ressonância** e **ATQ%**, que é a base do dano dela."
   },
   "Denia_Tune_Strain_Sub_DPS_Quick_Buffs": {
     "personagem": "Denia",
@@ -1462,6 +1562,27 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 125,
+        "tipo": "rotacao",
+        "explicacao": "Valor do Game8 para a build de Estouro Térmico; o bloco desta não cita outro.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 270,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1493,7 +1614,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Em times de **Tensão de Sintonia**, o set **Pacto do Salto Neonluz** é a melhor escolha na maioria das situações: na saída, a Denia dá ATQ ao próximo personagem, e o bônus cresce com o **Bônus de Ruptura de Sintonia** dele. Junto com o echo **Hyvatia**, todos os buffs vão para o DPS principal, como Luuk Herssen e Qingxiao, o que acelera o dano tanto no mundo aberto quanto no conteúdo de fim de jogo.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nOs substatus seguem a mesma ordem da build de Estouro Térmico: críticos primeiro, depois **Regen. de Energia**, **Dano de Liberação de Ressonância** e **ATQ%**. O bloco desta build não cita meta de Regen; use os **125%** que o Game8 recomenda para a Denia na build de Estouro Térmico."
   },
   "Denia_Tune_Strain_Sub_DPS_Ramping": {
     "personagem": "Denia",
@@ -1506,6 +1628,27 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 125,
+        "tipo": "rotacao",
+        "explicacao": "Valor do Game8 para a build de Estouro Térmico; o bloco desta não cita outro.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 270,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       3,
       4,
@@ -1537,7 +1680,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "O set **Carretel de Memórias Fragmentadas** dá mais dano no total que o Pacto do Salto Neonluz, mas espalhado pelo time todo: ele soma **Bônus de Ruptura de Sintonia** a toda a equipe e só chega ao máximo depois de manter a **Tensão de Sintonia** ativa por bastante tempo. Por isso rende mais em lutas longas, como contra chefes. Também é a melhor opção quando você não tem a Mornye, porque compensa parte do que se perde sem ela.\n\nO echo principal, **Mariposa Asa do Vazio**, é de custo 3, então a distribuição fica com um custo 4 e dois custo 3: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nOs substatus seguem a mesma ordem da build de Estouro Térmico: críticos primeiro, depois **Regen. de Energia**, **Dano de Liberação de Ressonância** e **ATQ%**. O bloco desta build não cita meta de Regen; use os **125%** que o Game8 recomenda para a Denia na build de Estouro Térmico."
   },
   "Encore_Fusion_DPS": {
     "personagem": "Encore",
@@ -4039,6 +4183,30 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações com Liberação ficarem confortáveis.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Na S0, para os críticos ficarem consistentes.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 220,
+        "max": 250,
+        "tipo": "rotacao",
+        "explicacao": "220% já serve; 250% com bons substatus. O set ainda dá mais Dano CRIT em combate.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "atk_flat",
+        "min": 2100,
+        "tipo": "rotacao",
+        "explicacao": "Mínimo recomendado.",
         "fonte": "game8"
       }
     ],
@@ -4075,7 +4243,8 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Augusta é uma DPS **Voltaica** que gera escudos com o próprio kit, por isso aproveita ao máximo o set **Coroa de Valor** (3 peças), que dá ATQ e Dano CRIT sempre que ela ganha um escudo. A build se completa com 2 peças de **Trovão do Limbo** e o echo **Falso Soberano**, que combina com o kit dela.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos dois custo 3 e **ATQ%** nos custo 1. Um custo 3 de **ATQ%** serve enquanto você não tem o de Dano Voltaico, mas rende um pouco menos.\n\nNos substatus, priorize os dois críticos e depois **Dano de Ataque Pesado**, de onde vem a maior parte do dano dela, com cerca de **120% de Regen. de Energia** para as rotações com Liberação ficarem confortáveis. Na S0, o Game8 sugere **70–80% de Taxa CRIT**, **220–250% de Dano CRIT** e pelo menos **2.100 de ATQ**. A arma assinatura, **Supremacia do Trovão Dominado**, dá pouca Taxa CRIT, então vale manter um custo 4 de Taxa CRIT e buscar o Dano CRIT nos substatus."
   },
   "Chisa_Havoc_Bane_Support": {
     "personagem": "Chisa",
@@ -4088,6 +4257,28 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 125,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 255,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4121,7 +4312,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Chisa é uma sub-DPS e suporte híbrida construída em torno da **Ruína Aniquilante**, que fortalece times de status negativo, como os de **Estridência Fotônica** e **Erosão Pneumática**. No tempo em campo, ela causa dano extra enquanto gera escudos e cura, então a build foca em críticos e **ATQ**. Esta é a versão voltada a dano: set **Fio do Destino Rompido** (3 peças), que dá ATQ e Dano de Liberação ao infligir Ruína Aniquilante, com 2 peças de **Eclipse Aniquilante** e o echo **Reminiscência: Leviatã - trenodiano**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **ATQ%** ou **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. O ATQ rende um pouco menos de dano que o Dano Aniquilante, mas melhora a cura e os escudos dela.\n\nNos substatus, os críticos e a **Regen. de Energia** têm a mesma prioridade, seguidos de **Dano de Liberação de Ressonância** e **ATQ%**. O Game8 não dá um número, mas o Prydwen estima **125% de Regen. de Energia**."
   },
   "Chisa_Healer_Support_w_Negative_Status_ATK_DPS": {
     "personagem": "Chisa",
@@ -4134,6 +4326,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 125,
+        "tipo": "rotacao",
+        "explicacao": "Estimativa do Prydwen para a Chisa em geral; não há uma específica desta build.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 255,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4166,7 +4381,8 @@
       "liberation_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Esta é a versão de cura da Chisa, para times de status negativo em que o DPS escala com **ATQ**. Com o set **Brilho Rejuvenescedor** e o echo **Falácia Irreversível**, ela troca parte do dano próprio por uma cura mais forte e passa buffs de ATQ ao DPS do time. Não use com a Cartethyia: ela escala com HP, não com ATQ, e não aproveita esses buffs.\n\nA distribuição é a mesma, **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **ATQ%** ou **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, críticos e **Regen. de Energia** vêm primeiro, depois **ATQ%** e **Dano de Liberação de Ressonância**. O Game8 não dá um número, mas o Prydwen estima **125% de Regen. de Energia** para a Chisa; a Falácia Irreversível já dá 10% dela."
   },
   "Galbrena_Fusion_Echo_Skill_DPS": {
     "personagem": "Galbrena",
