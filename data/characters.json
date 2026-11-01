@@ -1185,7 +1185,8 @@
       "basic_atk_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Encore é uma DPS **Térmica** totalmente ofensiva, que causa a maior parte do dano com **Ataque Básico**, **Ataque Pesado** e **Habilidade de Ressonância**, principalmente depois de usar a Liberação. A build usa o set **Fenda Fundente** com o echo **Pesadelo: Cavaleiro Infernal** e tenta extrair o máximo de **Dano Térmico** possível.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, os críticos vêm primeiro, seguidos de **ATQ%**, **Regen. de Energia** e **Dano de Ataque Básico**. A Regen. importa mais do que parece: o grosso do dano dela só sai com a Liberação ativa, então ter energia para usá-la toda rotação faz diferença."
   },
   "Hiyuki_Glacio_Chafe_DPS": {
     "personagem": "Hiyuki",
@@ -1277,7 +1278,8 @@
       "atk_pct": 2,
       "liberation_dmg": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Jianxin é uma sub-DPS **Pneumática** que agrupa os inimigos com a Liberação e a Habilidade Intro, e a Habilidade Outro dela aumenta o **Dano de Liberação** do próximo personagem. Ela também aguenta o papel de tanque reserva: a Habilidade de Ressonância absorve golpes e o Forte cura e reduz o dano recebido. A build usa o set **Nuvens Enluaradas**, que reforça o ATQ do time, com o echo **Garça-cambiante**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1.\n\nA rotação dela é lenta, então a meta é alta: uns **140% de Regen. de Energia** sem sequências (S0). Um custo 3 de **Regen. de Energia** funciona, mas o ideal é tirar essa Regen. dos substatus, que têm ela como prioridade máxima, seguida de críticos e **ATQ%**."
   },
   "Jingran_Fusion_HP_Heavy_Attack_DPS_w_Sig": {
     "personagem": "Jingran",
@@ -1639,7 +1641,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Lumi é uma sub-DPS **Voltaica** que causa um dano razoável durante a rotação e, na saída, aumenta o **Dano de Habilidade de Ressonância** do próximo personagem. A build usa o set **Nuvens Enluaradas**, que melhora o lado de suporte dela, com o echo **Garça-cambiante**. Se quiser priorizar o dano dela, **Trovão do Limbo** é uma alternativa.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 (ou **Regen. de Energia**, se precisar) e **ATQ%** nos custo 1.\n\nA maior parte do dano dela vem do Forte, então, nos substatus, equilibre **Taxa CRIT** e **Dano CRIT** e procure **Dano de Ataque Básico**, seguido de **Regen. de Energia**. A arma **Espadão Luminazul** já dá Regen. suficiente para usar a Liberação toda rotação; com outra arma, vai ser preciso compensar nos substatus."
   },
   "Lupa_Fusion_Enabler": {
     "personagem": "Lupa",
@@ -1863,7 +1866,8 @@
       "def_flat": 2,
       "crit_dmg": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Mornye é uma **suporte curandeira** que escala com **DEF**: a build só precisa melhorar a cura e os bônus que ela dá ao time. O set é o **Halo da Radiância Estelar**, com o echo **Reator Deteriorado**, que dá Regen. de Energia e causa Dano Térmico.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** no custo 4, **Regen. de Energia** nos dois custo 3 e **DEF%** nos custo 1. Nos substatus, **Regen. de Energia** é a prioridade, depois **DEF%**, **DEF** fixa e **Dano CRIT**.\n\nA meta é **260% de Regen. de Energia**. A cada 1% acima de 100%, os inimigos marcados por ela recebem mais dano de todo o time, até **+40%** em 260%. Na mesma faixa, a Liberação dela ganha Taxa e Dano CRIT extras (só para o dano da própria Liberação, não para os aliados). Chegar a esse valor é o que faz ela render de verdade."
   },
   "Mornye_Rejuvenating_Glow": {
     "personagem": "Mornye",
@@ -1876,7 +1880,7 @@
       ]
     },
     "escala": "DEF",
-    "regen_energia_min": 100,
+    "regen_energia_min": 260,
     "custos": [
       4,
       3,
@@ -1905,7 +1909,8 @@
       "def_flat": 2,
       "crit_dmg": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "ok",
+    "descricao": "Se você ainda não farmou o **Halo da Radiância Estelar**, o **Brilho Rejuvenescedor** é uma opção totalmente viável: o desempenho é quase o mesmo, com um bônus de ATQ para o time 10% menor. Para compensar, o echo principal passa a ser a **Falácia Irreversível**, que dá Regen. de Energia extra e mais 10% de ATQ para todos os aliados.\n\nO resto da build não muda: **4-3-3-1-1** com **Bônus de Cura** no custo 4, **Regen. de Energia** nos custo 3 e **DEF%** nos custo 1. Nos substatus, **Regen. de Energia** primeiro, depois **DEF%** e **DEF** fixa; **Dano CRIT** só se sobrar.\n\nA meta de **260% de Regen. de Energia** continua valendo, porque vem do kit dela, não do set: é nesse valor que a marca nos inimigos chega a **+40% de dano recebido** e a Liberação ganha o máximo de crítico."
   },
   "Mortefi_Coordinated_ATK_Sub_DPS": {
     "personagem": "Mortefi",
@@ -2272,7 +2277,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Nesta build, o Rover **Voltaico** é o sub-DPS principal dos times de **Clarão Voltaico** e combina muito bem com DPS desse tipo, como Hsin, que aproveitam os vários bônus de dano que ele espalha. O set é o **Clarão do Reflexo Relâmpago**, com o echo **Desfia-Alma**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos e busque **ATQ%** e **Dano de Habilidade de Ressonância**, com **120% de Regen. de Energia** para manter a rotação consistente. Se não tiver a arma assinatura **Fulgor Celestial**, a **Gênese Esmeralda** é a melhor opção gratuita e ainda ajuda na Regen."
   },
   "Rover_Electro_Negative_Status_Sub_DPS": {
     "personagem": "Rover: Electro",
@@ -2285,7 +2291,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 120,
     "custos": [
       4,
       3,
@@ -2317,7 +2323,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "ok",
+    "descricao": "O Rover **Voltaico** também serve como sub-DPS genérico para times de **status negativo**. A ideia é a mesma: aumentar o dano próprio e a capacidade de fortalecer o DPS principal. A diferença está no set, que passa a ser o **Nuvens Enluaradas** (bônus de ATQ para o próximo personagem), com o echo **Garça-cambiante**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 e **ATQ%** nos custo 1.\n\nOs substatus seguem a build de Clarão Voltaico: críticos, **ATQ%** e **Dano de Habilidade de Ressonância**, com a mesma meta de **120% de Regen. de Energia**."
   },
   "Rover_Havoc_Burst_DPS": {
     "personagem": "Rover: Havoc",
@@ -2501,7 +2508,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Sigrika é uma DPS **Pneumática** chata de montar, porque o dano dela vem da **Habilidade de Eco**, e poucos sets, armas e personagens aumentam esse tipo de dano. A build usa o set **Som do Nome Verdadeiro** com o echo **Explorador Anônimo**. Bônus de dano de elemento ou de tipo de ataque rendem pouco para ela, então não vale a pena rolar substatus atrás disso.\n\nUse a distribuição **4-3-3-1-1**: **Dano CRIT** ou **Taxa CRIT** no custo 4 e **ATQ%** nos custo 1. Os custo 3 são diferentes dos outros DPS: **ATQ%** rende mais do que Dano Pneumático, mas só depois de bater a meta de Regen. Se os seus echos não tiverem Regen. nos substatus, use um custo 3 de **Regen. de Energia**.\n\nA meta é **150% de Regen. de Energia**: a passiva dela dá **+2% de Dano de Habilidade de Eco** para cada 1% de Regen. acima de 125%, ou seja, **+50%** em 150%. Como esse tipo de bônus é raro, bater a meta é obrigatório. Nos substatus, equilibre os críticos e depois busque Regen. e **ATQ%**."
   },
   "Suisui_Negative_Status_Support": {
     "personagem": "Suisui",
@@ -2588,7 +2596,8 @@
       "energy_regen": 2,
       "def_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Taoqi é uma tanque **Aniquilante** cujos escudos e dano escalam com **DEF**. Dá para montar a build puxando para escudos mais resistentes (mais DEF) ou para o dano dela (mais Dano Aniquilante). O set é o **Nuvens Enluaradas**, que dá Regen. de Energia e aumenta o ATQ do próximo personagem, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **DEF%** nos custo 1.\n\nNos substatus, **DEF%** vem primeiro, seguida de críticos, **Regen. de Energia** e **DEF** fixa."
   },
   "Verina_Full_Support": {
     "personagem": "Verina",
@@ -2630,7 +2639,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Verina é uma ótima **suporte** completa, especialista em cura e em aumentar o ATQ do time. A Habilidade Outro dela ainda amplifica todo tipo de dano do grupo. A build usa o set **Brilho Rejuvenescedor**, que dá ATQ a todo o time quando ela cura, com o echo **Falácia Irreversível**, que dá 10% de Regen. de Energia a ela e 10% de ATQ a todos.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **ATQ%** no custo 4, **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Regen. de Energia** vem primeiro, para usar a Liberação com frequência, e depois **ATQ%**, que aumenta a cura dela. As armas **Sinfonia Estelar** e **Variação** dão Regen. e Energia de Concerto, o que deixa a rotação bem mais fácil."
   },
   "Xiangli_Yao_Electro_DPS": {
     "personagem": "Xiangli Yao",
