@@ -121,7 +121,12 @@ def test_set_sem_numero_de_pecas_usa_o_tamanho_do_set(dados: GameData) -> None:
     [
         ("aim to reach 115-120% Energy Regen", 115),
         ("Aim for 250% Energy Regen", 250),
+        ("around 115% to 120% Energy Regen", 115),
+        ("Basic Attack DMG 25% Energy Regen 115% Stats shown", 115),
+        ("prioritize getting her ER to around 120% , followed by", 120),
+        ("As for Energy Regen , we recommend you get her to 120% to have", 120),
         ("gives 12% Energy Regen", None),
+        ("Energy Regen 12% bonus", None),
         ("no target here", None),
     ],
 )

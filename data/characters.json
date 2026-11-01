@@ -342,7 +342,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 120,
     "custos": [
       4,
       3,
@@ -477,7 +477,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 150,
     "custos": [
       4,
       3,
@@ -564,7 +564,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 115,
     "custos": [
       4,
       3,
@@ -748,7 +748,7 @@
       ]
     },
     "escala": "HP",
-    "regen_energia_min": 120,
+    "regen_energia_min": 115,
     "custos": [
       4,
       4,
@@ -1197,7 +1197,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 120,
     "custos": [
       4,
       3,
@@ -1958,7 +1958,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 130,
+    "regen_energia_min": 125,
     "custos": [
       3,
       4,
@@ -2904,7 +2904,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 120,
+    "regen_energia_min": 115,
     "custos": [
       3,
       4,
@@ -3413,7 +3413,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 120,
     "custos": [
       4,
       3,

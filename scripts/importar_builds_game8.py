@@ -49,7 +49,14 @@ STATS_DO_GAME8 = {
     "crit": "crit_rate",
 }
 ESCALA_PELO_PRINCIPAL_DE_CUSTO_1 = {"hp_pct": "HP", "def_pct": "DEF"}
-LINK_DE_ARTIGO = r'<a[^>]+href="((?:https://game8\.co)?/games/Wuthering-Waves/archives/\d+)"[^>]*>(.*?)</a>'
+_ER = r"\b(?:Energy Regen|ER)\b"
+_FAIXA_PCT = r"(\d{3})(?:\s*%?\s*(?:[-–~]|to)\s*\d{3})?\s*%"
+# O Game8 escreve a meta antes ou depois do nome: '115-120% Energy Regen', 'Energy Regen 115%', 'ER to around 120%'.
+META_DE_REGEN = (
+    re.compile(rf"{_FAIXA_PCT}\s*(?:of\s+)?{_ER}"),
+    re.compile(rf"{_ER}[^.%\d]{{0,40}}?{_FAIXA_PCT}"),
+)
+LINK_DE_ARTIGO =r'<a[^>]+href="((?:https://game8\.co)?/games/Wuthering-Waves/archives/\d+)"[^>]*>(.*?)</a>'
 
 
 class PaginaIndisponivel(Exception):
@@ -283,11 +290,9 @@ def _substatus(tabela: str) -> tuple[tuple[str, int], ...]:
 
 
 def meta_de_regen(texto: str) -> int | None:
-    """'aim to reach 115-120% Energy Regen' → 115; ignora números abaixo de 100 (bônus, não meta)."""
-    for numero in re.findall(r"(\d{3})(?:\s*[-–~]\s*\d{3})?\s*%\s*(?:of\s+)?(?:Energy Regen|ER)\b", texto):
-        if int(numero) >= REGEN_PADRAO:
-            return int(numero)
-    return None
+    """Primeira meta citada, na faixa vale o menor número; ignora números abaixo de 100 (bônus, não meta)."""
+    achados = sorted((achado.start(), int(achado.group(1))) for padrao in META_DE_REGEN for achado in padrao.finditer(texto))
+    return next((numero for _, numero in achados if numero >= REGEN_PADRAO), None)
 
 
 # --- Montagem da build (pura) ---
