@@ -808,6 +808,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "tipo": "rotacao",
+        "explicacao": "120% com Véu da Meia-noite num time com Phrolova e Roccia.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -839,7 +862,7 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Cantarella é flexível, e o set ideal muda conforme o time: **Véu da Meia-noite** para times **Aniquilantes** ou **Hino Empíreo** para times de ATQ Coordenado. Com o Véu da Meia-noite, ela aumenta o Dano Aniquilante dela e do próximo ressonador, o que rende um bom dano no geral.\n\nA build é a de uma sub-DPS comum: **4-3-3-1-1**, com **Taxa CRIT** ou **Dano CRIT** no custo 4, dois de **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. O objetivo é uma boa proporção de crítico e o máximo de bônus de dano do elemento.\n\nNos substatus, depois dos críticos, busque **ATQ%**, **Bônus de Dano de Ataque Básico** e um pouco de **Regen. de Energia**."
   },
   "Cantarella_Coordinated_ATK_Sub_DPS": {
@@ -853,6 +876,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "max": 140,
+        "tipo": "rotacao",
+        "explicacao": "120% com Véu da Meia-noite ao lado de Phrolova e Roccia, 140% com Nuvens Enluaradas ao lado de Carlotta e Guardiã da Costa; a fonte não estima o Hino Empíreo.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "explicacao": "Cerca de 70% para o Hino Empíreo ativar com frequência.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -883,7 +930,7 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "O set **Hino Empíreo** é útil em times que dependem de **ATQ Coordenado** para o dano. É a primeira opção quando o time não escala com Dano Aniquilante, mas aproveita a amplificação de Dano de Hab. de Ressonância que a Habilidade Outro dela dá.\n\nUse a distribuição **4-3-3-1-1** com **Taxa CRIT** no custo 4, dois de **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. Nessa versão a Taxa CRIT pesa mais: mire em cerca de **70%**, porque o efeito do set depende de acertos críticos do ATQ Coordenado.\n\nSe não quiser montar tanto crítico, o **Nuvens Enluaradas** é um substituto válido."
   },
   "Carlotta_Glacio_Main_DPS": {
@@ -901,8 +948,24 @@
       {
         "stat": "energy_regen",
         "min": 120,
+        "max": 125,
         "tipo": "rotacao",
+        "explicacao": "Equilibra a Regen com o dano para a rotação dela ficar consistente.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -955,7 +1018,31 @@
       {
         "stat": "energy_regen",
         "min": 115,
+        "max": 120,
         "tipo": "rotacao",
+        "explicacao": "Liberação pronta para virar Fleurdelys a cada rotação; o valor exato depende do time.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 70,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "max": 270,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "hp_flat",
+        "min": 48000,
+        "max": 50000,
+        "tipo": "rotacao",
+        "explicacao": "Os golpes dela escalam com HP; acima disso, quanto mais melhor.",
         "fonte": "game8"
       }
     ],
@@ -1000,6 +1087,38 @@
       ]
     },
     "escala": "HP",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 115,
+        "max": 120,
+        "tipo": "rotacao",
+        "explicacao": "Liberação pronta para virar Fleurdelys a cada rotação; o valor exato depende do time.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 70,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "max": 270,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "hp_flat",
+        "min": 48000,
+        "max": 50000,
+        "tipo": "rotacao",
+        "explicacao": "Os golpes dela escalam com HP; acima disso, quanto mais melhor.",
+        "fonte": "game8"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1030,7 +1149,7 @@
       "hp_pct": 2,
       "energy_regen": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Sem a **Ciaccona** no time, Cartethyia perde uma fonte importante de Dano Pneumático, por isso a distribuição muda para **4-3-1-1-1**, com o custo 3 de **Dano Pneumático** para compensar.\n\nNesse caso o sub-DPS costuma ser **Sanhua** ou **Aalto**, que não usam o set **Rajadas Celestiais** e não trazem o bônus extra de Dano Pneumático dele. O custo 4 fica com **Taxa CRIT** ou **Dano CRIT**, e os custo 1 continuam com **HP%**.\n\nOs substatus seguem a mesma lógica da build principal (críticos, **Dano de Ataque Básico** e **HP%**), mas as rolagens precisam ser quase perfeitas para chegar a uma boa proporção de crítico, principalmente usando a arma assinatura."
   },
   "Changli_Fusion_DMG": {
@@ -1049,7 +1168,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para usar a Liberação sempre que precisar do bônus de ATQ dela.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -1141,6 +1275,28 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 115,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 55,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 225,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1172,7 +1328,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Ciaccona é a principal sub-DPS de **Erosão Pneumática**, e o set **Rajadas Celestiais** combina com o kit dela: ao aplicar Erosão, ela aumenta o Dano Pneumático do time inteiro.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT** para equilibrar a proporção; nos custo 3, **Dano Pneumático**, já que ela causa um bom dano tanto em campo quanto fora dele; nos custo 1, **ATQ%**.\n\nEm times de **Estridência Fotônica**, troque o set por **Nuvens Enluaradas**, que dá ATQ ao próximo ressonador quando ela usa a Habilidade Outro. Mantenha os echos de **Dano Pneumático** mesmo assim: o dano próprio dela continua relevante, e a aplicação de Estridência não muda com isso."
   },
   "Danjin_Havoc_DPS": {
@@ -1186,6 +1342,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "max": 110,
+        "tipo": "rotacao",
+        "explicacao": "100% num time com Phrolova e Cantarella, 110% com Rover: Aniquilante e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1216,7 +1396,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Danjin rende mais como **DPS principal** e depende bastante da habilidade de quem joga para tirar todo o dano dela. Ela combina Ataques Básicos, **Ataques Pesados**, Habilidade e Liberação de Ressonância, e a Habilidade Outro ainda ajuda outros personagens **Aniquilantes** em times de troca rápida.\n\nA build é a de DPS clássica: **4-3-3-1-1** com o set **Eclipse Aniquilante**, **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. Nos substatus, depois dos críticos, priorize **Dano de Ataque Pesado** e **ATQ%**."
   },
   "Denia_Fusion_Burst_Sub_DPS": {
@@ -1374,6 +1554,22 @@
       {
         "stat": "energy_regen",
         "min": 105,
+        "max": 130,
+        "tipo": "rotacao",
+        "explicacao": "105% na rotação otimizada, 130% na rotação simples.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 75,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 285,
         "tipo": "rotacao",
         "fonte": "prydwen"
       }
