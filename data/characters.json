@@ -2243,6 +2243,20 @@
       {
         "stat": "energy_regen",
         "min": 142,
+        "max": 150,
+        "tipo": "rotacao",
+        "explicacao": "142% num time com Carlotta e Guardiã da Costa, 150% com Phrolova e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
         "tipo": "rotacao",
         "fonte": "prydwen"
       }
@@ -2349,7 +2363,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para usar a Liberação de Ressonância em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -2507,7 +2536,8 @@
       {
         "stat": "energy_regen",
         "min": 260,
-        "tipo": "rotacao",
+        "tipo": "escala",
+        "explicacao": "O dano extra que os inimigos marcados por ela recebem e o Dano CRIT da Liberação dela crescem com a Regen até 260%; acima disso não rendem mais.",
         "fonte": "game8"
       }
     ],
@@ -2557,7 +2587,8 @@
       {
         "stat": "energy_regen",
         "min": 260,
-        "tipo": "rotacao",
+        "tipo": "escala",
+        "explicacao": "O dano extra que os inimigos marcados por ela recebem e o Dano CRIT da Liberação dela crescem com a Regen até 260%; acima disso não rendem mais.",
         "fonte": "game8"
       }
     ],
@@ -2651,8 +2682,25 @@
       {
         "stat": "energy_regen",
         "min": 125,
+        "max": 130,
         "tipo": "rotacao",
+        "explicacao": "Vindo só dos substatus, sem gastar echo principal com Regen.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -2700,6 +2748,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 111,
+        "tipo": "rotacao",
+        "explicacao": "Cerca de 111% como DPS num time com Lynae e Rover: Fotônico.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       3,
       4,
@@ -2731,7 +2803,7 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Phoebe foi a primeira personagem limitada a trabalhar com um efeito negativo, a **Estridência Fotônica**. Ela aplica o efeito com constância e aproveita por completo o set **Radiância Eterna**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Fotônico**; nos custo 1, **ATQ%**.\n\nComo DPS, equilibre a proporção entre Taxa e Dano CRIT e busque **Dano de Ataque Pesado** nos substatus, já que é dele que vem a maior parte do dano. Depois, um pouco de **Regen. de Energia** para encaixar a Liberação nas rotações com regularidade."
   },
   "Qingxiao_Aero_Tune_Strain_DPS": {
@@ -2750,7 +2822,23 @@
         "stat": "energy_regen",
         "min": 125,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem confortáveis.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 55,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 255,
+        "max": 275,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar o Dano CRIT que o set dá.",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -2805,6 +2893,20 @@
       {
         "stat": "energy_regen",
         "min": 125,
+        "tipo": "rotacao",
+        "explicacao": "Valor de referência; o ideal muda com o time, então vale testar no seu.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "escala",
+        "explicacao": "A Liberação dá ATQ ao time por Taxa CRIT acima de 50%, com teto em 70%; acima disso não rende mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 200,
         "tipo": "rotacao",
         "fonte": "game8"
       }
