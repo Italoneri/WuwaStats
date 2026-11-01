@@ -1,7 +1,7 @@
 // Tela 2 · Personagem: perfis de GET /api/builds e, dentro de cada um, as variantes por condição.
 
 import {
-  ICONES, ROTULO_FONTE, ROTULO_TIPO_META, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
+  ICONES, ROTULO_TIPO_META, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
   moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
@@ -111,7 +111,7 @@ function conteudoBuild(build, { rotulo }, redesenhar) {
   ];
 }
 
-/** O norte de cada status: faixa, por que ela existe e de onde veio. */
+/** O norte de cada status: faixa e por que ela existe. */
 function tabelaMetas(metas, rotulo) {
   const linhas = metas.length
     ? metas.map((meta) =>
@@ -119,7 +119,6 @@ function tabelaMetas(metas, rotulo) {
           el("span", { style: { display: "inline-flex", alignItems: "center", gap: "8px" } }, icone(iconeStat(meta.stat), 16), rotuloMeta(meta.stat, rotulo)),
           el("strong", { class: "gold mono" }, faixaDaMeta(meta)),
           el("span", { class: "tag" }, ROTULO_TIPO_META[meta.tipo]),
-          mudo(`fonte: ${ROTULO_FONTE[meta.fonte]}`),
           meta.explicacao ? el("span", { class: "meta-explicacao" }, meta.explicacao) : null,
         ),
       )

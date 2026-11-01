@@ -1,7 +1,7 @@
 // Tela 4 · Análise: POST /api/analisar a cada mudança na entrada. A entrada vem da sessão de captura ou do envio manual.
 
 import {
-  ICONES, QUALIDADES, ROTULO_FONTE, ampliar, api, avisoErro, carregarImagens, corNota, el, faixaDaMeta, figura, elemento, estrelas, formatarValor, icone,
+  ICONES, QUALIDADES, ampliar, api, avisoErro, carregarImagens, corNota, el, faixaDaMeta, figura, elemento, estrelas, formatarValor, icone,
   iconeStat, lembrarPagina, moldura, parametro, perguntaCondicao, qualidade, rotuloMeta, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
@@ -333,7 +333,7 @@ const valorLido = (m) => (m.meta.stat.endsWith("_flat") ? Math.round(m.valor).to
 
 function textoDaMeta(m) {
   return [
-    mudo(`· meta ${faixaDaMeta(m.meta)} · ${ROTULO_FONTE[m.meta.fonte]}`),
+    mudo(`· meta ${faixaDaMeta(m.meta)}`),
     m.mensagem ? ` · ${m.mensagem}` : null,
     m.meta.explicacao ? el("span", { style: { display: "block", marginTop: "4px", fontSize: "13px", color: "var(--mudo)" } }, m.meta.explicacao) : null,
   ];
