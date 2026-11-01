@@ -54,7 +54,6 @@ class EchoInfo:
 @dataclass(frozen=True)
 class BuildSpec:
     escala: Escala
-    regen_energia_min: float
     custos: tuple[Custo, ...]
     sets: Mapping[str, int]  # set → peças pedidas; vazio = set livre
     echo_principal: str | None

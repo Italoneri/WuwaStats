@@ -81,8 +81,10 @@ Lista de builds (perfis em `data/characters.json`).
     "personagem": "Suoming",
     "condicoes": ["arma_assinatura"],
     "armas": { "melhor": "Unspoken Rue", "alternativas": [] },
-    "base": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "sets": {}, "echo_principal": null,
-              "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
+    "base": { "escala": "ATQ", "custos": [4,3,3,1,1], "sets": {}, "echo_principal": null,
+              "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 },
+              "metas": [ { "stat": "energy_regen", "min": 110, "max": 125, "tipo": "rotacao", "fonte": "game8",
+                           "explicacao": "110% com a rotação otimizada, 125% na simples." } ] },
     "variantes": [
       { "condicao": { "arma_assinatura": true }, "perfil": { "sets": { "Heart of Sworn Vigil": 5 }, "...": "..." } },
       { "condicao": { "arma_assinatura": false }, "perfil": { "sets": { "Moonlit Clouds": 5 }, "...": "..." } }
@@ -158,6 +160,7 @@ Corpo: **EntradaBuild**. Resposta: **Analise**.
   "condicoes": { "arma_assinatura": false },
   "regen_externa": 0,
   "regen_total_informado": 145.2,
+  "atributos": [ { "stat": "Taxa CRIT", "valor": 62.5, "percentual": true }, { "stat": "HP", "valor": 15000 } ],
   "echos": [
     {
       "nome": "Suhsin",
@@ -178,7 +181,8 @@ Corpo: **EntradaBuild**. Resposta: **Analise**.
 | `build` | string | chave de `/api/builds` |
 | `condicoes` | objeto | opcional; ausente/`null` = desconhecido (vira pendente) |
 | `regen_externa` | número | Regen. de Energia de arma, cadeia etc. Padrão 0 |
-| `regen_total_informado` | número \| null | Regen total da tela do personagem; usado só para conferência |
+| `regen_total_informado` | número \| null | Regen total da tela do personagem; quando há, é ela que se compara com a meta de Regen |
+| `atributos` | lista | opcional; atributos totais da tela do personagem (nomes como lidos). Sem `percentual`, conta como valor fixo (`HP` = HP total) |
 | `echos` | 1 a 5 | ordem dos slots |
 | `echos[].nome`, `set` | string \| null | qualquer nome cadastrado (PT-BR, inglês ou chave) |
 | `echos[].custo` | 1 \| 3 \| 4 | |
@@ -195,8 +199,9 @@ Campos extras são rejeitados (422).
   "personagem": "Suoming",
   "variante": 1,
   "condicoes_pendentes": [],
-  "perfil": { "escala": "ATQ", "regen_energia_min": 110, "custos": [4,3,3,1,1], "sets": { "Moonlit Clouds": 5 },
-              "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 } },
+  "perfil": { "escala": "ATQ", "custos": [4,3,3,1,1], "sets": { "Moonlit Clouds": 5 },
+              "echo_principal": null, "principais": { "4": ["crit_dmg", "crit_rate"] }, "estrelas": { "crit_rate": 3 },
+              "metas": [ /* MetaDeStatus */ ] },
   "echos": [ /* EchoAnalise */ ],
   "conjunto": { /* ConjuntoAnalise */ },
   "candidatos_troca": [ { "indice": 4, "nome": null, "score_pct": 6.3, "nota": "C", "motivos": ["Principal hp_pct; a build pede atk_pct no custo 1.", "Score 6.3%."] } ],
@@ -264,15 +269,26 @@ Campos extras são rejeitados (422).
 ```json
 {
   "cv": 114.6, "cv_com_principal": 158.6, "score_medio_pct": 42.6, "nota_media": "B",
-  "regen": { "base": 100, "echos": 35.2, "sets": 10, "externa": 0, "total": 145.2, "minimo": 110,
-             "atinge": true, "informado": null, "diferenca_informado": null },
+  "regen": { "base": 100, "echos": 35.2, "sets": 10, "externa": 0, "total": 145.2,
+             "informado": null, "diferenca_informado": null },
   "custos": { "esperado": [4,3,3,1,1], "atual": [4,3,3,1,1], "ok": true },
   "set": { "pedidos": [ { "set": "Moonlit Clouds", "pecas_necessarias": 5, "pecas_equipadas": 5, "ok": true } ], "ok": true,
            "bonus_ativos": [ { "set": "Moonlit Clouds", "pecas": 2, "stats": { "energy_regen": 10.0 } } ] },
   "echo_principal": { "esperado": null, "atual": "Suhsin", "ok": null },
+  "metas": [
+    { "meta": { "stat": "energy_regen", "min": 110, "max": 125, "tipo": "rotacao", "fonte": "game8", "explicacao": "..." },
+      "valor": 145.2, "origem": "echos", "veredito": "acima", "mensagem": "acima da faixa, 20.2% sobrando" },
+    { "meta": { "stat": "crit_rate", "min": 60, "max": 80, "tipo": "rotacao", "fonte": "prydwen", "explicacao": null },
+      "valor": null, "origem": null, "veredito": null, "mensagem": null }
+  ],
   "problemas": []
 }
 ```
+
+- `metas[]`: uma por meta da build. `valor` da Regen = `regen.informado` (origem `tela`) ou `regen.total` (`echos`);
+  dos outros stats, o atributo da tela (`tela`) ou `null` sem print (meta só de referência).
+- `veredito`: `abaixo` | `dentro` | `acima` | `null`. Na `rotacao`, bater a faixa basta; na `escala` (o kit converte até um
+  teto = `max`, ou `min` sem `max`), `acima` quer dizer "no teto".
 
 - `regen.total = base + echos (principal + substatus) + sets (bônus ativos) + externa`.
 - `regen.diferenca_informado = informado − total` (positivo: a tela mostra mais do que o calculado).
@@ -284,7 +300,8 @@ Campos extras são rejeitados (422).
 { "codigo": "valor_fora_tolerancia", "severidade": "revisao", "mensagem": "crit_dmg: lido 25.0, valor válido mais próximo 21.0.", "campo": "substatus[1]" }
 ```
 
-`campo` aponta o local na entrada (`nome`, `set`, `custo`, `principal`, `substatus[i]`, `substatus`, `regen`, `custos`, `echo_principal`).
+`campo` aponta o local na entrada (`nome`, `set`, `custo`, `principal`, `substatus[i]`, `substatus`, `regen`, `custos`, `echo_principal`)
+ou o stat da meta (`energy_regen`, `crit_rate`, …).
 
 | Severidade | Significado para a interface |
 |---|---|
@@ -310,9 +327,11 @@ Campos extras são rejeitados (422).
 | `custos_fora_da_build` | build | conjunto |
 | `set_incompleto` | build | conjunto |
 | `echo_principal_fora_da_build` | build | conjunto |
-| `regen_insuficiente` | build | conjunto |
+| `meta_abaixo` | build | conjunto |
 | `principal_valor_divergente` | aviso | echo |
 | `regen_divergente` | aviso | conjunto |
+| `regen_sobrando` | aviso | conjunto (Regen acima do máximo/teto da meta) |
+| `taxa_crit_excessiva` | aviso | conjunto (Taxa CRIT da tela acima de 90%) |
 
 ## `POST /api/extrair`
 
@@ -473,7 +492,7 @@ aparecem; numa variante, campo presente = substitui o da base.
 Corpo: o perfil (mesmo formato). Cria ou substitui a build `chave` (letras, números, `_` ou `-`). O servidor valida o
 `characters.json` inteiro com o loader numa cópia dos dados. Se passar, copia o arquivo anterior para
 `data/backups/characters-<data>.json`, grava de forma atômica, recarrega os dados e devolve o perfil salvo.
-`422` com `erros` (`characters.json › <chave> › estrelas › X: motivo` ou `body › regen_energia_min: motivo`); nesse caso
+`422` com `erros` (`characters.json › <chave> › estrelas › X: motivo` ou `body › metas › 0: motivo`); nesse caso
 nada é gravado.
 
 ### `DELETE /api/perfis/{chave}`

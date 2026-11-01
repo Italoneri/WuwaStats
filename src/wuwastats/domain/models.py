@@ -39,4 +39,5 @@ class EntradaBuild(_Entrada):
     condicoes: Condicoes = Condicoes()
     regen_externa: float = 0
     regen_total_informado: float | None = None
+    atributos: tuple[StatLido, ...] = Field(default=(), description="Atributos totais da tela do personagem, nomes como lidos.")
     echos: tuple[EchoEntrada, ...] = Field(min_length=1, max_length=MAX_ECHOS)

@@ -164,7 +164,6 @@ class NotasFile(_Estrito):
 
 class BuildSpecRaw(_Estrito):
     escala: Escala
-    regen_energia_min: float = Field(ge=100)
     custos: list[Custo] = Field(min_length=5, max_length=5)
     # set → peças; vazio = set livre. Combinação: {"Dream of the Lost": 3, "Havoc Eclipse": 2}
     sets: dict[str, PecasDeSet] = {}
@@ -198,7 +197,6 @@ class VarianteRaw(_Estrito):
 
     condicao: Condicoes
     escala: Escala | None = None
-    regen_energia_min: float | None = None
     custos: list[Custo] | None = None
     sets: dict[str, PecasDeSet] | None = None
     echo_principal: str | None = None

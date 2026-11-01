@@ -4,7 +4,6 @@
     "armas_assinatura": ["Arma Teste", "Test Weapon"],
     "armas": { "melhor": "Test Weapon", "alternativas": ["Arma Alternativa"] },
     "escala": "ATQ",
-    "regen_energia_min": 110,
     "metas": [
       { "stat": "energy_regen", "min": 110, "tipo": "rotacao", "fonte": "game8", "explicacao": "Teste." },
       { "stat": "crit_rate", "min": 60, "max": 80, "tipo": "rotacao", "fonte": "prydwen" }
@@ -21,7 +20,6 @@
   "Suoming_SubDPS": {
     "personagem": "Suoming",
     "escala": "ATQ",
-    "regen_energia_min": 120,
     "metas": [{ "stat": "energy_regen", "min": 120, "max": 130, "tipo": "rotacao", "fonte": "game8" }],
     "custos": [4, 3, 3, 1, 1],
     "echo_principal": "Soulfrayer",

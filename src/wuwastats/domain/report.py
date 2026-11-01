@@ -4,6 +4,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from wuwastats.domain.metas import MetaAnalise, MetaDeStatus
 from wuwastats.domain.models import Custo, Escala
 
 Severidade = Literal["revisao", "mapeamento", "build", "aviso"]
@@ -24,9 +25,11 @@ CodigoProblema = Literal[
     "custos_fora_da_build",
     "set_incompleto",
     "echo_principal_fora_da_build",
-    "regen_insuficiente",
+    "meta_abaixo",
     "principal_valor_divergente",
     "regen_divergente",
+    "regen_sobrando",
+    "taxa_crit_excessiva",
 ]
 
 # revisao: leitura provavelmente errada, precisa de correção manual
@@ -48,9 +51,11 @@ SEVERIDADE: dict[CodigoProblema, Severidade] = {
     "custos_fora_da_build": "build",
     "set_incompleto": "build",
     "echo_principal_fora_da_build": "build",
-    "regen_insuficiente": "build",
+    "meta_abaixo": "build",
     "principal_valor_divergente": "aviso",
     "regen_divergente": "aviso",
+    "regen_sobrando": "aviso",
+    "taxa_crit_excessiva": "aviso",
 }
 
 
@@ -127,8 +132,6 @@ class RegenAnalise(_Saida):
     sets: float
     externa: float
     total: float
-    minimo: float
-    atinge: bool
     informado: float | None
     diferenca_informado: float | None
 
@@ -173,6 +176,7 @@ class ConjuntoAnalise(_Saida):
     custos: CustosAnalise
     set: SetAnalise
     echo_principal: EchoPrincipalAnalise
+    metas: list[MetaAnalise] = Field(description="Uma por meta da build, na ordem dela; valor null = sem print da tela.")
     problemas: list[Problema]
 
 
@@ -195,12 +199,12 @@ class NomeDesconhecido(_Saida):
 
 class PerfilAplicado(_Saida):
     escala: Escala
-    regen_energia_min: float
     custos: list[Custo]
     sets: dict[str, int] = Field(description="Set → peças pedidas; vazio = set livre.")
     echo_principal: str | None
     principais: dict[Custo, list[str]]
     estrelas: dict[str, int] = Field(description="1 a 3 por substatus, na ordem de prioridade da build.")
+    metas: list[MetaDeStatus]
 
 
 class Analise(_Saida):

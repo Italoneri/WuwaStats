@@ -88,10 +88,10 @@ def _nomes_nao_resolvidos(echo: EchoAnalise) -> list[tuple[CategoriaNome, str]]:
 def perfil_aplicado(spec: BuildSpec) -> PerfilAplicado:
     return PerfilAplicado(
         escala=spec.escala,
-        regen_energia_min=spec.regen_energia_min,
         custos=list(spec.custos),
         sets=dict(spec.sets),
         echo_principal=spec.echo_principal,
         principais={custo: sorted(stats) for custo, stats in spec.principais.items()},
         estrelas=dict(spec.estrelas),
+        metas=list(spec.metas),
     )

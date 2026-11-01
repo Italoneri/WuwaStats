@@ -88,7 +88,7 @@ _META_CRIT: Json = {"stat": "crit_rate", "min": 60, "tipo": "rotacao", "fonte": 
         ("characters.json", _suoming("sets", {"Set Inexistente": 5}), "sets › Set Inexistente: 'Set Inexistente' não está"),
         ("characters.json", _suoming("sets", {"Moonlit Clouds": 3, "Heart of Sworn Vigil": 3}), "pedem 6 peças"),
         ("characters.json", _variante("sets", {"Moonlit Clouds": 5, "Heart of Sworn Vigil": 1}), "pedem 6 peças"),
-        ("characters.json", _suoming("regen_energia_min", 90), "regen_energia_min"),
+        ("characters.json", _suoming("regen_energia_min", 110), "regen_energia_min: Extra inputs are not permitted"),
         ("characters.json", _suoming("metas", [_META_CRIT, _META_CRIT]), "metas: Value error, meta de crit_rate repetida"),
         ("characters.json", _suoming("metas", [_META_CRIT | {"max": 50}]), "metas › 0: Value error, max menor que min"),
         ("characters.json", _variante("metas", [_META_CRIT, _META_CRIT]), "variantes › 0 › metas: Value error"),

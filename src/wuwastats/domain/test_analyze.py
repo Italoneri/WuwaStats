@@ -1,11 +1,13 @@
 import dataclasses
+from collections.abc import Callable
 from typing import get_args
 
 import pytest
 
 from wuwastats.conftest import com_echo
 from wuwastats.domain.analyze import analisar
-from wuwastats.domain.models import Condicoes, EntradaBuild
+from wuwastats.domain.metas import MetaDeStatus
+from wuwastats.domain.models import Condicoes, EntradaBuild, StatLido
 from wuwastats.domain.report import SEVERIDADE, Analise, CodigoProblema, SubstatInvalido, SubstatValido
 from wuwastats.domain.tables import GameData
 
@@ -52,7 +54,7 @@ class TestEntradaLimpa:
     def test_soma_regen_de_echos_e_bonus_de_set(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         regen = _analisar(entrada_suoming, dados).conjunto.regen
 
-        assert (regen.echos, regen.sets, regen.total, regen.atinge) == (35.2, 10.0, 145.2, True)
+        assert (regen.echos, regen.sets, regen.total) == (35.2, 10.0, 145.2)
 
     def test_confere_set_custos_e_variante(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
         analise = _analisar(entrada_suoming, dados)
@@ -151,14 +153,6 @@ class TestNomesDesconhecidos:
 
 
 class TestConjunto:
-    def test_avisa_regen_abaixo_do_minimo(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
-        entrada = entrada_suoming.model_copy(update={"echos": entrada_suoming.echos[:1]})
-
-        regen = _analisar(entrada, dados).conjunto
-
-        assert regen.regen.total == 108.4
-        assert "regen_insuficiente" in {p.codigo for p in regen.problemas}
-
     def test_soma_regen_externa_e_compara_com_valor_da_tela(
         self, dados: GameData, entrada_suoming: EntradaBuild
     ) -> None:
@@ -228,3 +222,85 @@ class TestCombinacaoDeSets:
             "1/2 peças de Heart of Sworn Vigil."
         ]
         assert "set_fora_da_build" not in _codigos(analise, 4)
+
+
+def _com_atributos(entrada: EntradaBuild, **valores: float) -> EntradaBuild:
+    atributos = tuple(StatLido(stat=stat, valor=valor) for stat, valor in valores.items())
+    return entrada.model_copy(update={"atributos": atributos})
+
+
+def _sem_echos_de_regen(entrada: EntradaBuild) -> EntradaBuild:
+    """Só o 1º echo: Regen calculada 108.4, abaixo dos 110 da Suoming_DPS."""
+    return entrada.model_copy(update={"echos": entrada.echos[:1]})
+
+
+def _sub_dps(entrada: EntradaBuild) -> EntradaBuild:
+    """Suoming_SubDPS pede 120–130% de Regen; os echos da entrada somam 145.2."""
+    return entrada.model_copy(update={"build": "Suoming_SubDPS"})
+
+
+class TestMetas:
+    def test_compara_regen_da_tela_antes_dos_echos(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        com_tela = _sub_dps(entrada_suoming).model_copy(update={"regen_total_informado": 125.0})
+
+        pela_tela = _analisar(com_tela, dados).conjunto.metas[0]
+        pelos_echos = _analisar(_sub_dps(entrada_suoming), dados).conjunto.metas[0]
+
+        assert (pela_tela.origem, pela_tela.valor, pela_tela.veredito) == ("tela", 125.0, "dentro")
+        assert (pelos_echos.origem, pelos_echos.valor, pelos_echos.veredito) == ("echos", 145.2, "acima")
+
+    @pytest.mark.parametrize(
+        ("preparar", "codigo", "aparece"),
+        [
+            (_sem_echos_de_regen, "meta_abaixo", True),
+            (_sub_dps, "regen_sobrando", True),
+            (lambda e: _com_atributos(e, **{"Taxa CRIT": 92}), "taxa_crit_excessiva", True),
+            (lambda e: _com_atributos(e, **{"Taxa CRIT": 90}), "taxa_crit_excessiva", False),
+            (lambda e: _com_atributos(e, **{"Taxa CRIT": 85}), "meta_abaixo", False),
+        ],
+    )
+    def test_aponta_problemas_das_metas(
+        self,
+        dados: GameData,
+        entrada_suoming: EntradaBuild,
+        preparar: Callable[[EntradaBuild], EntradaBuild],
+        codigo: str,
+        aparece: bool,
+    ) -> None:
+        conjunto = _analisar(preparar(entrada_suoming), dados).conjunto
+
+        assert (codigo in {p.codigo for p in conjunto.problemas}) is aparece
+
+    def test_meta_abaixo_explica_o_que_falta(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        conjunto = _analisar(_sem_echos_de_regen(entrada_suoming), dados).conjunto
+
+        assert [(p.mensagem, p.campo, p.severidade) for p in conjunto.problemas if p.codigo == "meta_abaixo"] == [
+            ("Regen. de Energia 108.4% abaixo da meta de 110%.", "energy_regen", "build")
+        ]
+
+    def test_taxa_crit_acima_da_faixa_e_so_informativa(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        conjunto = _analisar(_com_atributos(entrada_suoming, **{"Taxa CRIT": 85}), dados).conjunto
+
+        crit = conjunto.metas[1]
+        assert (crit.valor, crit.veredito, crit.mensagem) == (85, "acima", "acima da faixa, quanto mais melhor")
+        assert conjunto.problemas == []
+
+    def test_resolve_hp_da_tela_sem_percentual(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        perfil = dados.perfis["Suoming_DPS"]
+        meta = MetaDeStatus(stat="hp_flat", min=50000, tipo="escala", fonte="game8")
+        com_hp = dataclasses.replace(perfil, base=dataclasses.replace(perfil.base, metas=(meta,)))
+        entrada = _com_atributos(entrada_suoming.model_copy(update={"condicoes": Condicoes()}), HP=48000)
+
+        hp = analisar(entrada, com_hp, dados).conjunto.metas[0]
+
+        assert (hp.valor, hp.origem, hp.veredito) == (48000, "tela", "abaixo")
+
+    def test_meta_sem_valor_fica_so_de_referencia(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        crit = _analisar(entrada_suoming, dados).conjunto.metas[1]
+
+        assert (crit.meta.stat, crit.valor, crit.origem, crit.veredito) == ("crit_rate", None, None, None)
+
+    def test_perfil_aplicado_traz_metas(self, dados: GameData, entrada_suoming: EntradaBuild) -> None:
+        metas = _analisar(entrada_suoming, dados).perfil.metas
+
+        assert [(m.stat, m.min, m.max) for m in metas] == [("energy_regen", 110, None), ("crit_rate", 60, 80)]

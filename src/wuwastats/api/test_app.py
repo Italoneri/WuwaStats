@@ -379,13 +379,13 @@ class TestEditorDeBuilds:
         assert perfil["variantes"][1] == {"condicao": {"arma_assinatura": False}, "sets": {"Moonlit Clouds": 5}}
 
     def test_salva_faz_backup_e_recarrega(self, cliente: TestClient, settings: Settings) -> None:
-        perfil = self._perfil(cliente) | {"regen_energia_min": 125}
+        perfil = self._perfil(cliente) | {"metas": [{"stat": "energy_regen", "min": 125, "tipo": "rotacao", "fonte": "game8"}]}
 
         resposta = cliente.put("/api/perfis/Suoming_DPS", json=perfil)
 
         assert resposta.status_code == 200
         builds = {b["chave"]: b for b in cliente.get("/api/builds").json()}
-        assert builds["Suoming_DPS"]["base"]["regen_energia_min"] == 125
+        assert builds["Suoming_DPS"]["base"]["metas"][0]["min"] == 125
         assert len(list((settings.data_dir / "backups").glob("characters-*.json"))) == 1
         gravado = json.loads((settings.data_dir / "characters.json").read_text(encoding="utf-8"))
         assert next(iter(gravado["Suoming_DPS"])) == "personagem"
@@ -406,7 +406,8 @@ class TestEditorDeBuilds:
         [
             ({"estrelas": {"Sorte": 3}}, "characters.json › Suoming_DPS › estrelas › Sorte"),
             ({"sets": {"Set Inexistente": 5}}, "characters.json › Suoming_DPS › sets › Set Inexistente"),
-            ({"regen_energia_min": 50}, "body › regen_energia_min"),
+            ({"metas": [{"stat": "energy_regen", "min": 50, "tipo": "rotacao", "fonte": "game8"}]}, "body › metas › 0"),
+            ({"regen_energia_min": 120}, "body › regen_energia_min"),
             ({"custos": [4, 4, 4, 1, 1]}, "custo total 14"),
         ],
     )
@@ -422,7 +423,7 @@ class TestEditorDeBuilds:
         assert (settings.data_dir / "characters.json").read_bytes() == antes
 
     def test_cria_e_apaga_build(self, cliente: TestClient) -> None:
-        nova = self._perfil(cliente, "Suoming_SubDPS") | {"regen_energia_min": 130}
+        nova = self._perfil(cliente, "Suoming_SubDPS") | {"metas": []}
 
         criada = cliente.put("/api/perfis/Suoming_Teste", json=nova)
         apagada = cliente.delete("/api/perfis/Suoming_Teste")

@@ -241,7 +241,6 @@ class _Resolvedor:
     def _spec(self, raw: BuildSpecRaw, onde: str) -> BuildSpec:
         return BuildSpec(
             escala=raw.escala,
-            regen_energia_min=raw.regen_energia_min,
             custos=tuple(raw.custos),
             sets=self._sets(raw.sets, f"{onde} › sets"),
             echo_principal=self._nome(self.echo_names, raw.echo_principal, f"{onde} › echo_principal"),

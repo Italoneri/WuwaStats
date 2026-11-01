@@ -3,8 +3,9 @@
 from collections.abc import Mapping, Sequence
 from statistics import fmean
 
+from wuwastats.domain.metas import REGEN_BASE, MetaAnalise, OrigemValor, StatDeMeta, comparar_meta, formatar_valor
 from wuwastats.domain.models import Custo, EntradaBuild
-from wuwastats.domain.names import ENERGY_REGEN
+from wuwastats.domain.names import CRIT_RATE, ENERGY_REGEN, NameIndex, resolve_stat
 from wuwastats.domain.report import (
     BonusSet,
     ConjuntoAnalise,
@@ -21,9 +22,9 @@ from wuwastats.domain.report import (
 from wuwastats.domain.score import crit_value, nota
 from wuwastats.domain.tables import BuildSpec, GameData, SetInfo
 
-REGEN_BASE = 100.0
 CUSTO_MAXIMO = 12
 TOLERANCIA_REGEN_INFORMADA = 0.15
+LIMITE_TAXA_CRIT = 90.0  # com buffs de time (ex.: Guardiã da Costa) passa de 100%, e o excesso não rende
 
 
 def analisar_conjunto(
@@ -31,7 +32,9 @@ def analisar_conjunto(
 ) -> ConjuntoAnalise:
     pecas = pecas_por_set(echos, dados.echos_repetidos_contam)
     bonus = bonus_ativos(pecas, dados.sets)
-    regen = _regen(entrada, echos, bonus, spec)
+    regen = _regen(entrada, echos, bonus)
+    atributos = atributos_da_tela(entrada, dados.stat_names)
+    metas = [comparar_meta(meta, *_valor_da_meta(meta.stat, regen, atributos)) for meta in spec.metas]
     custos = _custos(echos, spec)
     set_ = _set(pecas, bonus, spec)
     echo_principal = _echo_principal(echos, spec)
@@ -45,8 +48,11 @@ def analisar_conjunto(
         custos=custos,
         set=set_,
         echo_principal=echo_principal,
+        metas=metas,
         problemas=[
-            *_problemas_regen(regen),
+            *_problemas_metas(metas, dados.stat_names),
+            *_problemas_taxa_crit(atributos),
+            *_problema_regen_divergente(regen),
             *_problemas_custos(custos),
             *_problemas_set(set_),
             *_problemas_echo_principal(echo_principal),
@@ -74,7 +80,7 @@ def bonus_ativos(pecas: Mapping[str, int], sets: Mapping[str, SetInfo]) -> list[
     ]
 
 
-def _regen(entrada: EntradaBuild, echos: Sequence[EchoAnalise], bonus: Sequence[BonusSet], spec: BuildSpec) -> RegenAnalise:
+def _regen(entrada: EntradaBuild, echos: Sequence[EchoAnalise], bonus: Sequence[BonusSet]) -> RegenAnalise:
     dos_echos = round(sum(_regen_do_echo(e) for e in echos), 2)
     dos_sets = round(sum(b.stats.get(ENERGY_REGEN, 0.0) for b in bonus), 2)
     total = round(REGEN_BASE + dos_echos + dos_sets + entrada.regen_externa, 2)
@@ -85,8 +91,6 @@ def _regen(entrada: EntradaBuild, echos: Sequence[EchoAnalise], bonus: Sequence[
         sets=dos_sets,
         externa=entrada.regen_externa,
         total=total,
-        minimo=spec.regen_energia_min,
-        atinge=total >= spec.regen_energia_min,
         informado=informado,
         diferenca_informado=None if informado is None else round(informado - total, 2),
     )
@@ -129,18 +133,71 @@ def _echo_principal(echos: Sequence[EchoAnalise], spec: BuildSpec) -> EchoPrinci
     )
 
 
-def _problemas_regen(regen: RegenAnalise) -> list[Problema]:
-    problemas: list[Problema] = []
-    if not regen.atinge:
-        mensagem = f"Regen. de Energia {regen.total}% abaixo do mínimo de {regen.minimo}%."
-        problemas.append(problema("regen_insuficiente", mensagem, "regen"))
-    if regen.diferenca_informado is not None and abs(regen.diferenca_informado) > TOLERANCIA_REGEN_INFORMADA:
-        mensagem = (
-            f"Regen calculada {regen.total}% difere da tela do personagem ({regen.informado}%). "
-            "Confira regen_externa (arma, cadeia) e os echos."
-        )
-        problemas.append(problema("regen_divergente", mensagem, "regen"))
-    return problemas
+def atributos_da_tela(entrada: EntradaBuild, stat_names: NameIndex) -> dict[str, float]:
+    """HP/ATQ/DEF totais vêm sem '%': percentual ausente conta como valor fixo (senão 'HP' fica ambíguo com HP%)."""
+    resolvidos = ((resolve_stat(stat_names, a.stat, bool(a.percentual)), a.valor) for a in entrada.atributos)
+    return {stat: valor for stat, valor in resolvidos if stat is not None}
+
+
+def _valor_da_meta(
+    stat: StatDeMeta, regen: RegenAnalise, atributos: Mapping[str, float]
+) -> tuple[float | None, OrigemValor | None]:
+    """A Regen da tela já inclui arma e cadeia; sem print, vale a conta pelos echos."""
+    if stat == ENERGY_REGEN:
+        return (regen.informado, "tela") if regen.informado is not None else (regen.total, "echos")
+    valor = atributos.get(stat)
+    return (valor, "tela") if valor is not None else (None, None)
+
+
+def _problemas_metas(metas: Sequence[MetaAnalise], stat_names: NameIndex) -> list[Problema]:
+    abaixo = [_meta_abaixo(a, stat_names) for a in metas if a.veredito == "abaixo"]
+    sobrando = [_regen_sobrando(a) for a in metas if a.veredito == "acima" and a.meta.stat == ENERGY_REGEN]
+    return [p for p in (*abaixo, *sobrando) if p is not None]
+
+
+def _meta_abaixo(analise: MetaAnalise, stat_names: NameIndex) -> Problema | None:
+    meta, valor = analise.meta, analise.valor
+    if valor is None:
+        return None
+    lido, minimo = formatar_valor(meta.stat, valor), formatar_valor(meta.stat, meta.min)
+    return problema("meta_abaixo", f"{_rotulo(stat_names, meta.stat)} {lido} abaixo da meta de {minimo}.", meta.stat)
+
+
+def _regen_sobrando(analise: MetaAnalise) -> Problema | None:
+    meta, valor = analise.meta, analise.valor
+    if valor is None:
+        return None
+    sobra = formatar_valor(meta.stat, round(valor - meta.teto, 2))
+    mensagem = (
+        f"Regen. de Energia {formatar_valor(meta.stat, valor)} passa do máximo da meta "
+        f"({formatar_valor(meta.stat, meta.teto)}): {sobra} sobrando, dá para trocar por dano."
+    )
+    return problema("regen_sobrando", mensagem, "regen")
+
+
+def _problemas_taxa_crit(atributos: Mapping[str, float]) -> list[Problema]:
+    taxa = atributos.get(CRIT_RATE)
+    if taxa is None or taxa <= LIMITE_TAXA_CRIT:
+        return []
+    mensagem = (
+        f"Taxa CRIT {formatar_valor(CRIT_RATE, taxa)} passa de 90%: com buffs de time (ex.: Guardiã da Costa) "
+        "pode passar de 100%, e o excesso não rende."
+    )
+    return [problema("taxa_crit_excessiva", mensagem, CRIT_RATE)]
+
+
+def _problema_regen_divergente(regen: RegenAnalise) -> list[Problema]:
+    if regen.diferenca_informado is None or abs(regen.diferenca_informado) <= TOLERANCIA_REGEN_INFORMADA:
+        return []
+    mensagem = (
+        f"Regen calculada {regen.total}% difere da tela do personagem ({regen.informado}%). "
+        "Confira regen_externa (arma, cadeia) e os echos."
+    )
+    return [problema("regen_divergente", mensagem, "regen")]
+
+
+def _rotulo(stat_names: NameIndex, stat: str) -> str:
+    return next(iter(stat_names.aliases_by_key.get(stat, ())), stat)
 
 
 def _problemas_custos(custos: CustosAnalise) -> list[Problema]:
