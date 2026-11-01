@@ -4,10 +4,10 @@ from importar_builds_game8 import (
     BuildGerada,
     chave_da_build,
     escolher_personagens,
+    faixa_de_regen,
     ler_blocos,
     links_da_home,
     mesclar,
-    meta_de_regen,
     montar_build,
     nomes_no_game8,
 )
@@ -76,8 +76,13 @@ def test_monta_build_com_chaves_do_catalogo_e_marca_o_que_nao_reconheceu(dados: 
     assert build.perfil["principais"] == {"4": ["crit_dmg", "crit_rate"], "3": ["electro_dmg", "atk_pct"], "1": ["atk_pct"]}
     assert build.perfil["estrelas"] == {"crit_dmg": 3, "energy_regen": 2, "atk_flat": 1}
     assert build.perfil["sets"] == {"Moonlit Clouds": 5}
-    assert (build.perfil["escala"], build.perfil["regen_energia_min"]) == ("ATQ", 115)
-    assert build.avisos == ["arma 'Arma Fantasma' não está no catálogo", "substatus 'Sorte' não reconhecido"]
+    assert build.perfil["escala"] == "ATQ"
+    assert build.perfil["metas"] == [{"stat": "energy_regen", "min": 115, "max": 120, "tipo": "rotacao", "fonte": "game8"}]
+    assert build.avisos == [
+        "arma 'Arma Fantasma' não está no catálogo",
+        "substatus 'Sorte' não reconhecido",
+        "conferir o tipo e escrever a explicação da meta de Regen. de Energia",
+    ]
     assert build.perfil["status"].startswith("TODO: arma 'Arma Fantasma'")
 
 
@@ -95,11 +100,19 @@ def _bloco(texto: str = "Aim for 120% Energy Regen.", sets: tuple[tuple[str, int
     )
 
 
-def test_sem_meta_de_regen_fica_100_com_todo(dados: GameData) -> None:
+def test_sem_meta_de_regen_fica_sem_meta_com_todo(dados: GameData) -> None:
     build = montar_build("Shorekeeper", _bloco(texto="Heals the team."), dados)
 
-    assert (build.perfil["regen_energia_min"], build.perfil["escala"]) == (100, "HP")
-    assert build.avisos == ["o Game8 não cita meta de Regen. de Energia; ficou 100"]
+    assert ("metas" not in build.perfil, build.perfil["escala"]) == (True, "HP")
+    assert build.avisos == ["sem meta de Regen. de Energia nas fontes"]
+    assert build.perfil["status"] == "TODO: sem meta de Regen. de Energia nas fontes"
+
+
+@pytest.mark.parametrize("texto", ["Aim for 120% Energy Regen.", "Heals the team."])
+def test_avisos_nao_contem_separador(dados: GameData, texto: str) -> None:
+    build = montar_build("Shorekeeper", _bloco(texto=texto), dados)
+
+    assert all("; " not in aviso for aviso in build.avisos)
 
 
 def test_le_e_guarda_combinacao_de_sets() -> None:
@@ -113,25 +126,26 @@ def test_set_sem_numero_de_pecas_usa_o_tamanho_do_set(dados: GameData) -> None:
     build = montar_build("Shorekeeper", _bloco(sets=(("Moonlit Clouds", None), ("Heart of Sworn Vigil", None))), dados)
 
     assert build.perfil["sets"] == {"Moonlit Clouds": 5}
-    assert build.avisos == ["set 'Heart of Sworn Vigil': o site não diz quantas peças e sets.json não sabe o tamanho"]
+    assert build.avisos[0] == "set 'Heart of Sworn Vigil': o site não diz quantas peças e sets.json não sabe o tamanho"
 
 
 @pytest.mark.parametrize(
     ("texto", "esperado"),
     [
-        ("aim to reach 115-120% Energy Regen", 115),
-        ("Aim for 250% Energy Regen", 250),
-        ("around 115% to 120% Energy Regen", 115),
-        ("Basic Attack DMG 25% Energy Regen 115% Stats shown", 115),
-        ("prioritize getting her ER to around 120% , followed by", 120),
-        ("As for Energy Regen , we recommend you get her to 120% to have", 120),
+        ("aim to reach 115-120% Energy Regen", (115, 120)),
+        ("Aim for 250% Energy Regen", (250, None)),
+        ("around 115% to 120% Energy Regen", (115, 120)),
+        ("ER 105–130% depending on the rotation", (105, 130)),
+        ("Basic Attack DMG 25% Energy Regen 115% Stats shown", (115, None)),
+        ("prioritize getting her ER to around 120% , followed by", (120, None)),
+        ("As for Energy Regen , we recommend you get her to 120% to have", (120, None)),
         ("gives 12% Energy Regen", None),
         ("Energy Regen 12% bonus", None),
         ("no target here", None),
     ],
 )
-def test_acha_a_meta_de_regen_no_texto(texto: str, esperado: int | None) -> None:
-    assert meta_de_regen(texto) == esperado
+def test_acha_a_faixa_de_regen_no_texto(texto: str, esperado: tuple[int, int | None] | None) -> None:
+    assert faixa_de_regen(texto) == esperado
 
 
 @pytest.mark.parametrize(

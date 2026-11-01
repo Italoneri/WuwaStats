@@ -5,7 +5,7 @@
     uv run python scripts/importar_builds_game8.py --personagem Hsin --substituir
 
 Cada bloco "<...> Build" da página vira uma build: armas, set, padrão de custo, echo principal, status principais e
-estrelas dos substatus. A Regen mínima vem da meta citada no texto do bloco; sem meta, fica 100 com status TODO.
+estrelas dos substatus. A meta de Regen (faixa) vem do texto do bloco; sem meta, a build fica sem ela e com status TODO.
 Personagens que já têm build não são tocados (a não ser com --substituir). O texto explicativo (descricao) não é
 gerado: é escrito à mão, com palavras próprias. Páginas baixadas ficam em cache/game8/ (--atualizar baixa de novo).
 """
@@ -24,6 +24,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from wuwastats.config import PROJECT_ROOT
+from wuwastats.domain.metas import REGEN_BASE
 from wuwastats.domain.models import ESTRELAS_MAXIMAS, Custo
 from wuwastats.domain.names import NameIndex, fold, resolve_stat
 from wuwastats.domain.tables import GameData
@@ -36,7 +37,6 @@ TIMEOUT_S = 30
 TENTATIVAS = 3
 PAUSA_ENTRE_DOWNLOADS_S = 1.0  # o site é de terceiros: sem rajadas
 PASTA_CACHE = PROJECT_ROOT / "cache" / "game8"
-REGEN_PADRAO = 100
 CUSTOS_DA_TABELA: dict[str, Custo] = {"4": 4, "3": 3, "1": 1}  # colunas da tabela de principais
 # Nomes do Game8 que não estão em stat_aliases.json (comparados já normalizados com fold()).
 STATS_DO_GAME8 = {
@@ -49,8 +49,10 @@ STATS_DO_GAME8 = {
     "crit": "crit_rate",
 }
 ESCALA_PELO_PRINCIPAL_DE_CUSTO_1 = {"hp_pct": "HP", "def_pct": "DEF"}
+AVISO_EXPLICAR_REGEN = "conferir o tipo e escrever a explicação da meta de Regen. de Energia"
+AVISO_SEM_REGEN = "sem meta de Regen. de Energia nas fontes"
 _ER = r"\b(?:Energy Regen|ER)\b"
-_FAIXA_PCT = r"(\d{3})(?:\s*%?\s*(?:[-–~]|to)\s*\d{3})?\s*%"
+_FAIXA_PCT = r"(\d{3})(?:\s*%?\s*(?:[-–~]|to)\s*(\d{3}))?\s*%"
 # O Game8 escreve a meta antes ou depois do nome: '115-120% Energy Regen', 'Energy Regen 115%', 'ER to around 120%'.
 META_DE_REGEN = (
     re.compile(rf"{_FAIXA_PCT}\s*(?:of\s+)?{_ER}"),
@@ -289,10 +291,16 @@ def _substatus(tabela: str) -> tuple[tuple[str, int], ...]:
     return tuple((nome.strip(), len(estrelas)) for nome, estrelas in re.findall(r"\d+\.\s*([^★\d][^★]*?)\s*(★+)", lista))
 
 
-def meta_de_regen(texto: str) -> int | None:
-    """Primeira meta citada, na faixa vale o menor número; ignora números abaixo de 100 (bônus, não meta)."""
-    achados = sorted((achado.start(), int(achado.group(1))) for padrao in META_DE_REGEN for achado in padrao.finditer(texto))
-    return next((numero for _, numero in achados if numero >= REGEN_PADRAO), None)
+def faixa_de_regen(texto: str) -> tuple[int, int | None] | None:
+    """Primeira meta citada: (mínimo, máximo ou None); ignora números abaixo de 100 (bônus, não meta)."""
+    achados = sorted((achado.start(), achado) for padrao in META_DE_REGEN for achado in padrao.finditer(texto))
+    faixas = (_faixa(achado) for _, achado in achados)
+    return next((faixa for faixa in faixas if faixa[0] >= REGEN_BASE), None)
+
+
+def _faixa(achado: re.Match[str]) -> tuple[int, int | None]:
+    minimo, maximo = int(achado.group(1)), achado.group(2)
+    return minimo, int(maximo) if maximo and int(maximo) > minimo else None
 
 
 # --- Montagem da build (pura) ---
@@ -301,24 +309,28 @@ def meta_de_regen(texto: str) -> int | None:
 def montar_build(personagem: str, bloco: BlocoGame8, dados: GameData) -> BuildGerada:
     avisos: list[str] = []
     principais = {custo: _principais_resolvidos(texto, custo, dados, avisos) for custo, texto in bloco.principais.items()}
-    regen = meta_de_regen(bloco.texto)
+    regen = faixa_de_regen(bloco.texto)
     perfil: dict[str, Any] = {
         "personagem": personagem,
         "armas": _armas(bloco, dados, avisos),
         "escala": _escala(principais.get("1", [])),
-        "regen_energia_min": regen or REGEN_PADRAO,
+        "metas": [_meta_de_regen(*regen)] if regen else None,
         "custos": list(bloco.custos),
         "echo_principal": _nome(dados.echo_names, dados.echoes, bloco.echo_principal, "echo", avisos),
         "sets": _sets(bloco, dados, avisos),
         "principais": {custo: stats for custo, stats in principais.items() if stats},
         "estrelas": _estrelas(bloco.substatus, dados, avisos),
     }
-    if regen is None:
-        avisos.append("o Game8 não cita meta de Regen. de Energia; ficou 100")
+    avisos.append(AVISO_EXPLICAR_REGEN if regen else AVISO_SEM_REGEN)
     if len(bloco.custos) != 5:
         avisos.append(f"padrão de custo ilegível: {bloco.custos}")
     perfil["status"] = f"TODO: {'; '.join(avisos)}" if avisos else "ok"
     return BuildGerada(chave=chave_da_build(personagem, bloco.titulo), perfil=_sem_vazios(perfil), avisos=avisos)
+
+
+def _meta_de_regen(minimo: int, maximo: int | None) -> dict[str, Any]:
+    faixa = {"min": minimo} if maximo is None else {"min": minimo, "max": maximo}
+    return {"stat": "energy_regen", **faixa, "tipo": "rotacao", "fonte": "game8"}
 
 
 def chave_da_build(personagem: str, titulo: str) -> str:

@@ -103,7 +103,9 @@ gera uma build por bloco do guia: armas, set, padrão de custo, echo principal, 
 
 - Personagem que já tem build fica intacto; `--personagem X --substituir` troca as builds dele. `--simular` só mostra o relatório.
 - Grava como o editor: valida tudo antes, guarda o arquivo anterior em `data/backups/` e escreve de forma atômica.
-- O que precisa de revisão fica em `status: "TODO: ..."`: meta de Regen. de Energia que o guia não cita (fica 100), nome
-  fora do catálogo, ou combinação de sets (3 peças + 2), já que a build guarda um set só.
+- A meta de Regen. de Energia vira a faixa citada no guia (`115–120%` → mínimo 115, máximo 120), com tipo `rotacao` e fonte
+  `game8`; tipo e explicação ficam para conferir à mão.
+- O que precisa de revisão fica em `status: "TODO: ..."`: meta de Regen. de Energia sem explicação ou que o guia não cita
+  (a build fica sem meta), nome fora do catálogo, ou combinação de sets (3 peças + 2), já que a build guarda um set só.
 - O texto explicativo (`descricao`) não é gerado: é escrito à mão, com palavras próprias.
 - As páginas ficam em `cache/game8/`; `--atualizar` baixa de novo (por exemplo, depois de um patch).
