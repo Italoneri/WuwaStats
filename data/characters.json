@@ -3049,7 +3049,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem consistentes.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3102,7 +3117,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Mesmo valor da build de Clarão Voltaico; o bloco desta não cita outro.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3150,6 +3180,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 140,
+        "tipo": "rotacao",
+        "explicacao": "Vale nos times com Phrolova e Cantarella, Danjin e Guardiã da Costa ou Roccia e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 75,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que a S6 dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -3181,7 +3235,7 @@
       "basic_atk_dmg": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "O **Rover: Aniquilante** funciona como um DPS principal comum, então a build segue o padrão: **críticos** e **ATQ** para aumentar o dano geral, com o set **Eclipse Aniquilante** e o echo **Insone**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Aniquilante**; nos custo 1, **ATQ%**. Nos substatus, depois dos críticos, vêm **Regen. de Energia** e **ATQ%**, e por último o **Bônus de Dano de Ataque Básico**."
   },
   "Rover_Spectro_Sub_DPS": {
@@ -3245,7 +3299,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3297,9 +3366,25 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 150,
-        "tipo": "rotacao",
+        "min": 125,
+        "max": 150,
+        "tipo": "escala",
+        "explicacao": "Acima de 125%, cada 1% de Regen dá 2% de Dano de Habilidade de Eco, até 150%; acima disso não rende mais.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 290,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3400,7 +3485,23 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 126,
+        "min": 100,
+        "max": 126,
+        "tipo": "rotacao",
+        "explicacao": "126% antes da S5 num time com Carlotta e Guardiã da Costa; na S5 com Nuvens Enluaradas não precisa de Regen extra.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
         "tipo": "rotacao",
         "fonte": "prydwen"
       }
@@ -3453,7 +3554,9 @@
       {
         "stat": "energy_regen",
         "min": 220,
+        "max": 230,
         "tipo": "rotacao",
+        "explicacao": "220–230% cortando a habilidade com a Liberação, que é o ideal; perto de 200% se deixar a habilidade acertar o inimigo.",
         "fonte": "prydwen"
       }
     ],
@@ -3599,7 +3702,22 @@
         "stat": "energy_regen",
         "min": 115,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem melhores.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 255,
+        "max": 300,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
