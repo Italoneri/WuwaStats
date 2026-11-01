@@ -355,6 +355,10 @@ label.chip input { accent-color: var(--lilas-forte); }
   .echo-arte.grande { width: min(200px, 100%); }
 }
 
+/* --- Metas de status --- */
+.metas-build { margin-top: 20px; }
+.meta-explicacao { flex-basis: 100%; font-size: 14px; line-height: 1.5; color: var(--texto-2); }
+
 /* --- Texto da build --- */
 .build-texto { max-width: 1040px; margin-top: 24px; font-size: 16px; line-height: 1.75; color: var(--texto-2); }
 .build-texto p { margin: 0 0 14px; }

@@ -208,6 +208,26 @@ export function formatarValor(valor, percentual) {
   return percentual ? `${Number(valor).toFixed(1)}%` : String(Math.round(valor));
 }
 
+// ---------- Metas de status (Regen, crítico, HP...) ----------
+
+export const ROTULO_TIPO_META = { escala: "Escala do kit", rotacao: "Rotação" };
+export const ROTULO_FONTE = { game8: "Game8", prydwen: "Prydwen" };
+const ROTULO_TOTAL = { hp_flat: "HP total", atk_flat: "ATQ total", def_flat: "DEF total" };
+
+/** Na meta, HP/ATQ/DEF são os totais da tela, não o substatus fixo. */
+export const rotuloMeta = (stat, rotulo) => ROTULO_TOTAL[stat] ?? rotulo.stat(stat);
+
+const valorDaMeta = (stat, valor) => (stat in ROTULO_TOTAL ? Math.round(valor).toLocaleString("pt-BR") : `${valor}%`);
+
+/** "105–130%", "120%+" (rotação sem máximo), "250%" (teto de escala), "50.000". */
+export function faixaDaMeta(meta) {
+  if (meta.max !== null && meta.max !== undefined) {
+    const sufixo = meta.stat in ROTULO_TOTAL ? "" : "%";
+    return `${valorDaMeta(meta.stat, meta.min).replace("%", "")}–${valorDaMeta(meta.stat, meta.max).replace("%", "")}${sufixo}`;
+  }
+  return meta.tipo === "rotacao" ? `${valorDaMeta(meta.stat, meta.min)}+` : valorDaMeta(meta.stat, meta.min);
+}
+
 const ICONE_STAT = {
   crit: "M12 3v4M12 17v4M3 12h4M17 12h4M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
   atk: "M14.5 4H20v5.5L9 20.5 3.5 15zM6 13l5 5",

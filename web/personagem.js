@@ -1,7 +1,8 @@
 // Tela 2 · Personagem: perfis de GET /api/builds e, dentro de cada um, as variantes por condição.
 
 import {
-  ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, figura, icone, iconeArma, moldura, parametro, rotulador, rotuloCondicao, silhueta,
+  ICONES, ROTULO_FONTE, ROTULO_TIPO_META, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
+  moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
 const CUSTOS = ["4", "3", "1"];
@@ -105,8 +106,25 @@ function conteudoBuild(build, { rotulo }, redesenhar) {
     ),
     build.variantes.length ? seletorDeVariante(build, escolhida, redesenhar) : null,
     el("div", { class: "tables" }, tabelaConstrucao(build, perfil, rotulo), tabelaEstatisticas(perfil, rotulo)),
+    tabelaMetas(perfil.metas, rotulo),
     textoDaBuild(build.descricao),
   ];
+}
+
+/** O norte de cada status: faixa, por que ela existe e de onde veio. */
+function tabelaMetas(metas, rotulo) {
+  const linhas = metas.length
+    ? metas.map((meta) =>
+        linha(
+          el("span", { style: { display: "inline-flex", alignItems: "center", gap: "8px" } }, icone(iconeStat(meta.stat), 16), rotuloMeta(meta.stat, rotulo)),
+          el("strong", { class: "gold mono" }, faixaDaMeta(meta)),
+          el("span", { class: "tag" }, ROTULO_TIPO_META[meta.tipo]),
+          mudo(`fonte: ${ROTULO_FONTE[meta.fonte]}`),
+          meta.explicacao ? el("span", { class: "meta-explicacao" }, meta.explicacao) : null,
+        ),
+      )
+    : [el("div", { class: "tv" }, mudo("Sem metas pesquisadas para esta build."))];
+  return el("div", { class: "tcard metas-build" }, el("div", { class: "thead" }, "Metas de status"), linhas);
 }
 
 /** Parágrafos separados por linha em branco; **trecho** vira negrito. Só nós de texto: nada de innerHTML. */
