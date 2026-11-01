@@ -642,7 +642,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Cantarella é flexível, e o set ideal muda conforme o time: **Véu da Meia-noite** para times **Aniquilantes** ou **Hino Empíreo** para times de ATQ Coordenado. Com o Véu da Meia-noite, ela aumenta o Dano Aniquilante dela e do próximo ressonador, o que rende um bom dano no geral.\n\nA build é a de uma sub-DPS comum: **4-3-3-1-1**, com **Taxa CRIT** ou **Dano CRIT** no custo 4, dois de **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. O objetivo é uma boa proporção de crítico e o máximo de bônus de dano do elemento.\n\nNos substatus, depois dos críticos, busque **ATQ%**, **Bônus de Dano de Ataque Básico** e um pouco de **Regen. de Energia**."
   },
   "Cantarella_Coordinated_ATK_Sub_DPS": {
     "personagem": "Cantarella",
@@ -686,7 +687,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "O set **Hino Empíreo** é útil em times que dependem de **ATQ Coordenado** para o dano. É a primeira opção quando o time não escala com Dano Aniquilante, mas aproveita a amplificação de Dano de Hab. de Ressonância que a Habilidade Outro dela dá.\n\nUse a distribuição **4-3-3-1-1** com **Taxa CRIT** no custo 4, dois de **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. Nessa versão a Taxa CRIT pesa mais: mire em cerca de **70%**, porque o efeito do set depende de acertos críticos do ATQ Coordenado.\n\nSe não quiser montar tanto crítico, o **Nuvens Enluaradas** é um substituto válido."
   },
   "Carlotta_Glacio_Main_DPS": {
     "personagem": "Carlotta",
@@ -1001,7 +1003,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Danjin rende mais como **DPS principal** e depende bastante da habilidade de quem joga para tirar todo o dano dela. Ela combina Ataques Básicos, **Ataques Pesados**, Habilidade e Liberação de Ressonância, e a Habilidade Outro ainda ajuda outros personagens **Aniquilantes** em times de troca rápida.\n\nA build é a de DPS clássica: **4-3-3-1-1** com o set **Eclipse Aniquilante**, **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1. Nos substatus, depois dos críticos, priorize **Dano de Ataque Pesado** e **ATQ%**."
   },
   "Denia_Fusion_Burst_Sub_DPS": {
     "personagem": "Denia",
@@ -1227,7 +1230,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Hiyuki é simples de montar: mesmo girando em torno da **Esfoladura Criogênica**, ela segue a build tradicional dos DPS que escalam com ATQ. O dano dela vem principalmente do **Dano de Liberação de Ressonância**, que os companheiros de time ajudam a aumentar.\n\nUse a distribuição **4-3-3-1-1** com o set **Desejos da Nevada Silenciosa**: crítico no custo 4, dois de **Dano Criogênico** nos custo 3 e dois de **ATQ%** nos custo 1. Se faltar ATQ, dá para trocar um custo 3 por **ATQ%** sem perder muito dano.\n\nNos substatus, equilibre os críticos perto de **70% / 250%** (ou proporção parecida), depois leve a Regen. de Energia a cerca de **120%** e complete com **Bônus de Dano de Liberação** e **ATQ%**."
   },
   "Jianxin_Crowd_Control_Sub_DPS": {
     "personagem": "Jianxin",
@@ -1448,7 +1452,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Jiyan é um DPS **Pneumático** hypercarry que causa um dano enorme com os **Ataques Pesados**. A build usa o set **Lufada da Serra** com o echo **Pesadelo: Beringal-feiliano**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1. Além dos status de DPS de sempre, a **Regen. de Energia** é o substatus mais importante dele, para entrar no **Qingloong Mode** com facilidade; depois vêm os críticos, **Dano de Ataque Pesado** e ATQ%."
   },
   "Lingyang_Glacio_DPS": {
     "personagem": "Lingyang",
@@ -1537,7 +1542,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Nesta versão, Lucilla é sub-DPS de **Esfoladura Criogênica**: aplica muitos acúmulos do efeito e dá vários bônus ao arquétipo e ao elemento **Criogênico** em geral. Aqui o dano dela escala com o **Ataque Básico**.\n\nUse a distribuição **4-3-3-1-1** com o set **Desejos da Nevada Silenciosa**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, dois de **Dano Criogênico**; nos custo 1, **ATQ%**.\n\nEla **não precisa de Regen. de Energia** para ter a Liberação, então os substatus podem ir todos para **críticos**, **ATQ** e **Bônus de Dano de Ataque Básico**."
   },
   "Lucilla_Echo_Skill_Buffer_Sub_DPS": {
     "personagem": "Lucilla",
@@ -1582,7 +1588,8 @@
       "atk_flat": 1,
       "basic_atk_dmg": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "No modo alternativo, Lucilla vira sub-DPS de **Habilidade de Eco**: usa várias Habilidades de Eco, passa a escalar com **Dano de Hab. de Eco** e os bônus dela fortalecem esse tipo de dano no time inteiro. O set aqui é **Nuvens Enluaradas**, com o echo **Garça-cambiante**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, dois de **Dano Criogênico**; nos custo 1, **ATQ%**.\n\nNos substatus, foque em **críticos** e **ATQ**. O **Dano de Ataque Básico** deixa de ser importante: só melhora um pouco os ataques básicos reforçados pela Liberação, sem ser necessário."
   },
   "Lumi_Resonance_Skill_Sub_DPS": {
     "personagem": "Lumi",
@@ -2349,7 +2356,8 @@
       "basic_atk_dmg": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "O **Rover: Aniquilante** funciona como um DPS principal comum, então a build segue o padrão: **críticos** e **ATQ** para aumentar o dano geral, com o set **Eclipse Aniquilante** e o echo **Insone**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Aniquilante**; nos custo 1, **ATQ%**. Nos substatus, depois dos críticos, vêm **Regen. de Energia** e **ATQ%**, e por último o **Bônus de Dano de Ataque Básico**."
   },
   "Rover_Spectro_Sub_DPS": {
     "personagem": "Rover: Spectro",
@@ -2795,7 +2803,8 @@
       "skill_dmg": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Como sub-DPS, Yinlin usa o set **Nuvens Enluaradas**, que ajuda a ter a Liberação disponível com mais frequência e ainda dá bônus de ATQ ao DPS principal quando ela sai de campo.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Voltaico** ou **Regen. de Energia**; nos custo 1, **ATQ%**.\n\nNos status principais e nos substatus, o foco são os **críticos** e o **ATQ%**, mas sem abrir mão de uns **120% de Regen. de Energia**, para que a Liberação fique pronta sempre que precisar."
   },
   "Youhu_Full_Support_Healer": {
     "personagem": "Youhu",
@@ -3251,7 +3260,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Phrolova é uma personagem **Aniquilante** especializada em **Dano de Habilidade de Eco** e em ataques fora de campo: ela invoca **Hécate**, que continua lutando mesmo quando ela sai. Ela também foi a primeira personagem que não usa **Energia de Ressonância**, por isso aproveita por completo o set **Sonho do Perdido**, cujo bônus de Taxa CRIT e Dano de Hab. de Eco exige ficar com 0 de energia.\n\nCombine **3 peças de Sonho do Perdido** com **2 peças de um set de Dano Aniquilante**, como **Eclipse Aniquilante** ou **Véu da Meia-noite**. Use a distribuição **4-3-3-1-1**: no custo 4, **Dano CRIT** ou **Taxa CRIT** conforme a necessidade; nos custo 3, dois de **Dano Aniquilante**, já que ela tem poucas fontes desse bônus; nos custo 1, **ATQ%**.\n\nNos substatus, busque o máximo de crítico possível, com **Dano CRIT** na frente. Só cuide para não passar de **100% de Taxa CRIT**: o set e a arma assinatura **Lamento do Ocaso** já dão bastante Taxa CRIT."
   },
   "Qiuyuan_Full_Echo_Sub_DPS": {
     "personagem": "Qiuyuan",
@@ -3297,7 +3307,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "**Lei da Harmonia** é o melhor set para Qiuyuan quando o time tem vários personagens que se beneficiam de **Dano de Hab. de Eco**, como **Phrolova** e **Cantarella**: ele dá bônus desse dano ao time todo e ainda aumenta o **Dano de Ataque Pesado** do próprio Qiuyuan. Nas 2 peças restantes, qualquer set de Dano Pneumático serve, sendo **Lufada da Serra** o mais comum; um set de Regen. de Energia também funciona, mas é melhor tirar a Regen. dos substatus.\n\nUse a distribuição **4-3-3-1-1**: crítico no custo 4, dois de **Dano Pneumático** nos custo 3 e dois de **ATQ%** nos custo 1.\n\nA prioridade é ter pelo menos **65% de Taxa CRIT**, porque a Liberação dele dá ao time 2% de Dano CRIT para cada 1% de Taxa CRIT acima de 50%, até 30%. Depois, cerca de **130% de Regen. de Energia**, já que ele fica pouco em campo e precisa da Liberação em toda rotação. Por fim, o dano próprio: **Dano CRIT**, Dano Pneumático, **Dano de Ataque Pesado** e ATQ, nessa ordem."
   },
   "Qiuyuan_Hypercarry_Sub_DPS": {
     "personagem": "Qiuyuan",
@@ -3342,7 +3353,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Em times com um único DPS carregando o dano, como um time de Habilidade de Eco com **Sigrika** ou **Galbrena**, o melhor é o set completo de **Nuvens Enluaradas**, pelo bônus alto de ATQ e pelo aumento de dano da **Garça-cambiante**. Esses bônus se somam aos 30% de Dano CRIT que ele dá, concentrando tudo no DPS dedicado.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** no custo 4 para chegar aos **65% de Taxa CRIT** necessários, dois de **Dano Pneumático** nos custo 3 e dois de **ATQ%** nos custo 1.\n\nGaranta pelo menos **130% de Regen. de Energia**: é a Liberação que dá os 30% de Dano CRIT, então ela precisa entrar em toda rotação."
   },
   "Qiuyuan_Aero_Heavy_Attack_DMG_DPS": {
     "personagem": "Qiuyuan",
@@ -3387,7 +3399,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Com a **S3**, Qiuyuan vira um DPS viável com dois tipos de dano: **Ataque Pesado** no **Forte** e **Habilidade de Eco** na Liberação. O Forte é a parte principal e a Liberação é complementar, então o foco é **Dano de Ataque Pesado**, até porque Dano de Hab. de Eco não aparece nos echos. O set é **Lufada da Serra**, com o echo **Pesadelo: Beringal-feiliano**.\n\nUse a distribuição **4-3-3-1-1**: crítico no custo 4, dois de **Dano Pneumático** nos custo 3 e dois de **ATQ%** nos custo 1. Nos substatus, equilibre o máximo de crítico e busque **Dano de Ataque Pesado** e **ATQ**.\n\nA **Regen. de Energia** pode cair um pouco na prioridade, já que nessa função ele fica mais tempo em campo, mas ainda vale ter alguma para as rotações fluírem."
   },
   "Lucy_Heavy_Attack_DMG_DPS": {
     "personagem": "Lucy",
@@ -3434,7 +3447,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "A build da Lucy é diferente: ela usa **três efeitos de set** ao mesmo tempo e o echo principal **Reminiscência - Pesadelo: Adam Smasher**, que tem efeitos próprios para ela. A peça única de **Sombra dos Sonhos Despedaçados** combina com o **Hack: Oscilação** do kit dela, e o resto se completa com dois sets de 2 peças que deem **Dano Fotônico** ou **ATQ**.\n\nOs sets de 2 peças são intercambiáveis: além dos da tabela, **Luz Celestial**, **Radiância Eterna** e **Pacto do Salto Neonluz** dão Dano Fotônico, e **Pós-melodia** dá ATQ.\n\nUse a distribuição **4-3-3-1-1**: crítico no custo 4 para equilibrar a proporção, dois custo 3 de **Dano Fotônico** e dois custo 1 de **ATQ%**. Nos substatus, busque **críticos**, **ATQ** e **Dano de Ataque Pesado**, e mire em **120% de Regen. de Energia** para ter a Liberação em toda rotação."
   },
   "Rebecca_Heavy_Attack_Buffer_Sub_DPS": {
     "personagem": "Rebecca",
