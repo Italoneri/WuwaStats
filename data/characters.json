@@ -329,7 +329,8 @@
       "basic_atk_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Aalto é um suporte **Pneumático** que também contribui com um dano razoável. A build usa o set **Nuvens Enluaradas** com o echo **Garça-cambiante**: o set dá Regen. de Energia e, quando ele sai de campo com a Habilidade Outro, aumenta o ATQ do próximo personagem.\n\nUse a distribuição **4-3-3-1-1**: **Dano CRIT** ou **Taxa CRIT** no custo 4, **Dano Pneumático** nos custo 3 (ou **Regen. de Energia**, se estiver faltando energia) e **ATQ%** nos custo 1.\n\nNos substatus, a **Regen. de Energia** vem primeiro, porque é ela que deixa a **Liberação de Ressonância** pronta com mais frequência. Depois vêm os críticos, **ATQ%** e **Dano de Ataque Básico**, que aumentam o dano que ele causa enquanto está em campo."
   },
   "Aemeath_Tune_Rupture_Fusion_Burst_DPS": {
     "personagem": "Aemeath",
@@ -1318,7 +1319,8 @@
       "atk_pct": 1,
       "energy_regen": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Jingran é um DPS **Térmico** de **Ataque Pesado** que escala com **HP**: o kit converte HP em ATQ e não usa DEF, então ele é frágil e depende do próprio escudo e da cura alta para se manter vivo. A build usa o set **Lanterna da Travessia Noturna** com o echo **Prisão de Miríades: Corpo Decadente** e a arma assinatura **Redenção Suprema**.\n\nUse a distribuição **4-4-1-1-1**: os dois custo 4 com **Taxa CRIT** ou **Dano CRIT** e os três custo 1 com **HP%**. Os bônus do kit (multiplicador do Ataque Pesado, Dano Térmico, bônus de cura recebida e ATQ extra) crescem a cada 1.000 de HP e só chegam ao máximo com **50.000 de HP**, que é o alvo da build.\n\nNos substatus, foque em críticos, **HP%** e **Dano de Ataque Pesado**, o principal tipo de dano dele. Mire em **125% de Regen. de Energia** para manter a rotação estável."
   },
   "Jingran_Fusion_HP_Heavy_Attack_DPS_w_o_Sig": {
     "personagem": "Jingran",
@@ -1331,7 +1333,7 @@
       ]
     },
     "escala": "HP",
-    "regen_energia_min": 100,
+    "regen_energia_min": 125,
     "custos": [
       4,
       1,
@@ -1360,7 +1362,8 @@
       "atk_pct": 1,
       "energy_regen": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "ok",
+    "descricao": "Sem a **Redenção Suprema**, chegar aos **50.000 de HP** com dois custo 4 de crítico fica inviável. Esta variante troca um deles por mais um echo de **HP%**: distribuição **4-1-1-1-1**, com **Taxa CRIT** ou **Dano CRIT** no custo 4 e **HP%** nos quatro custo 1. O set **Lanterna da Travessia Noturna** e o echo **Prisão de Miríades: Corpo Decadente** continuam os mesmos; a melhor arma passa a ser a **Supremacia do Trovão Dominado**.\n\nO ganho vem dos bônus que o kit libera com o HP alto: multiplicador maior no Ataque Pesado, muito Dano Térmico e ATQ extra. O custo é a proporção de crítico, então a variante só compensa com uma arma forte em crítico. Se não for o seu caso, fique na **4-4-1-1-1** e junte o máximo de HP que conseguir.\n\nOs substatus são os mesmos da build com assinatura: críticos, **HP%** e **Dano de Ataque Pesado**, com a mesma meta de **125% de Regen. de Energia** que o Game8 dá para ele."
   },
   "Jinhsi_Burst_DPS": {
     "personagem": "Jinhsi",
@@ -1497,7 +1500,8 @@
       "atk_pct": 2,
       "energy_regen": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Lingyang é um DPS **Criogênico** totalmente ofensivo, que causa muito dano. A build usa o set **Resolução Gélida** com o echo **Constructo de Sentinela** e gira em torno de aumentar o dano dos ataques dele (por crítico, ATQ ou Dano Criogênico) ou o dano da Habilidade Outro.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Criogênico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, os críticos vêm primeiro, seguidos de **Dano de Ataque Básico** e **ATQ%**. A **Regen. de Energia** fica por último na lista de prioridade dele."
   },
   "Lucilla_Glacio_Chafe_Sub_DPS": {
     "personagem": "Lucilla",
@@ -1724,7 +1728,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Luuk Herssen é um DPS **Fotônico** simples de jogar, mesmo tendo a **Tensão de Sintonia** como mecânica principal. A build usa o set **Rito da Revelação Dourada**, que reforça o Ataque Básico, com o echo **Supernova Gêmea: Canhão de Nebulosa**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Fotônico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, procure **Dano de Ataque Básico**, mais críticos e **ATQ%**. Garanta pelo menos **120% de Regen. de Energia** para usar a **Liberação de Ressonância** em toda rotação."
   },
   "Lynae_Spectro_Sub_DPS": {
     "personagem": "Lynae",
@@ -2085,7 +2090,8 @@
       "liberation_dmg": 1,
       "basic_atk_dmg": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Qingxiao é uma DPS **Pneumática** de **Tensão de Sintonia**, por isso o melhor set para ela é o **Coração da Pureza Imaculada**, que junta Dano Pneumático com um efeito ligado a essa mecânica. O echo principal é a **Efígie da Calamidade**. O dano dela vem de várias fontes, sem um tipo de ataque dominante.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4 e **ATQ%** nos custo 1. Nos custo 3, com a arma assinatura **Clarão entre Nuvens**, use um de **Dano Pneumático** e outro de **ATQ%**, para compensar o ATQ baixo da arma; com outra arma, dois de Dano Pneumático funcionam bem.\n\nNos substatus, foque em críticos e **ATQ%**, mirando em **125% de Regen. de Energia** para girar a rotação com folga. **Dano de Ataque Pesado**, **Dano de Liberação** e **Dano de Ataque Básico** ajudam, mas com prioridade bem menor."
   },
   "Roccia_Havoc_Sub_DPS": {
     "personagem": "Roccia",
@@ -2416,7 +2422,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 120,
     "custos": [
       4,
       3,
@@ -2449,7 +2455,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "ok",
+    "descricao": "Sanhua é uma sub-DPS **Criogênica** clássica, que aproveita muito bem o set **Nuvens Enluaradas**: ele dá Regen. de Energia e, na Habilidade Outro, aumenta o ATQ do próximo personagem. O echo principal é a **Garça-cambiante**. Ela causa um bom dano mesmo ficando pouco tempo em campo.\n\nUse a distribuição **4-3-3-1-1**: equilibre **Taxa CRIT** e **Dano CRIT** no custo 4, dois de **Dano Criogênico** nos custo 3 (troque um por **Regen. de Energia** se faltar energia) e **ATQ%** nos custo 1.\n\nNos substatus, além dos críticos, junte o máximo de **Regen. de Energia** que der: a meta é **120%** ou mais, para ter a **Liberação de Ressonância** pronta em toda rotação, e isso vale mais do que dano extra. **Dano de Liberação** também importa, porque a Liberação é o golpe mais forte dela."
   },
   "Sigrika_Echo_Skill_Aero_DPS": {
     "personagem": "Sigrika",
@@ -2757,7 +2764,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Yangyang: Xuanling é uma DPS **Aniquilante** que, apesar de girar em torno da **Ruína Aniquilante**, tira a maior parte do dano do **Ataque Pesado**, e não do dano do status negativo em si. Por isso ela é montada como outros DPS de Ataque Pesado, como Jiyan e Augusta. O set é o **Cântico das Plumas Cadentes**, que dá os melhores bônus para o dano dela, com o echo **Pavilhão das Mil Marionetes**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos e busque **Dano de Ataque Pesado** e **ATQ%**, com pelo menos **115% de Regen. de Energia** para uma rotação mais fluida."
   },
   "Yinlin_Sub_DPS": {
     "personagem": "Yinlin",
@@ -3215,7 +3223,8 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Iuno aproveita ao máximo o set **Coroa de Valor**, porque partes do kit dela geram escudos, e cada escudo acumula ATQ e Dano CRIT. A build combina **3 peças de Coroa de Valor** com **2 de Lufada da Serra** e usa a **Senhora do Mar** como echo principal.\n\nUse a distribuição **4-3-3-1-1**: **Dano CRIT** ou **Taxa CRIT** no custo 4, dois de **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1. Dá para trocar um custo 3 por ATQ%, mas o resultado fica um pouco pior.\n\nNos substatus, tente ter os dois críticos em todos os echos e, depois, **Dano de Liberação**. Os alvos são uns **70% de Taxa CRIT**, **250% de Dano CRIT** e **120–125% de Regen. de Energia**, para a **Liberação de Ressonância** estar pronta dentro da rotação. Essa Regen sai fácil só com os substatus."
   },
   "Phrolova_Havoc_DPS": {
     "personagem": "Phrolova",
@@ -3495,6 +3504,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Rebecca é uma sub-DPS **Voltaica** que reforça o **Ataque Pesado** do time e usa uma combinação incomum de três sets: **1 peça de Sombra dos Sonhos Despedaçados**, **2 de Trovão do Limbo** e **2 de um set de ATQ**, como **Carretel de Memórias Fragmentadas** (**Pós-melodia** também serve). O echo principal é a **Reminiscência - Pesadelo: Adam Smasher**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 e **ATQ%** nos custo 1. O foco é o dano dela mesma: crítico e ATQ, com apoio de Dano Voltaico e **Dano de Ataque Básico**.\n\nNos substatus, busque o máximo de crítico e **ATQ%**, além de **Dano de Ataque Básico**. Mire em uns **125% de Regen. de Energia** para ter a **Liberação de Ressonância** pronta em toda rotação."
   }
 }
