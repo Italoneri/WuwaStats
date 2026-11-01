@@ -1,8 +1,8 @@
 // Tela 4 · Análise: POST /api/analisar a cada mudança na entrada. A entrada vem da sessão de captura ou do envio manual.
 
 import {
-  ICONES, QUALIDADES, ampliar, api, avisoErro, carregarImagens, corNota, el, figura, elemento, estrelas, formatarValor, icone, iconeStat, lembrarPagina, moldura,
-  parametro, perguntaCondicao, qualidade, rotulador, rotuloCondicao, silhueta,
+  ICONES, QUALIDADES, ROTULO_FONTE, ampliar, api, avisoErro, carregarImagens, corNota, el, faixaDaMeta, figura, elemento, estrelas, formatarValor, icone,
+  iconeStat, lembrarPagina, moldura, parametro, perguntaCondicao, qualidade, rotuloMeta, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
 const TOTAL_ECHOS = 5;
@@ -320,8 +320,33 @@ function linhaResumo(ok, rotulo, ...conteudo) {
 
 const mudo = (texto) => el("span", { style: { color: "var(--mudo)" } }, texto);
 
+/** Sem meta ou sem valor lido: nada a conferir. Abaixo pede atenção; acima só na Regen (o excesso não rende). */
+function sinalDaMeta(m) {
+  if (!m?.veredito) return null;
+  const sobrando = m.veredito === "acima" && m.meta.stat === "energy_regen";
+  return m.veredito !== "abaixo" && !sobrando;
+}
+
+const AVISOS_DO_CONJUNTO = ["regen_sobrando", "taxa_crit_excessiva"];
+
+const valorLido = (m) => (m.meta.stat.endsWith("_flat") ? Math.round(m.valor).toLocaleString("pt-BR") : `${m.valor}%`);
+
+function textoDaMeta(m) {
+  return [
+    mudo(`· meta ${faixaDaMeta(m.meta)} · ${ROTULO_FONTE[m.meta.fonte]}`),
+    m.mensagem ? ` · ${m.mensagem}` : null,
+    m.meta.explicacao ? el("span", { style: { display: "block", marginTop: "4px", fontSize: "13px", color: "var(--mudo)" } }, m.meta.explicacao) : null,
+  ];
+}
+
+function linhaMeta(m, r) {
+  const valor = m.valor === null ? mudo("só referência: falta o print da tela ") : el("span", { class: "gold mono" }, `${valorLido(m)} `);
+  return linhaResumo(sinalDaMeta(m), rotuloMeta(m.meta.stat, r), valor, ...textoDaMeta(m));
+}
+
 function resumo(analise) {
-  const { regen, custos, set, echo_principal: echoPrincipal } = analise.conjunto;
+  const { regen, custos, set, echo_principal: echoPrincipal, metas } = analise.conjunto;
+  const metaRegen = metas.find((m) => m.meta.stat === "energy_regen");
   const r = estado.rotulo;
   const partes = [`${regen.base}`, `echos ${regen.echos}`, `sets ${regen.sets}`, regen.externa ? `externa ${regen.externa}` : null].filter(Boolean);
   const fileira = (rotulo, lista) => el("span", { style: { display: "flex", alignItems: "center", gap: "4px" } }, el("span", { style: { width: "56px", color: "var(--mudo)", fontSize: "13px" } }, rotulo), lista.map((c) => el("span", { class: "cost sm" }, String(c))));
@@ -330,14 +355,15 @@ function resumo(analise) {
     { class: "panel", style: { padding: "6px 20px 8px" }, "aria-label": "Resumo da build" },
     el("h2", { class: "label", style: { margin: 0, padding: "14px 0 6px", color: "#D9D0EE" } }, "Resumo da build"),
     linhaResumo(
-      regen.atinge,
+      sinalDaMeta(metaRegen),
       "Regen",
       el("span", { class: "gold mono" }, `${regen.total}%`),
       ` = ${partes.join(" + ")} `,
-      mudo(`· mínimo ${regen.minimo}%`),
-      regen.informado !== null ? mudo(` · tela ${regen.informado}%`) : null,
+      regen.informado !== null ? mudo(`· tela ${regen.informado}% `) : null,
+      metaRegen ? textoDaMeta(metaRegen) : mudo("· sem meta pesquisada"),
       el("label", { style: { display: "flex", alignItems: "center", gap: "8px", marginTop: "6px", fontSize: "13px", color: "var(--mudo)" } }, "Regen externa (arma, cadeia)", el("input", { class: "campo", type: "number", step: "0.1", style: { width: "80px" }, value: estado.entrada.regen_externa ?? 0, onchange: (e) => mudarEntrada((en) => { en.regen_externa = Number(e.target.value) || 0; }) })),
     ),
+    metas.filter((m) => m !== metaRegen).map((m) => linhaMeta(m, r)),
     linhaResumo(custos.ok, "Custos", el("span", { style: { display: "flex", flexDirection: "column", gap: "6px" } }, fileira("atual", custos.atual), fileira("pedido", custos.esperado))),
     linhaResumo(
       set.ok,
@@ -352,6 +378,7 @@ function resumo(analise) {
       echoPrincipal.esperado ? r.echo(echoPrincipal.esperado) : "Livre",
       echoPrincipal.ok === false ? mudo(` · equipado: ${r.echo(echoPrincipal.atual) ?? "desconhecido"}`) : null,
     ),
+    analise.conjunto.problemas.filter((p) => AVISOS_DO_CONJUNTO.includes(p.codigo)).map((p) => linhaResumo(false, "Atenção", p.mensagem)),
   );
 }
 
