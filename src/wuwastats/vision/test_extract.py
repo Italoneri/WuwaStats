@@ -8,7 +8,7 @@ import pytest
 from openai import APIConnectionError
 from PIL import Image
 
-from wuwastats.domain.models import Condicoes
+from wuwastats.domain.models import Condicoes, StatLido
 from wuwastats.domain.tables import GameData
 from wuwastats.vision.cache import CacheVisao
 from wuwastats.vision.extract import (
@@ -30,7 +30,12 @@ ECHO_JSON = {
     "principal": {"stat": "Dano CRIT", "valor": 44, "percentual": True},
     "substatus": [{"stat": "Taxa CRIT", "valor": 8.1, "percentual": True}],
 }
-PERSONAGEM_JSON = {"personagem": "Suoming", "arma": "Test Weapon", "regen_energia_total": 131.2}
+PERSONAGEM_JSON = {
+    "personagem": "Suoming",
+    "arma": "Test Weapon",
+    "regen_energia_total": 131.2,
+    "atributos": [{"stat": "Taxa CRIT", "valor": "62,5%"}, {"stat": "HP", "valor": 15000}],
+}
 
 
 @dataclass
@@ -192,6 +197,15 @@ class TestBuild:
         assert extracao.entrada is not None
         assert extracao.entrada.condicoes.arma_assinatura is True
         assert extracao.entrada.regen_total_informado == 131.2
+
+    def test_leva_os_atributos_da_tela_para_a_entrada(self, tmp_path: Path, dados: GameData, cache: CacheVisao) -> None:
+        extracao = self._extrair(tmp_path, dados, cache)
+
+        assert extracao.entrada is not None
+        assert extracao.entrada.atributos == (
+            StatLido(stat="Taxa CRIT", valor=62.5, percentual=True),
+            StatLido(stat="HP", valor=15000),
+        )
 
     def test_condicao_informada_pelo_usuario_prevalece(
         self, tmp_path: Path, dados: GameData, cache: CacheVisao

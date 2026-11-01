@@ -12,7 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from wuwastats.domain.models import MAX_ECHOS, Condicoes, EchoEntrada, EntradaBuild
 from wuwastats.domain.tables import Perfil
 from wuwastats.domain.variants import detectar_condicoes
-from wuwastats.vision.parse import LeituraPersonagem
+from wuwastats.vision.parse import LeituraPersonagem, atributos_da_tela
 
 
 class EspacosCheios(Exception):
@@ -147,6 +147,7 @@ def montar_entrada(sessao: Sessao, perfil: Perfil) -> EntradaBuild | None:
         build=sessao.build,
         condicoes=detectar_condicoes(perfil, leitura.arma, Condicoes()),
         regen_total_informado=leitura.regen_energia_total,
+        atributos=atributos_da_tela(leitura),
         echos=echos,
     )
 

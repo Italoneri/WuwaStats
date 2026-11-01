@@ -33,7 +33,7 @@ def analisar_conjunto(
     pecas = pecas_por_set(echos, dados.echos_repetidos_contam)
     bonus = bonus_ativos(pecas, dados.sets)
     regen = _regen(entrada, echos, bonus)
-    atributos = atributos_da_tela(entrada, dados.stat_names)
+    atributos = _atributos_resolvidos(entrada, dados.stat_names)
     metas = [comparar_meta(meta, *_valor_da_meta(meta.stat, regen, atributos)) for meta in spec.metas]
     custos = _custos(echos, spec)
     set_ = _set(pecas, bonus, spec)
@@ -133,7 +133,7 @@ def _echo_principal(echos: Sequence[EchoAnalise], spec: BuildSpec) -> EchoPrinci
     )
 
 
-def atributos_da_tela(entrada: EntradaBuild, stat_names: NameIndex) -> dict[str, float]:
+def _atributos_resolvidos(entrada: EntradaBuild, stat_names: NameIndex) -> dict[str, float]:
     """HP/ATQ/DEF totais vêm sem '%': percentual ausente conta como valor fixo (senão 'HP' fica ambíguo com HP%)."""
     resolvidos = ((resolve_stat(stat_names, a.stat, bool(a.percentual)), a.valor) for a in entrada.atributos)
     return {stat: valor for stat, valor in resolvidos if stat is not None}

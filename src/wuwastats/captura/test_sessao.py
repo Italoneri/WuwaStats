@@ -119,5 +119,24 @@ def test_entrada_traz_so_os_echos_lidos_e_o_que_a_tela_do_personagem_informa(dad
     assert (entrada.condicoes.arma_assinatura, entrada.regen_total_informado) == (True, 118.4)
 
 
+def test_entrada_traz_os_atributos_da_tela_na_ordem(dados: GameData) -> None:
+    sessao, captura = receber_personagem(_lido(_com_prints(1), 1))
+    atributos = [{"stat": "Taxa CRIT", "valor": 62.5, "percentual": True}, {"stat": "HP", "valor": 15000}]
+    leitura = LeituraPersonagem.model_validate({"atributos": atributos})
+    sessao, _ = atualizar_personagem(sessao, captura, PersonagemLido(captura=captura, do_cache=False, leitura=leitura))
+
+    entrada = montar_entrada(sessao, dados.perfis["Suoming_DPS"])
+
+    assert entrada is not None
+    assert entrada.atributos == (StatLido(stat="Taxa CRIT", valor=62.5, percentual=True), StatLido(stat="HP", valor=15000))
+
+
+def test_sem_tela_do_personagem_nao_ha_atributos(dados: GameData) -> None:
+    entrada = montar_entrada(_lido(_com_prints(1), 1), dados.perfis["Suoming_DPS"])
+
+    assert entrada is not None
+    assert entrada.atributos == ()
+
+
 def test_sem_echo_lido_nao_ha_entrada(dados: GameData) -> None:
     assert montar_entrada(_com_prints(2), dados.perfis["Suoming_DPS"]) is None

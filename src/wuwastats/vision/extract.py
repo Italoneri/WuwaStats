@@ -19,7 +19,7 @@ from wuwastats.domain.variants import detectar_condicoes
 from wuwastats.vision.cache import CacheVisao, ChaveCache
 from wuwastats.vision.client import ModeloVisao
 from wuwastats.vision.image import ImagemInvalida, carregar_imagem, e_imagem
-from wuwastats.vision.parse import ErroLeitura, LeituraPersonagem, parse_echo, parse_personagem
+from wuwastats.vision.parse import ErroLeitura, LeituraPersonagem, atributos_da_tela, parse_echo, parse_personagem
 from wuwastats.vision.prompt import PROMPT_PERSONAGEM, TipoPrint, prompt_echo
 
 PREFIXO_PRINT_PERSONAGEM = "personagem"
@@ -177,6 +177,7 @@ def _montar_entrada(
         condicoes=detectar_condicoes(perfil, leitura.arma, pedido.condicoes),
         regen_externa=pedido.regen_externa,
         regen_total_informado=leitura.regen_energia_total,
+        atributos=atributos_da_tela(leitura),
         echos=lidos,
     )
 

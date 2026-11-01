@@ -7,7 +7,7 @@ from typing import Annotated, Any
 
 from pydantic import BaseModel, BeforeValidator, ConfigDict, Field, ValidationError, model_validator
 
-from wuwastats.domain.models import Custo, EchoEntrada
+from wuwastats.domain.models import Custo, EchoEntrada, StatLido
 
 _PENSAMENTO = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
 _CERCA_MARKDOWN = re.compile(r"```(?:json)?", re.IGNORECASE)
@@ -85,6 +85,10 @@ def parse_echo(resposta: str) -> EchoEntrada | ErroLeitura:
     if isinstance(leitura, ErroLeitura):
         return leitura
     return EchoEntrada.model_validate(leitura.model_dump())
+
+
+def atributos_da_tela(leitura: LeituraPersonagem) -> tuple[StatLido, ...]:
+    return tuple(StatLido.model_validate(atributo.model_dump()) for atributo in leitura.atributos)
 
 
 def parse_personagem(resposta: str) -> LeituraPersonagem | ErroLeitura:
