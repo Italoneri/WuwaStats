@@ -3714,7 +3714,8 @@
       {
         "stat": "energy_regen",
         "min": 260,
-        "tipo": "rotacao",
+        "tipo": "escala",
+        "explicacao": "Os buffs que ela dá ao time crescem com a Regen acima de 200% e chegam ao máximo em 260%; acima disso não rendem mais.",
         "fonte": "game8"
       }
     ],
@@ -3748,7 +3749,8 @@
       "crit_dmg": 1,
       "crit_rate": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Suisui é a principal **suporte de cura** para times de **efeitos negativos**: faz um papel parecido com o da Guardiã da Costa e da Chisa, mas os buffs de dano dela são voltados para quem aplica efeitos negativos, e ela ainda aplica **Esfoladura Criogênica**. A build usa o set **Cântico das Plumas Cadentes** com o echo **Pavilhão Proibido**.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **HP%** no custo 4, **Regen. de Energia** ou **HP%** nos custo 3 e **HP%** nos custo 1, porque a cura escala com HP.\n\nNos substatus, **Regen. de Energia** vem muito antes de tudo. Os buffs que ela dá ao time crescem com a Regen acima de **200%** e chegam ao máximo em **260%**, com até 12% a mais de dano e um bom bônus de ATQ para os aliados; além disso, a Liberação custa 175 de energia, então pouca Regen trava a rotação. Depois, **HP%**. O dano próprio dela é baixo, então não vale investir em críticos. A melhor arma é o **Arauto da Alvorada**, que dá cerca de 25% de Regen a mais que a **Variação** e libera um custo 3 de **HP%** ou **Dano Criogênico**; com a Variação, conte com umas 5 rolagens de Regen nos substatus."
   },
   "Taoqi_Tank_Sub_DPS": {
     "personagem": "Taoqi",
@@ -3880,6 +3882,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "tipo": "rotacao",
+        "explicacao": "Num time com Lynae e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -3911,7 +3936,8 @@
       "liberation_dmg": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Xiangli Yao é um DPS **Voltaico** que escala com a **Liberação de Ressonância**, então arma, echos e suportes devem reforçar esse dano, sempre equilibrando ATQ e críticos. A build usa o set **Trovão do Limbo** com o echo **Pesadelo: Mefítico Tonitruante**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4 (o que equilibrar melhor com a arma), **Dano Voltaico** nos dois custo 3 e **ATQ%** nos dois custo 1.\n\nNos substatus, busque mais críticos na proporção de **1:2**, depois **Regen. de Energia**, **ATQ%** e **Dano de Liberação de Ressonância**. O Game8 não dá um número de Regen, mas o Prydwen estima **120% de Regen. de Energia** num time com Lynae e Guardiã da Costa. A melhor arma é o **Cerne da Verdade**; as **Notas do Luar Eterno** são a primeira alternativa."
   },
   "Yangyang_Energy_Regen_Sub_DPS": {
     "personagem": "Yangyang",
@@ -3929,7 +3955,22 @@
         "stat": "energy_regen",
         "min": 140,
         "tipo": "rotacao",
+        "explicacao": "Para render bem no tempo que passa em campo; chegue nela antes dos críticos.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3962,7 +4003,8 @@
       "atk_pct": 1,
       "liberation_dmg": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Nesta build, Yangyang é uma **sub-DPS** focada em **Regen. de Energia**: precisa de cerca de **140%** para render bem no tempo que passa em campo. A build usa o set **Nuvens Enluaradas**, que dá ATQ ao próximo personagem depois da Habilidade Outro, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, chegue primeiro aos **140% de Regen. de Energia** e só depois equilibre os críticos; um pouco de **Dano de Liberação de Ressonância** aumenta o dano da habilidade principal dela. A melhor arma é a **Gênese Esmeralda**, porque os status e o efeito dela facilitam chegar à meta de Regen; o **Fulgor Celestial** é a primeira alternativa."
   },
   "Yangyang_Xuanling_Havoc_Bane_DPS": {
     "personagem": "Yangyang: Xuanling",
@@ -4113,6 +4155,15 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "tipo": "rotacao",
+        "explicacao": "O Prydwen não estima Regen extra para ela; o Game8 ainda prioriza Regen nos substatus para aproveitar melhor a cura.",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4142,7 +4193,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Youhu é uma **suporte** Criogênica completa: cura o time e ainda causa um dano razoável. O destaque do kit é uma habilidade com quatro efeitos sorteados, que vão de atrapalhar o inimigo até quebrar a postura dele. A Habilidade Outro fortalece o **ATQ Coordenado** de quem entra, então ela combina com sub-DPS desse tipo, e o primeiro passivo soma ainda mais cura. A build usa o set **Brilho Rejuvenescedor**, que dá ATQ ao time quando ela cura, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **ATQ%** no custo 4, **Regen. de Energia** ou **ATQ%** nos custo 3 e **ATQ%** nos custo 1, porque a cura escala com ATQ.\n\nNos substatus, o Game8 prioriza **Regen. de Energia** e depois **ATQ%** para aproveitar ao máximo a cura, mas não dá um número; o Prydwen diz que ela não precisa de Regen além da base e que o dano próprio dela é dispensável, então os críticos ficam de fora. A melhor arma é a **Ondas do Abismo**; a **Espiral Celestial** é a primeira alternativa."
   },
   "Yuanwu_Sub_DPS": {
     "personagem": "Yuanwu",
@@ -4155,6 +4207,27 @@
       ]
     },
     "escala": "DEF",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "tipo": "rotacao",
+        "explicacao": "No time da Jinhsi, o jeito ideal de jogar com ele nem usa a Liberação.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4185,7 +4258,8 @@
       "skill_dmg": 2,
       "def_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Yuanwu é um **sub-DPS** Voltaico cujas habilidades escalam principalmente com **DEF**. A Habilidade de Ressonância deixa no campo um objeto que continua causando Dano Voltaico em área mesmo depois que ele sai. A build usa o set **Hino Empíreo** com o echo **Pesadelo: Mefítico Tempestuoso**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 e **DEF%** nos custo 1.\n\nNos substatus, priorize os críticos, depois **DEF%** e **Dano de Habilidade de Ressonância**. Ele não tem meta de Regen: o Prydwen lembra que, no time da Jinhsi, o jeito ideal de jogar com ele nem usa a Liberação. A melhor arma é a **Ondas do Abismo**; o **Pacto de Amizade** é a primeira alternativa."
   },
   "Zani_Spectro_Frazzle_Main_DPS": {
     "personagem": "Zani",
@@ -4267,6 +4341,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 128,
+        "tipo": "rotacao",
+        "explicacao": "Com o Hino Empíreo, num time com Carlotta e Guardiã da Costa; com Nuvens Enluaradas cai para 116%.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar bônus de set.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4299,7 +4397,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Zhezhi é uma **sub-DPS** Criogênica que usa o set **Hino Empíreo**, sempre garantindo que a Liberação de Ressonância esteja pronta na vez dela. O echo **Pesadelo: Miríade Lampilúmen** aumenta o Dano Criogênico e o de ATQ Coordenado; o dano dela fica um pouco abaixo do ideal, mas o buff para o DPS principal que entra em seguida compensa. Como ela causa **ATQ Coordenado**, continua rendendo mesmo fora de campo.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Criogênico** nos dois custo 3 (troque um por **Regen. de Energia** se precisar de mais Regen para a Liberação) e **ATQ%** nos custo 1.\n\nNos substatus, críticos na proporção de **1:2**, depois **Regen. de Energia** e **Dano de ATQ Básico**. O Game8 não dá um número, mas o Prydwen estima **128% de Regen. de Energia** com o Hino Empíreo num time com Carlotta e Guardiã da Costa (116% com Nuvens Enluaradas). A melhor arma é a **Pétalas de Cristal**; a **Mestra de Bonecos** é a primeira alternativa."
   },
   "Augusta_Electro_DPS": {
     "personagem": "Augusta",
