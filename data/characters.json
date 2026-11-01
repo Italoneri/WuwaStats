@@ -1153,7 +1153,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 105,
     "custos": [
       4,
       3,
@@ -1185,8 +1185,8 @@
       "basic_atk_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
-    "descricao": "Encore é uma DPS **Térmica** totalmente ofensiva, que causa a maior parte do dano com **Ataque Básico**, **Ataque Pesado** e **Habilidade de Ressonância**, principalmente depois de usar a Liberação. A build usa o set **Fenda Fundente** com o echo **Pesadelo: Cavaleiro Infernal** e tenta extrair o máximo de **Dano Térmico** possível.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, os críticos vêm primeiro, seguidos de **ATQ%**, **Regen. de Energia** e **Dano de Ataque Básico**. A Regen. importa mais do que parece: o grosso do dano dela só sai com a Liberação ativa, então ter energia para usá-la toda rotação faz diferença."
+    "status": "ok",
+    "descricao": "Encore é uma DPS **Térmica** totalmente ofensiva, que causa a maior parte do dano com **Ataque Básico**, **Ataque Pesado** e **Habilidade de Ressonância**, principalmente depois de usar a Liberação. A build usa o set **Fenda Fundente** com o echo **Pesadelo: Cavaleiro Infernal** e tenta extrair o máximo de **Dano Térmico** possível.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, os críticos vêm primeiro, seguidos de **ATQ%**, **Regen. de Energia** e **Dano de Ataque Básico**. A Regen. importa mais do que parece: o grosso do dano dela só sai com a Liberação ativa. O Game8 não dá um número, mas o Prydwen estima **105–130% de Regen. de Energia**: o mínimo vale para a rotação otimizada e o máximo para a rotação simples."
   },
   "Hiyuki_Glacio_Chafe_DPS": {
     "personagem": "Hiyuki",
@@ -1608,7 +1608,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 142,
     "custos": [
       4,
       3,
@@ -1641,8 +1641,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
-    "descricao": "Lumi é uma sub-DPS **Voltaica** que causa um dano razoável durante a rotação e, na saída, aumenta o **Dano de Habilidade de Ressonância** do próximo personagem. A build usa o set **Nuvens Enluaradas**, que melhora o lado de suporte dela, com o echo **Garça-cambiante**. Se quiser priorizar o dano dela, **Trovão do Limbo** é uma alternativa.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 (ou **Regen. de Energia**, se precisar) e **ATQ%** nos custo 1.\n\nA maior parte do dano dela vem do Forte, então, nos substatus, equilibre **Taxa CRIT** e **Dano CRIT** e procure **Dano de Ataque Básico**, seguido de **Regen. de Energia**. A arma **Espadão Luminazul** já dá Regen. suficiente para usar a Liberação toda rotação; com outra arma, vai ser preciso compensar nos substatus."
+    "status": "ok",
+    "descricao": "Lumi é uma sub-DPS **Voltaica** que causa um dano razoável durante a rotação e, na saída, aumenta o **Dano de Habilidade de Ressonância** do próximo personagem. A build usa o set **Nuvens Enluaradas**, que melhora o lado de suporte dela, com o echo **Garça-cambiante**. Se quiser priorizar o dano dela, **Trovão do Limbo** é uma alternativa.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Voltaico** nos custo 3 (ou **Regen. de Energia**, se precisar) e **ATQ%** nos custo 1.\n\nA maior parte do dano dela vem do Forte, então, nos substatus, equilibre **Taxa CRIT** e **Dano CRIT** e procure **Dano de Ataque Básico**, seguido de **Regen. de Energia**. O Game8 não dá um número, mas o Prydwen estima **142–150% de Regen. de Energia**, conforme o time. A arma **Espadão Luminazul** ajuda bastante a chegar lá; com outra arma, vai ser preciso compensar nos substatus."
   },
   "Lupa_Fusion_Enabler": {
     "personagem": "Lupa",
@@ -2565,7 +2565,7 @@
       ]
     },
     "escala": "DEF",
-    "regen_energia_min": 100,
+    "regen_energia_min": 126,
     "custos": [
       4,
       3,
@@ -2596,8 +2596,8 @@
       "energy_regen": 2,
       "def_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
-    "descricao": "Taoqi é uma tanque **Aniquilante** cujos escudos e dano escalam com **DEF**. Dá para montar a build puxando para escudos mais resistentes (mais DEF) ou para o dano dela (mais Dano Aniquilante). O set é o **Nuvens Enluaradas**, que dá Regen. de Energia e aumenta o ATQ do próximo personagem, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **DEF%** nos custo 1.\n\nNos substatus, **DEF%** vem primeiro, seguida de críticos, **Regen. de Energia** e **DEF** fixa."
+    "status": "ok",
+    "descricao": "Taoqi é uma tanque **Aniquilante** cujos escudos e dano escalam com **DEF**. Dá para montar a build puxando para escudos mais resistentes (mais DEF) ou para o dano dela (mais Dano Aniquilante). O set é o **Nuvens Enluaradas**, que dá Regen. de Energia e aumenta o ATQ do próximo personagem, com o echo **Geobuti-sineiro**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Aniquilante** nos custo 3 e **DEF%** nos custo 1.\n\nNos substatus, **DEF%** vem primeiro, seguida de críticos, **Regen. de Energia** e **DEF** fixa. O Game8 não dá uma meta, mas o Prydwen estima **126% de Regen. de Energia** antes da S5; com S5 e o set Nuvens Enluaradas, ela não precisa de Regen. extra."
   },
   "Verina_Full_Support": {
     "personagem": "Verina",
@@ -2610,7 +2610,7 @@
       ]
     },
     "escala": "ATQ",
-    "regen_energia_min": 100,
+    "regen_energia_min": 220,
     "custos": [
       4,
       3,
@@ -2639,8 +2639,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
-    "descricao": "Verina é uma ótima **suporte** completa, especialista em cura e em aumentar o ATQ do time. A Habilidade Outro dela ainda amplifica todo tipo de dano do grupo. A build usa o set **Brilho Rejuvenescedor**, que dá ATQ a todo o time quando ela cura, com o echo **Falácia Irreversível**, que dá 10% de Regen. de Energia a ela e 10% de ATQ a todos.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **ATQ%** no custo 4, **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Regen. de Energia** vem primeiro, para usar a Liberação com frequência, e depois **ATQ%**, que aumenta a cura dela. As armas **Sinfonia Estelar** e **Variação** dão Regen. e Energia de Concerto, o que deixa a rotação bem mais fácil."
+    "status": "ok",
+    "descricao": "Verina é uma ótima **suporte** completa, especialista em cura e em aumentar o ATQ do time. A Habilidade Outro dela ainda amplifica todo tipo de dano do grupo. A build usa o set **Brilho Rejuvenescedor**, que dá ATQ a todo o time quando ela cura, com o echo **Falácia Irreversível**, que dá 10% de Regen. de Energia a ela e 10% de ATQ a todos.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **ATQ%** no custo 4, **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Regen. de Energia** vem primeiro, para usar a Liberação com frequência, e depois **ATQ%**, que aumenta a cura dela. O Game8 não dá um número, mas o Prydwen estima **220–230% de Regen. de Energia**; dá para ficar perto de 200% se a habilidade dela acertar o inimigo, mas interromper com a Liberação poupa tempo, então mire na meta cheia. As armas **Sinfonia Estelar** e **Variação** dão Regen. e Energia de Concerto, o que deixa a rotação bem mais fácil."
   },
   "Xiangli_Yao_Electro_DPS": {
     "personagem": "Xiangli Yao",
