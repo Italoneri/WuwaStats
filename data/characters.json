@@ -1625,6 +1625,18 @@
         "min": 120,
         "tipo": "rotacao",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "tipo": "rotacao",
+        "fonte": "game8"
       }
     ],
     "custos": [
@@ -1659,7 +1671,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Hiyuki é simples de montar: mesmo girando em torno da **Esfoladura Criogênica**, ela segue a build tradicional dos DPS que escalam com ATQ. O dano dela vem principalmente do **Dano de Liberação de Ressonância**, que os companheiros de time ajudam a aumentar.\n\nUse a distribuição **4-3-3-1-1** com o set **Desejos da Nevada Silenciosa**: crítico no custo 4, dois de **Dano Criogênico** nos custo 3 e dois de **ATQ%** nos custo 1. Se faltar ATQ, dá para trocar um custo 3 por **ATQ%** sem perder muito dano.\n\nNos substatus, equilibre os críticos perto de **70% / 250%** (ou proporção parecida), depois leve a Regen. de Energia a cerca de **120%** e complete com **Bônus de Dano de Liberação** e **ATQ%**."
   },
   "Jianxin_Crowd_Control_Sub_DPS": {
@@ -1678,7 +1690,22 @@
         "stat": "energy_regen",
         "min": 140,
         "tipo": "rotacao",
+        "explicacao": "140% na S0, por causa das rotações lentas dela.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -1731,7 +1758,29 @@
         "stat": "energy_regen",
         "min": 125,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem consistentes.",
         "fonte": "game8"
+      },
+      {
+        "stat": "hp_flat",
+        "min": 50000,
+        "tipo": "escala",
+        "explicacao": "Os bônus do kit crescem com o HP até 50.000; acima disso não rendem mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 50,
+        "tipo": "rotacao",
+        "explicacao": "50% sem contar o set e a arma assinatura.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 260,
+        "max": 340,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -1781,7 +1830,29 @@
         "stat": "energy_regen",
         "min": 125,
         "tipo": "rotacao",
+        "explicacao": "Valor do Game8 para a build com a arma assinatura; o bloco sem ela não cita outro.",
         "fonte": "game8"
+      },
+      {
+        "stat": "hp_flat",
+        "min": 50000,
+        "tipo": "escala",
+        "explicacao": "Os bônus do kit crescem com o HP até 50.000; acima disso não rendem mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 50,
+        "tipo": "rotacao",
+        "explicacao": "50% sem contar o set e a arma assinatura.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 260,
+        "max": 340,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -1826,6 +1897,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "max": 125,
+        "tipo": "rotacao",
+        "explicacao": "100% num time com Zhezhi e Guardiã da Costa, 125% com Yinlin e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1858,7 +1953,7 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Jinhsi é uma DPS **Fotônica** cujo dano gira em torno da **Habilidade de Ressonância**, então a build inteira serve para aumentar o dano dela. O set recomendado é **Luz Celestial** completo.\n\nUse a distribuição **4-3-3-1-1**. No custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Fotônico**; nos custo 1, **ATQ%**. Como ela já recebe bastante bônus de dano de outras fontes do time, também funciona trocar um dos custo 3 por **ATQ%**.\n\nNos substatus, priorize os **críticos**, depois **Regen. de Energia** e **Bônus de Hab. de Ressonância**, e por último ATQ."
   },
   "Jiyan_Liberation_DPS": {
@@ -1872,6 +1967,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 130,
+        "tipo": "rotacao",
+        "explicacao": "Mais tempo no Modo Qingloong, de onde vem quase todo o dano dele.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1903,7 +2021,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Jiyan é um DPS **Pneumático** hypercarry que causa um dano enorme com os **Ataques Pesados**. A build usa o set **Lufada da Serra** com o echo **Pesadelo: Beringal-feiliano**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1. Além dos status de DPS de sempre, a **Regen. de Energia** é o substatus mais importante dele, para entrar no **Qingloong Mode** com facilidade; depois vêm os críticos, **Dano de Ataque Pesado** e ATQ%."
   },
   "Lingyang_Glacio_DPS": {
@@ -1917,6 +2035,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "max": 125,
+        "tipo": "rotacao",
+        "explicacao": "Estimado num time com Zhezhi e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -1947,7 +2089,7 @@
       "atk_pct": 2,
       "energy_regen": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Lingyang é um DPS **Criogênico** totalmente ofensivo, que causa muito dano. A build usa o set **Resolução Gélida** com o echo **Constructo de Sentinela** e gira em torno de aumentar o dano dos ataques dele (por crítico, ATQ ou Dano Criogênico) ou o dano da Habilidade Outro.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Criogênico** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, os críticos vêm primeiro, seguidos de **Dano de Ataque Básico** e **ATQ%**. A **Regen. de Energia** fica por último na lista de prioridade dele."
   },
   "Lucilla_Glacio_Chafe_Sub_DPS": {
@@ -1961,6 +2103,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "tipo": "rotacao",
+        "explicacao": "Não precisa de Regen. de Energia extra.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       3,
       4,
@@ -1992,7 +2157,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Nesta versão, Lucilla é sub-DPS de **Esfoladura Criogênica**: aplica muitos acúmulos do efeito e dá vários bônus ao arquétipo e ao elemento **Criogênico** em geral. Aqui o dano dela escala com o **Ataque Básico**.\n\nUse a distribuição **4-3-3-1-1** com o set **Desejos da Nevada Silenciosa**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, dois de **Dano Criogênico**; nos custo 1, **ATQ%**.\n\nEla **não precisa de Regen. de Energia** para ter a Liberação, então os substatus podem ir todos para **críticos**, **ATQ** e **Bônus de Dano de Ataque Básico**."
   },
   "Lucilla_Echo_Skill_Buffer_Sub_DPS": {
@@ -2006,6 +2171,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "tipo": "rotacao",
+        "explicacao": "Não precisa de Regen. de Energia extra.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -2037,7 +2225,7 @@
       "atk_flat": 1,
       "basic_atk_dmg": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "No modo alternativo, Lucilla vira sub-DPS de **Habilidade de Eco**: usa várias Habilidades de Eco, passa a escalar com **Dano de Hab. de Eco** e os bônus dela fortalecem esse tipo de dano no time inteiro. O set aqui é **Nuvens Enluaradas**, com o echo **Garça-cambiante**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, dois de **Dano Criogênico**; nos custo 1, **ATQ%**.\n\nNos substatus, foque em **críticos** e **ATQ**. O **Dano de Ataque Básico** deixa de ser importante: só melhora um pouco os ataques básicos reforçados pela Liberação, sem ser necessário."
   },
   "Lumi_Resonance_Skill_Sub_DPS": {
