@@ -388,3 +388,11 @@ http://127.0.0.1:8000/api/dados/recarregar` (→ 204) → conferir 2 builds na p
 Depois deste plano (fora dele): textos + metas das 25 builds sem `descricao` (spec §5.4), no fluxo de textos de sempre.
 Ao terminar, atualizar a memória `wuwastats-metas-de-status` (handoff concluído) e `wuwastats-textos-builds` (metas junto
 com os textos).
+
+### Pendência anotada em 2026-11-01 (fora das Tasks 9–14)
+
+**Nome de exibição das builds em PT-BR.** Hoje a página mostra a chave da build com `_` trocado por espaço, e o título
+do Game8 perde `/` e parênteses: `Jingran_Fusion_HP_Heavy_Attack_DPS_w_o_Sig` aparece como "DPS w o Sig" ("w/o Sig" =
+sem arma assinatura; "w Sig" = com). Mesmo caso: `Cartethyia_Aero_Erosion_DPS_w_o_Ciaccona` (sem a Ciaccona).
+Proposta: campo de nome de exibição em PT-BR por build (ex.: "DPS de Ataque Pesado (sem arma assinatura)"), sem mudar a
+chave. Perguntar ao usuário antes: vale para todas as builds ou só para as com `w_o`/`w_`?
