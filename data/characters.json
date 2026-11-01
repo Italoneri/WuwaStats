@@ -463,7 +463,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Brant é um DPS **Térmico** com uma escala única: a **Regen. de Energia** vira ATQ, podendo render até cerca de **2600 de ATQ** a mais. Por isso o set **Coragem Quebra-maré** é o melhor para ele: com **250% de Regen. de Energia**, o efeito de 5 peças libera +30% em todo Dano de Atributo.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Regen. de Energia** ou **Dano Térmico**; nos custo 1, **ATQ%**. Nos substatus, equilibre os críticos e busque **Regen. de Energia** e **Dano de Ataque Básico**.\n\nCom a arma assinatura **Persistência Inabalável**, chegar a 250% é fácil; com outras armas, a saída é usar os dois custo 3 de Regen. de Energia, perdendo Dano Térmico mas mantendo o ATQ alto do set. **Marcha de Abertura** e **Pacto de Sangue** são opções baratas. Se não der para atingir a meta, troque o set por **Fenda Fundente**, que dá bônus de dano constantes e chega perto do resultado ideal."
   },
   "Buling_Full_Healer_Support": {
     "personagem": "Buling",
@@ -595,7 +596,8 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Camellya é uma DPS principal clássica, e o set **Eclipse Aniquilante** é a escolha natural porque aproveita ao máximo os bônus de **Dano Aniquilante** que ela recebe.\n\nUse a distribuição **4-3-3-1-1**. No custo 4, escolha **Taxa CRIT** ou **Dano CRIT** conforme o que estiver faltando para equilibrar a proporção; nos custo 3, dois echos de **Dano Aniquilante**; nos custo 1, **ATQ%**.\n\nO dano dela vem principalmente do **Ataque Básico**, então o **Bônus de Dano de Ataque Básico** é o substatus mais valioso depois dos críticos, seguido de **ATQ**. Como referência de atributos finais: cerca de **70% de Taxa CRIT**, **250% de Dano CRIT**, mais de **2000 de ATQ**, **60% de Dano Aniquilante**, **25% de Dano de Ataque Básico** e **115% de Regen. de Energia**, o suficiente para as rotações fluírem sem desperdiçar substatus."
   },
   "Cantarella_Havoc_Sub_DPS": {
     "personagem": "Cantarella",
@@ -730,7 +732,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Carlotta é uma DPS **Criogênica** forte, com o dano concentrado na **Habilidade de Ressonância**. O set **Resolução Gélida** aproveita exatamente isso, com bônus de Hab. de Ressonância e de Dano Criogênico.\n\nUse o padrão **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Criogênico** ou **ATQ%**; nos custo 1, **ATQ%**. O objetivo é equilibrar ATQ e a proporção de crítico.\n\nA **Regen. de Energia** pesa muito nela, porque a Liberação precisa estar pronta em toda rotação. Mire em **120% a 125%**; em times sem **Zhezhi** ou **Guardiã da Costa**, isso exige vários substatus de Regen. Como último recurso, dá para usar um custo 3 de Regen. de Energia: o dano cai bastante, mas ter a Liberação sempre disponível vale mais."
   },
   "Cartethyia_Aero_Erosion_DPS": {
     "personagem": "Cartethyia",
@@ -771,7 +774,8 @@
       "hp_pct": 2,
       "energy_regen": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Cartethyia é a principal DPS de **Erosão Pneumática** e a primeira DPS cujo dano escala com **HP**, o que deixa a build bem diferente das outras.\n\nUse a distribuição **4-4-1-1-1**: os dois custo 4 com **Taxa CRIT** e **Dano CRIT**, e os três custo 1 com **HP%**. Ela dispensa echos de Dano Pneumático porque a **Ciaccona**, o efeito do set, o echo principal e a própria Liberação já dão bônus de sobra. Além disso, só os echos de custo 1 trazem **HP fixo**, o que vale muito para ela.\n\nMire em **48.000 a 50.000 de HP** e numa proporção de crítico perto de **70% / 270%** (Taxa CRIT de 60% a 70%, Dano CRIT de 250% a 270%). Isso exige substatus duplos de crítico com rolagens altas, então é questão de paciência. Para virar **Fleurdelys** com a Liberação em toda rotação, ela precisa de **115% a 120% de Regen. de Energia**, variando conforme o time."
   },
   "Cartethyia_Aero_Erosion_DPS_w_o_Ciaccona": {
     "personagem": "Cartethyia",
@@ -815,7 +819,8 @@
       "hp_pct": 2,
       "energy_regen": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Sem a **Ciaccona** no time, Cartethyia perde uma fonte importante de Dano Pneumático, por isso a distribuição muda para **4-3-1-1-1**, com o custo 3 de **Dano Pneumático** para compensar.\n\nNesse caso o sub-DPS costuma ser **Sanhua** ou **Aalto**, que não usam o set **Rajadas Celestiais** e não trazem o bônus extra de Dano Pneumático dele. O custo 4 fica com **Taxa CRIT** ou **Dano CRIT**, e os custo 1 continuam com **HP%**.\n\nOs substatus seguem a mesma lógica da build principal (críticos, **Dano de Ataque Básico** e **HP%**), mas as rolagens precisam ser quase perfeitas para chegar a uma boa proporção de crítico, principalmente usando a arma assinatura."
   },
   "Changli_Fusion_DMG": {
     "personagem": "Changli",
@@ -860,7 +865,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Changli é híbrida: funciona tanto como DPS principal quanto como sub-DPS, e a Habilidade Outro dela ainda fortalece o próximo DPS. Fora isso, o kit é todo voltado para causar dano, então os echos devem focar em dano.\n\nUse a distribuição **4-3-3-1-1** com o set **Fenda Fundente**. No custo 4, **Taxa CRIT** é a prioridade se você tiver a arma assinatura **Fulgor Celestial**; sem ela, equilibre Taxa e Dano CRIT. Nos custo 3, sempre dois de **Dano Térmico**; nos custo 1, **ATQ%**.\n\nNos substatus, além dos críticos, busque **Regen. de Energia**, **Bônus de Hab. de Ressonância** e **ATQ%**. Mire em pelo menos **120% de Regen. de Energia** para usar a Liberação quando precisar e ganhar o bônus de ATQ que ela dá. Se não chegar lá, dá para trocar um custo 3 por Regen. de Energia, mas o ideal é conseguir tudo pelos substatus."
   },
   "Chixia_Fusion_DPS": {
     "personagem": "Chixia",
@@ -950,7 +956,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Ciaccona é a principal sub-DPS de **Erosão Pneumática**, e o set **Rajadas Celestiais** combina com o kit dela: ao aplicar Erosão, ela aumenta o Dano Pneumático do time inteiro.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT** para equilibrar a proporção; nos custo 3, **Dano Pneumático**, já que ela causa um bom dano tanto em campo quanto fora dele; nos custo 1, **ATQ%**.\n\nEm times de **Estridência Fotônica**, troque o set por **Nuvens Enluaradas**, que dá ATQ ao próximo ressonador quando ela usa a Habilidade Outro. Mantenha os echos de **Dano Pneumático** mesmo assim: o dano próprio dela continua relevante, e a aplicação de Estridência não muda com isso."
   },
   "Danjin_Havoc_DPS": {
     "personagem": "Danjin",
@@ -1395,7 +1402,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Jinhsi é uma DPS **Fotônica** cujo dano gira em torno da **Habilidade de Ressonância**, então a build inteira serve para aumentar o dano dela. O set recomendado é **Luz Celestial** completo.\n\nUse a distribuição **4-3-3-1-1**. No custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Fotônico**; nos custo 1, **ATQ%**. Como ela já recebe bastante bônus de dano de outras fontes do time, também funciona trocar um dos custo 3 por **ATQ%**.\n\nNos substatus, priorize os **críticos**, depois **Regen. de Energia** e **Bônus de Hab. de Ressonância**, e por último ATQ."
   },
   "Jiyan_Liberation_DPS": {
     "personagem": "Jiyan",
@@ -1975,7 +1983,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Como sub-DPS, Phoebe usa o estado **Confession** e é a melhor aplicadora de **Estridência Fotônica** do jogo. O dano próprio dela também conta, então o set **Radiância Eterna** vale a pena mesmo fora do estado **Absolution**, que é o mais voltado para dano.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Fotônico**; nos custo 1, **ATQ%**.\n\nNessa função a Liberação entra em toda rotação, então a **Regen. de Energia** sobe para o mesmo nível dos críticos nos substatus. Mire em **125% a 130% de Regen. de Energia** vindo só dos substatus, para não sacrificar os status principais de dano."
   },
   "Phoebe_Spectro_Frazzle_DPS": {
     "personagem": "Phoebe",
@@ -2020,7 +2029,8 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100"
+    "status": "TODO: o Game8 não cita meta de Regen. de Energia; ficou 100",
+    "descricao": "Phoebe foi a primeira personagem limitada a trabalhar com um efeito negativo, a **Estridência Fotônica**. Ela aplica o efeito com constância e aproveita por completo o set **Radiância Eterna**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Fotônico**; nos custo 1, **ATQ%**.\n\nComo DPS, equilibre a proporção entre Taxa e Dano CRIT e busque **Dano de Ataque Pesado** nos substatus, já que é dele que vem a maior parte do dano. Depois, um pouco de **Regen. de Energia** para encaixar a Liberação nas rotações com regularidade."
   },
   "Qingxiao_Aero_Tune_Strain_DPS": {
     "personagem": "Qingxiao",
@@ -2114,7 +2124,8 @@
       "atk_pct": 1,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Roccia é uma sub-DPS **Aniquilante**: a Habilidade Outro dela aumenta bastante o **Dano Aniquilante** e o **Dano de Ataque Básico** do próximo ressonador, e a Liberação dá um bônus de ATQ. Para aproveitar tudo isso, a Liberação precisa entrar em toda rotação.\n\nUse a distribuição **4-3-3-1-1** com o set **Véu da Meia-noite**: no custo 4, **Taxa CRIT** ou **Dano CRIT**; nos custo 3, **Dano Aniquilante** ou **Regen. de Energia**; nos custo 1, **ATQ%**.\n\nNos substatus, **Taxa CRIT** vem primeiro, seguida de Dano CRIT, **Regen. de Energia** e **Dano de Ataque Pesado**. A Regen. ideal depende do time, então teste sua rotação; um bom ponto de partida é **125%**."
   },
   "Rover_Aero_Aero_Sub_DPS": {
     "personagem": "Rover: Aero",
@@ -2916,7 +2927,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Zani é uma DPS principal que junta resistência e dano no mesmo kit. O dano dela vem da **Estridência Fotônica** e do **Ataque Pesado**, por isso a build busca o máximo de **Dano Fotônico** e **Bônus de Dano de Ataque Pesado**, com o set **Radiância Eterna**.\n\nUse a distribuição **4-3-3-1-1**: no custo 4, **Taxa CRIT** ou **Dano CRIT** para equilibrar a proporção; nos custo 3, dois de **Dano Fotônico**; nos custo 1, **ATQ%**.\n\nNos substatus, equilibre os **críticos** e pegue **Dano de Ataque Pesado** sempre que der, depois **ATQ%** e **Regen. de Energia**. A maior parte do dano dela sai com a Liberação, então mire em **115% a 120% de Regen. de Energia** para tê-la pronta em toda rotação; o valor exato muda conforme o time."
   },
   "Zhezhi_Glacio_Sub_DPS": {
     "personagem": "Zhezhi",
