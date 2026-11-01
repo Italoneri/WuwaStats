@@ -3770,7 +3770,23 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para não perder o tempo de Liberação dela.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 45,
+        "max": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que a passiva dela dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 255,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -3908,8 +3924,24 @@
       {
         "stat": "energy_regen",
         "min": 115,
+        "max": 120,
         "tipo": "rotacao",
+        "explicacao": "A maior parte do dano dela vem da Liberação; o valor exato depende do time.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -4204,6 +4236,20 @@
       {
         "stat": "energy_regen",
         "min": 120,
+        "max": 125,
+        "tipo": "rotacao",
+        "explicacao": "120% já deixa a Liberação pronta na rotação; 125% dá folga.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
         "tipo": "rotacao",
         "fonte": "game8"
       }
@@ -4254,6 +4300,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 100,
+        "tipo": "rotacao",
+        "explicacao": "A Liberação dela não gasta energia, então evite Regen nos substatus.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4285,7 +4354,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Phrolova é uma personagem **Aniquilante** especializada em **Dano de Habilidade de Eco** e em ataques fora de campo: ela invoca **Hécate**, que continua lutando mesmo quando ela sai. Ela também foi a primeira personagem que não usa **Energia de Ressonância**, por isso aproveita por completo o set **Sonho do Perdido**, cujo bônus de Taxa CRIT e Dano de Hab. de Eco exige ficar com 0 de energia.\n\nCombine **3 peças de Sonho do Perdido** com **2 peças de um set de Dano Aniquilante**, como **Eclipse Aniquilante** ou **Véu da Meia-noite**. Use a distribuição **4-3-3-1-1**: no custo 4, **Dano CRIT** ou **Taxa CRIT** conforme a necessidade; nos custo 3, dois de **Dano Aniquilante**, já que ela tem poucas fontes desse bônus; nos custo 1, **ATQ%**.\n\nNos substatus, busque o máximo de crítico possível, com **Dano CRIT** na frente. Só cuide para não passar de **100% de Taxa CRIT**: o set e a arma assinatura **Lamento do Ocaso** já dão bastante Taxa CRIT."
   },
   "Qiuyuan_Full_Echo_Sub_DPS": {
@@ -4304,7 +4373,22 @@
         "stat": "energy_regen",
         "min": 130,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação, já que ele fica pouco tempo em campo.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "escala",
+        "explicacao": "A Liberação dá ao time 2% de Dano CRIT por 1% de Taxa CRIT acima de 50%, até 30% em 65%; acima disso não rende mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -4358,7 +4442,22 @@
         "stat": "energy_regen",
         "min": 130,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação, já que ele fica pouco tempo em campo.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "escala",
+        "explicacao": "A Liberação dá ao time 2% de Dano CRIT por 1% de Taxa CRIT acima de 50%, até 30% em 65%; acima disso não rende mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -4406,6 +4505,29 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 130,
+        "tipo": "rotacao",
+        "explicacao": "Valor do Game8 para as builds de sub-DPS dele; o bloco desta não cita outro.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "escala",
+        "explicacao": "A Liberação dá ao time 2% de Dano CRIT por 1% de Taxa CRIT acima de 50%, até 30% em 65%; acima disso não rende mais.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -4437,7 +4559,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Com a **S3**, Qiuyuan vira um DPS viável com dois tipos de dano: **Ataque Pesado** no **Forte** e **Habilidade de Eco** na Liberação. O Forte é a parte principal e a Liberação é complementar, então o foco é **Dano de Ataque Pesado**, até porque Dano de Hab. de Eco não aparece nos echos. O set é **Lufada da Serra**, com o echo **Pesadelo: Beringal-feiliano**.\n\nUse a distribuição **4-3-3-1-1**: crítico no custo 4, dois de **Dano Pneumático** nos custo 3 e dois de **ATQ%** nos custo 1. Nos substatus, equilibre o máximo de crítico e busque **Dano de Ataque Pesado** e **ATQ**.\n\nA **Regen. de Energia** pode cair um pouco na prioridade, já que nessa função ele fica mais tempo em campo, mas ainda vale ter alguma para as rotações fluírem."
   },
   "Lucy_Heavy_Attack_DMG_DPS": {
@@ -4456,7 +4578,21 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT do Adam Smasher.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -4492,7 +4628,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "A build da Lucy é diferente: ela usa **três efeitos de set** ao mesmo tempo e o echo principal **Reminiscência - Pesadelo: Adam Smasher**, que tem efeitos próprios para ela. A peça única de **Sombra dos Sonhos Despedaçados** combina com o **Hack: Oscilação** do kit dela, e o resto se completa com dois sets de 2 peças que deem **Dano Fotônico** ou **ATQ**.\n\nOs sets de 2 peças são intercambiáveis: além dos da tabela, **Luz Celestial**, **Radiância Eterna** e **Pacto do Salto Neonluz** dão Dano Fotônico, e **Pós-melodia** dá ATQ.\n\nUse a distribuição **4-3-3-1-1**: crítico no custo 4 para equilibrar a proporção, dois custo 3 de **Dano Fotônico** e dois custo 1 de **ATQ%**. Nos substatus, busque **críticos**, **ATQ** e **Dano de Ataque Pesado**, e mire em **120% de Regen. de Energia** para ter a Liberação em toda rotação."
   },
   "Rebecca_Heavy_Attack_Buffer_Sub_DPS": {
@@ -4511,7 +4647,23 @@
         "stat": "energy_regen",
         "min": 125,
         "tipo": "rotacao",
+        "explicacao": "Para a Liberação estar pronta em toda rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 280,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar o buff Huntress.",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
