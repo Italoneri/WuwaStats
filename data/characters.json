@@ -17,9 +17,24 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 110,
+        "min": 100,
         "tipo": "rotacao",
-        "fonte": "game8"
+        "explicacao": "Como DPS ela não precisa de Regen. de Energia extra; uma rolagem a mais só dá folga.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 260,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -73,9 +88,24 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 120,
+        "min": 115,
         "tipo": "rotacao",
-        "fonte": "game8"
+        "explicacao": "115% como Sub-DPS Unison num time com Hsin e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 260,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -129,9 +159,24 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 120,
+        "min": 115,
         "tipo": "rotacao",
-        "fonte": "game8"
+        "explicacao": "115% como Sub-DPS Unison num time com Hsin e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 260,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -182,8 +227,24 @@
       {
         "stat": "energy_regen",
         "min": 115,
+        "max": 120,
         "tipo": "rotacao",
+        "explicacao": "Mantém a Liberação pronta a cada rotação.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "65% sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 230,
+        "max": 270,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -234,9 +295,24 @@
     "metas": [
       {
         "stat": "energy_regen",
-        "min": 115,
+        "min": 110,
         "tipo": "rotacao",
-        "fonte": "game8"
+        "explicacao": "110% num time de Clarão Voltaico com Rover: Voltaico e Suisui.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "explicacao": "65% sem contar a Taxa CRIT que o set dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 230,
+        "max": 270,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -291,7 +367,8 @@
       {
         "stat": "energy_regen",
         "min": 250,
-        "tipo": "rotacao",
+        "tipo": "escala",
+        "explicacao": "O bônus de Taxa e Dano CRIT que ela dá ao time cresce com a Regen até 250%; acima disso não rende mais.",
         "fonte": "game8"
       }
     ],
@@ -338,6 +415,30 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 145,
+        "max": 160,
+        "tipo": "rotacao",
+        "explicacao": "145% com Iuno e Guardiã da Costa, 160% com Jiyan e Guardiã da Costa.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 75,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -370,7 +471,7 @@
       "basic_atk_dmg": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Aalto é um suporte **Pneumático** que também contribui com um dano razoável. A build usa o set **Nuvens Enluaradas** com o echo **Garça-cambiante**: o set dá Regen. de Energia e, quando ele sai de campo com a Habilidade Outro, aumenta o ATQ do próximo personagem.\n\nUse a distribuição **4-3-3-1-1**: **Dano CRIT** ou **Taxa CRIT** no custo 4, **Dano Pneumático** nos custo 3 (ou **Regen. de Energia**, se estiver faltando energia) e **ATQ%** nos custo 1.\n\nNos substatus, a **Regen. de Energia** vem primeiro, porque é ela que deixa a **Liberação de Ressonância** pronta com mais frequência. Depois vêm os críticos, **ATQ%** e **Dano de Ataque Básico**, que aumentam o dano que ele causa enquanto está em campo."
   },
   "Aemeath_Tune_Rupture_Fusion_Burst_DPS": {
@@ -424,7 +525,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok"
   },
   "Baizhi_Full_Support": {
     "personagem": "Baizhi",
@@ -482,8 +583,24 @@
       {
         "stat": "energy_regen",
         "min": 250,
+        "max": 280,
+        "tipo": "escala",
+        "explicacao": "250% ativa o set Coragem Quebra-maré; até 280% o Forte ainda converte Regen em ATQ.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 80,
         "tipo": "rotacao",
-        "fonte": "game8"
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -568,7 +685,7 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok"
   },
   "Calcharo_Electro_DPS": {
     "personagem": "Calcharo",
@@ -630,6 +747,19 @@
         "stat": "energy_regen",
         "min": 115,
         "tipo": "rotacao",
+        "explicacao": "O suficiente para as rotações dela ficarem confortáveis; o resto vai para dano.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "tipo": "rotacao",
         "fonte": "game8"
       }
     ],
@@ -664,7 +794,7 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes",
+    "status": "ok",
     "descricao": "Camellya é uma DPS principal clássica, e o set **Eclipse Aniquilante** é a escolha natural porque aproveita ao máximo os bônus de **Dano Aniquilante** que ela recebe.\n\nUse a distribuição **4-3-3-1-1**. No custo 4, escolha **Taxa CRIT** ou **Dano CRIT** conforme o que estiver faltando para equilibrar a proporção; nos custo 3, dois echos de **Dano Aniquilante**; nos custo 1, **ATQ%**.\n\nO dano dela vem principalmente do **Ataque Básico**, então o **Bônus de Dano de Ataque Básico** é o substatus mais valioso depois dos críticos, seguido de **ATQ**. Como referência de atributos finais: cerca de **70% de Taxa CRIT**, **250% de Dano CRIT**, mais de **2000 de ATQ**, **60% de Dano Aniquilante**, **25% de Dano de Ataque Básico** e **115% de Regen. de Energia**, o suficiente para as rotações fluírem sem desperdiçar substatus."
   },
   "Cantarella_Havoc_Sub_DPS": {
