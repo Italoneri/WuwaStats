@@ -2455,6 +2455,21 @@
       {
         "stat": "energy_regen",
         "min": 120,
+        "max": 125,
+        "tipo": "rotacao",
+        "explicacao": "Para fazer a rotação completa; vale rolar Regen nos substatus.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 75,
+        "tipo": "rotacao",
+        "explicacao": "Cerca de 75:250, para o dano dela em campo ficar confortável.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
         "tipo": "rotacao",
         "fonte": "game8"
       }
@@ -2489,7 +2504,8 @@
       "energy_regen": 2,
       "atk_pct": 2
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Lupa é a grande **habilitadora de Dano Térmico**: brilha em times só de personagens Térmicos, porque o set **Pegada Flamejante** dá Dano Térmico ao time inteiro quando ela lança a Liberação de Ressonância. O echo principal é a **Leoa da Glória**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos dois custo 3 (troque um por **ATQ%** se ainda não tiver dois bons) e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos mirando em cerca de **75% de Taxa CRIT e 250% de Dano CRIT**, o que deixa o dano dela em campo mais confortável. Ela precisa de **120–125% de Regen. de Energia** para fazer a rotação completa, então vale rolar Regen nos substatus; depois, busque **Dano de Liberação de Ressonância** e **ATQ%**. A melhor arma é a **Marca Incinerante**; a **Kumokiri** é a primeira alternativa."
   },
   "Luuk_Herssen_Tune_Strain_Basic_ATK_DPS": {
     "personagem": "Luuk Herssen",
@@ -2575,7 +2591,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem consistentes.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 50,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -2610,7 +2641,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Lynae rende mais como **sub-DPS**: causa bom dano próprio e ainda é uma ótima **buffer**, com uma amplificação que vale para todo tipo de dano e por isso encaixa em muitos times. A build usa o set **Pacto do Salto Neonluz** com o echo **Hyvatia**; se ainda não tiver as peças, **Nuvens Enluaradas** serve de substituto.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Fotônico** ou **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, priorize os críticos e depois **Dano de ATQ Básico**, de onde vem boa parte do dano dela, e **ATQ%**. O Game8 recomenda cerca de **120% de Regen. de Energia** para as rotações ficarem consistentes. A melhor arma é a **Espectro Neon**; o **Homogeneizador Fásico** é a primeira alternativa."
   },
   "Lynae_Basic_Attack_Main_DPS": {
     "personagem": "Lynae",
@@ -2628,7 +2660,22 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para as rotações ficarem consistentes.",
         "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 50,
+        "max": 80,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "max": 280,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
       }
     ],
     "custos": [
@@ -2663,7 +2710,8 @@
       "energy_regen": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Lynae também pode jogar como **DPS principal**, já que os buffs que ela dá a si mesma e o dano das habilidades bastam para isso. A build é igual à de sub-DPS, mas troca o set pelo **Rito da Revelação Dourada**, que acumula Dano Fotônico com o ATQ Básico e dá **Dano de ATQ Básico** ao lançar a Liberação, e usa o echo **Supernova Gêmea: Canhão de Nebulosa** para aumentar o próprio dano.\n\nUse a distribuição **4-3-3-1-1**: uma peça de **crítico** no custo 4, **Dano Fotônico** nos dois custo 3 e **ATQ%** nos dois custo 1.\n\nNos substatus, complete com mais **críticos**, **Dano de ATQ Básico**, que é a base das habilidades dela, e **ATQ%**, mantendo cerca de **120% de Regen. de Energia**. A arma é a mesma: **Espectro Neon**, com o **Homogeneizador Fásico** como alternativa."
   },
   "Mornye_DEF_Based_Healer_Support": {
     "personagem": "Mornye",
@@ -2778,6 +2826,31 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 115,
+        "max": 130,
+        "tipo": "rotacao",
+        "explicacao": "Com a S2: cerca de 120% na maioria dos times e 113% com Augusta; sem a S2, uns 11% a mais.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "max": 70,
+        "tipo": "rotacao",
+        "explicacao": "Para o Hino Empíreo ativar com frequência (testes do Game8).",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 215,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -2809,7 +2882,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Mortefi é um **sub-DPS** Térmico cujo dano vem do **ATQ Coordenado**: depois da Liberação de Ressonância, cada **ATQ Pesado** do personagem em campo dispara golpes extras dele. Por isso a build usa o set **Hino Empíreo**, que aumenta muito o Dano de ATQ Coordenado e dá ATQ ao personagem ativo quando esses golpes são críticos, com o echo **Hécate**. **Nuvens Enluaradas** é a segunda opção, voltada para Regen e para o buff de ATQ de quem entra depois dele.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** no custo 4, **Dano Térmico** ou **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, a Taxa CRIT vem primeiro: pelos testes do Game8, **65–70%** é o ponto de equilíbrio para o Hino Empíreo ativar com frequência. Depois, **Dano CRIT**, **Regen. de Energia**, que deixa a Liberação pronta mais cedo, e **Dano de Liberação de Ressonância**. O Game8 não dá um número de Regen, mas o Prydwen estima **115–130%**: com a S2, cerca de 120% na maioria dos times e 113% com Augusta; sem a S2, uns 11% a mais. A melhor arma é a **Névoa Estática**; **A Última Dança** é a primeira alternativa."
   },
   "Phoebe_Spectro_Frazzle_Sub_DPS": {
     "personagem": "Phoebe",
@@ -3101,6 +3175,28 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 128,
+        "max": 138,
+        "tipo": "rotacao",
+        "explicacao": "128% com Iuno e Ciaccona, 138% com Cartethyia e Ciaccona; o Pacto de Sangue já cobre isso, sem Regen nos substatus.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 65,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -3132,7 +3228,8 @@
       "energy_regen": 1,
       "atk_flat": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Nesta build, o **Rover: Pneumático** é um **sub-DPS** que também cura: causa dano com rotações internas rápidas e com a **Erosão Pneumática**, e oferece várias curas ao longo da rotação, inclusive com a Liberação de Ressonância. O kit converte os efeitos negativos nos inimigos em Erosão Pneumática e aumenta o máximo de acúmulos, por isso o set ideal é o **Barlavento Peregrino**, que dá Taxa CRIT e Dano Pneumático ao acertar alvos com Erosão. O echo principal é a **Reminiscência: Fleurdelys**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Pneumático** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, equilibre os críticos e depois busque **Dano de Habilidade de Ressonância** e **ATQ%**. O Game8 não dá um número de Regen, mas o Prydwen estima **128–138% de Regen. de Energia** e lembra que o **Pacto de Sangue**, a melhor arma dele, já entrega isso, sem precisar de Regen nos substatus. O **Fulgor Celestial** é a primeira alternativa."
   },
   "Rover_Aero_Aero_Support_Healer": {
     "personagem": "Rover: Aero",
@@ -3145,6 +3242,16 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 128,
+        "max": 138,
+        "tipo": "rotacao",
+        "explicacao": "128% com Iuno e Ciaccona, 138% com Cartethyia e Ciaccona; o Pacto de Sangue já cobre isso, sem Regen nos substatus.",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -3175,7 +3282,8 @@
       "atk_flat": 2,
       "skill_dmg": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "Como ainda há poucos times que usam efeitos negativos, o **Rover: Pneumático** também pode jogar como **suporte de cura** que ainda causa algum dano. A build foca na cura em rotações de **troca rápida**, entrando e saindo de campo para curar o time depressa. Ela usa o set **Brilho Rejuvenescedor**, que dá ATQ ao time quando ele cura, com o echo **Falácia Irreversível**.\n\nUse a distribuição **4-3-3-1-1**: **Bônus de Cura** ou **ATQ%** no custo 4, **ATQ%** ou **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1, porque a cura escala com ATQ.\n\nNos substatus, priorize **ATQ%**, depois **Regen. de Energia** e **ATQ** fixo; os críticos não entram, já que o papel aqui é curar. O Game8 não dá um número de Regen, mas o Prydwen estima **128–138%**, e o **Pacto de Sangue** já dá Regen suficiente sem precisar de substatus. O **Fulgor Celestial** é a primeira alternativa."
   },
   "Rover_Electro_Electro_Flare_Sub_DPS": {
     "personagem": "Rover: Electro",
@@ -3393,6 +3501,31 @@
       ]
     },
     "escala": "ATQ",
+    "metas": [
+      {
+        "stat": "energy_regen",
+        "min": 120,
+        "max": 123,
+        "tipo": "rotacao",
+        "explicacao": "120% com Phoebe e Lynae, 123% com Zani e Phoebe.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 60,
+        "max": 75,
+        "tipo": "rotacao",
+        "explicacao": "Sem contar a Taxa CRIT que a S1 dá.",
+        "fonte": "prydwen"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 210,
+        "max": 260,
+        "tipo": "rotacao",
+        "fonte": "prydwen"
+      }
+    ],
     "custos": [
       4,
       3,
@@ -3425,7 +3558,8 @@
       "liberation_dmg": 2,
       "skill_dmg": 1
     },
-    "status": "TODO: sem meta de Regen. de Energia nas fontes"
+    "status": "ok",
+    "descricao": "O **Rover: Fotônico** rende mais como **sub-DPS** que aplica **Estridência Fotônica**, e a principal fonte de acúmulos é a Liberação de Ressonância. A build usa o set **Nuvens Enluaradas**, que dá ATQ ao próximo personagem depois da Habilidade Outro, com o echo **Garça-cambiante**. **Radiância Eterna** é uma alternativa mais voltada para dano; a partir da S4 ele ganha cura, e o **Brilho Rejuvenescedor** vira opção.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Fotônico** ou **Regen. de Energia** nos custo 3 e **ATQ%** nos custo 1.\n\nNos substatus, **Regen. de Energia** é prioridade, já que a Liberação é o que mais aplica Estridência (a S3 dá 20% de Regen e reduz essa urgência). Equilibre os críticos e pegue um pouco de **Dano de Liberação de Ressonância** e **Dano de Habilidade de Ressonância**, de onde vem o dano dele. O Game8 não dá um número, mas o Prydwen estima **120–123% de Regen. de Energia**. A melhor arma é a **Gênese Esmeralda**; entre as 4 estrelas, a **Marcha de Abertura** é a melhor, pela Regen que dá."
   },
   "Sanhua_Basic_ATK_Sub_DPS": {
     "personagem": "Sanhua",
@@ -4400,6 +4534,28 @@
         "stat": "energy_regen",
         "min": 120,
         "tipo": "rotacao",
+        "explicacao": "Para fazer os combos com folga em toda rotação.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_rate",
+        "min": 70,
+        "max": 80,
+        "tipo": "rotacao",
+        "explicacao": "Feche a Taxa CRIT antes do Dano CRIT: os passivos dela já dão Dano CRIT.",
+        "fonte": "game8"
+      },
+      {
+        "stat": "crit_dmg",
+        "min": 250,
+        "tipo": "rotacao",
+        "fonte": "game8"
+      },
+      {
+        "stat": "atk_flat",
+        "min": 2100,
+        "tipo": "rotacao",
+        "explicacao": "Acima disso, quanto mais melhor.",
         "fonte": "game8"
       }
     ],
@@ -4435,7 +4591,8 @@
       "atk_pct": 2,
       "atk_flat": 1
     },
-    "status": "ok"
+    "status": "ok",
+    "descricao": "Galbrena é uma DPS **Térmica** cujo dano vem do **Dano Térmico** e da **Habilidade de Eco**, com o **ATQ Pesado** ajudando a manter o ciclo. Por isso ela combina dois sets: 3 peças de **Sombra de Chamasa**, que alterna Taxa CRIT entre Habilidade de Eco e ATQ Pesado e dá Dano Térmico quando os dois efeitos estão ativos, e 2 peças de **Pegada Flamejante**. O echo principal é o **Corrossauro**.\n\nUse a distribuição **4-3-3-1-1**: **Taxa CRIT** ou **Dano CRIT** no custo 4, **Dano Térmico** nos custo 3 e **ATQ%** nos custo 1. Como os passivos dela já dão Dano CRIT, a peça de custo 4 com **Taxa CRIT** costuma ser a melhor escolha.\n\nNos substatus, os críticos vêm primeiro; depois, **ATQ%** e **Dano de ATQ Pesado**. O Game8 sugere um crítico de cerca de **75:250** (Taxa CRIT entre **70% e 80%**, Dano CRIT acima de **250%**), mais de **2.100 de ATQ** e por volta de **120% de Regen. de Energia** para fazer os combos com folga em toda rotação. Se tiver que escolher, feche a Taxa CRIT antes do Dano CRIT. A melhor arma é a **Lux & Umbra**; o **Homogeneizador Fásico** é a primeira alternativa."
   },
   "Iuno_Aero_Sub_DPS": {
     "personagem": "Iuno",
