@@ -375,3 +375,52 @@ label.chip input { accent-color: var(--lilas-forte); }
 .sets-editor { display: flex; flex-direction: column; gap: 8px; }
 .set-editor-linha { display: grid; grid-template-columns: minmax(0, 1fr) 120px 30px; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
 .set-editor-linha .ibtn { width: 30px; height: 30px; }
+
+/* --- Tela do personagem: abas Builds | Kit | Rotação --- */
+.cab-personagem { position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; margin-top: 16px; padding-bottom: 32px; border-bottom: 1px solid var(--borda); }
+.abas { position: absolute; top: 0; right: 0; display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--painel); border: 1px solid var(--borda); }
+.aba { min-height: 38px; padding: 0 18px; border: 0; border-radius: 9px; background: transparent; color: var(--mudo); font-size: 14px; font-weight: 700; cursor: pointer; transition: background .15s, color .15s; }
+.aba:hover { color: var(--texto); }
+.aba.on { background: var(--roxo); color: #fff; }
+.aba:focus-visible { outline: 2px solid var(--lilas); outline-offset: 2px; }
+.carregando { margin: 32px 0 0; color: var(--mudo); }
+@media (max-width: 900px) { .abas { position: static; width: 100%; } .aba { flex: 1; } }
+
+/* --- Aba Kit --- */
+.kit { display: flex; flex-direction: column; gap: 32px; padding-top: 32px; max-width: 1200px; }
+.kit-resumo { display: flex; flex-direction: column; gap: 10px; padding: 18px 22px; border-radius: 12px; background: var(--painel-2); border: 1px solid var(--borda-forte); }
+.kit-resumo .label { margin: 0; }
+.kit-resumo-texto { margin: 0; font-size: 16px; line-height: 1.7; color: var(--texto-2); max-width: 900px; }
+.kit-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.kit-tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--borda-forte); background: var(--painel); font-size: 13px; font-weight: 700; color: var(--lilas); }
+.kit-grupo { display: flex; flex-direction: column; gap: 12px; }
+.kit-grupo-titulo { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--mudo-2); }
+.kit-card { border-radius: 12px; background: var(--painel); border: 1px solid var(--borda); overflow: hidden; }
+.kit-card-topo { display: flex; align-items: center; gap: 14px; padding: 14px 20px; background: var(--cabecalho); border-bottom: 1px solid #2F2742; }
+.kit-icone { width: 48px; height: 48px; flex: none; border-radius: 50%; background: #0F0B18; border: 1px solid var(--borda-forte); object-fit: contain; padding: 4px; }
+.kit-icone.ph { padding: 0; }
+.kit-tipo { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--mudo); }
+.kit-nome { margin: 2px 0 0; font-size: 18px; font-weight: 800; }
+.kit-ilustracoes { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 0; }
+.kit-ilustracoes:empty { display: none; }
+.kit-ilustracao { width: 100%; max-width: 760px; border-radius: 8px; border: 1px solid var(--borda); }
+.kit-descricao { padding: 16px 20px; font-size: 15px; line-height: 1.7; color: var(--texto-2); }
+.kit-descricao p { margin: 0 0 10px; }
+.kit-descricao p:last-child { margin-bottom: 0; }
+.kit-subtitulo { margin-top: 18px !important; font-weight: 800; color: var(--ouro); }
+.kit-descricao .kit-subtitulo:first-child { margin-top: 0 !important; }
+.kit-destaque { color: var(--ouro); font-weight: 600; }
+.kit-elemento { font-weight: 700; }
+.kit-multiplicadores { padding: 0 20px 18px; }
+.kit-nivel { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--mudo); }
+.kit-nivel input { flex: 1; max-width: 320px; accent-color: var(--roxo); }
+.kit-nivel strong { min-width: 2ch; color: var(--texto); }
+.kit-multiplicadores table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kit-multiplicadores td { padding: 8px 10px; border-top: 1px solid #241E31; color: var(--texto-2); }
+.kit-multiplicadores td.mono { text-align: right; color: var(--lilas); overflow-wrap: anywhere; }
+.kit-bonus { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; padding: 14px 20px; border-radius: 12px; background: var(--painel); border: 1px dashed var(--borda-forte); }
+.kit-bonus .label { margin-right: 4px; }
+.kit-bonus-item { font-weight: 700; color: var(--texto); }
+.kit-sequencias { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px; align-items: start; }
+.kit-sequencias .kit-card-topo { background: var(--painel-2); }
+@media (max-width: 720px) { .kit-descricao, .kit-card-topo { padding-left: 14px; padding-right: 14px; } .kit-multiplicadores { padding: 0 14px 14px; } }

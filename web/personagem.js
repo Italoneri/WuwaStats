@@ -4,6 +4,7 @@ import {
   ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
   moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta, tagDaMeta,
 } from "./comum.js";
+import { desenharKit } from "./kit.js";
 
 const CUSTOS = ["4", "3", "1"];
 
@@ -27,24 +28,53 @@ async function carregar() {
 
 const voltar = () => el("a", { class: "back", href: "index.html" }, icone(ICONES.voltar, 18, { espessura: 2 }), "Personagens");
 
-function desenhar(contexto) {
-  principal.replaceChildren(
-    el(
-      "div",
-      { class: "wrap" },
-      voltar(),
-      cabecalho(contexto),
-      contexto.builds.length ? contexto.builds.map((b) => secaoBuild(b, contexto)) : semBuild(contexto.personagem),
-    ),
-  );
+const ABAS = { builds: "Builds", kit: "Kit", rotacao: "Rotação" };
+
+/** A aba fica na URL (?aba=kit) para dar link direto e sobreviver ao F5; valor desconhecido abre Builds. */
+function abaDaUrl() {
+  const aba = parametro("aba");
+  return aba && Object.hasOwn(ABAS, aba) ? aba : "builds";
 }
 
-function cabecalho({ personagem, builds }) {
+function desenhar(contexto) {
+  const painel = el("div", { class: "aba-painel", role: "tabpanel" });
+  const abas = el("nav", { class: "abas", role: "tablist", "aria-label": "Seções do personagem" });
+  let kit = null; // o kit só é pedido na primeira vez que a aba abre
+  const mostrar = (aba) => {
+    const url = new URL(location.href);
+    url.searchParams.set("aba", aba);
+    history.replaceState(null, "", url);
+    abas.replaceChildren(...Object.entries(ABAS).map(([chave, rotulo]) => botaoAba(chave, rotulo, chave === aba, mostrar)));
+    if (aba === "kit") {
+      kit ??= desenharKit(contexto.personagem);
+      painel.replaceChildren(el("p", { class: "carregando" }, "Carregando kit…"));
+      kit.then((conteudo) => abaAtiva(abas) === "kit" && painel.replaceChildren(conteudo));
+      return;
+    }
+    painel.replaceChildren(...[aba === "rotacao" ? emBreve() : conteudoBuilds(contexto)].flat());
+  };
+  principal.replaceChildren(el("div", { class: "wrap" }, voltar(), cabecalho(contexto, abas), painel));
+  mostrar(abaDaUrl());
+}
+
+const abaAtiva = (abas) => abas.querySelector("[aria-selected='true']")?.dataset.aba;
+
+function botaoAba(chave, rotulo, ativa, mostrar) {
+  return el("button", { type: "button", class: `aba${ativa ? " on" : ""}`, role: "tab", "aria-selected": String(ativa), "data-aba": chave, onclick: () => mostrar(chave) }, rotulo);
+}
+
+const conteudoBuilds = (contexto) => (contexto.builds.length ? contexto.builds.map((b) => secaoBuild(b, contexto)) : semBuild(contexto.personagem));
+
+function emBreve() {
+  return el("div", { class: "vazio-msg" }, el("strong", {}, "Rotação em breve"), el("p", {}, "A rotação básica das composições deste personagem vai aparecer aqui."));
+}
+
+function cabecalho({ personagem, builds }, abas) {
   const cor = elemento(personagem.elemento.chave);
   const quantidade = builds.length === 1 ? "1 construção recomendada" : `${builds.length} construções recomendadas`;
   return el(
     "header",
-    { style: { display: "flex", flexWrap: "wrap", alignItems: "flex-end", gap: "32px", marginTop: "16px", paddingBottom: "32px", borderBottom: "1px solid var(--borda)" } },
+    { class: "cab-personagem" },
     el(
       "div",
       { class: "ph", style: { width: "208px", height: "260px", borderRadius: "14px", borderColor: personagem.raridade === 5 ? "#6B5A2E" : "#3A2F52", placeItems: "end center", overflow: "hidden" } },
@@ -64,6 +94,7 @@ function cabecalho({ personagem, builds }) {
       ),
       el("p", { style: { margin: 0, fontSize: "15px", color: "var(--mudo)" } }, builds.length ? quantidade : "Nenhuma construção cadastrada"),
     ),
+    abas,
   );
 }
 
