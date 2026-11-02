@@ -2,8 +2,9 @@
 
 import {
   ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
-  moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta, tagDaMeta,
+  moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, tagDaMeta,
 } from "./comum.js";
+import { bannerDoPersonagem } from "./fanart.js";
 import { desenharKit } from "./kit.js";
 
 const CUSTOS = ["4", "3", "1"];
@@ -14,15 +15,30 @@ carregar();
 
 async function carregar() {
   try {
-    const [personagens, builds, catalogo] = await Promise.all([api.personagens(), api.builds(), api.catalogo(), carregarImagens()]);
+    const [personagens, builds, catalogo, fanarts] = await Promise.all([api.personagens(), api.builds(), api.catalogo(), carregarFanarts(), carregarImagens()]);
     const chave = parametro("nome");
     const personagem = personagens.find((p) => p.chave === chave);
     if (!personagem) throw new Error(`Personagem '${chave ?? ""}' não encontrado.`);
     document.title = `WuwaStats · ${personagem.nome}`;
-    const contexto = { personagem, builds: builds.filter((b) => b.personagem === personagem.chave), rotulo: rotulador(catalogo) };
+    const contexto = {
+      personagem,
+      builds: builds.filter((b) => b.personagem === personagem.chave),
+      rotulo: rotulador(catalogo),
+      credito: fanarts[personagem.chave] ?? null,
+    };
     desenhar(contexto);
   } catch (erro) {
     principal.replaceChildren(el("div", { class: "wrap" }, voltar(), avisoErro(erro)));
+  }
+}
+
+/** Sem a lista de fanarts a página segue com a foto padrão, como faz carregarImagens. */
+async function carregarFanarts() {
+  try {
+    return await api.fanarts();
+  } catch (erro) {
+    console.warn("fanarts: lista indisponível; usando a foto padrão", erro);
+    return {};
   }
 }
 
@@ -53,7 +69,7 @@ function desenhar(contexto) {
     }
     painel.replaceChildren(...[aba === "rotacao" ? emBreve() : conteudoBuilds(contexto)].flat());
   };
-  principal.replaceChildren(el("div", { class: "wrap" }, voltar(), cabecalho(contexto, abas), painel));
+  principal.replaceChildren(el("div", { class: "wrap" }, voltar(), cabecalho(contexto), abas, painel));
   mostrar(abaDaUrl());
 }
 
@@ -69,33 +85,24 @@ function emBreve() {
   return el("div", { class: "vazio-msg" }, el("strong", {}, "Rotação em breve"), el("p", {}, "A rotação básica das composições deste personagem vai aparecer aqui."));
 }
 
-function cabecalho({ personagem, builds }, abas) {
+function cabecalho({ personagem, builds, credito }) {
   const cor = elemento(personagem.elemento.chave);
   const quantidade = builds.length === 1 ? "1 construção recomendada" : `${builds.length} construções recomendadas`;
-  return el(
-    "header",
-    { class: "cab-personagem" },
+  const info = el(
+    "div",
+    { class: "cab-info" },
+    el("p", { class: "label", style: { margin: 0, fontSize: "13px" } }, "Ressonador"),
+    el("h1", { style: { margin: 0, fontSize: "56px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 } }, personagem.nome),
     el(
       "div",
-      { class: "ph", style: { width: "208px", height: "260px", borderRadius: "14px", borderColor: personagem.raridade === 5 ? "#6B5A2E" : "#3A2F52", placeItems: "end center", overflow: "hidden" } },
-      figura("personagens", personagem.chave, silhueta(cor.cor, "", "78%"), { trocavel: true, rotulo: personagem.nome }),
+      { style: { display: "flex", flexWrap: "wrap", gap: "10px" } },
+      el("span", { class: "chip" }, el("span", { class: "dot", style: { background: cor.cor } }), personagem.elemento.nome),
+      el("span", { class: "chip" }, icone(iconeArma(personagem.tipo_arma.chave), 16), personagem.tipo_arma.nome),
+      el("span", { class: "chip estrelas", style: { letterSpacing: "2px" }, "aria-label": `${personagem.raridade} estrelas` }, estrelas(personagem.raridade)),
     ),
-    el(
-      "div",
-      { style: { display: "flex", flexDirection: "column", gap: "16px", paddingBottom: "8px" } },
-      el("p", { class: "label", style: { margin: 0, fontSize: "13px" } }, "Ressonador"),
-      el("h1", { style: { margin: 0, fontSize: "56px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 } }, personagem.nome),
-      el(
-        "div",
-        { style: { display: "flex", flexWrap: "wrap", gap: "10px" } },
-        el("span", { class: "chip" }, el("span", { class: "dot", style: { background: cor.cor } }), personagem.elemento.nome),
-        el("span", { class: "chip" }, icone(iconeArma(personagem.tipo_arma.chave), 16), personagem.tipo_arma.nome),
-        el("span", { class: "chip estrelas", style: { letterSpacing: "2px" }, "aria-label": `${personagem.raridade} estrelas` }, estrelas(personagem.raridade)),
-      ),
-      el("p", { style: { margin: 0, fontSize: "15px", color: "var(--mudo)" } }, builds.length ? quantidade : "Nenhuma construção cadastrada"),
-    ),
-    abas,
+    el("p", { style: { margin: 0, fontSize: "15px", color: "var(--texto-2)" } }, builds.length ? quantidade : "Nenhuma construção cadastrada"),
   );
+  return bannerDoPersonagem(personagem, info, credito);
 }
 
 function semBuild(personagem) {

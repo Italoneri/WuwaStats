@@ -46,6 +46,14 @@ export const api = {
     form.append("arquivo", arquivo);
     return pedir(`/api/imagens/${categoria}/${encodeURIComponent(chave)}`, { method: "PUT", body: form });
   },
+  fanarts: () => pedir("/api/fanarts"),
+  enviarFanart: (chave, { arquivo, artista, link }) => {
+    const form = new FormData();
+    if (arquivo) form.append("arquivo", arquivo);
+    form.append("artista", artista);
+    form.append("link", link);
+    return pedir(`/api/fanarts/${encodeURIComponent(chave)}`, { method: "PUT", body: form });
+  },
   captura: {
     teclas: () => pedir("/api/captura/teclas"),
     iniciar: (build) => pedir("/api/captura/iniciar", json("POST", { build })),
@@ -133,6 +141,7 @@ export const ICONES = {
   enviar: "M12 16V4M7 9l5-5 5 5M4 16v4h16v-4",
   imagem: ["M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z", "M9 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z", "m21 16-5-5-9 9"],
   girando: "M21 12a9 9 0 1 1-9-9",
+  externo: ["M14 4h6v6", "M20 4l-9 9", "M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"],
   grip: ["M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"],
 };
 
@@ -406,9 +415,16 @@ function botaoTrocar(categoria, chave, rotulo, caixa, redesenhar) {
       }
     },
   });
+  // Dentro de um link (card da galeria) o clique no botão não pode navegar: cancela e abre o seletor à mão.
+  const abrirSeletor = (e) => {
+    e.stopPropagation();
+    if (e.target === entrada) return;
+    e.preventDefault();
+    entrada.click();
+  };
   return el(
     "label",
-    { class: "trocar", title: "Trocar imagem", "aria-label": `Trocar imagem de ${rotulo}` },
+    { class: "trocar", title: "Trocar imagem", "aria-label": `Trocar imagem de ${rotulo}`, onclick: abrirSeletor },
     entrada,
     icone(ICONES.captura, 15, { espessura: 2 }),
   );

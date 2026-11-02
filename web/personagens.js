@@ -166,7 +166,7 @@ function cartao(p) {
     el(
       "div",
       { class: `portrait${p.raridade === 5 ? " r5" : ""}` },
-      figura("personagens", p.chave, silhueta(cor.cor), { rotulo: p.nome }),
+      figura("personagens", p.chave, silhueta(cor.cor), { trocavel: true, rotulo: p.nome }),
       el("span", { class: "badge el", title: p.elemento.nome }, icone(cor.d, 16, { espessura: 2, cor: cor.cor })),
       el("span", { class: "badge wp", title: p.tipo_arma.nome }, icone(iconeArma(p.tipo_arma.chave), 16)),
     ),
