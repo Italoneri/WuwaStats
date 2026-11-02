@@ -18,11 +18,24 @@ MAX_BYTES_FANART = 15 * 1024 * 1024
 SAIDA_FANART = FormatoDeSaida(lado_maximo_px=1920, max_bytes=MAX_BYTES_FANART, formato="WEBP")
 
 
+class Enquadramento(BaseModel):
+    """Recorte da fanart no banner: ponto focal em % (object-position) e zoom a partir do 'cover'."""
+
+    model_config = ConfigDict(frozen=True)
+
+    x: float = Field(default=50, ge=0, le=100)
+    y: float = Field(default=25, ge=0, le=100)
+    zoom: float = Field(default=1, ge=1, le=3)
+
+
 class Credito(BaseModel):
+    """Crédito do artista e o enquadramento escolhido para a fanart; os dois são editados juntos no mesmo diálogo."""
+
     model_config = ConfigDict(frozen=True, str_strip_whitespace=True)
 
     artista: str = Field(min_length=1, max_length=80)
     link: str | None = Field(default=None, max_length=500)
+    enquadramento: Enquadramento = Enquadramento()
 
     @field_validator("link", mode="before")
     @classmethod
@@ -45,9 +58,9 @@ class CreditoRecusado(ValueError):
     pass
 
 
-def validar_credito(artista: str, link: str | None) -> Credito:
+def validar_credito(artista: str, link: str | None, enquadramento: dict[str, float] | None = None) -> Credito:
     try:
-        return Credito(artista=artista, link=link)
+        return Credito.model_validate({"artista": artista, "link": link, "enquadramento": enquadramento or {}})
     except ValidationError as erro:
         motivos = "; ".join(f"{'.'.join(map(str, e['loc']))}: {e['msg']}" for e in erro.errors())
         raise CreditoRecusado(f"crédito inválido ({motivos})") from erro

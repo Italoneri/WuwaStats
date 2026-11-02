@@ -47,11 +47,14 @@ export const api = {
     return pedir(`/api/imagens/${categoria}/${encodeURIComponent(chave)}`, { method: "PUT", body: form });
   },
   fanarts: () => pedir("/api/fanarts"),
-  enviarFanart: (chave, { arquivo, artista, link }) => {
+  enviarFanart: (chave, { arquivo, artista, link, enquadramento }) => {
     const form = new FormData();
     if (arquivo) form.append("arquivo", arquivo);
     form.append("artista", artista);
     form.append("link", link);
+    form.append("posicao_x", enquadramento.x);
+    form.append("posicao_y", enquadramento.y);
+    form.append("zoom", enquadramento.zoom);
     return pedir(`/api/fanarts/${encodeURIComponent(chave)}`, { method: "PUT", body: form });
   },
   captura: {

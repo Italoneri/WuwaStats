@@ -334,12 +334,13 @@ class TestFanarts:
         arquivo = {"arquivo": ("f.jpg", imagem("JPEG"), "image/jpeg")}
 
         envio = cliente.put("/api/fanarts/Suoming", data={"artista": "@fulano", "link": "https://x.com/f/1"}, files=arquivo)
-        so_credito = cliente.put("/api/fanarts/Suoming", data={"artista": "@ciclano", "link": ""}, files={})
+        enquadramento = {"posicao_x": "40", "posicao_y": "12.5", "zoom": "1.25"}
+        so_credito = cliente.put("/api/fanarts/Suoming", data={"artista": "@ciclano", "link": "", **enquadramento}, files={})
         lista = cliente.get("/api/fanarts").json()
         servida = cliente.get("/api/fanarts/Suoming")
 
         assert (envio.status_code, so_credito.status_code) == (204, 204)
-        assert lista == {"Suoming": {"artista": "@ciclano", "link": None}}
+        assert lista == {"Suoming": {"artista": "@ciclano", "link": None, "enquadramento": {"x": 40, "y": 12.5, "zoom": 1.25}}}
         assert (servida.status_code, servida.headers["content-type"]) == (200, "image/webp")
 
     @pytest.mark.parametrize(
@@ -351,6 +352,8 @@ class TestFanarts:
             ("put", "/api/fanarts/Suoming", {"artista": "a", "link": "javascript:alert(1)"}, imagem("PNG"), 422),
             ("put", "/api/fanarts/Suoming", {"artista": " "}, imagem("PNG"), 422),
             ("put", "/api/fanarts/Suoming", {"artista": "a"}, b"texto", 422),
+            ("put", "/api/fanarts/Suoming", {"artista": "a", "zoom": "5"}, imagem("PNG"), 422),
+            ("put", "/api/fanarts/Suoming", {"artista": "a", "posicao_x": "abc"}, imagem("PNG"), 422),
         ],
     )
     def test_erros(self, cliente: TestClient, metodo: str, caminho: str, dados: dict[str, str] | None, arquivo: bytes | None, status: int) -> None:

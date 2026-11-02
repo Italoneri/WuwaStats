@@ -553,7 +553,10 @@ dos ressonadores: `404`.
 
 ### `GET /api/fanarts`
 
-Crédito de quem tem fanart: `{ "Aemeath": { "artista": "@fulano", "link": "https://www.pixiv.net/artworks/1" } }`.
+Crédito e enquadramento de quem tem fanart:
+`{ "Aemeath": { "artista": "@fulano", "link": "https://www.pixiv.net/artworks/1", "enquadramento": { "x": 50, "y": 12, "zoom": 1.3 } } }`.
+`x`/`y` são o ponto focal em % (`object-position`) e `zoom` amplia a partir desse ponto, sobre o recorte que já cobre
+o banner. Fanarts gravadas antes do enquadramento voltam com o padrão `{ "x": 50, "y": 25, "zoom": 1 }`.
 
 ### `GET /api/fanarts/{chave}`
 
@@ -562,7 +565,8 @@ A imagem (WebP, `Cache-Control: no-cache`). `404` se não há fanart.
 ### `PUT /api/fanarts/{chave}`
 
 `multipart/form-data` com `artista` (1 a 80 caracteres), `link` (opcional, só `http://`/`https://`) e `arquivo` (PNG,
-JPEG ou WebP até 15 MB, regravado como WebP com no máximo 1920 px no maior lado). Sem `arquivo`, troca só o crédito
+JPEG ou WebP até 15 MB, regravado como WebP com no máximo 1920 px no maior lado), mais o enquadramento: `posicao_x` e
+`posicao_y` (0 a 100, padrão 50 e 25) e `zoom` (1 a 3, padrão 1). Sem `arquivo`, troca só o crédito e o enquadramento
 da fanart que já existe. `204`; `422` se a imagem ou o crédito é inválido, ou se falta a imagem na primeira vez.
 
 ## `POST /api/aliases`

@@ -39,9 +39,12 @@ def rotas_fanarts(fanarts: FanartsDoCatalogo, dados_atuais: Callable[[], GameDat
         arquivo: Annotated[
             UploadFile | None, File(description=f"PNG, JPEG ou WebP até {MAX_BYTES_FANART // (1024 * 1024)} MB; sem ele, troca só o crédito")
         ] = None,
+        posicao_x: Annotated[float, Form(description="Ponto focal horizontal no banner, 0–100%")] = 50,
+        posicao_y: Annotated[float, Form(description="Ponto focal vertical no banner, 0–100%")] = 25,
+        zoom: Annotated[float, Form(description="Zoom a partir do preenchimento do banner, 1–3")] = 1,
     ) -> None:
         exigir_personagem(chave)
-        credito = validar_credito(artista, link)
+        credito = validar_credito(artista, link, {"x": posicao_x, "y": posicao_y, "zoom": zoom})
         conteudo = arquivo.file.read(MAX_BYTES_FANART + 1) if arquivo is not None else None
         fanarts.salvar(chave, conteudo, credito)
 
