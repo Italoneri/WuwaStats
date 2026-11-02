@@ -38,7 +38,8 @@ ENTRADA_POR_PLATAFORMA = re.compile(r"\{Cus:Ipt,[^{}]*?PC=([^{}]*?)(?:\s+Gamepad
 # "<size=10> </size>" é o respiro que o jogo põe entre blocos.
 ESPACADOR = re.compile(r"<size=\d+>\s*</size>")
 # "<SapTag=2>3</SapTag> {Cus:Sap,S=acúmulo P=acúmulos SapTag=2}": singular ou plural conforme o número marcado.
-PLURAL = re.compile(r"<SapTag=(\d+)>([^<]*)</SapTag>(\s*)\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}")
+# O marcador às vezes é letra (SapTag=B).
+PLURAL = re.compile(r"<SapTag=(\w+)>([^<]*)</SapTag>(\s*)\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}")
 
 
 def _singular_ou_plural(encontrado: re.Match[str]) -> str:

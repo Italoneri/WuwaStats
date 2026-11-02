@@ -36,6 +36,12 @@ CASOS: list[tuple[str, str, list[str], list[Paragrafo]]] = [
         ["1"],
         [[T(texto="inflige 1 acúmulo de Dano", estilo="normal")]],
     ),
+    (
+        "marcador_com_letra",
+        "restaura <SapTag=C>{0}</SapTag> {Cus:Sap,S=ponto P=pontos SapTag=C} de Traço",
+        ["100"],
+        [[T(texto="restaura 100 pontos de Traço", estilo="normal")]],
+    ),
     ("linha_vazia_some", "A\n\n\nB", [], [[T(texto="A", estilo="normal")], [T(texto="B", estilo="normal")]]),
     ("elemento_dentro_de_destaque_volta", "<color=Fire>Dano</color> e <color=Light>Luz</color>", [], [
         [T(texto="Dano", estilo="fusion"), T(texto=" e ", estilo="normal"), T(texto="Luz", estilo="spectro")]
