@@ -105,7 +105,8 @@ trocados no arquivo.
 
 - Texto sem tradução PT usa o oficial em inglês e aparece nos avisos. Nada é escrito à mão em `kits.json`.
 - Ícones das habilidades/sequências e as ilustrações do forte vêm do [nanoka.cc](https://ww.nanoka.cc) para
-  `data/imagens/kit/<personagem>/`; a que não existir lá (ex.: forte da Suoming) vira placeholder na página.
+  `data/imagens/kit/<personagem>/`. Ícone que não existir lá vira placeholder na página; ilustração do forte que não
+  existir (ex.: as da Suoming) simplesmente não aparece.
 - O resumo do topo da aba Kit fica em `data/kit_resumos.json`, escrito à mão (palavras próprias, a partir do Game8).
 
 ### Builds a partir do Game8

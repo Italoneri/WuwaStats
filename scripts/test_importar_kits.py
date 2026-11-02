@@ -231,3 +231,12 @@ def test_falha_de_imagem_vira_aviso(tmp_path) -> None:
 
     assert len(avisos) == 1
     assert "forte" in avisos[0]
+
+
+def test_bonus_com_valor_invalido_vira_aviso() -> None:
+    nos = [*TABELAS.nos, _no(11, 4, titulo="p", param=["muito"])]
+
+    kit, _, avisos = montar_kit(dataclasses.replace(TABELAS, nos=nos), PERSONAGEM, FORTE)
+
+    assert kit.bonus == [Bonus(nome="ATQ", valor="6%")]
+    assert any("muito" in aviso for aviso in avisos)

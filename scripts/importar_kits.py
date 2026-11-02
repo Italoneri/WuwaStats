@@ -290,8 +290,13 @@ def _bonus(textos: _Textos, nos: list[NoFonte]) -> list[Bonus]:
         nome = textos(no.titulo).rstrip("+").strip()
         bruto = no.parametros[0]
         sufixo = "%" if bruto.endswith("%") else ""
+        try:
+            valor = float(bruto.rstrip("%"))
+        except ValueError:
+            textos.avisos.append(f"bônus '{nome}' do nó {no.indice} com valor '{bruto}' fora do formato; ignorado")
+            continue
         anterior, _ = somas.get(nome, (0.0, sufixo))
-        somas[nome] = (anterior + float(bruto.rstrip("%")), sufixo)
+        somas[nome] = (anterior + valor, sufixo)
     return [Bonus(nome=nome, valor=f"{_numero(total)}{sufixo}") for nome, (total, sufixo) in somas.items()]
 
 
