@@ -33,6 +33,7 @@ from wuwastats.config import PROJECT_ROOT
 from wuwastats.domain.names import NameIndex, fold, resolve_stat
 from wuwastats.gamedata.aliases import ARQUIVO_ALIASES, escrever_atomico
 from wuwastats.gamedata.imagens import CategoriaImagem, ImagemRecusada, ImagensDoCatalogo
+from wuwastats.gamedata.kit_texto import preencher
 from wuwastats.gamedata.loader import GameDataError, load_game_data
 from wuwastats.gamedata.schemas import AliasesFile, EchoesFile, EchoRaw, SetRaw, SetsFile
 
@@ -472,16 +473,6 @@ def _valor_exibido(somada: PropriedadeSomadaFonte, percentual: bool) -> float:
     if somada.proporcional:
         return round(somada.valor * 100, 2)
     return round(somada.valor / 100, 2) if percentual else somada.valor
-
-
-def preencher(modelo: str, parametros: list[str]) -> str:
-    """Troca {0}, {1}... pelos parâmetros do efeito; índices sem parâmetro ficam como estão."""
-
-    def trocar(encontrado: re.Match[str]) -> str:
-        indice = int(encontrado.group(1))
-        return parametros[indice] if indice < len(parametros) else encontrado.group(0)
-
-    return re.sub(r"\{(\d+)\}", trocar, modelo).strip()
 
 
 def _texto_pt(tabelas: TabelasFonte, chave: str, parametros: list[str] | None = None) -> str | None:
