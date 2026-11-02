@@ -15,6 +15,10 @@ ARQUIVO_RESUMOS = "kit_resumos.json"
 PASTA_KIT = "kit"
 
 
+class KitInexistente(LookupError):
+    pass
+
+
 class _Modelo(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid", populate_by_name=True)
 

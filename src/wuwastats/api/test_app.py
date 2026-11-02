@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 from wuwastats.api.app import criar_app
 from wuwastats.config import Settings
 from wuwastats.conftest import FIXTURES, TelaFalsa
+from wuwastats.gamedata.kits import ImagensDoKit
 from wuwastats.gamedata.test_imagens import imagem
 from wuwastats.vision.client import ConfiguracaoAusente, ModeloVisao
 from wuwastats.vision.image import Imagem
@@ -442,3 +443,28 @@ class TestEditorDeBuilds:
 def test_pagina_pede_revalidacao_para_nao_usar_js_antigo(cliente: TestClient) -> None:
     assert cliente.get("/comum.js").headers["cache-control"] == "no-cache"
     assert cliente.get("/api/health").headers.get("cache-control") is None
+
+
+def test_serve_kit_com_resumo(cliente: TestClient) -> None:
+    resposta = cliente.get("/api/kits/Suoming")
+
+    assert resposta.status_code == 200
+    assert resposta.json()["resumo"] == "DPS principal de rotação longa."
+    assert resposta.json()["kit"]["habilidades"][0]["tipo"] == "ATQ Normal"
+
+
+def test_kit_inexistente_404(cliente: TestClient) -> None:
+    resposta = cliente.get("/api/kits/Shorekeeper")
+
+    assert resposta.status_code == 404
+    assert "Shorekeeper" in resposta.json()["mensagem"]
+
+
+def test_imagem_do_kit(cliente: TestClient, settings: Settings) -> None:
+    ImagensDoKit(settings.data_dir).salvar("Suoming", "forte-1", imagem("PNG"))
+
+    servida = cliente.get("/api/kits/Suoming/imagens/forte-1")
+    ausente = cliente.get("/api/kits/Suoming/imagens/forte-9")
+
+    assert (servida.status_code, servida.headers["content-type"]) == (200, "image/png")
+    assert ausente.status_code == 404

@@ -40,6 +40,7 @@ export const api = {
     apagar: (chave) => pedir(`/api/perfis/${encodeURIComponent(chave)}`, { method: "DELETE" }),
   },
   imagens: () => pedir("/api/imagens"),
+  kit: (chave) => pedir(`/api/kits/${encodeURIComponent(chave)}`),
   enviarImagem: (categoria, chave, arquivo) => {
     const form = new FormData();
     form.append("arquivo", arquivo);
@@ -366,6 +367,8 @@ export async function carregarImagens() {
     console.warn("imagens: lista indisponível; usando placeholders", erro);
   }
 }
+
+export const urlImagemKit = (chave, nome) => `/api/kits/${encodeURIComponent(chave)}/imagens/${encodeURIComponent(nome)}`;
 
 export const temImagem = (categoria, chave) => imagensDisponiveis[categoria].has(chave);
 

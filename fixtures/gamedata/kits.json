@@ -1,0 +1,22 @@
+{
+  "_meta": { "descricao": "Fixture de testes." },
+  "kits": {
+    "Suoming": {
+      "id_jogo": 1312,
+      "tags": [{ "nome": "DPS Principal", "descricao": "DPS Poderoso", "cor": "ff8441" }],
+      "habilidades": [
+        {
+          "tipo": "ATQ Normal",
+          "nome": "Dossel Fechado",
+          "imagem": "habilidade-1",
+          "ilustracoes": [],
+          "descricao": [[{ "texto": "Causa ", "estilo": "normal" }, { "texto": "Dano Voltaico", "estilo": "electro" }]],
+          "multiplicadores": [{ "nome": "Dano", "valores": ["1%", "2%", "3%", "4%", "5%", "6%", "7%", "8%", "9%", "10%"] }]
+        }
+      ],
+      "inerentes": [],
+      "bonus": [{ "nome": "ATQ", "valor": "12%" }],
+      "sequencias": []
+    }
+  }
+}
