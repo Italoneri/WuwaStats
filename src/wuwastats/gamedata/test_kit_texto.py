@@ -42,6 +42,18 @@ CASOS: list[tuple[str, str, list[str], list[Paragrafo]]] = [
         ["100"],
         [[T(texto="restaura 100 pontos de Traço", estilo="normal")]],
     ),
+    (
+        "plural_dentro_de_glossario",
+        "consome <SapTag=6>{0}</SapTag> <te href=850017>{Cus:Sap,S=Cristal P=Cristais SapTag=6}</te>.",
+        ["2"],
+        [[T(texto="consome 2 ", estilo="normal"), T(texto="Cristais", estilo="destaque"), T(texto=".", estilo="normal")]],
+    ),
+    (
+        "marcador_sem_plural_some",
+        "obtém <SapTag=0>{0}</SapTag> acúmulo",
+        ["1"],
+        [[T(texto="obtém 1 acúmulo", estilo="normal")]],
+    ),
     ("linha_vazia_some", "A\n\n\nB", [], [[T(texto="A", estilo="normal")], [T(texto="B", estilo="normal")]]),
     ("elemento_dentro_de_destaque_volta", "<color=Fire>Dano</color> e <color=Light>Luz</color>", [], [
         [T(texto="Dano", estilo="fusion"), T(texto=" e ", estilo="normal"), T(texto="Luz", estilo="spectro")]

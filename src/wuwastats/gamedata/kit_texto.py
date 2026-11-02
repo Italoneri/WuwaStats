@@ -38,13 +38,17 @@ ENTRADA_POR_PLATAFORMA = re.compile(r"\{Cus:Ipt,[^{}]*?PC=([^{}]*?)(?:\s+Gamepad
 # "<size=10> </size>" é o respiro que o jogo põe entre blocos.
 ESPACADOR = re.compile(r"<size=\d+>\s*</size>")
 # "<SapTag=2>3</SapTag> {Cus:Sap,S=acúmulo P=acúmulos SapTag=2}": singular ou plural conforme o número marcado.
-# O marcador às vezes é letra (SapTag=B).
-PLURAL = re.compile(r"<SapTag=(\w+)>([^<]*)</SapTag>(\s*)\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}")
+# O marcador às vezes é letra (SapTag=B), e a palavra pode vir dentro de um termo do glossário (<te href=..>).
+PLURAL = re.compile(
+    r"<SapTag=(\w+)>([^<]*)</SapTag>(\s*)(<te [^<>]*>)?\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}"
+)
+# Número marcado sem palavra para flexionar: a marcação não muda nada e sai.
+MARCADOR_SOLTO = re.compile(r"</?SapTag(?:=\w+)?>")
 
 
 def _singular_ou_plural(encontrado: re.Match[str]) -> str:
-    _, numero, espaco, singular, plural = encontrado.groups()
-    return f"{numero}{espaco}{singular if numero.strip() == '1' else plural}"
+    _, numero, espaco, glossario, singular, plural = encontrado.groups()
+    return f"{numero}{espaco}{glossario or ''}{singular if numero.strip() == '1' else plural}"
 
 
 def preencher(modelo: str, parametros: Sequence[str]) -> str:
@@ -60,7 +64,7 @@ def preencher(modelo: str, parametros: Sequence[str]) -> str:
 def converter_texto(texto: str, parametros: Sequence[str]) -> tuple[list[Paragrafo], list[str]]:
     """Devolve os parágrafos e os avisos (marcação que o conversor não conhece vira texto no estilo atual)."""
     avisos: list[str] = []
-    preenchido = PLURAL.sub(_singular_ou_plural, preencher(texto, parametros))
+    preenchido = MARCADOR_SOLTO.sub("", PLURAL.sub(_singular_ou_plural, preencher(texto, parametros)))
     preparado = ESPACADOR.sub("\n", ENTRADA_POR_PLATAFORMA.sub(r"\1", preenchido))
     paragrafos: list[Paragrafo] = [[]]
     pilha: list[Estilo] = ["normal"]
