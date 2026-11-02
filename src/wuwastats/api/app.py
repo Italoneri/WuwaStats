@@ -14,6 +14,7 @@ from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from wuwastats.api.captura import rotas_captura
+from wuwastats.api.fanarts import rotas_fanarts
 from wuwastats.api.contracts import (
     BuildResumo,
     Catalogo,
@@ -51,6 +52,7 @@ from wuwastats.domain.report import Analise
 from wuwastats.domain.tables import GameData, Perfil
 from wuwastats.gamedata.aliases import AliasInvalido
 from wuwastats.gamedata.historico import AnaliseSalvaInexistente, HistoricoAnalises
+from wuwastats.gamedata.fanarts import CreditoRecusado, FanartsDoCatalogo
 from wuwastats.gamedata.imagens import ImagemInexistente, ImagemRecusada, ImagensDoCatalogo
 from wuwastats.gamedata.kits import KitInexistente
 from wuwastats.gamedata.loader import GameDataError
@@ -80,6 +82,7 @@ STATUS_POR_ERRO: dict[type[Exception], int] = {
     ImagemInexistente: 404,
     KitInexistente: 404,
     ImagemRecusada: 422,
+    CreditoRecusado: 422,
     AnaliseSalvaInexistente: 404,
     PerfilInexistente: 404,
     ChaveDeBuildInvalida: 422,
@@ -220,6 +223,7 @@ def criar_app(
     app.include_router(rotas_historico(HistoricoAnalises(configuracao.data_dir), perfil_da_build, lambda: repositorio.dados))
     app.include_router(rotas_perfis(repositorio))
     app.include_router(rotas_imagens(ImagensDoCatalogo(configuracao.data_dir), lambda: repositorio.dados))
+    app.include_router(rotas_fanarts(FanartsDoCatalogo(configuracao.data_dir), lambda: repositorio.dados))
     app.include_router(rotas_kits(configuracao.data_dir))
     app.include_router(rotas_captura(captura, perfil_da_build, teclas))
 

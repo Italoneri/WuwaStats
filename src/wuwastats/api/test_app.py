@@ -329,6 +329,37 @@ class TestImagens:
         assert cliente.request(metodo, caminho, files=arquivos).status_code == status
 
 
+class TestFanarts:
+    def test_envia_troca_credito_lista_e_serve(self, cliente: TestClient) -> None:
+        arquivo = {"arquivo": ("f.jpg", imagem("JPEG"), "image/jpeg")}
+
+        envio = cliente.put("/api/fanarts/Suoming", data={"artista": "@fulano", "link": "https://x.com/f/1"}, files=arquivo)
+        so_credito = cliente.put("/api/fanarts/Suoming", data={"artista": "@ciclano", "link": ""}, files={})
+        lista = cliente.get("/api/fanarts").json()
+        servida = cliente.get("/api/fanarts/Suoming")
+
+        assert (envio.status_code, so_credito.status_code) == (204, 204)
+        assert lista == {"Suoming": {"artista": "@ciclano", "link": None}}
+        assert (servida.status_code, servida.headers["content-type"]) == (200, "image/webp")
+
+    @pytest.mark.parametrize(
+        ("metodo", "caminho", "dados", "arquivo", "status"),
+        [
+            ("get", "/api/fanarts/Suoming", None, None, 404),
+            ("put", "/api/fanarts/Ninguem", {"artista": "a"}, imagem("PNG"), 404),
+            ("put", "/api/fanarts/Suoming", {"artista": "a"}, None, 422),
+            ("put", "/api/fanarts/Suoming", {"artista": "a", "link": "javascript:alert(1)"}, imagem("PNG"), 422),
+            ("put", "/api/fanarts/Suoming", {"artista": " "}, imagem("PNG"), 422),
+            ("put", "/api/fanarts/Suoming", {"artista": "a"}, b"texto", 422),
+        ],
+    )
+    def test_erros(self, cliente: TestClient, metodo: str, caminho: str, dados: dict[str, str] | None, arquivo: bytes | None, status: int) -> None:
+        arquivos = {"arquivo": ("a.png", arquivo, "image/png")} if arquivo is not None else None
+
+        assert cliente.request(metodo, caminho, data=dados, files=arquivos).status_code == status
+        assert cliente.get("/api/fanarts").json() == {}
+
+
 class TestHistorico:
     def test_salva_lista_reabre_e_apaga(self, cliente: TestClient, entrada: dict[str, Any]) -> None:
         leitura = {"personagem": "Suoming", "arma": "Arma Teste", "atributos": []}

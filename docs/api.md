@@ -545,6 +545,26 @@ A imagem (PNG). `404` se não há imagem. Vem com `Cache-Control: no-cache`, ent
 `multipart/form-data` com `arquivo`: PNG, JPEG ou WebP, até 5 MB. A imagem é regravada como PNG, com no máximo
 1024 px no maior lado. Substitui a anterior. `204`; `422` se o arquivo não é uma imagem aceita.
 
+## Fanarts
+
+Fanart do banner da tela do personagem, com o crédito do artista, em `data/imagens/fanarts/<chave>.webp` + `.json`.
+A galeria continua com a foto padrão de `/api/imagens/personagens`; sem fanart, o banner usa essa foto. `chave` fora
+dos ressonadores: `404`.
+
+### `GET /api/fanarts`
+
+Crédito de quem tem fanart: `{ "Aemeath": { "artista": "@fulano", "link": "https://www.pixiv.net/artworks/1" } }`.
+
+### `GET /api/fanarts/{chave}`
+
+A imagem (WebP, `Cache-Control: no-cache`). `404` se não há fanart.
+
+### `PUT /api/fanarts/{chave}`
+
+`multipart/form-data` com `artista` (1 a 80 caracteres), `link` (opcional, só `http://`/`https://`) e `arquivo` (PNG,
+JPEG ou WebP até 15 MB, regravado como WebP com no máximo 1920 px no maior lado). Sem `arquivo`, troca só o crédito
+da fanart que já existe. `204`; `422` se a imagem ou o crédito é inválido, ou se falta a imagem na primeira vez.
+
 ## `POST /api/aliases`
 
 Mapeia um nome lido para uma chave e grava em `data/stat_aliases.json`. Idempotente.

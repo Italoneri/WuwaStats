@@ -53,18 +53,36 @@ def nome_de_arquivo(chave: str) -> str:
     return re.sub(r"[^\w\-]+", "_", chave).strip("_") or "_"
 
 
-def normalizar_imagem(conteudo: bytes) -> bytes:
-    if len(conteudo) > MAX_BYTES_IMAGEM:
-        raise ImagemRecusada(f"imagem maior que {MAX_BYTES_IMAGEM // (1024 * 1024)} MB")
+@dataclass(frozen=True)
+class FormatoDeSaida:
+    lado_maximo_px: int
+    max_bytes: int
+    formato: Literal["PNG", "WEBP"]
+
+
+# PNG mantém a transparência das fotos do catálogo; WebP deixa leve a fanart, que é grande e não precisa de alfa.
+SAIDA_CATALOGO = FormatoDeSaida(LADO_MAXIMO_PX, MAX_BYTES_IMAGEM, "PNG")
+
+
+def normalizar_imagem(conteudo: bytes, saida: FormatoDeSaida = SAIDA_CATALOGO) -> bytes:
+    if len(conteudo) > saida.max_bytes:
+        raise ImagemRecusada(f"imagem maior que {saida.max_bytes // (1024 * 1024)} MB")
     try:
         with Image.open(BytesIO(conteudo)) as imagem:
             if imagem.format not in FORMATOS_ACEITOS:
                 raise ImagemRecusada(f"formato {imagem.format} não aceito; envie PNG, JPEG ou WebP")
             if imagem.width * imagem.height > MAX_PIXELS_ORIGINAL:
                 raise ImagemRecusada(f"imagem com {imagem.width}x{imagem.height} pixels é grande demais")
-            imagem.thumbnail((LADO_MAXIMO_PX, LADO_MAXIMO_PX))
-            saida = BytesIO()
-            imagem.convert("RGBA").save(saida, format="PNG", optimize=True)
+            imagem.thumbnail((saida.lado_maximo_px, saida.lado_maximo_px))
+            return _gravar(imagem, saida.formato)
     except (UnidentifiedImageError, OSError) as erro:
         raise ImagemRecusada("o arquivo não é uma imagem legível") from erro
-    return saida.getvalue()
+
+
+def _gravar(imagem: Image.Image, formato: Literal["PNG", "WEBP"]) -> bytes:
+    buffer = BytesIO()
+    if formato == "PNG":
+        imagem.convert("RGBA").save(buffer, format="PNG", optimize=True)
+    else:
+        imagem.convert("RGB").save(buffer, format="WEBP", quality=90, method=6)
+    return buffer.getvalue()
