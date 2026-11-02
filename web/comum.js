@@ -214,6 +214,10 @@ export const ROTULO_TIPO_META = { escala: "Escala do kit", rotacao: "Rotação" 
 export const ROTULO_FONTE = { game8: "Game8", prydwen: "Prydwen" };
 const ROTULO_TOTAL = { hp_flat: "HP total", atk_flat: "ATQ total", def_flat: "DEF total" };
 
+/** "Rotação" só faz sentido na Regen (Liberação pronta a cada rotação); nos demais stats a faixa é só a meta. */
+export const tagDaMeta = (meta) =>
+  meta.tipo === "rotacao" && meta.stat !== "energy_regen" ? "Meta" : ROTULO_TIPO_META[meta.tipo];
+
 /** Na meta, HP/ATQ/DEF são os totais da tela, não o substatus fixo. */
 export const rotuloMeta = (stat, rotulo) => ROTULO_TOTAL[stat] ?? rotulo.stat(stat);
 

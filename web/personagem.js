@@ -1,8 +1,8 @@
 // Tela 2 · Personagem: perfis de GET /api/builds e, dentro de cada um, as variantes por condição.
 
 import {
-  ICONES, ROTULO_TIPO_META, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
-  moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta,
+  ICONES, api, avisoErro, carregarImagens, el, elemento, estrelas, faixaDaMeta, figura, icone, iconeArma, iconeStat,
+  moldura, parametro, rotuloMeta, rotulador, rotuloCondicao, silhueta, tagDaMeta,
 } from "./comum.js";
 
 const CUSTOS = ["4", "3", "1"];
@@ -118,7 +118,7 @@ function tabelaMetas(metas, rotulo) {
         linha(
           el("span", { style: { display: "inline-flex", alignItems: "center", gap: "8px" } }, icone(iconeStat(meta.stat), 16), rotuloMeta(meta.stat, rotulo)),
           el("strong", { class: "gold mono" }, faixaDaMeta(meta)),
-          el("span", { class: "tag" }, ROTULO_TIPO_META[meta.tipo]),
+          el("span", { class: "tag" }, tagDaMeta(meta)),
           meta.explicacao ? el("span", { class: "meta-explicacao" }, meta.explicacao) : null,
         ),
       )
