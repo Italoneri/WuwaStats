@@ -40,7 +40,7 @@ class ImagensDoCatalogo:
         return self.caminho(categoria, chave).is_file()
 
     def salvar(self, categoria: CategoriaImagem, chave: str, conteudo: bytes) -> None:
-        png = _normalizar(conteudo)
+        png = normalizar_imagem(conteudo)
         destino = self.caminho(categoria, chave)
         destino.parent.mkdir(parents=True, exist_ok=True)
         temporario = destino.with_suffix(".png.tmp")
@@ -53,7 +53,7 @@ def nome_de_arquivo(chave: str) -> str:
     return re.sub(r"[^\w\-]+", "_", chave).strip("_") or "_"
 
 
-def _normalizar(conteudo: bytes) -> bytes:
+def normalizar_imagem(conteudo: bytes) -> bytes:
     if len(conteudo) > MAX_BYTES_IMAGEM:
         raise ImagemRecusada(f"imagem maior que {MAX_BYTES_IMAGEM // (1024 * 1024)} MB")
     try:
