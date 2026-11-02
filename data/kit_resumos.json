@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "descricao": "Resumo curto do kit, no topo da aba Kit. Escrito à mão, com palavras próprias, a partir do guia do Game8 de cada personagem. Chave = nome em inglês (a de resonators.json). O importador de kits não mexe aqui."
+  },
+  "resumos": {
+    "Aemeath": "DPS principal de dano de Liberação. Alterna entre a forma humana e a do Mecha para encher duas barras de forte e soltar a segunda Liberação, o golpe mais forte do kit. A rotação é longa e sempre na mesma ordem: Intro, Liberação, encher o forte, segunda Liberação e Outro. Tem dois modos: Rompimento de Sintonia, melhor contra um alvo só, e Estouro Térmico, para times que aplicam esse efeito.",
+    "Suoming": "Híbrida de DPS principal e sub-DPS, com dano de ATQ Básico Voltaico e a mecânica de Uníssono. Como sub-DPS, fica pouco em campo: enche o Delírio (forte), usa a Habilidade de Ressonância fortalecida e passa o Uníssono para o próximo personagem. Como DPS principal, fica mais tempo em campo recebendo os buffs do time; o Game8 considera o papel de sub-DPS o mais forte dela.",
+    "Yangyang": "Sub-DPS e bateria de energia: a Habilidade Outro devolve Energia de Ressonância ao próximo personagem, o que ajuda DPS que dependem da Liberação. Fica pouco tempo em campo e a rotação é rápida: Liberação e Habilidade para juntar os inimigos, Melodias com ATQ Pesado e Básico, e saída pelo ATQ Aéreo com o Outro. Precisa de cerca de 140% de Regen. de Energia."
+  }
+}
