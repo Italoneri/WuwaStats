@@ -96,6 +96,18 @@ repositório para saber se há atualização.
   dos campos de ícone da fonte) os que ainda não estão em `data/imagens/`. Imagem que já existe, inclusive enviada à mão, nunca
   é sobrescrita; para trocar, envie outra pela página. Ressonadores ficam de fora: a imagem deles é escolhida à mão.
 
+### Kit dos personagens
+
+`uv run python scripts/importar_kits.py --personagens Aemeath Yangyang Suoming` grava em `data/kits.json` o kit oficial
+(habilidades na ordem do jogo, multiplicadores do nível 1 ao 10, inerentes, bônus da árvore, sequências e tags) com o texto PT
+do jogo, do mesmo commit de `fonte_dados_jogo.json` (`--ref` troca). Sem `--personagens`, importa todos; só os pedidos são
+trocados no arquivo.
+
+- Texto sem tradução PT usa o oficial em inglês e aparece nos avisos. Nada é escrito à mão em `kits.json`.
+- Ícones das habilidades/sequências e as ilustrações do forte vêm do [nanoka.cc](https://ww.nanoka.cc) para
+  `data/imagens/kit/<personagem>/`; a que não existir lá (ex.: forte da Suoming) vira placeholder na página.
+- O resumo do topo da aba Kit fica em `data/kit_resumos.json`, escrito à mão (palavras próprias, a partir do Game8).
+
 ### Builds a partir do Game8
 
 `scripts/importar_builds_game8.py` lê os guias "Best Builds and Teams" do [Game8](https://game8.co/games/Wuthering-Waves) e

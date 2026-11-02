@@ -28,7 +28,7 @@ class Habilidade(_Modelo):
     tipo: str
     nome: str
     imagem: str | None
-    ilustracao: str | None
+    ilustracoes: list[str]
     descricao: list[Paragrafo]
     multiplicadores: list[Multiplicador]
 

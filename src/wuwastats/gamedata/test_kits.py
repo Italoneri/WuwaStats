@@ -15,7 +15,7 @@ KIT = Kit(
             tipo="ATQ Normal",
             nome="Plumilâmina",
             imagem="habilidade-1",
-            ilustracao=None,
+            ilustracoes=[],
             descricao=[[Trecho(texto="Ataca.", estilo="normal")]],
             multiplicadores=[],
         )

@@ -24,6 +24,18 @@ CASOS: list[tuple[str, str, list[str], list[Paragrafo]]] = [
     ),
     ("entrada_pc", "{Cus:Ipt,Touch=Toque PC=Pressione Gamepad=Pressione} ATQ", [], [[T(texto="Pressione ATQ", estilo="normal")]]),
     ("espacador_separa", "A\n<size=10> </size>\nB", [], [[T(texto="A", estilo="normal")], [T(texto="B", estilo="normal")]]),
+    (
+        "plural_pela_quantidade",
+        "inflige <SapTag=2>{0}</SapTag> {Cus:Sap,S=acúmulo P=acúmulos SapTag=2} de Dano",
+        ["3"],
+        [[T(texto="inflige 3 acúmulos de Dano", estilo="normal")]],
+    ),
+    (
+        "singular_pela_quantidade",
+        "inflige <SapTag=5>{0}</SapTag> {Cus:Sap,S=acúmulo P=acúmulos SapTag=5} de Dano",
+        ["1"],
+        [[T(texto="inflige 1 acúmulo de Dano", estilo="normal")]],
+    ),
     ("linha_vazia_some", "A\n\n\nB", [], [[T(texto="A", estilo="normal")], [T(texto="B", estilo="normal")]]),
     ("elemento_dentro_de_destaque_volta", "<color=Fire>Dano</color> e <color=Light>Luz</color>", [], [
         [T(texto="Dano", estilo="fusion"), T(texto=" e ", estilo="normal"), T(texto="Luz", estilo="spectro")]
