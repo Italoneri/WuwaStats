@@ -25,3 +25,6 @@ dist/
 
 # Escrita atômica de JSON
 *.json.tmp
+
+# Brainstorm e workspace dos planos (superpowers)
+.superpowers/
