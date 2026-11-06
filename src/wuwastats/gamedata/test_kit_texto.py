@@ -49,6 +49,18 @@ CASOS: list[tuple[str, str, list[str], list[Paragrafo]]] = [
         [[T(texto="consome 2 ", estilo="normal"), T(texto="Cristais", estilo="destaque"), T(texto=".", estilo="normal")]],
     ),
     (
+        "plural_dentro_de_cor_e_glossario",
+        "obtém <SapTag=A>{0}</SapTag> <color=Highlight><te href=121101>{Cus:Sap,S=Núcleo P=Núcleos SapTag=A}</te></color>",
+        ["1"],
+        [[T(texto="obtém 1 ", estilo="normal"), T(texto="Núcleo", estilo="destaque")]],
+    ),
+    (
+        "subtitulo_colado_no_texto_vira_paragrafo",
+        "<size=40><color=Title>Campo</color></size>Após usar",
+        [],
+        [[T(texto="Campo", estilo="subtitulo")], [T(texto="Após usar", estilo="normal")]],
+    ),
+    (
         "marcador_sem_plural_some",
         "obtém <SapTag=0>{0}</SapTag> acúmulo",
         ["1"],

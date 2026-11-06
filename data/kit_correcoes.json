@@ -21,6 +21,45 @@
         "troca": "com ATQ Normal.",
         "motivo": "Ponto final caiu numa linha própria no item de Bravo; o inglês do nanoka termina em \"Normal Attacks hit the target.\"."
       }
+    ],
+    "Denia": [
+      {
+        "trecho": ":- ",
+        "troca": ":\n- ",
+        "motivo": "Itens de lista grudados nos dois-pontos no Circuito Ressonante; o inglês do nanoka quebra a linha aí (\":\n- \")."
+      },
+      {
+        "trecho": ".- ",
+        "troca": ".\n- ",
+        "motivo": "Itens de lista grudados no ponto final no Circuito Ressonante; o inglês do nanoka quebra a linha aí (\".\n- \")."
+      },
+      {
+        "trecho": "por vez.<color=Highlight>",
+        "troca": "por vez.\n<color=Highlight>",
+        "motivo": "Frase do Campo de Erosão grudada na anterior sem espaço; o inglês do nanoka quebra a linha aí."
+      },
+      {
+        "trecho": "contra o mesmo alvo.<color=Highlight>",
+        "troca": "contra o mesmo alvo.\n<color=Highlight>",
+        "motivo": "Lista de golpes do Estouro Térmico grudada na frase anterior; o inglês do nanoka quebra a linha aí."
+      },
+      {
+        "trecho": "Enquanto nos <color=Highlight><te href=121106>Mudança de Entropia</te></color>estados ,",
+        "troca": "Enquanto nos estados <color=Highlight><te href=121106>Mudança de Entropia</te></color>,",
+        "motivo": "\"Mudança de Entropiaestados ,\" no Núcleo Sombrio; o inglês do nanoka diz \"While in the Entropy Shift states,\"."
+      },
+      {
+        "trecho": "</SapTag>{Cus:Sap,S=ponto P=pontos SapTag=C}",
+        "troca": "</SapTag> {Cus:Sap,S=ponto P=pontos SapTag=C}",
+        "motivo": "\"100pontos\" sem espaço na Partícula do Vazio; o inglês do nanoka tem \"100 points\"."
+      }
+    ],
+    "Jingran": [
+      {
+        "trecho": "<a href=命火> </a></color> para o  <color",
+        "troca": "<te href=121206>Chama da Vida</te></color> para o <color",
+        "motivo": "Termo do glossário veio vazio (<a href=命火> </a>) na S2; o inglês do nanoka cita \"Fire of Life\", que no PT oficial é \"Chama da Vida\" (<te href=121206>) nas outras ocorrências."
+      }
     ]
   }
 }

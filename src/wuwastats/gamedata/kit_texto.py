@@ -38,12 +38,15 @@ ENTRADA_POR_PLATAFORMA = re.compile(r"\{Cus:Ipt,[^{}]*?PC=([^{}]*?)(?:\s+Gamepad
 # "<size=10> </size>" é o respiro que o jogo põe entre blocos.
 ESPACADOR = re.compile(r"<size=\d+>\s*</size>")
 # "<SapTag=2>3</SapTag> {Cus:Sap,S=acúmulo P=acúmulos SapTag=2}": singular ou plural conforme o número marcado.
-# O marcador às vezes é letra (SapTag=B), e a palavra pode vir dentro de um termo do glossário (<te href=..>).
+# O marcador às vezes é letra (SapTag=B), e a palavra pode vir dentro de cor e de termo do glossário (<te href=..>).
 PLURAL = re.compile(
-    r"<SapTag=(\w+)>([^<]*)</SapTag>(\s*)(<te [^<>]*>)?\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}"
+    r"<SapTag=(\w+)>([^<]*)</SapTag>(\s*)((?:<color=\w+>)?(?:<te [^<>]*>)?)"
+    r"\{Cus:Sap,S=([^{}]*?) P=([^{}]*?) SapTag=\1\}"
 )
 # Número marcado sem palavra para flexionar: a marcação não muda nada e sai.
 MARCADOR_SOLTO = re.compile(r"</?SapTag(?:=\w+)?>")
+# Subtítulo sem quebra de linha depois (o PT às vezes perde o "\n" que o inglês tem): o texto não pode grudar nele.
+SUBTITULO_SEM_QUEBRA = re.compile(r"(<size=\d+><color=Title>[^<]*</color></size>)(?!\n)")
 
 
 def _singular_ou_plural(encontrado: re.Match[str]) -> str:
@@ -65,7 +68,7 @@ def converter_texto(texto: str, parametros: Sequence[str]) -> tuple[list[Paragra
     """Devolve os parágrafos e os avisos (marcação que o conversor não conhece vira texto no estilo atual)."""
     avisos: list[str] = []
     preenchido = MARCADOR_SOLTO.sub("", PLURAL.sub(_singular_ou_plural, preencher(texto, parametros)))
-    preparado = ESPACADOR.sub("\n", ENTRADA_POR_PLATAFORMA.sub(r"\1", preenchido))
+    preparado = ESPACADOR.sub("\n", SUBTITULO_SEM_QUEBRA.sub("\\1\n", ENTRADA_POR_PLATAFORMA.sub(r"\1", preenchido)))
     paragrafos: list[Paragrafo] = [[]]
     pilha: list[Estilo] = ["normal"]
     for parte in TAG.split(preparado):
