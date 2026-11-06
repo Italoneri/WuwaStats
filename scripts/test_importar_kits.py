@@ -9,19 +9,24 @@ from importar_kits import (
     MultiplicadorFonte,
     NoFonte,
     PersonagemKitFonte,
+    PersonagemNanoka,
     SequenciaFonte,
     TabelasKit,
     TagFonte,
     TipoFonte,
     baixar_imagens,
+    baixar_nanoka,
     caminhos_do_forte,
     montar_kit,
 )
+from revisao_kit import Correcao
 
+from wuwastats.gamedata.kit_texto import Trecho
 from wuwastats.gamedata.kits import Bonus, ImagensDoKit
 
 ICONE = "/Game/Aki/UI/UIResources/Common/Atlas/SkillIcon/SP_{}.SP_{}"
 FORTE = ["/Game/Aki/UI/UIResources/UiRole/Image/T_RoleSkillTreeYangyang.T_RoleSkillTreeYangyang"]
+NANOKA = PersonagemNanoka.model_validate({"forte": {"icon": FORTE[0]}})
 VINTE = [f"{n}%" for n in range(1, 21)]
 
 PERSONAGEM = PersonagemKitFonte.model_validate(
@@ -127,14 +132,14 @@ TABELAS = TabelasKit(
 
 
 def test_ordena_habilidades_na_ordem_oficial() -> None:
-    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     assert [h.tipo for h in kit.habilidades] == ["ATQ Normal", "Circuito Ressonante"]
     assert [h.tipo for h in kit.inerentes] == ["Habilidade Inerente"]
 
 
 def test_multiplicadores_tem_dez_niveis_e_formato() -> None:
-    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     dano, recarga = kit.habilidades[0].multiplicadores
     assert (dano.nome, dano.valores) == ("Dano", VINTE[:10])
@@ -142,20 +147,20 @@ def test_multiplicadores_tem_dez_niveis_e_formato() -> None:
 
 
 def test_inerente_sem_multiplicadores() -> None:
-    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     assert kit.inerentes[0].multiplicadores == []
     assert kit.inerentes[0].descricao[0][0].texto == "Recupera 30 de VIG."
 
 
 def test_soma_bonus_da_arvore() -> None:
-    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     assert kit.bonus == [Bonus(nome="ATQ", valor="6%")]
 
 
 def test_sequencia_com_nome_em_uma_linha_e_tags() -> None:
-    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, _, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     assert (kit.sequencias[0].numero, kit.sequencias[0].nome) == (1, "Céus Safirinos, Pardais Altíssimos")
     assert kit.sequencias[0].descricao[0][0].texto == "Aumenta 15%."
@@ -166,14 +171,14 @@ def test_texto_sem_pt_usa_ingles_e_avisa() -> None:
     pt = {k: v for k, v in TEXTOS.items() if k != "h1d"}
     tabelas = dataclasses.replace(TABELAS, textos_pt=pt, textos_en={**TEXTOS, "h1d": "Attacks."})
 
-    kit, _, avisos = montar_kit(tabelas, PERSONAGEM, FORTE)
+    kit, _, avisos = montar_kit(tabelas, PERSONAGEM, NANOKA)
 
     assert kit.habilidades[0].descricao[0][0].texto == "Attacks."
     assert any("sem PT" in aviso for aviso in avisos)
 
 
 def test_ilustracao_so_no_circuito() -> None:
-    kit, imagens, _ = montar_kit(TABELAS, PERSONAGEM, FORTE)
+    kit, imagens, _ = montar_kit(TABELAS, PERSONAGEM, NANOKA)
 
     assert kit.habilidades[1].ilustracoes == ["forte-1"]
     assert kit.habilidades[0].ilustracoes == []
@@ -210,17 +215,46 @@ FORTE_NOVO = {
     ids=["icone_unico", "instrucoes_sem_repetir"],
 )
 def test_caminhos_do_forte(dados: dict[str, object], esperado: list[str]) -> None:
-    assert caminhos_do_forte(1402, "3.8.1", baixar=lambda _url: json.dumps(dados).encode()) == (esperado, None)
+    nanoka, aviso = baixar_nanoka(1402, "3.8.1", baixar=lambda _url: json.dumps(dados).encode())
+
+    assert (caminhos_do_forte(nanoka), aviso) == (esperado, None)
 
 
-def test_forte_indisponivel_vira_aviso() -> None:
+def test_nanoka_indisponivel_vira_aviso() -> None:
     def baixar(_url: str) -> bytes:
         raise FonteIndisponivel("HTTP 503")
 
-    caminhos, aviso = caminhos_do_forte(1402, "3.8.1", baixar=baixar)
+    nanoka, aviso = baixar_nanoka(1402, "3.8.1", baixar=baixar)
 
-    assert caminhos == []
+    assert caminhos_do_forte(nanoka) == []
     assert aviso is not None
+
+
+def test_aplica_correcao_no_texto_pt() -> None:
+    tabelas = dataclasses.replace(TABELAS, textos_pt={**TEXTOS, "h1d": "Ataca.\n777777"})
+    correcoes = [Correcao(trecho="\n777777", troca="", motivo="lixo")]
+
+    kit, _, avisos = montar_kit(tabelas, PERSONAGEM, NANOKA, correcoes)
+
+    assert kit.habilidades[0].descricao == [[Trecho(texto="Ataca.", estilo="normal")]]
+    assert avisos == []
+
+
+def test_correcao_que_nao_acha_o_trecho_vira_aviso() -> None:
+    _, _, avisos = montar_kit(TABELAS, PERSONAGEM, NANOKA, [Correcao(trecho="sumiu", troca="", motivo="m")])
+
+    assert any("sumiu" in aviso for aviso in avisos)
+
+
+def test_aponta_lixo_comparando_com_ingles_do_nanoka() -> None:
+    tabelas = dataclasses.replace(TABELAS, textos_pt={**TEXTOS, "h1d": "Ataca.\n777777"})
+    nanoka = PersonagemNanoka.model_validate({"skill_trees": {"1": {"skill": {"desc": "Attacks."}}}})
+
+    _, _, avisos = montar_kit(tabelas, PERSONAGEM, nanoka)
+
+    assert len(avisos) == 1
+    assert "h1d" in avisos[0]
+    assert "777777" in avisos[0]
 
 
 def test_falha_de_imagem_vira_aviso(tmp_path) -> None:
@@ -236,7 +270,7 @@ def test_falha_de_imagem_vira_aviso(tmp_path) -> None:
 def test_bonus_com_valor_invalido_vira_aviso() -> None:
     nos = [*TABELAS.nos, _no(11, 4, titulo="p", param=["muito"])]
 
-    kit, _, avisos = montar_kit(dataclasses.replace(TABELAS, nos=nos), PERSONAGEM, FORTE)
+    kit, _, avisos = montar_kit(dataclasses.replace(TABELAS, nos=nos), PERSONAGEM, NANOKA)
 
     assert kit.bonus == [Bonus(nome="ATQ", valor="6%")]
     assert any("muito" in aviso for aviso in avisos)

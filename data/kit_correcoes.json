@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "descricao": "Correções do texto PT oficial dos kits, aplicadas por scripts/importar_kits.py no texto cru (com marcação) antes da conversão. Chave = nome em inglês (a de resonators.json). Cada troca é conferida no texto em inglês do nanoka (static.nanoka.cc/ww/<versão>/en/character/<id>.json). Correção que não acha o trecho vira aviso na importação."
+  },
+  "correcoes": {
+    "Augusta": [
+      {
+        "trecho": "777777777777777777",
+        "troca": "",
+        "motivo": "Linha de lixo entre Contra-ATQ Evasivo e Contra-ATQ Evasivo Aéreo; o inglês do nanoka não tem nada ali."
+      },
+      {
+        "trecho": "de Augusta.zz",
+        "troca": "de Augusta.",
+        "motivo": "Letras soltas no fim do item de Majestade; o inglês do nanoka termina em \"Augusta's Outro Skill...\"."
+      }
+    ]
+  }
+}

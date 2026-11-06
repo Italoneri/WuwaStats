@@ -104,6 +104,11 @@ do jogo, do mesmo commit de `fonte_dados_jogo.json` (`--ref` troca). Sem `--pers
 trocados no arquivo.
 
 - Texto sem tradução PT usa o oficial em inglês e aparece nos avisos. Nada é escrito à mão em `kits.json`.
+- O PT oficial às vezes vem com lixo (ex.: uma linha `777777777777777777` na Augusta). O importador compara cada
+  habilidade e sequência com o texto em inglês do [nanoka.cc](https://ww.nanoka.cc), que não tem PT mas é limpo, e avisa
+  parágrafo sem texto, número que o inglês não tem e letras grudadas no ponto final. A correção vai em
+  `data/kit_correcoes.json` (trecho → troca, por personagem, com o motivo) e é aplicada na próxima importação; correção
+  que não acha mais o trecho vira aviso.
 - Ícones das habilidades/sequências e as ilustrações do forte vêm do [nanoka.cc](https://ww.nanoka.cc) para
   `data/imagens/kit/<personagem>/`. Ícone que não existir lá vira placeholder na página; ilustração do forte que não
   existir (ex.: as da Suoming) simplesmente não aparece.

@@ -5,7 +5,8 @@
 
 Texto e números vêm de Arikatsu/WutheringWaves_Data no commit de data/fonte_dados_jogo.json (ou --ref), com o textmap
 PT (sem PT, usa o texto oficial em inglês e avisa). As imagens vêm de nanoka.cc e ficam em data/imagens/kit/; a barra do
-forte não está nas tabelas do Arikatsu, então o caminho dela sai do JSON do personagem no nanoka. Só os personagens
+forte não está nas tabelas do Arikatsu, então o caminho dela sai do JSON do personagem no nanoka. O texto em inglês desse
+mesmo JSON serve de referência para apontar lixo no PT; as correções ficam em data/kit_correcoes.json. Só os personagens
 pedidos são trocados em kits.json. Os resumos (data/kit_resumos.json) são escritos à mão e não são tocados aqui.
 """
 
@@ -35,6 +36,7 @@ from importar_dados_jogo import (
     url_do_icone,
 )
 from pydantic import BaseModel, Field, TypeAdapter, ValidationError
+from revisao_kit import Correcao, corrigir, ler_correcoes, suspeitos
 
 from wuwastats.config import PROJECT_ROOT
 from wuwastats.gamedata.aliases import escrever_atomico
@@ -152,9 +154,29 @@ class ForteNovoNanoka(BaseModel):
     instructions: dict[str, PassoNanoka] = {}
 
 
+class TextoNanoka(BaseModel):
+    desc: str = ""
+
+
+class NoNanoka(BaseModel):
+    skill: TextoNanoka = TextoNanoka()
+
+
 class PersonagemNanoka(BaseModel):
+    """JSON do personagem no nanoka (em inglês): ilustrações do forte e o texto que serve de referência para o PT."""
+
     forte: ForteNanoka = ForteNanoka()
     forte_new: ForteNovoNanoka = ForteNovoNanoka()
+    skill_trees: dict[str, NoNanoka] = {}
+    chains: dict[str, TextoNanoka] = {}
+
+    def texto_habilidade(self, indice_no: int) -> str:
+        no = self.skill_trees.get(str(indice_no))
+        return no.skill.desc if no else ""
+
+    def texto_sequencia(self, numero: int) -> str:
+        sequencia = self.chains.get(str(numero))
+        return sequencia.desc if sequencia else ""
 
 
 @dataclass(frozen=True)
@@ -182,35 +204,56 @@ class KitIncompleto(Exception):
 
 @dataclass
 class _Textos:
-    """Texto PT oficial; sem PT, o oficial em inglês, e o aviso fica registrado."""
+    """Texto PT oficial com as correções do personagem; sem PT, o oficial em inglês, e o aviso fica registrado.
+
+    O inglês do nanoka é a referência para apontar parágrafo PT com lixo.
+    """
 
     tabelas: TabelasKit
+    nanoka: PersonagemNanoka
+    correcoes: Sequence[Correcao] = ()
     avisos: list[str] = field(default_factory=list)
+    correcoes_usadas: set[int] = field(default_factory=set)
 
     def __call__(self, chave: str) -> str:
         texto = self.tabelas.textos_pt.get(chave, "").strip()
         if texto:
-            return texto
+            corrigido, usadas = corrigir(texto, self.correcoes)
+            self.correcoes_usadas |= usadas
+            return corrigido
         self.avisos.append(f"{chave} sem PT; usado o texto em inglês")
         return self.tabelas.textos_en.get(chave, "").strip()
 
-    def paragrafos(self, chave: str, parametros: Sequence[str]) -> list[Paragrafo]:
+    def paragrafos(self, chave: str, parametros: Sequence[str], ingles: str) -> list[Paragrafo]:
+        """`ingles` é o mesmo texto no nanoka; vazio quando o nanoka não tem, e aí não há conferência."""
         paragrafos, avisos = converter_texto(self(chave), parametros)
+        if ingles:
+            avisos += suspeitos(paragrafos, converter_texto(ingles, parametros)[0])
         self.avisos.extend(f"{chave}: {aviso}" for aviso in avisos)
         return paragrafos
+
+    def correcoes_sem_uso(self) -> list[str]:
+        return [
+            f"correção não achou o trecho '{c.trecho}' (confira kit_correcoes.json)"
+            for i, c in enumerate(self.correcoes)
+            if i not in self.correcoes_usadas
+        ]
 
 
 # --- Montagem do kit (puro) ---
 
 
 def montar_kit(
-    tabelas: TabelasKit, personagem: PersonagemKitFonte, ilustracoes_forte: Sequence[str]
+    tabelas: TabelasKit,
+    personagem: PersonagemKitFonte,
+    nanoka: PersonagemNanoka,
+    correcoes: Sequence[Correcao] = (),
 ) -> tuple[Kit, list[ImagemKit], list[str]]:
-    textos = _Textos(tabelas)
+    textos = _Textos(tabelas, nanoka, correcoes)
     imagens: list[ImagemKit] = []
     nos = sorted((no for no in tabelas.nos if no.grupo == personagem.grupo_arvore), key=lambda no: no.indice)
     por_tipo = _habilidades_por_tipo(tabelas, nos)
-    forte = [nome for i, caminho in enumerate(ilustracoes_forte, 1) if (nome := _imagem(f"forte-{i}", caminho, imagens))]
+    forte = [nome for i, caminho in enumerate(caminhos_do_forte(nanoka), 1) if (nome := _imagem(f"forte-{i}", caminho, imagens))]
 
     def habilidade(no: NoFonte, fonte: HabilidadeKitFonte) -> Habilidade:
         return _habilidade(tabelas, textos, no, fonte, imagens, forte if fonte.tipo == TIPO_CIRCUITO else [])
@@ -226,7 +269,7 @@ def montar_kit(
         bonus=_bonus(textos, nos),
         sequencias=_sequencias(tabelas, textos, personagem, imagens),
     )
-    return kit, imagens, textos.avisos
+    return kit, imagens, [*textos.avisos, *textos.correcoes_sem_uso()]
 
 
 def _habilidades_por_tipo(tabelas: TabelasKit, nos: list[NoFonte]) -> dict[int, list[tuple[NoFonte, HabilidadeKitFonte]]]:
@@ -256,7 +299,7 @@ def _habilidade(
         nome=_uma_linha(textos(fonte.chave_nome)),
         imagem=_imagem(f"habilidade-{no.indice}", fonte.icone, imagens),
         ilustracoes=ilustracoes,
-        descricao=textos.paragrafos(fonte.chave_descricao, fonte.parametros),
+        descricao=textos.paragrafos(fonte.chave_descricao, fonte.parametros, textos.nanoka.texto_habilidade(no.indice)),
         multiplicadores=_multiplicadores(tabelas, textos, fonte.grupo_niveis),
     )
 
@@ -313,7 +356,7 @@ def _sequencias(
             numero=s.numero,
             nome=_uma_linha(textos(s.chave_nome)),
             imagem=_imagem(f"sequencia-{s.numero}", s.icone, imagens),
-            descricao=textos.paragrafos(s.chave_descricao, s.parametros),
+            descricao=textos.paragrafos(s.chave_descricao, s.parametros, textos.nanoka.texto_sequencia(s.numero)),
         )
         for s in linhas
     ]
@@ -351,21 +394,22 @@ def baixar_imagens(
         return [falha for falha in pool.map(salvar, faltando) if falha]
 
 
-def caminhos_do_forte(id_jogo: int, versao: str, baixar: Callable[[str], bytes] = _baixar) -> tuple[list[str], str | None]:
-    """Ilustrações do forte no nanoka e o aviso, se não vieram.
-
-    Personagens antigos têm uma imagem só (forte.icon); os novos, uma por instrução (forte_new), sem repetir.
-    """
+def baixar_nanoka(id_jogo: int, versao: str, baixar: Callable[[str], bytes] = _baixar) -> tuple[PersonagemNanoka, str | None]:
+    """JSON do personagem no nanoka; se não vier, um vazio (sem forte e sem conferência do texto) e o aviso."""
     url = NANOKA_PERSONAGEM.format(versao=versao, id=id_jogo)
     try:
-        dados = PersonagemNanoka.model_validate_json(baixar(url))
+        return PersonagemNanoka.model_validate_json(baixar(url)), None
     except (FonteIndisponivel, ValidationError) as erro:
-        return [], f"ilustrações do forte de {id_jogo}: {erro}"
-    if dados.forte.icon:
-        return [dados.forte.icon], None
-    passos = dados.forte_new.instructions.values()
+        return PersonagemNanoka(), f"nanoka de {id_jogo} (ilustrações do forte e conferência do texto): {erro}"
+
+
+def caminhos_do_forte(nanoka: PersonagemNanoka) -> list[str]:
+    """Personagens antigos têm uma imagem só (forte.icon); os novos, uma por instrução (forte_new), sem repetir."""
+    if nanoka.forte.icon:
+        return [nanoka.forte.icon]
+    passos = nanoka.forte_new.instructions.values()
     caminhos = [c for passo in passos for instrucao in passo.desc.values() for c in instrucao.image_list]
-    return list(dict.fromkeys(caminhos)), None
+    return list(dict.fromkeys(caminhos))
 
 
 # --- Execução ---
@@ -386,13 +430,14 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     escolhidos, avisos = _escolher(tabelas, args.personagens)
+    correcoes = ler_correcoes(data_dir)
     kits: dict[str, Kit] = {}
     imagens = ImagensDoKit(data_dir)
     for chave, personagem in escolhidos.items():
-        forte, aviso_forte = caminhos_do_forte(personagem.id, args.versao_nanoka)
-        avisos.extend([aviso_forte] if aviso_forte else [])
+        nanoka, aviso_nanoka = baixar_nanoka(personagem.id, args.versao_nanoka)
+        avisos.extend([aviso_nanoka] if aviso_nanoka else [])
         try:
-            kit, lista, avisos_kit = montar_kit(tabelas, personagem, forte)
+            kit, lista, avisos_kit = montar_kit(tabelas, personagem, nanoka, correcoes.get(chave, []))
         except KitIncompleto as erro:
             avisos.append(f"{chave}: kit não importado ({erro})")
             continue
@@ -413,7 +458,9 @@ def _argumentos(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--personagens", nargs="*", help="nomes em inglês (chaves de resonators.json); padrão: todos")
     parser.add_argument("--ref", help=f"commit da fonte; padrão: o de {ARQUIVO_FONTE}")
-    parser.add_argument("--versao-nanoka", default=VERSAO_NANOKA, help="versão dos dados do nanoka (barra do forte)")
+    parser.add_argument(
+        "--versao-nanoka", default=VERSAO_NANOKA, help="versão dos dados do nanoka (barra do forte e texto de referência)"
+    )
     parser.add_argument("--data-dir", type=Path, default=PROJECT_ROOT / "data")
     return parser.parse_args(argv)
 

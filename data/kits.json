@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-06T21:14:06+00:00"
+    "importado_em": "2026-11-06T21:54:37+00:00"
   },
   "kits": {
     "Aalto": {
@@ -5593,12 +5593,6 @@
             ],
             [
               {
-                "texto": "777777777777777777",
-                "estilo": "normal"
-              }
-            ],
-            [
-              {
                 "texto": "Contra-ATQ Evasivo Aéreo",
                 "estilo": "subtitulo"
               }
@@ -7407,7 +7401,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " de Augusta.zz",
+                "texto": " de Augusta.",
                 "estilo": "normal"
               }
             ]
