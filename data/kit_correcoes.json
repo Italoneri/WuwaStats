@@ -14,6 +14,13 @@
         "troca": "de Augusta.",
         "motivo": "Letras soltas no fim do item de Majestade; o inglês do nanoka termina em \"Augusta's Outro Skill...\"."
       }
+    ],
+    "Brant": [
+      {
+        "trecho": "com ATQ Normal\n.",
+        "troca": "com ATQ Normal.",
+        "motivo": "Ponto final caiu numa linha própria no item de Bravo; o inglês do nanoka termina em \"Normal Attacks hit the target.\"."
+      }
     ]
   }
 }
