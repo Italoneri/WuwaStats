@@ -306,6 +306,8 @@ a.btn.desligado { opacity: .45; pointer-events: none; }
 .figura:hover .trocar, .trocar:focus-within { opacity: 1; }
 @media (hover: none) { .trocar { opacity: 1; } }
 .portrait > .figura { position: absolute; inset: 0; display: grid; place-items: end center; }
+/* a arte já ocupa o card de lado a lado: o desvio recentraliza o personagem e o card corta a sobra */
+.portrait .foto { translate: var(--desvio-x, 0); }
 /* o canto direito de baixo é do selo da arma */
 .portrait .trocar { left: 8px; right: auto; bottom: 10px; }
 .portrait .badge { z-index: 1; }

@@ -410,12 +410,22 @@ export const temImagem = (categoria, chave) => imagensDisponiveis[categoria].has
 
 export const srcImagem = (categoria, chave) => `/api/imagens/${categoria}/${encodeURIComponent(chave)}?v=${versaoImagem.get(`${categoria}/${chave}`) ?? 0}`;
 
+// Retratos oficiais com o personagem fora do eixo da arte: onde fica o centro de rosto e tronco, em % da largura.
+const CENTRO_DO_RETRATO = new Map([["Brant", 44], ["Buling", 46], ["Lupa", 54], ["Qiuyuan", 47], ["Shorekeeper", 55]]);
+
+function foto(categoria, chave, rotulo) {
+  const imagem = el("img", { class: "foto", src: srcImagem(categoria, chave), alt: rotulo ?? "", loading: "lazy" });
+  const centro = categoria === "personagens" ? CENTRO_DO_RETRATO.get(chave) : undefined;
+  if (centro !== undefined) imagem.style.setProperty("--desvio-x", `${50 - centro}%`);
+  return imagem;
+}
+
 /** Imagem do catálogo quando existe, senão o placeholder. Com `trocavel`, um botão envia outra imagem. */
 export function figura(categoria, chave, reserva, { trocavel = false, rotulo = chave } = {}) {
   const caixa = el("div", { class: "figura" });
   const desenhar = () => {
     const tem = chave && imagensDisponiveis[categoria].has(chave);
-    const conteudo = tem ? el("img", { class: "foto", src: srcImagem(categoria, chave), alt: rotulo ?? "", loading: "lazy" }) : reserva;
+    const conteudo = tem ? foto(categoria, chave, rotulo) : reserva;
     const trocar = trocavel && chave ? botaoTrocar(categoria, chave, rotulo, caixa, desenhar) : null;
     caixa.replaceChildren(...[conteudo, trocar].filter(Boolean));
   };
