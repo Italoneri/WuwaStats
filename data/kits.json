@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T00:43:58+00:00"
+    "importado_em": "2026-11-07T00:46:23+00:00"
   },
   "kits": {
     "Aalto": {
@@ -31346,11 +31346,11 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Flor Rubi ",
+                "texto": "Flor de Rubi",
                 "estilo": "destaque"
               },
               {
-                "texto": "recuperada dobram.",
+                "texto": " recuperada dobram.",
                 "estilo": "normal"
               }
             ]
@@ -31430,7 +31430,7 @@
           "descricao": [
             [
               {
-                "texto": "Quando Danjin ataca um alvo com a Habilidade de Ressonância ",
+                "texto": "Quando Danjin ataca um alvo marcado com ",
                 "estilo": "normal"
               },
               {
@@ -31438,7 +31438,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", seu ATQ é aumentado em 5% por 6s, acumulando até 6 vezes. Danjin perde 1 acúmulos deste efeito cada vez que recebe dano.",
+                "texto": " da Habilidade de Ressonância, seu ATQ é aumentado em 5% por 6s, acumulando até 6 vezes. Danjin perde 1 acúmulo deste efeito cada vez que recebe dano.",
                 "estilo": "normal"
               }
             ]
@@ -31451,7 +31451,7 @@
           "descricao": [
             [
               {
-                "texto": "Quando Danjin ataca um alvo com Habilidade de Ressonância ",
+                "texto": "Quando Danjin ataca um alvo marcado com ",
                 "estilo": "normal"
               },
               {
@@ -31459,7 +31459,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", o dano causado aumenta em 20%.",
+                "texto": " da Habilidade de Ressonância, o dano causado aumenta em 20%.",
                 "estilo": "normal"
               }
             ]
@@ -31472,7 +31472,7 @@
           "descricao": [
             [
               {
-                "texto": "O bônus de dano de Liberação de Ressonância de Rover aumenta em 30%.",
+                "texto": "O bônus de dano de Liberação de Ressonância de Danjin aumenta em 30%.",
                 "estilo": "normal"
               }
             ]
@@ -31485,7 +31485,7 @@
           "descricao": [
             [
               {
-                "texto": "Quando Danjin tem mais de 60 de Flor Rubi, sua Taxa CRIT aumenta em 15%.",
+                "texto": "Quando Danjin tem mais de 60 de Flor de Rubi, sua Taxa CRIT aumenta em 15%.",
                 "estilo": "normal"
               }
             ],
@@ -32035,7 +32035,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano da Forma de Desmoronamento Fase 1",
+              "nome": "ATQ Aéreo - Dano da Forma de Raptura Fase 1",
               "valores": [
                 "18.36%",
                 "19.87%",
@@ -32050,7 +32050,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano da Forma de Desmoronamento Fase 2",
+              "nome": "ATQ Aéreo - Dano da Forma de Raptura Fase 2",
               "valores": [
                 "18.87%+7.08%*4",
                 "20.42%+7.66%*4",
@@ -32065,7 +32065,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano da Forma de Desmoronamento Fase 3",
+              "nome": "ATQ Aéreo - Dano da Forma de Raptura Fase 3",
               "valores": [
                 "31.38%",
                 "33.96%",
@@ -32080,7 +32080,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano da Forma de Desmoronamento Fase 4",
+              "nome": "ATQ Aéreo - Dano da Forma de Raptura Fase 4",
               "valores": [
                 "17.88%+41.71%",
                 "19.34%+45.13%",
@@ -32170,7 +32170,7 @@
               ]
             },
             {
-              "nome": "Custo de VIG do ATQ Aéreo - Forma de Desmoronamento (por fase)",
+              "nome": "Custo de VIG do ATQ Aéreo - Forma de Raptura (por fase)",
               "valores": [
                 "5",
                 "5",
@@ -33097,7 +33097,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Phantom Bubble - Forma Teatral",
+                "texto": "Bolha Fantasma - Forma Teatral",
                 "estilo": "destaque"
               },
               {
@@ -33115,7 +33115,7 @@
             ],
             [
               {
-                "texto": "Carga Conformal",
+                "texto": "Carga Conforme",
                 "estilo": "subtitulo"
               }
             ],
@@ -33185,7 +33185,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Carga Conformal",
+                "texto": "Carga Conforme",
                 "estilo": "destaque"
               },
               {
@@ -33244,7 +33244,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mudança de Entropia: Forma de Desmoronamento",
+                "texto": "Mudança de Entropia: Forma de Raptura",
                 "estilo": "destaque"
               },
               {
@@ -33390,7 +33390,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mudança de Entropia: Forma de Desmoronamento",
+                "texto": "Mudança de Entropia: Forma de Raptura",
                 "estilo": "destaque"
               },
               {
@@ -33597,7 +33597,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mudança de Entropia: Forma de Desmoronamento",
+                "texto": "Mudança de Entropia: Forma de Raptura",
                 "estilo": "destaque"
               },
               {
@@ -34048,7 +34048,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mudança de Entropia: Forma de Desmoronamento",
+                "texto": "Mudança de Entropia: Forma de Raptura",
                 "estilo": "destaque"
               },
               {
@@ -34252,7 +34252,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mudança de Entropia: Forma de Desmoronamento",
+                "texto": "Mudança de Entropia: Forma de Raptura",
                 "estilo": "destaque"
               },
               {
@@ -34904,7 +34904,7 @@
               ]
             },
             {
-              "nome": "Dano de Boas-vindas Energéticas",
+              "nome": "Dano de Boas-Vindas Energéticas",
               "valores": [
                 "170.60%",
                 "184.58%",
@@ -34949,7 +34949,7 @@
               ]
             },
             {
-              "nome": "Regen. de Concerto de Boas-vindas Energéticas",
+              "nome": "Regen. de Concerto de Boas-Vindas Energéticas",
               "valores": [
                 "5",
                 "5",
@@ -35774,7 +35774,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Boas-vindas Energéticas",
+                "texto": "Boas-Vindas Energéticas",
                 "estilo": "destaque"
               },
               {
@@ -36460,7 +36460,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " é convertido numa quantidade equivalente de ",
+                "texto": " é convertida numa quantidade equivalente de ",
                 "estilo": "normal"
               },
               {
@@ -36625,7 +36625,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", ATQ Básico, ATQ Pesado: Rajada da Morte, ATQ Aéreo - Barragem Quedacinza, Contra-ATQ de Esquiva - Sangue por Sangue e Habilidade de Ressonância - Invadir são substituídos por ATQ Básico: Execução Seráfica, ATQ Pesado: Veredicto Chamasa, ATQ Aéreo - Barragem Infernal, Contra-ATQ de Esquiva - Flagelo do Purgatório e Habilidade de Ressonância - Devastação, que consomem ",
+                "texto": ", ATQ Básico, ATQ Pesado: Rajada da Morte, ATQ Aéreo - Barragem Quedacinza, Contra-ATQ Evasivo - Sangue por Sangue e Habilidade de Ressonância - Invadir são substituídos por ATQ Básico: Execução Seráfica, ATQ Pesado: Veredicto Chamasa, ATQ Aéreo - Barragem Infernal, Contra-ATQ Evasivo - Flagelo do Purgatório e Habilidade de Ressonância - Devastação, que consomem ",
                 "estilo": "normal"
               },
               {
@@ -36691,7 +36691,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ de Esquiva - Flagelo do Purgatório",
+                "texto": "Contra-ATQ Evasivo - Flagelo do Purgatório",
                 "estilo": "destaque"
               },
               {
@@ -36965,7 +36965,7 @@
             ],
             [
               {
-                "texto": "Contra-ATQ de Esquiva - Flagelo do Purgatório",
+                "texto": "Contra-ATQ Evasivo - Flagelo do Purgatório",
                 "estilo": "subtitulo"
               }
             ],
@@ -37227,7 +37227,7 @@
             ],
             [
               {
-                "texto": "Todo ",
+                "texto": "Toda ",
                 "estilo": "normal"
               },
               {
@@ -37621,7 +37621,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Básico:  Execução Seráfica",
+                "texto": "ATQ Básico: Execução Seráfica",
                 "estilo": "destaque"
               },
               {
@@ -44604,7 +44604,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " no alvo, cada 1 acúmulos de ",
+                "texto": " no alvo, cada 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -44612,7 +44612,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " aplicados concederão a Hsin 1 acúmulos de ",
+                "texto": " aplicado concede a Hsin 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -44844,7 +44844,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " aplicarão 1 acúmulos de ",
+                "texto": " aplicarão 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -44932,7 +44932,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", Hsin ativa a Resposta de Uníssono após entrar em campo e lançar a Habilidade Intro, concedendo 1 acúmulos de ",
+                "texto": ", Hsin ativa a Resposta de Uníssono após entrar em campo e lançar a Habilidade Intro, concedendo 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -44946,7 +44946,7 @@
             ],
             [
               {
-                "texto": "Hsin pode fornecer até 1 acúmulos de ",
+                "texto": "Hsin pode fornecer até 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -45232,7 +45232,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Básico: Forma Iluminante : Fase 2",
+                "texto": "ATQ Básico: Forma Iluminante: Fase 2",
                 "estilo": "destaque"
               },
               {
@@ -48008,7 +48008,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Ciclo Lunar: Meia-Lua",
+                "texto": "Ciclo Lunar: Meia Lua",
                 "estilo": "destaque"
               },
               {
@@ -51164,7 +51164,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " aumentado em 80% por 14s.",
+                "texto": " aumenta em 80% por 14s.",
                 "estilo": "normal"
               }
             ]
@@ -51202,7 +51202,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Espiral de Qi Primordial",
+                "texto": "ATQ Pesado: Espiral de Chi Primordial",
                 "estilo": "destaque"
               },
               {
@@ -51242,7 +51242,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Reflexão",
+                "texto": "Reflexo",
                 "estilo": "destaque"
               },
               {
@@ -52223,7 +52223,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", poderá obter  100 pontos de ",
+                "texto": ", poderá obter 100 pontos de ",
                 "estilo": "normal"
               },
               {
@@ -52297,7 +52297,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ",  ataca o alvo, causa ",
+                "texto": ", ataca o alvo, causa ",
                 "estilo": "normal"
               },
               {
@@ -52319,7 +52319,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", poderá obter  100 pontos de ",
+                "texto": ", poderá obter 100 pontos de ",
                 "estilo": "normal"
               },
               {
@@ -53227,7 +53227,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " , que dura por 15s.",
+                "texto": ", que dura por 15s.",
                 "estilo": "normal"
               }
             ],
@@ -53271,7 +53271,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " e diminui 1 acúmulos de ",
+                "texto": " e diminui 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -53460,7 +53460,7 @@
                 "estilo": "fusion"
               },
               {
-                "texto": ". Consome toda a  ",
+                "texto": ". Consome toda a ",
                 "estilo": "normal"
               },
               {
@@ -53780,7 +53780,7 @@
             ],
             [
               {
-                "texto": "Quando um Ressonante próximo da equipe, exceto Jingran, obtém um escudo, Jingran ganha 2 pontos de",
+                "texto": "Quando um Ressonante próximo da equipe, exceto Jingran, obtém um escudo, Jingran ganha 2 pontos de ",
                 "estilo": "normal"
               },
               {

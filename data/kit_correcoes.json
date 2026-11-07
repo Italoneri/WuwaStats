@@ -186,6 +186,38 @@
         "motivo": "Espaço antes da vírgula (\"Esquiva ,\")."
       }
     ],
+    "Danjin": [
+      {
+        "trecho": "Liberação de Ressonância de Rover aumenta",
+        "troca": "Liberação de Ressonância de Danjin aumenta",
+        "motivo": "A S3 da Danjin citava \"Rover\"; o inglês oficial só diz \"Resonance Liberation DMG Bonus is increased\"."
+      },
+      {
+        "trecho": "ataca um alvo com a Habilidade de Ressonância <color=Highlight><te href=850040>Vontade Incineradora</te></color>,",
+        "troca": "ataca um alvo marcado com <color=Highlight><te href=850040>Vontade Incineradora</te></color> da Habilidade de Ressonância,",
+        "motivo": "Vontade Incineradora é a marca aplicada pela Habilidade (\"Resonance Skill's Incinerating Will\"), não o nome da Habilidade."
+      },
+      {
+        "trecho": "ataca um alvo com Habilidade de Ressonância <color=Highlight><te href=850040>Vontade Incineradora</te></color>,",
+        "troca": "ataca um alvo marcado com <color=Highlight><te href=850040>Vontade Incineradora</te></color> da Habilidade de Ressonância,",
+        "motivo": "Mesmo caso na S2."
+      },
+      {
+        "trecho": "Danjin perde {3} acúmulos deste",
+        "troca": "Danjin perde {3} acúmulo deste",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "<te href=850039>Flor Rubi </te>recuperada",
+        "troca": "<te href=850039>Flor de Rubi</te> recuperada",
+        "motivo": "O termo é \"Flor de Rubi\" no resto do kit; o espaço também estava dentro da marcação."
+      },
+      {
+        "trecho": "de Flor Rubi, sua",
+        "troca": "de Flor de Rubi, sua",
+        "motivo": "O termo é \"Flor de Rubi\" no resto do kit."
+      }
+    ],
     "Denia": [
       {
         "trecho": ":- ",
@@ -216,6 +248,101 @@
         "trecho": "</SapTag>{Cus:Sap,S=ponto P=pontos SapTag=C}",
         "troca": "</SapTag> {Cus:Sap,S=ponto P=pontos SapTag=C}",
         "motivo": "\"100pontos\" sem espaço na Partícula do Vazio; o inglês do nanoka tem \"100 points\"."
+      },
+      {
+        "trecho": "Phantom Bubble - Forma Teatral",
+        "troca": "Bolha Fantasma - Forma Teatral",
+        "motivo": "Nome em inglês no texto PT; o resto do kit traduz Phantom Bubble como \"Bolha Fantasma\"."
+      },
+      {
+        "trecho": "Forma de Desmoronamento",
+        "troca": "Forma de Raptura",
+        "motivo": "Breakdown Form é \"Forma de Raptura\" em 62 lugares; os multiplicadores do ATQ Aéreo diziam \"Forma de Desmoronamento\"."
+      },
+      {
+        "trecho": "Carga Conformal",
+        "troca": "Carga Conforme",
+        "motivo": "O mesmo termo do glossário (te href=121105) aparece como \"Carga Conforme\" na maioria do kit."
+      }
+    ],
+    "Encore": [
+      {
+        "trecho": "Boas-vindas Energéticas",
+        "troca": "Boas-Vindas Energéticas",
+        "motivo": "O título da seção e a Habilidade de Ressonância usam \"Boas-Vindas Energéticas\"."
+      }
+    ],
+    "Galbrena": [
+      {
+        "trecho": "Contra-ATQ de Esquiva",
+        "troca": "Contra-ATQ Evasivo",
+        "motivo": "Dodge Counter é \"Contra-ATQ Evasivo\" em todos os kits; o Circuito dizia \"Contra-ATQ de Esquiva\"."
+      },
+      {
+        "trecho": "Chama do Pecado</te></color> é convertido",
+        "troca": "Chama do Pecado</te></color> é convertida",
+        "motivo": "Concordância: a Chama do Pecado é convertida."
+      },
+      {
+        "trecho": "ATQ Básico:  Execução Seráfica",
+        "troca": "ATQ Básico: Execução Seráfica",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Todo <color=Highlight><te href=120801>Recaída</te></color> é removid",
+        "troca": "Toda <color=Highlight><te href=120801>Recaída</te></color> é removid",
+        "motivo": "Concordância: \"Todo Recaída\"."
+      }
+    ],
+    "Hsin": [
+      {
+        "trecho": "cada {4} acúmulos de <color=Highlight>[<te href=150806>Fúria Voltaica</te>]</color> aplicados concederão a Hsin {6} acúmulos",
+        "troca": "cada {4} acúmulo de <color=Highlight>[<te href=150806>Fúria Voltaica</te>]</color> aplicado concede a Hsin {6} acúmulo",
+        "motivo": "\"cada 1 acúmulos ... aplicados concederão a Hsin 1 acúmulos\": os dois parâmetros valem 1."
+      },
+      {
+        "trecho": "Reino</color> aplicarão {19} acúmulos",
+        "troca": "Reino</color> aplicarão {19} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "Intro, concedendo {20} acúmulos",
+        "troca": "Intro, concedendo {20} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "fornecer até {20} acúmulos",
+        "troca": "fornecer até {20} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "Forma Iluminante : Fase 2",
+        "troca": "Forma Iluminante: Fase 2",
+        "motivo": "Espaço antes dos dois-pontos."
+      }
+    ],
+    "Iuno": [
+      {
+        "trecho": "Meia-Lua",
+        "troca": "Meia Lua",
+        "motivo": "Half Moon aparece 4 vezes como \"Meia Lua\" e 1 como \"Meia-Lua\"."
+      }
+    ],
+    "Jianxin": [
+      {
+        "trecho": "Espiral de Qi Primordial",
+        "troca": "Espiral de Chi Primordial",
+        "motivo": "O nome do ATQ Pesado é \"Espiral de Chi Primordial\"; a S3 dizia \"Qi\"."
+      },
+      {
+        "trecho": "Habilidade Inerente <color=Highlight>Reflexão</color>",
+        "troca": "Habilidade Inerente <color=Highlight>Reflexo</color>",
+        "motivo": "A Habilidade Inerente se chama \"Reflexo\"."
+      },
+      {
+        "trecho": "<color=Highlight>Campo de Purificação</color> aumentado em",
+        "troca": "<color=Highlight>Campo de Purificação</color> aumenta em",
+        "motivo": "Faltava o verbo: \"o dano da Liberação ... Campo de Purificação aumentado em\"."
       }
     ],
     "Jingran": [
@@ -223,6 +350,36 @@
         "trecho": "<a href=命火> </a></color> para o  <color",
         "troca": "<te href=121206>Chama da Vida</te></color> para o <color",
         "motivo": "Termo do glossário veio vazio (<a href=命火> </a>) na S2; o inglês do nanoka cita \"Fire of Life\", que no PT oficial é \"Chama da Vida\" (<te href=121206>) nas outras ocorrências."
+      },
+      {
+        "trecho": "poderá obter  {",
+        "troca": "poderá obter {",
+        "motivo": "Espaço duplo (duas vezes na Habilidade de Ressonância)."
+      },
+      {
+        "trecho": "Além-Vida</color>,  ataca",
+        "troca": "Além-Vida</color>, ataca",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Consome toda a  <color",
+        "troca": "Consome toda a <color",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Devaneio de Luz</te></color> ,",
+        "troca": "Devaneio de Luz</te></color>,",
+        "motivo": "Espaço antes da vírgula."
+      },
+      {
+        "trecho": "pontos de<color=Highlight>",
+        "troca": "pontos de <color=Highlight>",
+        "motivo": "Faltava espaço: \"deProteção de Fantasmas\"."
+      },
+      {
+        "trecho": "e diminui {8} acúmulos",
+        "troca": "e diminui {8} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
       }
     ]
   }
