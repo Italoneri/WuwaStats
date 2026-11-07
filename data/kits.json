@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T01:48:22+00:00"
+    "importado_em": "2026-11-07T04:33:36+00:00"
   },
   "kits": {
     "Aalto": {
@@ -1376,7 +1376,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Pesado Carregado: Aemeath - Fase 1",
+              "nome": "Dano de ATQ Pesado: Aemeath - Carregado I",
               "valores": [
                 "9.34%+37.36%",
                 "10.11%+40.42%",
@@ -1391,7 +1391,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Pesado Carregado: Aemeath - Fase 2",
+              "nome": "Dano de ATQ Pesado: Aemeath - Carregado II",
               "valores": [
                 "5.84%*4+93.36%",
                 "6.32%*4+101.01%",
@@ -2116,7 +2116,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Pesado Carregado: Mecha - Fase 1",
+              "nome": "Dano do ATQ Pesado: Mecha - Carregado I",
               "valores": [
                 "46.69%",
                 "50.52%",
@@ -2131,7 +2131,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Pesado Carregado: Mecha - Fase 2",
+              "nome": "Dano do ATQ Pesado: Mecha - Carregado II",
               "valores": [
                 "116.69%",
                 "126.26%",
@@ -5599,7 +5599,7 @@
             ],
             [
               {
-                "texto": "Após uma Esquiva Aérea,",
+                "texto": "Após uma Esquiva Aérea, ",
                 "estilo": "normal"
               },
               {
@@ -12776,7 +12776,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Dano de Misericórdia",
+              "nome": "Dano de Piedade",
               "valores": [
                 "19.67%*8+39.34%",
                 "21.29%*8+42.57%",
@@ -12806,7 +12806,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Misericórdia",
+              "nome": "Regen. de Concerto de Piedade",
               "valores": [
                 "6",
                 "6",
@@ -12836,7 +12836,7 @@
               ]
             },
             {
-              "nome": "Regen de Ressonância de Misericórdia",
+              "nome": "Regen. de Ressonância de Piedade",
               "valores": [
                 "6",
                 "6",
@@ -12851,7 +12851,7 @@
               ]
             },
             {
-              "nome": "Regen de Ressonância de Mensageiro da Morte",
+              "nome": "Regen. de Ressonância de Mensageiro da Morte",
               "valores": [
                 "5",
                 "5",
@@ -19483,7 +19483,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "dispersão",
+                "texto": "Dispersão",
                 "estilo": "destaque"
               },
               {
@@ -28495,7 +28495,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "PÁ-PÁ",
+                "texto": "Pá-pá",
                 "estilo": "destaque"
               },
               {
@@ -30104,7 +30104,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Cadência Tripla de Cantora",
+                "texto": "Cadência Tripla de Cantor",
                 "estilo": "destaque"
               },
               {
@@ -31853,7 +31853,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Dano de ATQ Básico - Forma Teatral : Fase 1",
+              "nome": "Dano de ATQ Básico - Forma Teatral: Fase 1",
               "valores": [
                 "16.44%",
                 "17.79%",
@@ -31868,7 +31868,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma Teatral : Fase 2",
+              "nome": "Dano de ATQ Básico - Forma Teatral: Fase 2",
               "valores": [
                 "15.18%*2",
                 "16.43%*2",
@@ -31883,7 +31883,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma Teatral : Fase 3",
+              "nome": "Dano de ATQ Básico - Forma Teatral: Fase 3",
               "valores": [
                 "12.82%*3",
                 "13.88%*3",
@@ -31898,7 +31898,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma Teatral : Fase 4",
+              "nome": "Dano de ATQ Básico - Forma Teatral: Fase 4",
               "valores": [
                 "64.38%",
                 "69.66%",
@@ -31958,7 +31958,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma de Raptura : Fase 1",
+              "nome": "Dano de ATQ Básico - Forma de Raptura: Fase 1",
               "valores": [
                 "18.36%",
                 "19.87%",
@@ -31973,7 +31973,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma de Raptura : Fase 2",
+              "nome": "Dano de ATQ Básico - Forma de Raptura: Fase 2",
               "valores": [
                 "18.87%+7.08%*4",
                 "20.42%+7.66%*4",
@@ -31988,7 +31988,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma de Raptura : Fase 3",
+              "nome": "Dano de ATQ Básico - Forma de Raptura: Fase 3",
               "valores": [
                 "31.38%",
                 "33.96%",
@@ -32003,7 +32003,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Básico - Forma de Raptura : Fase 4",
+              "nome": "Dano de ATQ Básico - Forma de Raptura: Fase 4",
               "valores": [
                 "17.88%+41.71%",
                 "19.34%+45.13%",
@@ -32440,7 +32440,7 @@
               ]
             },
             {
-              "nome": "Banir - Dano da Forma de Raptura : Fase 1",
+              "nome": "Banir - Dano da Forma de Raptura: Fase 1",
               "valores": [
                 "17.44%*3",
                 "18.88%*3",
@@ -32455,7 +32455,7 @@
               ]
             },
             {
-              "nome": "Banir - Dano da Forma de Raptura : Fase 2",
+              "nome": "Banir - Dano da Forma de Raptura: Fase 2",
               "valores": [
                 "56.34%",
                 "60.96%",
@@ -36517,7 +36517,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto da Habilidade de Ressonância: Ascensão da Malícia",
+              "nome": "Regen. de Concerto da Habilidade de Ressonância: Ascensão da Malícia",
               "valores": [
                 "10",
                 "10",
@@ -39216,7 +39216,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "ATQ Básico - Dano do Eu Presente : Fase 1",
+              "nome": "ATQ Básico - Dano do Eu Presente: Fase 1",
               "valores": [
                 "18.97%+18.97%",
                 "20.53%+20.53%",
@@ -39231,7 +39231,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Eu Presente : Fase 2",
+              "nome": "ATQ Básico - Dano do Eu Presente: Fase 2",
               "valores": [
                 "45.40%",
                 "49.12%",
@@ -39246,7 +39246,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Eu Presente : Fase 3",
+              "nome": "ATQ Básico - Dano do Eu Presente: Fase 3",
               "valores": [
                 "2.48%*5+49.48%",
                 "2.68%*5+53.54%",
@@ -39306,7 +39306,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Tributo dos Futuros : Fase 1",
+              "nome": "ATQ Básico - Dano do Tributo dos Futuros: Fase 1",
               "valores": [
                 "24.78%",
                 "26.82%",
@@ -39321,7 +39321,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Tributo dos Futuros : Fase 2",
+              "nome": "ATQ Básico - Dano do Tributo dos Futuros: Fase 2",
               "valores": [
                 "20.13%+20.13%",
                 "21.78%+21.78%",
@@ -39336,7 +39336,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Tributo dos Futuros : Fase 3",
+              "nome": "ATQ Básico - Dano do Tributo dos Futuros: Fase 3",
               "valores": [
                 "12.66%*4+33.74%",
                 "13.70%*4+36.51%",
@@ -39351,7 +39351,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Tributo dos Futuros : Fase 4",
+              "nome": "ATQ Básico - Dano do Tributo dos Futuros: Fase 4",
               "valores": [
                 "15.05%+15.05%+15.05%+15.05%+15.05%",
                 "16.29%+16.29%+16.29%+16.29%+16.29%",
@@ -39366,7 +39366,7 @@
               ]
             },
             {
-              "nome": "ATQ Básico - Dano do Tributo dos Futuros : Fase 5",
+              "nome": "ATQ Básico - Dano do Tributo dos Futuros: Fase 5",
               "valores": [
                 "6.12%+55.07%",
                 "6.62%+59.58%",
@@ -39411,7 +39411,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano do Tributo dos Futuros : Fase 1",
+              "nome": "ATQ Aéreo - Dano do Tributo dos Futuros: Fase 1",
               "valores": [
                 "14.50%+14.50%+19.33%",
                 "15.69%+15.69%+20.92%",
@@ -39426,7 +39426,7 @@
               ]
             },
             {
-              "nome": "ATQ Aéreo - Dano do Tributo dos Futuros : Fase 2",
+              "nome": "ATQ Aéreo - Dano do Tributo dos Futuros: Fase 2",
               "valores": [
                 "13.12%+13.12%+13.12%+13.12%",
                 "14.20%+14.20%+14.20%+14.20%",
@@ -39546,7 +39546,7 @@
               ]
             },
             {
-              "nome": "Custo de VIG do ATQ Aéreo - Tributo dos Futuros : Fase 1",
+              "nome": "Custo de VIG do ATQ Aéreo - Tributo dos Futuros: Fase 1",
               "valores": [
                 "5",
                 "5",
@@ -39561,7 +39561,7 @@
               ]
             },
             {
-              "nome": "Custo de VIG do ATQ Aéreo: Tributo dos Futuros : Fase 2",
+              "nome": "Custo de VIG do ATQ Aéreo: Tributo dos Futuros: Fase 2",
               "valores": [
                 "5",
                 "5",
@@ -39767,7 +39767,7 @@
             ],
             [
               {
-                "texto": "Praga Gélida: Queda de Pétala",
+                "texto": "Praga Gélida: Quedapétala",
                 "estilo": "subtitulo"
               }
             ],
@@ -39874,7 +39874,7 @@
               ]
             },
             {
-              "nome": "Recarga de Praga Gélida: Fenda Jade/Queda de Pétala",
+              "nome": "Recarga de Praga Gélida: Fenda Jade/Quedapétala",
               "valores": [
                 "12s",
                 "12s",
@@ -39932,11 +39932,11 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " é infligido em um alvo, uma instância de ",
+                "texto": " é infligido em um alvo, uma instância de Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Mordida Criogênica Dano",
+                "texto": "Mordida Criogênica",
                 "estilo": "destaque"
               },
               {
@@ -39980,19 +39980,19 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " e ",
+                "texto": " e Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Mordida Criogênica Dano",
+                "texto": "Mordida Criogênica",
                 "estilo": "destaque"
               },
               {
-                "texto": " também é considerado ",
+                "texto": " também é considerado Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Esfoladura Criogênica Dano",
+                "texto": "Esfoladura Criogênica",
                 "estilo": "destaque"
               },
               {
@@ -40222,7 +40222,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Praga Gélida: Queda de Pétala",
+                "texto": "Praga Gélida: Quedapétala",
                 "estilo": "destaque"
               },
               {
@@ -40616,7 +40616,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Praga Gélida: Queda de Pétala",
+                "texto": "Praga Gélida: Quedapétala",
                 "estilo": "destaque"
               },
               {
@@ -41471,11 +41471,11 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ": Quando Hiyuki é o Ressonante ativo da equipe, ",
+                "texto": ": Quando Hiyuki é o Ressonante ativo da equipe, Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Mordida Criogênica Dano",
+                "texto": "Mordida Criogênica",
                 "estilo": "destaque"
               },
               {
@@ -41501,11 +41501,11 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", ela causa adicionalmente uma instância de ",
+                "texto": ", ela causa adicionalmente uma instância de Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Mordida Criogênica Dano",
+                "texto": "Mordida Criogênica",
                 "estilo": "destaque"
               },
               {
@@ -41523,11 +41523,11 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ": Quando Hiyuki é o Ressonante ativo da equipe, ",
+                "texto": ": Quando Hiyuki é o Ressonante ativo da equipe, Dano de ",
                 "estilo": "normal"
               },
               {
-                "texto": "Mordida Criogênica Dano",
+                "texto": "Mordida Criogênica",
                 "estilo": "destaque"
               },
               {
@@ -41842,7 +41842,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", restaura 3 pontos pontos de ",
+                "texto": ", restaura 3 pontos de ",
                 "estilo": "normal"
               },
               {
@@ -42073,7 +42073,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Praga Gélida: Queda de Pétala",
+                "texto": "Praga Gélida: Quedapétala",
                 "estilo": "destaque"
               },
               {
@@ -43072,7 +43072,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Básico: Forma Iluminada - Fase 1",
+              "nome": "Dano do ATQ Básico: Forma Iluminante - Fase 1",
               "valores": [
                 "6.32%*2+18.94%",
                 "6.83%*2+20.49%",
@@ -43087,7 +43087,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Básico: Forma Iluminada - Selo Cardíaco Modular",
+              "nome": "Dano do ATQ Básico: Forma Iluminante - Selo Cardíaco Modular",
               "valores": [
                 "10.52%*2",
                 "11.39%*2",
@@ -43102,7 +43102,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Básico: Forma Iluminada - Fase 2",
+              "nome": "Dano do ATQ Básico: Forma Iluminante - Fase 2",
               "valores": [
                 "17.50%*2",
                 "18.94%*2",
@@ -43117,7 +43117,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Básico: Forma Iluminada - Fase 3",
+              "nome": "Dano do ATQ Básico: Forma Iluminante - Fase 3",
               "valores": [
                 "4.58%*4+9.16%*2+13.74%*4",
                 "4.96%*4+9.91%*2+14.87%*4",
@@ -43132,7 +43132,7 @@
               ]
             },
             {
-              "nome": "Dano do ATQ Pesado: Forma Iluminada",
+              "nome": "Dano do ATQ Pesado: Forma Iluminante",
               "valores": [
                 "27.13%*2",
                 "29.35%*2",
@@ -49081,7 +49081,7 @@
               ]
             },
             {
-              "nome": "Regen de VIG do Domínio da Lua Cheia",
+              "nome": "Regen. de VIG do Domínio da Lua Cheia",
               "valores": [
                 "20",
                 "20",
@@ -54725,7 +54725,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Halo de Dragão",
+                "texto": "Halo de Loong",
                 "estilo": "destaque"
               },
               {
@@ -54985,7 +54985,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "“Encarnação - Contra-ATQ Evasivo\"",
+                "texto": "“Encarnação - Contra-ATQ Evasivo”",
                 "estilo": "destaque"
               },
               {
@@ -55855,7 +55855,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Halo de Dragão",
+                "texto": "Halo de Loong",
                 "estilo": "destaque"
               },
               {
@@ -56162,7 +56162,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " para para perseguir o inimigo, causando ",
+                "texto": " para perseguir o inimigo, causando ",
                 "estilo": "normal"
               },
               {
@@ -56599,11 +56599,11 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Prelúdio",
+                "texto": "Tormenta Esmeralda: Prelúdio",
                 "estilo": "destaque"
               },
               {
-                "texto": ", se Jiyan tiver 30 de Determinação ou mais, ele consome 30 de Determinação para lançar Tempestade Esmeralda: Final, causando ",
+                "texto": ", se Jiyan tiver 30 de Determinação ou mais, ele consome 30 de Determinação para lançar Tormenta Esmeralda: Final, causando ",
                 "estilo": "normal"
               },
               {
@@ -56670,7 +56670,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Dano de Tempestade Esmeralda: Final",
+              "nome": "Dano de Tormenta Esmeralda: Final",
               "valores": [
                 "71.88%*2+215.64%",
                 "77.77%*2+233.33%",
@@ -56694,7 +56694,7 @@
           "descricao": [
             [
               {
-                "texto": "Após liberar Tempestade Esmeralda - Prelúdio, Jiyan entra no ",
+                "texto": "Após liberar Tormenta Esmeralda - Prelúdio, Jiyan entra no ",
                 "estilo": "normal"
               },
               {
@@ -57130,7 +57130,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Prelúdio",
+                "texto": "Tormenta Esmeralda: Prelúdio",
                 "estilo": "destaque"
               },
               {
@@ -57138,7 +57138,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Final",
+                "texto": "Tormenta Esmeralda: Final",
                 "estilo": "destaque"
               },
               {
@@ -57167,7 +57167,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Prelúdio",
+                "texto": "Tormenta Esmeralda: Prelúdio",
                 "estilo": "destaque"
               },
               {
@@ -57175,7 +57175,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Final",
+                "texto": "Tormenta Esmeralda: Final",
                 "estilo": "destaque"
               },
               {
@@ -57261,7 +57261,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Final",
+                "texto": "Tormenta Esmeralda: Final",
                 "estilo": "destaque"
               },
               {
@@ -57269,7 +57269,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Tempestade Esmeralda: Final",
+                "texto": "Tormenta Esmeralda: Final",
                 "estilo": "destaque"
               },
               {
@@ -60866,7 +60866,7 @@
               ]
             },
             {
-              "nome": "Regeneração de Concerto de Clip It",
+              "nome": "Regen. de Concerto de Clip It",
               "valores": [
                 "10",
                 "10",
@@ -60881,7 +60881,7 @@
               ]
             },
             {
-              "nome": "Clip It: Hard Cut Regeneração de Concerto",
+              "nome": "Regen. de Concerto de Clip It: Hard Cut",
               "valores": [
                 "10",
                 "10",
@@ -62695,7 +62695,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Ataque Pesado - Processamento Duplo",
+              "nome": "Regen. de Concerto de Ataque Pesado - Processamento Duplo",
               "valores": [
                 "8",
                 "8",
@@ -62710,7 +62710,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Ataque Pesado - Multiprocessamento",
+              "nome": "Regen. de Concerto de Ataque Pesado - Multiprocessamento",
               "valores": [
                 "8",
                 "8",
@@ -63163,7 +63163,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Habilidade de Ressonância - Interferência de Pulso",
+              "nome": "Regen. de Concerto de Habilidade de Ressonância - Interferência de Pulso",
               "valores": [
                 "8",
                 "8",
@@ -63178,7 +63178,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Habilidade de Ressonância - Impasse",
+              "nome": "Regen. de Concerto de Habilidade de Ressonância - Impasse",
               "valores": [
                 "8",
                 "8",
@@ -64778,7 +64778,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Resposta de Hack - Colapso de Dados",
+                "texto": "Resposta Hack - Colapso de Dados",
                 "estilo": "destaque"
               },
               {
@@ -80852,7 +80852,7 @@
               ]
             },
             {
-              "nome": "Dano de Murmúrios Imortais",
+              "nome": "Dano de Murmúrios num Sonho Assombrado",
               "valores": [
                 "11.67%*4+23.34%+163.38%",
                 "12.63%*4+25.26%+176.78%",
@@ -88705,7 +88705,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Hack Response - Dano de Colapso",
+              "nome": "Dano de Resposta Hack - Colapso",
               "valores": [
                 "1186.50% AMP de Melodia",
                 "1283.80% AMP de Melodia",
@@ -89281,7 +89281,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Ei, É Hora de Arrebentar!",
+              "nome": "Regen. de Concerto de Ei, É Hora de Arrebentar!",
               "valores": [
                 "10",
                 "10",
@@ -89296,7 +89296,7 @@
               ]
             },
             {
-              "nome": "Regen. de concerto de Ei, Cabeça de Chumbo, Vem Me Pegar!",
+              "nome": "Regen. de Concerto de Ei, Cabeça de Chumbo, Vem Me Pegar!",
               "valores": [
                 "10",
                 "10",
@@ -92988,7 +92988,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Aéreo  Aniquilante: Fase 1",
+              "nome": "Dano de ATQ Aéreo Aniquilante: Fase 1",
               "valores": [
                 "16.31%",
                 "17.65%",
@@ -93003,7 +93003,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Aéreo  Aniquilante: Fase 2",
+              "nome": "Dano de ATQ Aéreo Aniquilante: Fase 2",
               "valores": [
                 "18.69%",
                 "20.23%",
@@ -93018,7 +93018,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Aéreo  Aniquilante: Fase 3",
+              "nome": "Dano de ATQ Aéreo Aniquilante: Fase 3",
               "valores": [
                 "18.88%+18.88%+19.46%",
                 "20.43%+20.43%+21.05%",
@@ -93985,7 +93985,7 @@
               ]
             },
             {
-              "nome": "Dano de ATQ Aéreo Aniquilante - Vibração de Todos os Sons: Fase 2",
+              "nome": "Dano de ATQ Aéreo Aniquilante - Vibração de Todos os Sons: Fase 3",
               "valores": [
                 "46.03%+46.03%+47.43%",
                 "49.81%+49.81%+51.32%",
@@ -94060,7 +94060,7 @@
               ]
             },
             {
-              "nome": "Dano de Queda do Travão",
+              "nome": "Dano de Queda do Trovão",
               "valores": [
                 "20.00%",
                 "21.64%",
@@ -98771,7 +98771,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Dano de Borbostela-flamejante",
+              "nome": "Dano de Borboleta Flamejante",
               "valores": [
                 "18.76%",
                 "20.29%",
@@ -106534,7 +106534,7 @@
               ]
             },
             {
-              "nome": "Dano de Liberação de Ressonância: Chuva Funesta, Trovão Miasmático",
+              "nome": "Dano de Liberação de Ressonância: Chuva de Flagelo, Trovão Miasmático",
               "valores": [
                 "30.00%",
                 "32.46%",
@@ -121149,7 +121149,7 @@
               ]
             },
             {
-              "nome": "Termpo de Recarga de Protocolo de Defesa Padrão",
+              "nome": "Tempo de Recarga de Protocolo de Defesa Padrão",
               "valores": [
                 "5s",
                 "5s",

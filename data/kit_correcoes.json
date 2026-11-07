@@ -15,6 +15,26 @@
         "trecho": "ATQ Pesado: Mech - Carregado",
         "troca": "ATQ Pesado: Mecha - Carregado",
         "motivo": "\"Mech\" sem tradução; o resto do kit diz \"Mecha\" (ATQ Pesado: Mecha - Carregado I/II)."
+      },
+      {
+        "trecho": "ATQ Pesado Carregado: Aemeath - Fase 1",
+        "troca": "ATQ Pesado: Aemeath - Carregado I",
+        "motivo": "Nome de multiplicador chamava o Carregado I de \"Fase 1\"; o texto do kit diz \"ATQ Pesado: Aemeath - Carregado I\" e o inglês \"Charged I\"."
+      },
+      {
+        "trecho": "ATQ Pesado Carregado: Aemeath - Fase 2",
+        "troca": "ATQ Pesado: Aemeath - Carregado II",
+        "motivo": "Nome de multiplicador chamava o Carregado II de \"Fase 2\"; o inglês diz \"Charged II\"."
+      },
+      {
+        "trecho": "ATQ Pesado Carregado: Mecha - Fase 1",
+        "troca": "ATQ Pesado: Mecha - Carregado I",
+        "motivo": "Nome de multiplicador chamava o Carregado I de \"Fase 1\"; o inglês diz \"Mech Charged I\"."
+      },
+      {
+        "trecho": "ATQ Pesado Carregado: Mecha - Fase 2",
+        "troca": "ATQ Pesado: Mecha - Carregado II",
+        "motivo": "Nome de multiplicador chamava o Carregado II de \"Fase 2\"; o inglês diz \"Mech Charged II\"."
       }
     ],
     "Augusta": [
@@ -92,6 +112,11 @@
         "trecho": "Luz Solar Eterna",
         "troca": "Luz Solar Imortal",
         "motivo": "Undying Sunlight é \"Luz Solar Imortal\" em todo o kit, menos no título do Contra-ATQ Evasivo."
+      },
+      {
+        "trecho": "Esquiva Aérea,<color=Highlight>",
+        "troca": "Esquiva Aérea, <color=Highlight>",
+        "motivo": "Faltava espaço depois da vírgula (\"Aérea,pressionar\")."
       }
     ],
     "Baizhi": [
@@ -120,6 +145,28 @@
         "motivo": "Faltava espaço: \"por16s\"."
       }
     ],
+    "Calcharo": [
+      {
+        "trecho": "Dano de Misericórdia",
+        "troca": "Dano de Piedade",
+        "motivo": "Nome de multiplicador: o texto do kit chama o ATQ Pesado de \"Piedade\" (inglês: Mercy)."
+      },
+      {
+        "trecho": "Regen. de concerto de Misericórdia",
+        "troca": "Regen. de Concerto de Piedade",
+        "motivo": "Nome de multiplicador: \"Piedade\" como no texto do kit e \"Concerto\" maiúsculo como no resto."
+      },
+      {
+        "trecho": "Regen de Ressonância de Misericórdia",
+        "troca": "Regen. de Ressonância de Piedade",
+        "motivo": "Nome de multiplicador: \"Piedade\" como no texto do kit e \"Regen.\" com ponto como no resto."
+      },
+      {
+        "trecho": "Regen de Ressonância de Mensageiro",
+        "troca": "Regen. de Ressonância de Mensageiro",
+        "motivo": "Nome de multiplicador: \"Regen.\" com ponto como no resto."
+      }
+    ],
     "Camellya": [
       {
         "trecho": "Expiação </color>,",
@@ -145,6 +192,13 @@
         "trecho": "Cada botão dura",
         "troca": "Cada broto dura",
         "motivo": "Mesmo termo (each bud lasts)."
+      }
+    ],
+    "Carlotta": [
+      {
+        "trecho": "infligem <color=Highlight>dispersão</color>",
+        "troca": "infligem <color=Highlight>Dispersão</color>",
+        "motivo": "Termo do glossário (Dispersão) em minúscula só na S6."
       }
     ],
     "Chisa": [
@@ -184,11 +238,23 @@
         "motivo": "Concordância: \"ao alvos\"."
       }
     ],
+    "Chixia": [
+      {
+        "trecho": "ATQ Normal <color=Highlight>PÁ-PÁ</color>",
+        "troca": "ATQ Normal <color=Highlight>Pá-pá</color>",
+        "motivo": "O ATQ Normal se chama \"Pá-pá\"; só o Circuito escrevia em maiúsculas."
+      }
+    ],
     "Ciaccona": [
       {
         "trecho": "Esquiva </color>,",
         "troca": "Esquiva</color>,",
         "motivo": "Espaço antes da vírgula (\"Esquiva ,\")."
+      },
+      {
+        "trecho": "Cadência Tripla de Cantora",
+        "troca": "Cadência Tripla de Cantor",
+        "motivo": "A Liberação se chama \"Cadência Tripla de Cantor\" (inglês: Singer's Triple Cadenza, igual em todo o kit)."
       }
     ],
     "Danjin": [
@@ -268,6 +334,16 @@
         "trecho": "Carga Conformal",
         "troca": "Carga Conforme",
         "motivo": "O mesmo termo do glossário (te href=121105) aparece como \"Carga Conforme\" na maioria do kit."
+      },
+      {
+        "trecho": "Forma Teatral : Fase",
+        "troca": "Forma Teatral: Fase",
+        "motivo": "Nome de multiplicador: espaço antes dos dois-pontos."
+      },
+      {
+        "trecho": "Forma de Raptura : Fase",
+        "troca": "Forma de Raptura: Fase",
+        "motivo": "Nome de multiplicador: espaço antes dos dois-pontos."
       }
     ],
     "Encore": [
@@ -297,6 +373,43 @@
         "trecho": "Todo <color=Highlight><te href=120801>Recaída</te></color> é removid",
         "troca": "Toda <color=Highlight><te href=120801>Recaída</te></color> é removid",
         "motivo": "Concordância: \"Todo Recaída\"."
+      },
+      {
+        "trecho": "Regen. de concerto",
+        "troca": "Regen. de Concerto",
+        "motivo": "Nome de multiplicador: \"Concerto\" maiúsculo como no resto."
+      }
+    ],
+    "Hiyuki": [
+      {
+        "trecho": "Queda de Pétala",
+        "troca": "Quedapétala",
+        "motivo": "O kit alterna \"Quedapétala\" e \"Queda de Pétala\" para o mesmo golpe (inglês: Petalfall); fica a forma da maioria."
+      },
+      {
+        "trecho": "SapTag=3} pontos de",
+        "troca": "SapTag=3} de",
+        "motivo": "\"pontos\" repetido: o plural do parâmetro já escreve \"pontos\" (\"restaura 3 pontos pontos\")."
+      },
+      {
+        "trecho": "Eu Presente : Fase",
+        "troca": "Eu Presente: Fase",
+        "motivo": "Nome de multiplicador: espaço antes dos dois-pontos."
+      },
+      {
+        "trecho": "Tributo dos Futuros : Fase",
+        "troca": "Tributo dos Futuros: Fase",
+        "motivo": "Nome de multiplicador: espaço antes dos dois-pontos."
+      },
+      {
+        "trecho": "<color=Highlight><te href=110809>Mordida Criogênica</te> Dano</color>",
+        "troca": "Dano de <color=Highlight><te href=110809>Mordida Criogênica</te></color>",
+        "motivo": "Ordem em inglês (\"Mordida Criogênica Dano\", de Glacio Bite DMG)."
+      },
+      {
+        "trecho": "<color=Highlight><te href=850010>Esfoladura Criogênica</te> Dano</color>",
+        "troca": "Dano de <color=Highlight><te href=850010>Esfoladura Criogênica</te></color>",
+        "motivo": "Ordem em inglês (\"Esfoladura Criogênica Dano\")."
       }
     ],
     "Hsin": [
@@ -324,6 +437,11 @@
         "trecho": "Forma Iluminante : Fase 2",
         "troca": "Forma Iluminante: Fase 2",
         "motivo": "Espaço antes dos dois-pontos."
+      },
+      {
+        "trecho": "Forma Iluminada",
+        "troca": "Forma Iluminante",
+        "motivo": "Nome de multiplicador: a forma se chama \"Forma Iluminante\" no texto do kit (inglês: Illumining Form)."
       }
     ],
     "Iuno": [
@@ -331,6 +449,11 @@
         "trecho": "Meia-Lua",
         "troca": "Meia Lua",
         "motivo": "Half Moon aparece 4 vezes como \"Meia Lua\" e 1 como \"Meia-Lua\"."
+      },
+      {
+        "trecho": "Regen de VIG",
+        "troca": "Regen. de VIG",
+        "motivo": "Nome de multiplicador: \"Regen.\" com ponto como no resto."
       }
     ],
     "Jianxin": [
@@ -387,11 +510,45 @@
         "motivo": "\"1 acúmulos\": o parâmetro vale 1."
       }
     ],
+    "Jinhsi": [
+      {
+        "trecho": "Halo de Dragão",
+        "troca": "Halo de Loong",
+        "motivo": "A Intro se chama \"Halo de Loong\" (inglês: Loong's Halo, igual em todo o kit)."
+      },
+      {
+        "trecho": "“Encarnação - Contra-ATQ Evasivo\"",
+        "troca": "“Encarnação - Contra-ATQ Evasivo”",
+        "motivo": "Aspas misturadas (abre “ e fecha \")."
+      }
+    ],
+    "Jiyan": [
+      {
+        "trecho": "Tempestade Esmeralda",
+        "troca": "Tormenta Esmeralda",
+        "motivo": "A Liberação se chama \"Tormenta Esmeralda: Prelúdio\"; o resto do kit dizia \"Tempestade\" (inglês: Emerald Storm, igual em todo o kit)."
+      },
+      {
+        "trecho": "para para perseguir",
+        "troca": "para perseguir",
+        "motivo": "\"para\" repetido."
+      }
+    ],
     "Lucilla": [
       {
         "trecho": "Usar esta skill concede",
         "troca": "Usar esta habilidade concede",
         "motivo": "\"skill\" em inglês no texto PT."
+      },
+      {
+        "trecho": "Regeneração de Concerto de Clip It",
+        "troca": "Regen. de Concerto de Clip It",
+        "motivo": "Nome de multiplicador: \"Regen. de Concerto\" como no resto."
+      },
+      {
+        "trecho": "Clip It: Hard Cut Regeneração de Concerto",
+        "troca": "Regen. de Concerto de Clip It: Hard Cut",
+        "motivo": "Nome de multiplicador na ordem do inglês (\"Clip It: Hard Cut Concerto Regen\")."
       }
     ],
     "Lucy": [
@@ -412,8 +569,8 @@
       },
       {
         "trecho": "Resposta de Hack - Falha de Dados",
-        "troca": "Resposta de Hack - Colapso de Dados",
-        "motivo": "Data Crash é \"Colapso de Dados\" (nome da Ruptura de Sintonia e das outras menções)."
+        "troca": "Resposta Hack - Colapso de Dados",
+        "motivo": "Data Crash é \"Colapso de Dados\" (nome da Ruptura de Sintonia e das outras menções). O resto do kit diz \"Resposta Hack\" (sem \"de\")."
       },
       {
         "trecho": "Lucy pode lançar<color=Highlight>",
@@ -424,6 +581,11 @@
         "trecho": "<color=Highlight>Esquiva</color> bem-sucedido",
         "troca": "<color=Highlight>Esquiva</color> bem-sucedida",
         "motivo": "Concordância: Esquiva bem-sucedida."
+      },
+      {
+        "trecho": "Regen. de concerto",
+        "troca": "Regen. de Concerto",
+        "motivo": "Nome de multiplicador: \"Concerto\" maiúsculo como no resto."
       }
     ],
     "Lumi": [
@@ -504,6 +666,11 @@
         "trecho": "Ataque Aprimorado: Hécate - Sopros",
         "troca": "ATQ Aprimorado: Hécate - Sopros",
         "motivo": "O resto do kit abrevia: \"ATQ Aprimorado: Hécate - Sopros\"."
+      },
+      {
+        "trecho": "Dano de Murmúrios Imortais",
+        "troca": "Dano de Murmúrios num Sonho Assombrado",
+        "motivo": "Nome de multiplicador: o golpe se chama \"Murmúrios num Sonho Assombrado\" (inglês: Murmurs in a Haunting Dream DMG)."
       }
     ],
     "Qingxiao": [
@@ -553,6 +720,16 @@
         "trecho": "remove todos os <color=Highlight><te href=130803>Sobrecarga</te></color>",
         "troca": "remove toda a <color=Highlight><te href=130803>Sobrecarga</te></color>",
         "motivo": "Concordância: \"todos os Sobrecarga\"."
+      },
+      {
+        "trecho": "Hack Response - Dano de Colapso",
+        "troca": "Dano de Resposta Hack - Colapso",
+        "motivo": "Nome de multiplicador em inglês; o texto do kit diz \"Resposta Hack - Colapso\"."
+      },
+      {
+        "trecho": "Regen. de concerto",
+        "troca": "Regen. de Concerto",
+        "motivo": "Nome de multiplicador: \"Concerto\" maiúsculo como no resto."
       }
     ],
     "Roccia": [
@@ -587,6 +764,22 @@
         "trecho": "limpa todos os <color=Highlight><te href=130902>Ira do Trovão",
         "troca": "limpa toda a <color=Highlight><te href=130902>Ira do Trovão",
         "motivo": "Concordância: \"todos os Ira do Trovão\"."
+      },
+      {
+        "trecho": "Queda do Travão",
+        "troca": "Queda do Trovão",
+        "motivo": "Nome de multiplicador: erro de digitação (\"Travão\"); o texto do kit diz \"Queda do Trovão\"."
+      },
+      {
+        "trecho": "Aéreo  Aniquilante",
+        "troca": "Aéreo Aniquilante",
+        "motivo": "Nome de multiplicador: espaço duplo."
+      },
+      {
+        "trecho": "Fase 2",
+        "troca": "Fase 3",
+        "motivo": "Nome de multiplicador repetia \"Fase 2\" no lugar da Fase 3 (inglês: Havoc Mid-air Attack Stage 3 DMG).",
+        "chave": "SkillDescription_1309034_AttributeName"
       }
     ],
     "Rover: Havoc": [
@@ -630,6 +823,11 @@
         "trecho": "tem todos os efeitos do <color=Highlight>Dimensão",
         "troca": "tem todos os efeitos da <color=Highlight>Dimensão",
         "motivo": "Concordância: \"do Dimensão Estelar\"."
+      },
+      {
+        "trecho": "Dano de Borbostela-flamejante",
+        "troca": "Dano de Borboleta Flamejante",
+        "motivo": "Nome de multiplicador: o texto do kit chama de \"Borboleta Flamejante\"."
       }
     ],
     "Sigrika": [
@@ -711,6 +909,11 @@
         "trecho": "Dilacerante</color>, obtém {0} acúmulos",
         "troca": "Dilacerante</color>, obtém {0} acúmulo",
         "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "Chuva Funesta",
+        "troca": "Chuva de Flagelo",
+        "motivo": "Nome de multiplicador: o texto da Liberação diz \"Chuva de Flagelo, Trovão Miasmático\" (inglês: Blight Rain)."
       }
     ],
     "Taoqi": [
@@ -837,6 +1040,11 @@
         "trecho": "Força de Vibração</te> .",
         "troca": "Força de Vibração</te>.",
         "motivo": "Espaço antes do ponto."
+      },
+      {
+        "trecho": "Termpo",
+        "troca": "Tempo",
+        "motivo": "Nome de multiplicador: erro de digitação."
       }
     ],
     "Zhezhi": [
