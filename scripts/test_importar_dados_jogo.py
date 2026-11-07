@@ -9,6 +9,7 @@ import pytest
 from importar_dados_jogo import (
     ArmaFonte,
     ArmaImportada,
+    ArquivoAusente,
     Catalogo,
     Categoria,
     Commit,
@@ -177,9 +178,10 @@ def test_sem_textmap_pt_os_nomes_pt_ficam_vazios() -> None:
 
 
 def _elenco_fonte() -> TabelasFonte:
-    def personagem(nome: str, tipo: int = 1, teste: bool = False, raridade: int = 5) -> PersonagemFonte:
+    def personagem(nome: str, tipo: int = 1, teste: bool = False, raridade: int = 5, corpo: str = "") -> PersonagemFonte:
         campos = {"Name": nome, "QualityId": raridade, "ElementId": 3, "WeaponType": 2, "RoleType": tipo, "IsTrial": teste}
-        return PersonagemFonte.model_validate(campos)
+        retrato = f"/Game/Aki/UI/P/{nome}{corpo}.x"
+        return PersonagemFonte.model_validate({**campos, "RoleBody": corpo, "FormationRoleCard": retrato})
 
     textos_en = {"R_Suo": "Suoming", "R_Rover": "Rover: Electro", "E_3": "Electro", "W_1": "Unspoken Rue"}
     textos_en["RoleProject_WeaponType02"] = "Weapon Type: Sword"
@@ -192,8 +194,8 @@ def _elenco_fonte() -> TabelasFonte:
         personagens=[
             personagem("R_Suo"),
             personagem("R_Suo", tipo=2, teste=True, raridade=4),
-            personagem("R_Rover"),
-            personagem("R_Rover"),
+            personagem("R_Rover", corpo="MaleM"),
+            personagem("R_Rover", corpo="FemaleM"),
         ],
         elementos=[ElementoFonte.model_validate({"Id": 3, "Name": "E_3"})],
         armas=[ArmaFonte.model_validate({"WeaponName": "W_1", "QualityId": 5, "WeaponType": 2})],
@@ -208,6 +210,13 @@ def test_monta_ressonadores_jogaveis_sem_versoes_de_teste_nem_rover_repetido() -
         "Suoming": RessonadorImportado(nome_pt="Suoming", elemento="electro", tipo_arma="sword", raridade=5),
     }
     assert elenco.avisos == []
+
+
+def test_retrato_do_ressonador_vem_da_fonte_e_rover_usa_o_corpo_preferido() -> None:
+    elenco = montar_elenco(_elenco_fonte())
+
+    assert elenco.ressonadores["Suoming"].retrato == "/Game/Aki/UI/P/R_Suo.x"
+    assert elenco.ressonadores["Rover: Electro"].retrato == "/Game/Aki/UI/P/R_RoverFemaleM.x"
 
 
 def test_monta_elementos_tipos_de_arma_e_armas_com_nome_pt() -> None:
@@ -352,7 +361,11 @@ def test_baixa_so_icones_que_faltam_e_falha_vira_aviso(tmp_path: Path) -> None:
     elenco = Elenco(
         elementos={},
         tipos_arma={},
-        ressonadores={},
+        ressonadores={
+            "Suoming": RessonadorImportado(
+                nome_pt=None, elemento="electro", tipo_arma="sword", raridade=5, retrato="/Game/Aki/UI/P/T_Pile_suoming_UI.x"
+            )
+        },
         armas={"Unspoken Rue": ArmaImportada(nome_pt=None, tipo="sword", raridade=5, icone="/Game/Aki/UI/W/Rue.x")},
     )
     pedidas: list[str] = []
@@ -361,16 +374,21 @@ def test_baixa_so_icones_que_faltam_e_falha_vira_aviso(tmp_path: Path) -> None:
         pedidas.append(url)
         if url.endswith("Rue.webp"):
             raise FonteIndisponivel(f"{url}: HTTP 503")
+        if url.endswith("suoming_UI.webp"):
+            raise ArquivoAusente(f"{url}: 404")
         return _webp("blue")
 
     avisos = importar_icones(imagens, catalogo, elenco, baixar)
 
     assert sorted(pedidas) == [
         "https://static.nanoka.cc/assets/ww/E/Gulpuff.webp",
+        "https://static.nanoka.cc/assets/ww/P/T_Pile_Suoming_UI.webp",
+        "https://static.nanoka.cc/assets/ww/P/T_Pile_suoming_UI.webp",
         "https://static.nanoka.cc/assets/ww/W/Rue.webp",
     ]
     assert imagens.caminho("echoes", "Cloudy").read_bytes() == enviada_a_mao
     assert imagens.existe("echoes", "Gulpuff")
+    assert imagens.existe("personagens", "Suoming")
     assert not imagens.existe("armas", "Unspoken Rue")
     assert avisos == [
         "ícone echoes 'Sem Icone': caminho '' fora de /Game/Aki/UI/; envie à mão",

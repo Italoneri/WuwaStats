@@ -7,7 +7,8 @@ Gera data/echoes.json (com o que a habilidade de cada echo faz), data/sets.json,
 data/weapons.json, acrescenta os nomes PT-BR de echos e sets como aliases em data/stat_aliases.json (mapeamentos
 manuais ficam) e grava em data/fonte_dados_jogo.json o commit usado. Tudo é validado numa cópia de data/ antes de
 substituir os arquivos de verdade.
-Depois baixa de nanoka.cc os ícones de echos, armas e sets que ainda não estão em data/imagens/ (ressonadores ficam à mão).
+Depois baixa de nanoka.cc os ícones de echos, armas e sets e o retrato oficial de cada ressonador que ainda não
+estão em data/imagens/.
 """
 
 import argparse
@@ -65,6 +66,8 @@ CAMINHO_TEXTMAP = "Textmaps/{idioma}/multi_text/MultiText.json"
 
 # Os outros RoleType são versões de teste/evento dos mesmos personagens.
 TIPO_PERSONAGEM_JOGAVEL = 1
+# Rover tem uma linha por corpo com o mesmo nome; o retrato sai da versão com este corpo.
+CORPO_DO_ROVER = "FemaleM"
 # Tipo de arma não tem tabela própria: o nome vem deste texto ("Weapon Type: Sword"), sem o prefixo.
 TEXTO_TIPO_ARMA = "RoleProject_WeaponType{:02d}"
 
@@ -160,6 +163,9 @@ class PersonagemFonte(_Fonte):
     tipo_arma: int = Field(alias="WeaponType")
     tipo: int = Field(alias="RoleType")
     teste: bool = Field(alias="IsTrial")
+    corpo: str = Field(default="", alias="RoleBody")
+    # Arte de corpo inteiro da tela de formação de equipe, com fundo transparente.
+    retrato: str | None = Field(default=None, alias="FormationRoleCard")
 
 
 class ElementoFonte(_Fonte):
@@ -245,6 +251,8 @@ class RessonadorImportado:
     elemento: str
     tipo_arma: str
     raridade: int
+    # Fora da comparação: as linhas de Rover diferem só na arte, e isso não é divergência de dados.
+    retrato: str | None = field(default=None, compare=False)
 
 
 @dataclass(frozen=True)
@@ -571,7 +579,8 @@ def _ressonadores(
     avisos: list[str],
 ) -> dict[str, RessonadorImportado]:
     ressonadores: dict[str, RessonadorImportado] = {}
-    for personagem in jogaveis:
+    # Ordenação estável: a linha com o corpo preferido do Rover chega primeiro e fica.
+    for personagem in sorted(jogaveis, key=lambda p: p.corpo != CORPO_DO_ROVER):
         nome = tabelas.textos_en.get(personagem.chave_nome, "").strip()
         if not nome or personagem.elemento not in elementos:
             avisos.append(f"ressonador '{personagem.chave_nome}': sem nome em inglês ou com elemento desconhecido")
@@ -581,6 +590,7 @@ def _ressonadores(
             elemento=_chave(elementos[personagem.elemento]),
             tipo_arma=_chave(tipos_arma[personagem.tipo_arma]),
             raridade=personagem.raridade,
+            retrato=personagem.retrato,
         )
         # Rover aparece uma vez por gênero, com o mesmo nome; só avisa se os dados divergirem.
         if ressonadores.setdefault(nome, novo) != novo:
@@ -822,10 +832,8 @@ def gravar_validado(data_dir: Path, arquivos: Mapping[str, object]) -> None:
 def importar_icones(
     imagens: ImagensDoCatalogo, catalogo: Catalogo, elenco: Elenco, baixar: Callable[[str], bytes] = _baixar
 ) -> list[str]:
-    """Echos e armas que ainda não têm imagem: nada já no catálogo (inclusive enviado à mão) é sobrescrito.
-
-    Ressonadores ficam de fora: a imagem deles é escolhida à mão na página.
-    """
+    """Echos, armas, sets e ressonadores que ainda não têm imagem: nada já no catálogo (inclusive enviado à mão) é
+    sobrescrito."""
     icones, avisos = icones_do_catalogo(catalogo, elenco)
     faltando = [icone for icone in icones if not imagens.existe(icone.categoria, icone.chave)]
     print(f"\nÍcones: {len(icones) - len(faltando)} já no catálogo, baixando {len(faltando)} de {ICONES}")
@@ -839,6 +847,7 @@ def icones_do_catalogo(catalogo: Catalogo, elenco: Elenco) -> tuple[list[Icone],
         *(("echoes", nome, echo.icone) for nome, echo in catalogo.echoes.items()),
         *(("armas", nome, arma.icone) for nome, arma in elenco.armas.items()),
         *(("sets", nome, conjunto.icone) for nome, conjunto in catalogo.sets.items()),
+        *(("personagens", nome, ressonador.retrato) for nome, ressonador in elenco.ressonadores.items()),
     ]
     icones: list[Icone] = []
     avisos: list[str] = []
@@ -862,10 +871,27 @@ def url_do_icone(caminho: str) -> str | None:
 def _salvar_icone(imagens: ImagensDoCatalogo, icone: Icone, baixar: Callable[[str], bytes]) -> str | None:
     """Devolve o aviso da falha: um ícone que não veio não cancela a importação."""
     try:
-        imagens.salvar(icone.categoria, icone.chave, baixar(icone.url))
+        imagens.salvar(icone.categoria, icone.chave, _baixar_icone(icone.url, baixar))
     except (FonteIndisponivel, ImagemRecusada) as erro:
         return f"ícone {icone.categoria} '{icone.chave}': {erro}"
     return None
+
+
+def _baixar_icone(url: str, baixar: Callable[[str], bytes]) -> bytes:
+    try:
+        return baixar(url)
+    except ArquivoAusente:
+        alternativa = url_com_iniciais_maiusculas(url)
+        if alternativa == url:
+            raise
+        return baixar(alternativa)
+
+
+def url_com_iniciais_maiusculas(url: str) -> str:
+    """O nanoka diferencia maiúsculas e às vezes grava com inicial maiúscula o que a tabela tem em minúscula
+    ('T_IconRole_Pile_qiuyuan_UI' → 'T_IconRole_Pile_Qiuyuan_UI')."""
+    pasta, arquivo = url.rsplit("/", 1)
+    return f"{pasta}/" + "_".join(parte[:1].upper() + parte[1:] for parte in arquivo.split("_"))
 
 
 def _relatorio(catalogo: Catalogo, elenco: Elenco, tabelas: TabelasFonte, avisos: Sequence[str]) -> None:
