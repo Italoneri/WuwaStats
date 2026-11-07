@@ -813,6 +813,11 @@
         "trecho": "lançar a <color=Highlight>Rugido Magnético",
         "troca": "lançar o <color=Highlight>Rugido Magnético",
         "motivo": "Concordância: o Rugido Magnético."
+      },
+      {
+        "trecho": "O boneco",
+        "troca": "O fantoche",
+        "motivo": "Puppet \"Zapstring\" é \"fantoche\" no ATQ Básico e no Circuito."
       }
     ],
     "Yuanwu": [
@@ -869,6 +874,11 @@
         "trecho": "<color=Highlight> Traço Genial",
         "troca": "<color=Highlight>Traço Genial",
         "motivo": "Espaço duplo na S6 (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "invoca uma garça branca",
+        "troca": "invoca um Arauto Ebúrneo",
+        "motivo": "Ivory Herald no inglês do Circuito e da S6; a S6 já diz \"Arauto Ebúrneo\"."
       }
     ]
   }

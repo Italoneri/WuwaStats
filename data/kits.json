@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T00:53:30+00:00"
+    "importado_em": "2026-11-07T01:48:22+00:00"
   },
   "kits": {
     "Aalto": {
@@ -116494,7 +116494,7 @@
             ],
             [
               {
-                "texto": "O boneco \"Ipsicorda\" causa ",
+                "texto": "O fantoche \"Ipsicorda\" causa ",
                 "estilo": "normal"
               },
               {
@@ -123391,7 +123391,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", removendo-a e, em seguida invoca uma garça branca para atacar o alvo, causando ",
+                "texto": ", removendo-a e, em seguida invoca um Arauto Ebúrneo para atacar o alvo, causando ",
                 "estilo": "normal"
               },
               {
@@ -123469,7 +123469,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", removendo-a e, em seguida invoca uma garça branca para atacar o alvo, causando mais ",
+                "texto": ", removendo-a e, em seguida invoca um Arauto Ebúrneo para atacar o alvo, causando mais ",
                 "estilo": "normal"
               },
               {
