@@ -19,6 +19,15 @@ def test_corrigir_troca_trecho_e_marca_usada() -> None:
     assert usadas == {0}
 
 
+@pytest.mark.parametrize(("chave", "esperado"), [("Fase_3", "Fase 3"), ("Fase_2", "Fase 2"), (None, "Fase 2")])
+def test_corrigir_com_chave_so_troca_o_texto_daquele_id(chave: str | None, esperado: str) -> None:
+    correcoes = [Correcao(trecho="Fase 2", troca="Fase 3", motivo="repetido", chave="Fase_3")]
+
+    texto, _ = corrigir("Fase 2", correcoes, chave)
+
+    assert texto == esperado
+
+
 def test_ler_correcoes_por_personagem(tmp_path) -> None:
     conteudo = {
         "_meta": {"descricao": "x"},

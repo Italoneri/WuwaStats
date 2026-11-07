@@ -29,6 +29,8 @@ class Correcao(BaseModel):
     trecho: str
     troca: str
     motivo: str
+    # Id do textmap quando o mesmo trecho aparece em textos idênticos e só um deles está errado.
+    chave: str | None = None
 
 
 class _ArquivoCorrecoes(BaseModel):
@@ -42,9 +44,12 @@ def ler_correcoes(data_dir: Path) -> dict[str, list[Correcao]]:
     return _ArquivoCorrecoes.model_validate_json(caminho.read_bytes()).correcoes
 
 
-def corrigir(texto: str, correcoes: Sequence[Correcao]) -> tuple[str, set[int]]:
-    """Texto com as trocas aplicadas e os índices das correções que acharam o trecho."""
-    usadas = {i for i, correcao in enumerate(correcoes) if correcao.trecho in texto}
+def corrigir(texto: str, correcoes: Sequence[Correcao], chave: str | None = None) -> tuple[str, set[int]]:
+    """Texto com as trocas aplicadas e os índices das correções que acharam o trecho.
+
+    Correção com `chave` só vale para o texto de mesmo id no textmap.
+    """
+    usadas = {i for i, correcao in enumerate(correcoes) if correcao.trecho in texto and correcao.chave in (None, chave)}
     for i in sorted(usadas):
         texto = texto.replace(correcoes[i].trecho, correcoes[i].troca)
     return texto, usadas

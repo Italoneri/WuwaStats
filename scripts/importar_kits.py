@@ -218,7 +218,7 @@ class _Textos:
     def __call__(self, chave: str) -> str:
         texto = self.tabelas.textos_pt.get(chave, "").strip()
         if texto:
-            corrigido, usadas = corrigir(texto, self.correcoes)
+            corrigido, usadas = corrigir(texto, self.correcoes, chave)
             self.correcoes_usadas |= usadas
             return corrigido
         self.avisos.append(f"{chave} sem PT; usado o texto em inglês")
