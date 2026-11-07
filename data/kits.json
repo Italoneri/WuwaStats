@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T00:46:23+00:00"
+    "importado_em": "2026-11-07T00:49:36+00:00"
   },
   "kits": {
     "Aalto": {
@@ -60143,7 +60143,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ". Usar esta skill concede a Lucilla 30% Bônus de Dano de Habilidade de Eco por 10s.",
+                "texto": ". Usar esta habilidade concede a Lucilla 30% Bônus de Dano de Habilidade de Eco por 10s.",
                 "estilo": "normal"
               }
             ],
@@ -61814,7 +61814,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " bem-sucedido para atacar o alvo, causando ",
+                "texto": " bem-sucedida para atacar o alvo, causando ",
                 "estilo": "normal"
               },
               {
@@ -62300,7 +62300,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " bem-sucedido para atacar o alvo, causando ",
+                "texto": " bem-sucedida para atacar o alvo, causando ",
                 "estilo": "normal"
               },
               {
@@ -64503,7 +64503,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Programa de Contramedida",
+                "texto": "Programa de Contramedidas",
                 "estilo": "destaque"
               },
               {
@@ -64531,7 +64531,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Programa de Contramedida",
+                "texto": "Programa de Contramedidas",
                 "estilo": "destaque"
               },
               {
@@ -64539,7 +64539,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Programa de Contramedida",
+                "texto": "Programa de Contramedidas",
                 "estilo": "destaque"
               },
               {
@@ -64553,7 +64553,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Programa de Contramedida",
+                "texto": "Programa de Contramedidas",
                 "estilo": "destaque"
               },
               {
@@ -64738,7 +64738,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " do alvo estiver cheio, Lucy pode lançar",
+                "texto": " do alvo estiver cheio, Lucy pode lançar ",
                 "estilo": "normal"
               },
               {
@@ -64780,7 +64780,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Resposta de Hack - Falha de Dados",
+                "texto": "Resposta de Hack - Colapso de Dados",
                 "estilo": "destaque"
               },
               {
@@ -64987,7 +64987,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Liberação de Ressonância - Mergulho Profundo na Rede Antiga",
+                "texto": "Liberação de Ressonância - Mergulho nas Profundezas da Rede",
                 "estilo": "destaque"
               },
               {
@@ -65083,7 +65083,7 @@
             ],
             [
               {
-                "texto": "Circuito Ressonante - Profundezas do Muro Negro",
+                "texto": "Circuito Ressonante - Profundezas de Blackwall",
                 "estilo": "destaque"
               },
               {
@@ -65725,7 +65725,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", a Habilidade de Ressonância é substituído por  Avanço. Consome VIG para desferir um ataque com garras, mudando para o ",
+                "texto": ", a Habilidade de Ressonância é substituída por Avanço. Consome VIG para desferir um ataque com garras, mudando para o ",
                 "estilo": "normal"
               },
               {
@@ -65743,7 +65743,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Avançar",
+                "texto": "Avanço",
                 "estilo": "destaque"
               },
               {
@@ -65767,7 +65767,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", a Habilidade de Ressonância é substituído por Rebote. Consome VIG para dar um salto mortal pra trás e atacar o alvo, mudando para ",
+                "texto": ", a Habilidade de Ressonância é substituída por Rebote. Consome VIG para dar um salto mortal pra trás e atacar o alvo, mudando para ",
                 "estilo": "normal"
               },
               {
@@ -66163,7 +66163,7 @@
             ],
             [
               {
-                "texto": "Lumi pode acumular até 100 Faíscas de Luz Vermelha.Lumi obtém Faísca de Luz Vermelha nas seguintes condições:Quando o ATQ Normal ",
+                "texto": "Lumi pode acumular até 100 Faíscas de Luz Vermelha. Lumi obtém Faísca de Luz Vermelha nas seguintes condições:Quando o ATQ Normal ",
                 "estilo": "normal"
               },
               {
@@ -68252,7 +68252,7 @@
             ],
             [
               {
-                "texto": "Ressonante com ",
+                "texto": "Ressonantes com ",
                 "estilo": "normal"
               },
               {
@@ -68306,7 +68306,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " fica disponível. Cada uma ",
+                "texto": " fica disponível. Cada ",
                 "estilo": "normal"
               },
               {
@@ -78201,7 +78201,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " da Liberação de Ressonância,  causando ",
+                "texto": " da Liberação de Ressonância, causando ",
                 "estilo": "normal"
               },
               {
@@ -78990,7 +78990,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " é substituído pelo",
+                "texto": " é substituído pelo ",
                 "estilo": "normal"
               },
               {
@@ -79390,7 +79390,13 @@
                 "estilo": "spectro"
               },
               {
-                "texto": " em alvos próximos igual a 528.41% do ATQ de Phoebe.- ",
+                "texto": " em alvos próximos igual a 528.41% do ATQ de Phoebe.",
+                "estilo": "normal"
+              }
+            ],
+            [
+              {
+                "texto": "- ",
                 "estilo": "normal"
               },
               {
@@ -79398,7 +79404,13 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ": Aumenta o Multiplicador de Dano em 255%.- ",
+                "texto": ": Aumenta o Multiplicador de Dano em 255%.",
+                "estilo": "normal"
+              }
+            ],
+            [
+              {
+                "texto": "- ",
                 "estilo": "normal"
               },
               {
@@ -79577,7 +79589,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Aurora da Iluminação ",
+                "texto": "Aurora da Iluminação",
                 "estilo": "destaque"
               },
               {
@@ -79786,7 +79798,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " são reduzidos por 2s adicionais. Este efeito pode ser aplicado em até 12 alvos por cada ",
+                "texto": " é reduzida por 2s adicionais. Este efeito pode ser aplicado em até 12 alvos por cada ",
                 "estilo": "normal"
               },
               {
@@ -81252,7 +81264,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Ataque Aprimorado: Hécate - Sopros",
+                "texto": "ATQ Aprimorado: Hécate - Sopros",
                 "estilo": "destaque"
               },
               {
@@ -81918,7 +81930,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " ao entrar em batalha. Após sair do estado de combate, este efeito não pode ser ativado por 4s. A cada 1 acúmulos de ",
+                "texto": " ao entrar em batalha. Após sair do estado de combate, este efeito não pode ser ativado por 4s. A cada 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -83102,7 +83114,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " , a ",
+                "texto": ", a ",
                 "estilo": "normal"
               },
               {
@@ -83718,7 +83730,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Energia de Voo sobre Espada",
+                "texto": "Energia de Voo sobre a Espada",
                 "estilo": "destaque"
               },
               {
@@ -83874,7 +83886,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Energia de Voo sobre Espada",
+                "texto": "Energia de Voo sobre a Espada",
                 "estilo": "destaque"
               },
               {
@@ -85277,7 +85289,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Energia de Voo sobre Espada",
+                "texto": "Energia de Voo sobre a Espada",
                 "estilo": "destaque"
               },
               {
@@ -87572,7 +87584,7 @@
                 "estilo": "electro"
               },
               {
-                "texto": " adicional é causado ao realizar uma Esquiva bem-sucedido durante ",
+                "texto": " adicional é causado ao realizar uma Esquiva bem-sucedida durante ",
                 "estilo": "normal"
               },
               {
@@ -88340,7 +88352,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", que consome todo(s) ",
+                "texto": ", que consome todo o ",
                 "estilo": "normal"
               },
               {
@@ -88426,7 +88438,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Ataque Pesado - Coragem",
+                "texto": "Ataque Pesado - Bravura",
                 "estilo": "destaque"
               },
               {
@@ -88442,7 +88454,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Mantenha o Ataque Normal pressionado ",
+                "texto": "Mantenha o Ataque Normal pressionado",
                 "estilo": "destaque"
               },
               {
@@ -88454,7 +88466,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", que consome toda a ",
+                "texto": ", que consome todo o ",
                 "estilo": "normal"
               },
               {
@@ -88628,7 +88640,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade Intro - É Hora de Arrebentar!",
+                "texto": "Habilidade Intro - Ei, É Hora de Arrebentar!",
                 "estilo": "destaque"
               },
               {
@@ -89005,7 +89017,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " remove todos os ",
+                "texto": " remove toda a ",
                 "estilo": "normal"
               },
               {
@@ -89813,7 +89825,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade Intro - É Hora de Arrebentar!",
+                "texto": "Habilidade Intro - Ei, É Hora de Arrebentar!",
                 "estilo": "destaque"
               },
               {
@@ -90316,7 +90328,7 @@
           "descricao": [
             [
               {
-                "texto": "Roccia materializa sua criatividade na realidade para puxar alvos próximos e causar  ",
+                "texto": "Roccia materializa sua criatividade na realidade para puxar alvos próximos e causar ",
                 "estilo": "normal"
               },
               {
@@ -93465,7 +93477,7 @@
                 "estilo": "havoc"
               },
               {
-                "texto": ", e as 1 últimas são ",
+                "texto": ", e a última é ",
                 "estilo": "normal"
               },
               {
@@ -93557,7 +93569,7 @@
                 "estilo": "aero"
               },
               {
-                "texto": " e restaurando o HP de todos os Ressonantes da equipe, e as 1 últimas são ",
+                "texto": " e restaurando o HP de todos os Ressonantes da equipe, e a última é ",
                 "estilo": "normal"
               },
               {
@@ -94181,7 +94193,7 @@
           "descricao": [
             [
               {
-                "texto": "Ataca e o alvo, causando ",
+                "texto": "Ataca o alvo, causando ",
                 "estilo": "normal"
               },
               {
@@ -94251,7 +94263,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " é Removido. Quando o Ressonante com ",
+                "texto": " é removido. Quando o Ressonante com ",
                 "estilo": "normal"
               },
               {
@@ -94281,7 +94293,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " e limpa todos os ",
+                "texto": " e limpa toda a ",
                 "estilo": "normal"
               },
               {
@@ -95777,7 +95789,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", a RES a caos do inimigo é reduzida em 10% por 20s.",
+                "texto": ", a RES Aniquilante do inimigo é reduzida em 10% por 20s.",
                 "estilo": "normal"
               }
             ]
@@ -96436,7 +96448,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": " Pós-Melodia",
+                "texto": "Pós-Melodia",
                 "estilo": "destaque"
               },
               {

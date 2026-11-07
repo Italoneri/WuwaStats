@@ -381,6 +381,222 @@
         "troca": "e diminui {8} acúmulo",
         "motivo": "\"1 acúmulos\": o parâmetro vale 1."
       }
+    ],
+    "Lucilla": [
+      {
+        "trecho": "Usar esta skill concede",
+        "troca": "Usar esta habilidade concede",
+        "motivo": "\"skill\" em inglês no texto PT."
+      }
+    ],
+    "Lucy": [
+      {
+        "trecho": "Circuito Ressonante - Profundezas do Muro Negro",
+        "troca": "Circuito Ressonante - Profundezas de Blackwall",
+        "motivo": "O Circuito Ressonante se chama \"Profundezas de Blackwall\"; a S6 dizia \"Profundezas do Muro Negro\"."
+      },
+      {
+        "trecho": "Mergulho Profundo na Rede Antiga",
+        "troca": "Mergulho nas Profundezas da Rede",
+        "motivo": "A Liberação (Dive) é \"Mergulho nas Profundezas da Rede\" no resto do kit."
+      },
+      {
+        "trecho": "Programa de Contramedida</color>",
+        "troca": "Programa de Contramedidas</color>",
+        "motivo": "O efeito tem o nome da Habilidade Outro, \"Programa de Contramedidas\" (Countermeasure Program)."
+      },
+      {
+        "trecho": "Resposta de Hack - Falha de Dados",
+        "troca": "Resposta de Hack - Colapso de Dados",
+        "motivo": "Data Crash é \"Colapso de Dados\" (nome da Ruptura de Sintonia e das outras menções)."
+      },
+      {
+        "trecho": "Lucy pode lançar<color=Highlight>",
+        "troca": "Lucy pode lançar <color=Highlight>",
+        "motivo": "Faltava espaço: \"lançarRuptura\"."
+      },
+      {
+        "trecho": "<color=Highlight>Esquiva</color> bem-sucedido",
+        "troca": "<color=Highlight>Esquiva</color> bem-sucedida",
+        "motivo": "Concordância: Esquiva bem-sucedida."
+      }
+    ],
+    "Lumi": [
+      {
+        "trecho": "a Habilidade de Ressonância é substituído por  Avanço",
+        "troca": "a Habilidade de Ressonância é substituída por Avanço",
+        "motivo": "Concordância e espaço duplo."
+      },
+      {
+        "trecho": "a Habilidade de Ressonância é substituído por Rebote",
+        "troca": "a Habilidade de Ressonância é substituída por Rebote",
+        "motivo": "Concordância: a Habilidade é substituída."
+      },
+      {
+        "trecho": "Faíscas de Luz Vermelha.Lumi",
+        "troca": "Faíscas de Luz Vermelha. Lumi",
+        "motivo": "Faltava espaço depois do ponto."
+      },
+      {
+        "trecho": "<color=Highlight>Avançar</color>",
+        "troca": "<color=Highlight>Avanço</color>",
+        "motivo": "O golpe se chama \"Avanço\" (título e multiplicadores)."
+      }
+    ],
+    "Lupa": [
+      {
+        "trecho": "\nRessonante com <color=Highlight>Caçada em Grupo</color> aumentam",
+        "troca": "\nRessonantes com <color=Highlight>Caçada em Grupo</color> aumentam",
+        "motivo": "Concordância: \"Ressonante ... aumentam\"."
+      },
+      {
+        "trecho": "Cada uma <color=Highlight>Caçada em Grupo</color>",
+        "troca": "Cada <color=Highlight>Caçada em Grupo</color>",
+        "motivo": "\"Cada uma Caçada em Grupo\"."
+      }
+    ],
+    "Mortefi": [
+      {
+        "trecho": "da Liberação de Ressonância,  causando",
+        "troca": "da Liberação de Ressonância, causando",
+        "motivo": "Espaço duplo."
+      }
+    ],
+    "Phoebe": [
+      {
+        "trecho": "é substituído pelo<color=Highlight>",
+        "troca": "é substituído pelo <color=Highlight>",
+        "motivo": "Faltava espaço: \"peloATQ\"."
+      },
+      {
+        "trecho": "do ATQ de Phoebe.- <color=Highlight>Absolvição",
+        "troca": "do ATQ de Phoebe.\n- <color=Highlight>Absolvição",
+        "motivo": "Itens da lista do Outro grudados no ponto final; o inglês quebra a linha aí."
+      },
+      {
+        "trecho": "Dano em {1}.- <color=Highlight>Confissão",
+        "troca": "Dano em {1}.\n- <color=Highlight>Confissão",
+        "motivo": "Mesmo caso no item Confissão."
+      },
+      {
+        "trecho": "Aurora da Iluminação </color>",
+        "troca": "Aurora da Iluminação</color>",
+        "motivo": "Espaço duplo (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "Anel de Espelhos</te> são reduzidos por",
+        "troca": "Anel de Espelhos</te> é reduzida por",
+        "motivo": "Concordância: \"A velocidade dos alvos ... são reduzidos\"."
+      }
+    ],
+    "Phrolova": [
+      {
+        "trecho": "A cada {2} acúmulos",
+        "troca": "A cada {2} acúmulo",
+        "motivo": "\"A cada 1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "Ataque Aprimorado: Hécate - Sopros",
+        "troca": "ATQ Aprimorado: Hécate - Sopros",
+        "motivo": "O resto do kit abrevia: \"ATQ Aprimorado: Hécate - Sopros\"."
+      }
+    ],
+    "Qingxiao": [
+      {
+        "trecho": "Espada das Cordas</color> ,",
+        "troca": "Espada das Cordas</color>,",
+        "motivo": "Espaço antes da vírgula."
+      },
+      {
+        "trecho": "Energia de Voo sobre Espada",
+        "troca": "Energia de Voo sobre a Espada",
+        "motivo": "O estado é \"Voo sobre a Espada\" no resto do kit."
+      }
+    ],
+    "Rebecca": [
+      {
+        "trecho": "Ataque Pesado - Coragem",
+        "troca": "Ataque Pesado - Bravura",
+        "motivo": "Guts é \"Bravura\" no resto do kit (Ataque Pesado - Bang-bang-bang!: Bravura)."
+      },
+      {
+        "trecho": "consome todo(s) <color=Highlight><te href=130805>Fervor",
+        "troca": "consome todo o <color=Highlight><te href=130805>Fervor",
+        "motivo": "\"todo(s) Fervor\": Fervor é um recurso só."
+      },
+      {
+        "trecho": "consome toda a <color=Highlight><te href=130805>Fervor",
+        "troca": "consome todo o <color=Highlight><te href=130805>Fervor",
+        "motivo": "Concordância: o Fervor."
+      },
+      {
+        "trecho": "ao realizar uma Esquiva bem-sucedido",
+        "troca": "ao realizar uma Esquiva bem-sucedida",
+        "motivo": "Concordância: Esquiva bem-sucedida."
+      },
+      {
+        "trecho": "Habilidade Intro - É Hora de Arrebentar!",
+        "troca": "Habilidade Intro - Ei, É Hora de Arrebentar!",
+        "motivo": "A Intro é \"Ei, É Hora de Arrebentar!\" (Yo, It's Big Boomin' Time!); sem o \"Ei,\" vira o nome da Habilidade de Ressonância."
+      },
+      {
+        "trecho": "Ataque Normal pressionado </color>",
+        "troca": "Ataque Normal pressionado</color>",
+        "motivo": "Espaço duplo (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "remove todos os <color=Highlight><te href=130803>Sobrecarga</te></color>",
+        "troca": "remove toda a <color=Highlight><te href=130803>Sobrecarga</te></color>",
+        "motivo": "Concordância: \"todos os Sobrecarga\"."
+      }
+    ],
+    "Roccia": [
+      {
+        "trecho": "e causar  <color=Dark>",
+        "troca": "e causar <color=Dark>",
+        "motivo": "Espaço duplo."
+      }
+    ],
+    "Rover: Electro": [
+      {
+        "trecho": "e as {8} últimas são",
+        "troca": "e a última é",
+        "motivo": "\"as 1 últimas são\": o parâmetro vale 1 (só o último golpe)."
+      },
+      {
+        "trecho": "e as {12} últimas são",
+        "troca": "e a última é",
+        "motivo": "Mesmo caso."
+      },
+      {
+        "trecho": "Ataca e o alvo,",
+        "troca": "Ataca o alvo,",
+        "motivo": "\"e\" sobrando na Intro."
+      },
+      {
+        "trecho": "é Removido.",
+        "troca": "é removido.",
+        "motivo": "Maiúscula no meio da frase."
+      },
+      {
+        "trecho": "limpa todos os <color=Highlight><te href=130902>Ira do Trovão",
+        "troca": "limpa toda a <color=Highlight><te href=130902>Ira do Trovão",
+        "motivo": "Concordância: \"todos os Ira do Trovão\"."
+      }
+    ],
+    "Rover: Havoc": [
+      {
+        "trecho": "a RES a caos do inimigo",
+        "troca": "a RES Aniquilante do inimigo",
+        "motivo": "Havoc é \"Aniquilante\" no PT do jogo; \"RES a caos\" era tradução literal."
+      }
+    ],
+    "Rover: Spectro": [
+      {
+        "trecho": "ATQ Pesado <color=Highlight> Pós-Melodia",
+        "troca": "ATQ Pesado <color=Highlight>Pós-Melodia",
+        "motivo": "Espaço duplo (espaço dentro da marcação)."
+      }
     ]
   }
 }
