@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T00:49:36+00:00"
+    "importado_em": "2026-11-07T00:53:30+00:00"
   },
   "kits": {
     "Aalto": {
@@ -10221,11 +10221,9 @@
               {
                 "texto": "ATQ Normal",
                 "estilo": "destaque"
-              }
-            ],
-            [
+              },
               {
-                "texto": "ou a Habilidade de Ressonância ",
+                "texto": " ou a Habilidade de Ressonância ",
                 "estilo": "normal"
               },
               {
@@ -97424,7 +97422,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Vista Criogênico",
+                "texto": "Olhar Criogênico",
                 "estilo": "destaque"
               },
               {
@@ -98025,7 +98023,7 @@
           "descricao": [
             [
               {
-                "texto": "Após a detonação de  um ",
+                "texto": "Após a detonação de um ",
                 "estilo": "normal"
               },
               {
@@ -98682,7 +98680,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ". Dentro de um determinado tempo, pressione o",
+                "texto": ". Dentro de um determinado tempo, pressione o ",
                 "estilo": "normal"
               },
               {
@@ -98953,7 +98951,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", a Taxa CRIT dos aliados próximos aumenta: cada 0.2% de Regen. de Energia da Guardiã da Costa é convertida em 0.01% de aumento na Taxa CRIT, até um máximo de12.5%.",
+                "texto": ", a Taxa CRIT dos aliados próximos aumenta: cada 0.2% de Regen. de Energia da Guardiã da Costa é convertida em 0.01% de aumento na Taxa CRIT, até um máximo de 12.5%.",
                 "estilo": "normal"
               }
             ],
@@ -98963,7 +98961,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " tem todos os efeitos do ",
+                "texto": " tem todos os efeitos da ",
                 "estilo": "normal"
               },
               {
@@ -100466,7 +100464,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Esquema das Runas",
+                "texto": "ATQ Pesado: Esquema de Runas",
                 "estilo": "destaque"
               },
               {
@@ -100694,7 +100692,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Esquema das Runas",
+                "texto": "ATQ Pesado: Esquema de Runas",
                 "estilo": "destaque"
               },
               {
@@ -100770,7 +100768,7 @@
             ],
             [
               {
-                "texto": "Quando Sigrika tiver  100 ",
+                "texto": "Quando Sigrika tiver 100 ",
                 "estilo": "normal"
               },
               {
@@ -100952,7 +100950,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", Sigrika pode acumular2 Runas adicionais.",
+                "texto": ", Sigrika pode acumular 2 Runas adicionais.",
                 "estilo": "normal"
               }
             ],
@@ -101075,7 +101073,7 @@
           ],
           "multiplicadores": [
             {
-              "nome": "Dano de ATQ Pesado: Esquema das Runas",
+              "nome": "Dano de ATQ Pesado: Esquema de Runas",
               "valores": [
                 "66.65%",
                 "72.12%",
@@ -101477,7 +101475,7 @@
             ],
             [
               {
-                "texto": "Quando um Ressonante equipe usa Habilidades de Eco, reduz a velocidade do alvo e consome 1 acúmulo de ",
+                "texto": "Quando um Ressonante da equipe usa Habilidades de Eco, reduz a velocidade do alvo e consome 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -101697,7 +101695,7 @@
             ],
             [
               {
-                "texto": "Se a Regen. de Energia de Sigrika exceder 125%,  cada 1% de Regen. de Energia excedente aumenta o Bônus de Dano de Habilidade de Eco em 2%, até um máximo de 50%.",
+                "texto": "Se a Regen. de Energia de Sigrika exceder 125%, cada 1% de Regen. de Energia excedente aumenta o Bônus de Dano de Habilidade de Eco em 2%, até um máximo de 50%.",
                 "estilo": "normal"
               }
             ]
@@ -102787,7 +102785,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " dura 15s e remove todo o ",
+                "texto": " dura 15s e remove toda a ",
                 "estilo": "normal"
               },
               {
@@ -103311,7 +103309,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Ressonância: Chuva Purificadora ",
+                "texto": "Habilidade de Ressonância: Chuva Purificadora",
                 "estilo": "destaque"
               },
               {
@@ -103319,7 +103317,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": " Mensagem das Flores",
+                "texto": "Mensagem das Flores",
                 "estilo": "destaque"
               },
               {
@@ -103341,7 +103339,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": " Mensagem das Flores ",
+                "texto": "Mensagem das Flores",
                 "estilo": "destaque"
               },
               {
@@ -104138,7 +104136,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " estiver ativo, será possível realizaro 3º ",
+                "texto": " estiver ativo, será possível realizar o 3º ",
                 "estilo": "normal"
               },
               {
@@ -104196,7 +104194,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Outro: Águas Ondulantes",
+                "texto": "Habilidade Outro - Águas Ondulantes",
                 "estilo": "destaque"
               },
               {
@@ -104355,7 +104353,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " restauram adicionalmente 18 de Energia de Concerto e  13 de Energia de Ressonância. Ao atingir o alvo, aumenta a Taxa CRIT em 80% e o Dano Criogênico causado em 240%. É possível ativar este efeito uma vez a cada 25s.",
+                "texto": " restauram adicionalmente 18 de Energia de Concerto e 13 de Energia de Ressonância. Ao atingir o alvo, aumenta a Taxa CRIT em 80% e o Dano Criogênico causado em 240%. É possível ativar este efeito uma vez a cada 25s.",
                 "estilo": "normal"
               }
             ]
@@ -106079,7 +106077,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " e você trocar para Suoming, ao usar uma Habilidade Intro, Suoming faz a Resposta de Uníssono, e os Ressonantes da equipe ganham 1 acúmulos de ",
+                "texto": " e você trocar para Suoming, ao usar uma Habilidade Intro, Suoming faz a Resposta de Uníssono, e os Ressonantes da equipe ganham 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -106093,7 +106091,7 @@
             ],
             [
               {
-                "texto": "Suoming pode acumular no máximo 1 acúmulos de ",
+                "texto": "Suoming pode acumular no máximo 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -107528,7 +107526,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", obtém 1 acúmulos de ",
+                "texto": ", obtém 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -108090,7 +108088,7 @@
                 "estilo": "havoc"
               },
               {
-                "texto": " aos alvos próximos, gerando 3 Escudo Rochafirme e curando a si mesma.",
+                "texto": " aos alvos próximos, gerando 3 de Escudo Rochafirme e curando a si mesma.",
                 "estilo": "normal"
               }
             ],
@@ -108357,7 +108355,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " existir, quando o Ressonante ativo for atacado, 1 Escudo Rochafirme será consumido para recuperar Calibre Resolutivo.",
+                "texto": " existir, quando o Ressonante ativo for atacado, 1 de Escudo Rochafirme será consumido para recuperar Calibre Resolutivo.",
                 "estilo": "normal"
               }
             ],
@@ -109327,7 +109325,7 @@
             ],
             [
               {
-                "texto": "ATQ Pesado: Botão de Florestrela",
+                "texto": "ATQ Pesado: Botões de Florestrela",
                 "estilo": "destaque"
               },
               {
@@ -109399,7 +109397,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", logo depois de lançar o",
+                "texto": ", logo depois de lançar o ",
                 "estilo": "normal"
               },
               {
@@ -110063,7 +110061,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Botão de Florestrela",
+                "texto": "Botões de Florestrela",
                 "estilo": "destaque"
               },
               {
@@ -110184,7 +110182,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Esquivaa",
+                "texto": "Esquiva",
                 "estilo": "destaque"
               },
               {
@@ -110523,7 +110521,7 @@
                 "estilo": "electro"
               },
               {
-                "texto": " considerando como Dano de Liberação de Ressonância.",
+                "texto": " considerado como Dano de Liberação de Ressonância.",
                 "estilo": "normal"
               }
             ],
@@ -110575,7 +110573,7 @@
                 "estilo": "electro"
               },
               {
-                "texto": " considerando como Dano de Liberação de Ressonância.",
+                "texto": " considerado como Dano de Liberação de Ressonância.",
                 "estilo": "normal"
               }
             ],
@@ -111348,7 +111346,7 @@
           "descricao": [
             [
               {
-                "texto": "Ao lançar a Habilidade de Ressonância ou Liberação de Ressonância",
+                "texto": "Ao lançar a Habilidade de Ressonância ou Liberação de Ressonância ",
                 "estilo": "normal"
               },
               {
@@ -111532,10 +111530,6 @@
           "descricao": [
             [
               {
-                "texto": "O ",
-                "estilo": "normal"
-              },
-              {
                 "texto": "ATQ Básico",
                 "estilo": "subtitulo"
               }
@@ -111586,7 +111580,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": " ATQ Básico",
+                "texto": "ATQ Básico",
                 "estilo": "destaque"
               },
               {
@@ -111921,7 +111915,7 @@
             ],
             [
               {
-                "texto": "Quando Yangyang tem 3 Melodias, após lançar um",
+                "texto": "Quando Yangyang tem 3 Melodias, após lançar um ",
                 "estilo": "normal"
               },
               {
@@ -111929,7 +111923,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " ou um",
+                "texto": " ou um ",
                 "estilo": "normal"
               },
               {
@@ -111937,7 +111931,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", pode ativar o",
+                "texto": ", pode ativar o ",
                 "estilo": "normal"
               },
               {
@@ -113373,7 +113367,7 @@
             ],
             [
               {
-                "texto": "Logo após lançar esta habilidade, uma Esquiva pode ser ativada. Cada Esquiva  consome 50 de ",
+                "texto": "Logo após lançar esta habilidade, uma Esquiva pode ser ativada. Cada Esquiva consome 50 de ",
                 "estilo": "normal"
               },
               {
@@ -114209,7 +114203,7 @@
                 "estilo": "havoc"
               },
               {
-                "texto": ",  o Dano causado é considerado como ",
+                "texto": ", o Dano causado é considerado como ",
                 "estilo": "normal"
               },
               {
@@ -114217,7 +114211,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " . Ao liberar o ",
+                "texto": ". Ao liberar o ",
                 "estilo": "normal"
               },
               {
@@ -116618,7 +116612,7 @@
             ],
             [
               {
-                "texto": "Use a Habilidade de Ressonância após lançar a ",
+                "texto": "Use a Habilidade de Ressonância após lançar o ",
                 "estilo": "normal"
               },
               {
@@ -116942,7 +116936,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Marca de Punição",
+                "texto": "Marca de Castigo",
                 "estilo": "destaque"
               },
               {
@@ -116962,7 +116956,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " Causa Dano de Habilidade de Ressonância.",
+                "texto": " causa Dano de Habilidade de Ressonância.",
                 "estilo": "normal"
               }
             ],
@@ -119816,7 +119810,7 @@
             ],
             [
               {
-                "texto": "Papra Obter Prontidão",
+                "texto": "Para Obter Prontidão",
                 "estilo": "subtitulo"
               }
             ],
@@ -121420,7 +121414,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", o dano recebido é reduzido em 100%, Zani reduz a velocidade dos alvos próximos, consome Chamas e realiza o  ",
+                "texto": ", o dano recebido é reduzido em 100%, Zani reduz a velocidade dos alvos próximos, consome Chamas e realiza o ",
                 "estilo": "normal"
               },
               {
@@ -121436,7 +121430,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " . O dano recebido por Zani nos próximos é reduzido em 30% por 2s.",
+                "texto": ". O dano recebido por Zani nos próximos é reduzido em 30% por 2s.",
                 "estilo": "normal"
               }
             ],
@@ -122968,7 +122962,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": "  estiver mais de 60, consome 60 de ",
+                "texto": " estiver acima de 60, consome 60 de ",
                 "estilo": "normal"
               },
               {
@@ -123351,7 +123345,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Impressão Fantasmagórica - Meio",
+                "texto": "Impressão Fantasmagórica: Centro",
                 "estilo": "destaque"
               },
               {
@@ -123625,7 +123619,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Grous de Tinta",
+                "texto": "Grous da Tinta",
                 "estilo": "destaque"
               },
               {
@@ -123669,15 +123663,15 @@
             ],
             [
               {
-                "texto": "-Uma ",
+                "texto": "-Um ",
                 "estilo": "normal"
               },
               {
-                "texto": "Grou de Tinta",
+                "texto": "Grou da Tinta",
                 "estilo": "destaque"
               },
               {
-                "texto": " é invocada a cada segundo durante 3s após causar dano. Este efeito pode ser ativado uma vez por segundo. O dano causado por um Grou da Tinta não ativará este efeito.",
+                "texto": " é invocado a cada segundo durante 3s após causar dano. Este efeito pode ser ativado uma vez por segundo. O dano causado por um Grou da Tinta não ativará este efeito.",
                 "estilo": "normal"
               }
             ],
@@ -123969,7 +123963,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " invocadas pela Liberação de Ressonância ",
+                "texto": " invocados pela Liberação de Ressonância ",
                 "estilo": "normal"
               },
               {
@@ -124056,7 +124050,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " invocadas pela Liberação de Ressonância ",
+                "texto": " invocados pela Liberação de Ressonância ",
                 "estilo": "normal"
               },
               {
@@ -124072,7 +124066,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " adicional para realizar um ATQ Coordenado, causando dano igual a 140% do dano de Grou da Tinta, considerado como Dano de ATQ Básico. Este dano causado não ativa o efeito de invocação de Grou da Tinta..",
+                "texto": " adicional para realizar um ATQ Coordenado, causando dano igual a 140% do dano de Grou da Tinta, considerado como Dano de ATQ Básico. Este dano causado não ativa o efeito de invocação de Grou da Tinta.",
                 "estilo": "normal"
               }
             ]
@@ -124089,7 +124083,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": " Traço Genial",
+                "texto": "Traço Genial",
                 "estilo": "destaque"
               },
               {

@@ -106,6 +106,11 @@
         "trecho": "com ATQ Normal\n.",
         "troca": "com ATQ Normal.",
         "motivo": "Ponto final caiu numa linha própria no item de Bravo; o inglês do nanoka termina em \"Normal Attacks hit the target.\"."
+      },
+      {
+        "trecho": "<color=Highlight>ATQ Normal\n</color> ou",
+        "troca": "<color=Highlight>ATQ Normal</color> ou",
+        "motivo": "Quebra de linha dentro da marcação partia a frase do Em Chamas em \"ATQ Normal\" / \"ou\"."
       }
     ],
     "Buling": [
@@ -596,6 +601,274 @@
         "trecho": "ATQ Pesado <color=Highlight> Pós-Melodia",
         "troca": "ATQ Pesado <color=Highlight>Pós-Melodia",
         "motivo": "Espaço duplo (espaço dentro da marcação)."
+      }
+    ],
+    "Sanhua": [
+      {
+        "trecho": "<color=Highlight>Vista Criogênico</color>",
+        "troca": "<color=Highlight>Olhar Criogênico</color>",
+        "motivo": "A Liberação de Ressonância se chama \"Olhar Criogênico\"."
+      },
+      {
+        "trecho": "detonação de  um",
+        "troca": "detonação de um",
+        "motivo": "Espaço duplo."
+      }
+    ],
+    "Shorekeeper": [
+      {
+        "trecho": "pressione o<color=Highlight>",
+        "troca": "pressione o <color=Highlight>",
+        "motivo": "Faltava espaço: \"oBotão\"."
+      },
+      {
+        "trecho": "até um máximo de{2}",
+        "troca": "até um máximo de {2}",
+        "motivo": "Faltava espaço: \"de12.5%\"."
+      },
+      {
+        "trecho": "tem todos os efeitos do <color=Highlight>Dimensão",
+        "troca": "tem todos os efeitos da <color=Highlight>Dimensão",
+        "motivo": "Concordância: \"do Dimensão Estelar\"."
+      }
+    ],
+    "Sigrika": [
+      {
+        "trecho": "Quando Sigrika tiver  <SapTag",
+        "troca": "Quando Sigrika tiver <SapTag",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "pode acumular<SapTag",
+        "troca": "pode acumular <SapTag",
+        "motivo": "Faltava espaço: \"acumular2\"."
+      },
+      {
+        "trecho": "Quando um Ressonante equipe",
+        "troca": "Quando um Ressonante da equipe",
+        "motivo": "Faltava \"da\": \"Ressonante equipe\"."
+      },
+      {
+        "trecho": "exceder {5},  cada",
+        "troca": "exceder {5}, cada",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Esquema das Runas",
+        "troca": "Esquema de Runas",
+        "motivo": "O título do golpe é \"ATQ Pesado: Esquema de Runas\"; o texto alternava com \"das Runas\"."
+      }
+    ],
+    "Suisui": [
+      {
+        "trecho": "Chuva Purificadora </color>",
+        "troca": "Chuva Purificadora</color>",
+        "motivo": "Espaço duplo (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "<color=Highlight> <te href=111008>",
+        "troca": "<color=Highlight><te href=111008>",
+        "motivo": "Espaço duplo antes de Mensagem das Flores (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "remove todo o <color=Highlight><te href=111008>Mensagem das Flores",
+        "troca": "remove toda a <color=Highlight><te href=111008>Mensagem das Flores",
+        "motivo": "Concordância: a Mensagem das Flores."
+      },
+      {
+        "trecho": "Energia de Concerto e  {6}",
+        "troca": "Energia de Concerto e {6}",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Habilidade de Outro: Águas Ondulantes",
+        "troca": "Habilidade Outro - Águas Ondulantes",
+        "motivo": "O resto do kit diz \"Habilidade Outro - Águas Ondulantes\"."
+      },
+      {
+        "trecho": "realizaro 3º",
+        "troca": "realizar o 3º",
+        "motivo": "Palavras grudadas: \"realizaro\"."
+      },
+      {
+        "trecho": "Mensagem das Flores</te> </color>.",
+        "troca": "Mensagem das Flores</te></color>.",
+        "motivo": "Espaço antes do ponto (espaço dentro da marcação)."
+      }
+    ],
+    "Suoming": [
+      {
+        "trecho": "equipe ganham {2} acúmulos",
+        "troca": "equipe ganham {2} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "no máximo {4} acúmulos",
+        "troca": "no máximo {4} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      },
+      {
+        "trecho": "Dilacerante</color>, obtém {0} acúmulos",
+        "troca": "Dilacerante</color>, obtém {0} acúmulo",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1."
+      }
+    ],
+    "Taoqi": [
+      {
+        "trecho": "gerando {0} Escudo Rochafirme",
+        "troca": "gerando {0} de Escudo Rochafirme",
+        "motivo": "\"gerando 3 Escudo Rochafirme\"; o próprio kit diz \"{n} de Escudo Rochafirme é consumido\"."
+      },
+      {
+        "trecho": "{2} Escudo Rochafirme será",
+        "troca": "{2} de Escudo Rochafirme será",
+        "motivo": "Mesmo caso no Circuito."
+      }
+    ],
+    "Verina": [
+      {
+        "trecho": "lançar o<color=Highlight>",
+        "troca": "lançar o <color=Highlight>",
+        "motivo": "Faltava espaço: \"oATQ Pesado\"."
+      },
+      {
+        "trecho": "Botão de Florestrela",
+        "troca": "Botões de Florestrela",
+        "motivo": "O golpe se chama \"Botões de Florestrela\" no resto do kit."
+      }
+    ],
+    "Xiangli Yao": [
+      {
+        "trecho": "<color=Highlight>Esquivaa</color>",
+        "troca": "<color=Highlight>Esquiva</color>",
+        "motivo": "Erro de digitação: \"Esquivaa\"."
+      },
+      {
+        "trecho": "Liberação de Ressonância<color=Highlight>Modelo",
+        "troca": "Liberação de Ressonância <color=Highlight>Modelo",
+        "motivo": "Faltava espaço: \"RessonânciaModelo\"."
+      },
+      {
+        "trecho": "considerando como Dano",
+        "troca": "considerado como Dano",
+        "motivo": "\"considerando\" no lugar de \"considerado\"."
+      }
+    ],
+    "Yangyang": [
+      {
+        "trecho": "O <size=40><color=Title>ATQ Básico",
+        "troca": "<size=40><color=Title>ATQ Básico",
+        "motivo": "\"O \" solto antes do subtítulo ATQ Básico; o inglês começa direto no título."
+      },
+      {
+        "trecho": "Execute o <color=Highlight> ATQ Básico",
+        "troca": "Execute o <color=Highlight>ATQ Básico",
+        "motivo": "Espaço duplo (espaço dentro da marcação)."
+      },
+      {
+        "trecho": "lançar um<color=Highlight>",
+        "troca": "lançar um <color=Highlight>",
+        "motivo": "Faltava espaço: \"umATQ Pesado\"."
+      },
+      {
+        "trecho": "ou um<color=Highlight>",
+        "troca": "ou um <color=Highlight>",
+        "motivo": "Faltava espaço: \"umContra-ATQ\"."
+      },
+      {
+        "trecho": "ativar o<color=Highlight>",
+        "troca": "ativar o <color=Highlight>",
+        "motivo": "Faltava espaço: \"oGolpe Tempestuoso\"."
+      }
+    ],
+    "Yangyang: Xuanling": [
+      {
+        "trecho": "Cada Esquiva  consome",
+        "troca": "Cada Esquiva consome",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Dano Aniquilante</color>,  o Dano",
+        "troca": "Dano Aniquilante</color>, o Dano",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Dano de ATQ Pesado</color> .",
+        "troca": "Dano de ATQ Pesado</color>.",
+        "motivo": "Espaço antes do ponto."
+      }
+    ],
+    "Yinlin": [
+      {
+        "trecho": "Marca de Punição",
+        "troca": "Marca de Castigo",
+        "motivo": "Punishment Mark é \"Marca de Castigo\" nas outras menções."
+      },
+      {
+        "trecho": "</color> Causa Dano de Habilidade",
+        "troca": "</color> causa Dano de Habilidade",
+        "motivo": "Maiúscula no meio da frase."
+      },
+      {
+        "trecho": "lançar a <color=Highlight>Rugido Magnético",
+        "troca": "lançar o <color=Highlight>Rugido Magnético",
+        "motivo": "Concordância: o Rugido Magnético."
+      }
+    ],
+    "Yuanwu": [
+      {
+        "trecho": "Papra Obter Prontidão",
+        "troca": "Para Obter Prontidão",
+        "motivo": "Erro de digitação: \"Papra\"."
+      }
+    ],
+    "Zani": [
+      {
+        "trecho": "realiza o  <color",
+        "troca": "realiza o <color",
+        "motivo": "Espaço duplo."
+      },
+      {
+        "trecho": "Força de Vibração</te> .",
+        "troca": "Força de Vibração</te>.",
+        "motivo": "Espaço antes do ponto."
+      }
+    ],
+    "Zhezhi": [
+      {
+        "trecho": "Inspiração</te>  estiver mais de",
+        "troca": "Inspiração</te> estiver acima de",
+        "motivo": "Espaço duplo e \"estiver mais de 60\"."
+      },
+      {
+        "trecho": "Grou da Tinta..",
+        "troca": "Grou da Tinta.",
+        "motivo": "Ponto final duplicado."
+      },
+      {
+        "trecho": "Grous de Tinta",
+        "troca": "Grous da Tinta",
+        "motivo": "O termo é \"Grou da Tinta\" no resto do kit."
+      },
+      {
+        "trecho": "Uma <color=Highlight>Grou de Tinta</color> é invocada",
+        "troca": "Um <color=Highlight>Grou da Tinta</color> é invocado",
+        "motivo": "Mesmo termo, e Grou é masculino (como no título \"um Grou da Tinta será invocado\")."
+      },
+      {
+        "trecho": "Grous da Tinta</color> invocadas",
+        "troca": "Grous da Tinta</color> invocados",
+        "motivo": "Concordância: Grous invocados."
+      },
+      {
+        "trecho": "Impressão Fantasmagórica - Meio",
+        "troca": "Impressão Fantasmagórica: Centro",
+        "motivo": "Imprint - Middle aparece como \"Centro\" na outra menção (e com \":\" como Esquerda/Direita)."
+      },
+      {
+        "trecho": "<color=Highlight> Traço Genial",
+        "troca": "<color=Highlight>Traço Genial",
+        "motivo": "Espaço duplo na S6 (espaço dentro da marcação)."
       }
     ]
   }
