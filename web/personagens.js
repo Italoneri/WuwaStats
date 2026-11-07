@@ -97,7 +97,7 @@ function barraDeBusca(ativos) {
 function painelDeFiltros() {
   const unicos = (campo) => [...new Map(personagens.map((p) => [p[campo].chave, p[campo].nome])).entries()];
   const elementos = unicos("elemento").map(([chave, nome]) => ({ chave, nome, extra: el("span", { class: "dot", style: { background: elemento(chave).cor } }) }));
-  const armas = unicos("tipo_arma").map(([chave, nome]) => ({ chave, nome, extra: icone(iconeArma(chave), 16) }));
+  const armas = unicos("tipo_arma").map(([chave, nome]) => ({ chave, nome, extra: iconeArma(chave, 16) }));
   const raridades = [...new Set(personagens.map((p) => p.raridade))].sort((a, b) => b - a).map((r) => ({ chave: String(r), nome: `${r}★` }));
   return el(
     "div",
@@ -168,7 +168,7 @@ function cartao(p) {
       { class: `portrait${p.raridade === 5 ? " r5" : ""}` },
       figura("personagens", p.chave, silhueta(cor.cor), { trocavel: true, rotulo: p.nome }),
       el("span", { class: "badge el", title: p.elemento.nome }, iconeElemento(p.elemento.chave, 18)),
-      el("span", { class: "badge wp", title: p.tipo_arma.nome }, icone(iconeArma(p.tipo_arma.chave), 16)),
+      el("span", { class: "badge wp", title: p.tipo_arma.nome }, iconeArma(p.tipo_arma.chave, 18)),
     ),
     el(
       "div",

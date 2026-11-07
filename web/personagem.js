@@ -97,7 +97,7 @@ function cabecalho({ personagem, builds, credito }) {
       "div",
       { style: { display: "flex", flexWrap: "wrap", gap: "10px" } },
       el("span", { class: "chip" }, el("span", { class: "dot", style: { background: cor.cor } }), personagem.elemento.nome),
-      el("span", { class: "chip" }, icone(iconeArma(personagem.tipo_arma.chave), 16), personagem.tipo_arma.nome),
+      el("span", { class: "chip" }, iconeArma(personagem.tipo_arma.chave, 16), personagem.tipo_arma.nome),
       el("span", { class: "chip estrelas", style: { letterSpacing: "2px" }, "aria-label": `${personagem.raridade} estrelas` }, estrelas(personagem.raridade)),
     ),
     el("p", { style: { margin: 0, fontSize: "15px", color: "var(--texto-2)" } }, builds.length ? quantidade : "Nenhuma construção cadastrada"),

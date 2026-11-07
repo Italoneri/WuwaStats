@@ -172,14 +172,26 @@ export function iconeElemento(chave, tamanho = 16) {
   });
 }
 
-export const ARMAS = {
-  broadblade: "M4 20 16 8M14 4l6 6-3 1-4-4zM6 14l4 4M3 21l2-2",
-  sword: "M14.5 4H20v5.5L9 20.5 3.5 15zM6 13l5 5M3 21l3-3",
-  pistols: "M3 7h17v4h-8l-1 3H8l-1 5H4l1-8H3z",
-  gauntlets: "M7 11V6a1.5 1.5 0 0 1 3 0v4M10 9V5a1.5 1.5 0 0 1 3 0v4M13 9V6a1.5 1.5 0 0 1 3 0v6M7 11a2 2 0 0 0-2 2v1a6 6 0 0 0 6 6h1a5 5 0 0 0 5-5v-3",
-  rectifier: "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3",
+// Glifos oficiais de tipo de arma (SP_IconNor*), baixados de static.nanoka.cc/assets/ww/Static.
+// O jogo chama a montante de "Sword", a espada de "Knife" e o retificador de "Magic".
+const ARMAS = {
+  broadblade: "armas/broadblade.webp",
+  sword: "armas/sword.webp",
+  pistols: "armas/pistols.webp",
+  gauntlets: "armas/gauntlets.webp",
+  rectifier: "armas/rectifier.webp",
 };
-export const iconeArma = (chave) => ARMAS[chave] ?? ARMAS.rectifier;
+
+/** Glifo branco do jogo usado como máscara: assume a cor do texto ao redor. */
+export function iconeArma(chave, tamanho = 16) {
+  const glifo = ARMAS[chave];
+  if (!glifo) return icone("M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z", tamanho, { espessura: 2 });
+  const mascara = `url("${glifo}") center / contain no-repeat`;
+  return el("span", {
+    "aria-hidden": "true",
+    style: { display: "block", flexShrink: "0", width: `${tamanho}px`, height: `${tamanho}px`, background: "currentColor", mask: mascara, webkitMask: mascara },
+  });
+}
 
 export const estrelas = (n) => "★".repeat(n);
 
