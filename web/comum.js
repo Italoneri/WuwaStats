@@ -149,16 +149,28 @@ export const ICONES = {
 };
 
 // Chaves vêm de /api/personagens (elemento.chave, tipo_arma.chave).
+// Glifos oficiais do jogo (elementinfo.json → Icon4Pure, UIResources/Common/Image/IconElement128), baixados de static.nanoka.cc.
 export const ELEMENTOS = {
-  glacio: { cor: "#7FD3F7", d: "M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9" },
-  fusion: { cor: "#F2665A", d: "M12 3c3 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-7z" },
-  electro: { cor: "#B57BFF", d: "M13 2 4 14h7l-1 8 9-12h-7z" },
-  aero: { cor: "#5BD6A0", d: "M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h8" },
-  spectro: { cor: "#F2D45C", d: "M12 3v3M12 18v3M3 12h3M18 12h3M12 8l1.4 2.6L16 12l-2.6 1.4L12 16l-1.4-2.6L8 12l2.6-1.4z" },
-  havoc: { cor: "#E66BB0", d: "M21 12a9 9 0 1 1-9-9M16 12a4 4 0 1 1-4-4" },
+  glacio: { cor: "#7FD3F7", glifo: "elementos/glacio.webp" },
+  fusion: { cor: "#F2665A", glifo: "elementos/fusion.webp" },
+  electro: { cor: "#B57BFF", glifo: "elementos/electro.webp" },
+  aero: { cor: "#5BD6A0", glifo: "elementos/aero.webp" },
+  spectro: { cor: "#F2D45C", glifo: "elementos/spectro.webp" },
+  havoc: { cor: "#E66BB0", glifo: "elementos/havoc.webp" },
 };
-const ELEMENTO_DESCONHECIDO = { cor: "#A39BB6", d: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" };
+const ELEMENTO_DESCONHECIDO = { cor: "#A39BB6", glifo: null };
 export const elemento = (chave) => ELEMENTOS[chave] ?? ELEMENTO_DESCONHECIDO;
+
+/** Glifo branco do jogo usado como máscara: assume a cor do elemento. */
+export function iconeElemento(chave, tamanho = 16) {
+  const { cor, glifo } = elemento(chave);
+  if (!glifo) return icone("M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z", tamanho, { espessura: 2, cor });
+  const mascara = `url("${glifo}") center / contain no-repeat`;
+  return el("span", {
+    "aria-hidden": "true",
+    style: { display: "block", width: `${tamanho}px`, height: `${tamanho}px`, background: cor, mask: mascara, webkitMask: mascara },
+  });
+}
 
 export const ARMAS = {
   broadblade: "M4 20 16 8M14 4l6 6-3 1-4-4zM6 14l4 4M3 21l2-2",

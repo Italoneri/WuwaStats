@@ -1,7 +1,7 @@
 // Tela 4 · Análise: POST /api/analisar a cada mudança na entrada. A entrada vem da sessão de captura ou do envio manual.
 
 import {
-  ICONES, QUALIDADES, ampliar, api, avisoErro, carregarImagens, corNota, el, faixaDaMeta, figura, elemento, estrelas, formatarValor, icone,
+  ICONES, QUALIDADES, ampliar, api, avisoErro, carregarImagens, corNota, el, faixaDaMeta, figura, elemento, estrelas, formatarValor, icone, iconeElemento,
   iconeStat, lembrarPagina, moldura, parametro, perguntaCondicao, qualidade, rotuloMeta, rotulador, rotuloCondicao, silhueta,
 } from "./comum.js";
 
@@ -274,7 +274,7 @@ function titulo(analise) {
       { style: { display: "flex", flexWrap: "wrap", alignItems: "center", gap: "14px" } },
       el("h1", { style: { margin: 0, fontSize: "44px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 } }, personagem?.nome ?? analise.personagem),
       personagem
-        ? el("span", { title: personagem.elemento.nome, style: { width: "34px", height: "34px", borderRadius: "50%", display: "grid", placeItems: "center", border: `1px solid ${cor.cor}66`, background: `${cor.cor}1F` } }, icone(cor.d, 18, { espessura: 2, cor: cor.cor }))
+        ? el("span", { title: personagem.elemento.nome, style: { width: "34px", height: "34px", borderRadius: "50%", display: "grid", placeItems: "center", border: `1px solid ${cor.cor}66`, background: `${cor.cor}1F` } }, iconeElemento(personagem.elemento.chave, 20))
         : null,
       estado.leitura?.nivel ? el("span", { class: "tag mono" }, `Nv. ${estado.leitura.nivel}`) : null,
     ),
