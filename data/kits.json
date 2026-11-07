@@ -3,7 +3,7 @@
     "descricao": "Kit oficial dos ressonadores, gerado por scripts/importar_kits.py. Não edite à mão: a próxima importação sobrescreve. Resumos ficam em kit_resumos.json.",
     "repositorio": "Arikatsu/WutheringWaves_Data",
     "commit": "9218d612ad815e398e064e577e42aaf878899968",
-    "importado_em": "2026-11-07T00:31:48+00:00"
+    "importado_em": "2026-11-07T00:43:58+00:00"
   },
   "kits": {
     "Aalto": {
@@ -560,7 +560,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Portal do Dilema",
+                "texto": "Portão do Dilema",
                 "estilo": "destaque"
               },
               {
@@ -1879,7 +1879,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Mech - Carregado I",
+                "texto": "ATQ Pesado: Mecha - Carregado I",
                 "estilo": "destaque"
               },
               {
@@ -1909,7 +1909,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Mech - Carregado II",
+                "texto": "ATQ Pesado: Mecha - Carregado II",
                 "estilo": "destaque"
               },
               {
@@ -3156,7 +3156,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Mech - Carregado II",
+                "texto": "ATQ Pesado: Mecha - Carregado II",
                 "estilo": "destaque"
               },
               {
@@ -5729,7 +5729,7 @@
             ],
             [
               {
-                "texto": "ATQ Pesado: Rugido do Trovão - Ascendente",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "subtitulo"
               }
             ],
@@ -5755,7 +5755,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Rugido do Trovão - Ascendente",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "destaque"
               },
               {
@@ -5777,7 +5777,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Ressonância: Lâmina do Guerreiro",
+                "texto": "Habilidade de Ressonância: Lâmina da Guerreira",
                 "estilo": "destaque"
               },
               {
@@ -5801,7 +5801,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Rugido do Trovão - Ascendente",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "destaque"
               },
               {
@@ -5831,7 +5831,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque de Aço",
+                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque Metálico",
                 "estilo": "destaque"
               },
               {
@@ -5863,7 +5863,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Rugido do Trovão - Ascendente",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "destaque"
               },
               {
@@ -5881,7 +5881,7 @@
             ],
             [
               {
-                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque de Aço",
+                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque Metálico",
                 "estilo": "subtitulo"
               }
             ],
@@ -5907,7 +5907,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque de Aço",
+                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque Metálico",
                 "estilo": "destaque"
               },
               {
@@ -5925,7 +5925,7 @@
             ],
             [
               {
-                "texto": "Contra-ATQ Evasivo: Rugido do Trovão - Recuo",
+                "texto": "Contra-ATQ Evasivo: Trovoada - Passo para Trás",
                 "estilo": "subtitulo"
               }
             ],
@@ -5959,7 +5959,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo - ATQ Pesado: Choque de Aço",
+                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque Metálico",
                 "estilo": "destaque"
               },
               {
@@ -5967,7 +5967,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo: Rugido do Trovão - Recuo",
+                "texto": "Contra-ATQ Evasivo: Trovoada - Passo para Trás",
                 "estilo": "destaque"
               },
               {
@@ -6077,7 +6077,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Ressonância: Lâmina do Guerreiro",
+                "texto": "Habilidade de Ressonância: Lâmina da Guerreira",
                 "estilo": "destaque"
               },
               {
@@ -6093,7 +6093,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo - ATQ Pesado: Choque de Aço",
+                "texto": "Contra-ATQ Evasivo: ATQ Pesado - Choque Metálico",
                 "estilo": "destaque"
               },
               {
@@ -6486,7 +6486,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Ressonância: Lâmina do Guerreiro",
+                "texto": "Habilidade de Ressonância: Lâmina da Guerreira",
                 "estilo": "destaque"
               },
               {
@@ -6692,7 +6692,7 @@
             ],
             [
               {
-                "texto": "Contra-ATQ Evasivo: Luz Solar Eterna - Golpe",
+                "texto": "Contra-ATQ Evasivo: Luz Solar Imortal - Golpe",
                 "estilo": "subtitulo"
               }
             ],
@@ -6718,7 +6718,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo: Luz Solar Eterna - Golpe",
+                "texto": "Contra-ATQ Evasivo: Luz Solar Imortal - Golpe",
                 "estilo": "destaque"
               },
               {
@@ -6820,11 +6820,11 @@
             ],
             [
               {
-                "texto": "- Ganha restaura 10% de Ascendência ao realizar ",
+                "texto": "- Ganha 10% de Ascendência ao realizar ",
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade de Ressonância: Lâmina do Guerreiro",
+                "texto": "Habilidade de Ressonância: Lâmina da Guerreira",
                 "estilo": "destaque"
               },
               {
@@ -7043,7 +7043,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Reino do Governante",
+                "texto": "Reino da Governante",
                 "estilo": "destaque"
               },
               {
@@ -7091,7 +7091,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Lealdade Jurada",
+                "texto": "Juramento de Lealdade",
                 "estilo": "destaque"
               },
               {
@@ -7113,7 +7113,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Lealdade Jurada",
+                "texto": "Juramento de Lealdade",
                 "estilo": "destaque"
               },
               {
@@ -7159,7 +7159,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Lealdade Jurada",
+                "texto": "Juramento de Lealdade",
                 "estilo": "destaque"
               },
               {
@@ -7269,7 +7269,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Lealdade Jurada",
+                "texto": "Juramento de Lealdade",
                 "estilo": "destaque"
               },
               {
@@ -7291,7 +7291,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Lealdade Jurada",
+                "texto": "Juramento de Lealdade",
                 "estilo": "destaque"
               },
               {
@@ -7397,7 +7397,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Habilidade Outro: Canto de Batalha dos Inflexíveis",
+                "texto": "Habilidade Outro: Canção de Batalha dos Inflexíveis",
                 "estilo": "destaque"
               },
               {
@@ -7635,7 +7635,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Liberação de Ressonância: Sublime é o Sol: Guardião da Luz Perpétua",
+                "texto": "Liberação de Ressonância: Sublime é o Sol: Protetor Semprebrilho",
                 "estilo": "destaque"
               },
               {
@@ -7872,7 +7872,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Contra-ATQ Evasivo: Rugido do Trovão - Recuo",
+                "texto": "Contra-ATQ Evasivo: Trovoada - Passo para Trás",
                 "estilo": "destaque"
               },
               {
@@ -7888,7 +7888,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Trovoada: Gancho",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "destaque"
               },
               {
@@ -8015,7 +8015,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "ATQ Pesado: Trovoada -  Gancho",
+                "texto": "ATQ Pesado: Trovoada - Gancho",
                 "estilo": "destaque"
               },
               {
@@ -8604,7 +8604,7 @@
             ],
             [
               {
-                "texto": "Entidades Restantes seguem os Ressonantes ativos da equipe. 1 acúmulos de ",
+                "texto": "Entidades Restantes seguem os Ressonantes ativos da equipe. 1 acúmulo de ",
                 "estilo": "normal"
               },
               {
@@ -11978,7 +11978,7 @@
           "descricao": [
             [
               {
-                "texto": "Cura o Ressonante ativo da equipe em 18% do ATQ de Buling por segundo por16s. Amplifica o Dano de todos os Ressonantes próximos da equipe em 15% por 30s.",
+                "texto": "Cura o Ressonante ativo da equipe em 18% do ATQ de Buling por segundo por 16s. Amplifica o Dano de todos os Ressonantes próximos da equipe em 15% por 30s.",
                 "estilo": "normal"
               }
             ]
@@ -14183,7 +14183,7 @@
                 "estilo": "havoc"
               },
               {
-                "texto": " (considerado Dano de ATQ Básico= e encerra o ",
+                "texto": " (considerado Dano de ATQ Básico) e encerra o ",
                 "estilo": "normal"
               },
               {
@@ -14572,7 +14572,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Expiação ",
+                "texto": "Expiação",
                 "estilo": "destaque"
               },
               {
@@ -14598,7 +14598,7 @@
             ],
             [
               {
-                "texto": "Para cada 10 Pistilos Carmesins consumidos, recupera 4 de Energia de Concerto e obtém 1 Botão Carmesim. Cada botão dura 15 s, acumulando-se até 10 vezes.",
+                "texto": "Para cada 10 Pistilos Carmesins consumidos, recupera 4 de Energia de Concerto e obtém 1 Broto Carmesim. Cada broto dura 15 s, acumulando-se até 10 vezes.",
                 "estilo": "normal"
               }
             ],
@@ -15523,7 +15523,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", eliminando todos os Botões Carmesins e aumentando o bônus do Multiplicador de Dano do Circuito Ressonante ",
+                "texto": ", eliminando todos os Brotos Carmesins e aumentando o bônus do Multiplicador de Dano do Circuito Ressonante ",
                 "estilo": "normal"
               },
               {
@@ -24817,7 +24817,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ", após realizar este ataque, pressionar  ",
+                "texto": ", após realizar este ataque, pressionar ",
                 "estilo": "normal"
               },
               {
@@ -25272,7 +25272,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " é substituído por ",
+                "texto": " é substituída por ",
                 "estilo": "normal"
               },
               {
@@ -25755,7 +25755,7 @@
             ],
             [
               {
-                "texto": "Após uar ",
+                "texto": "Após usar ",
                 "estilo": "normal"
               },
               {
@@ -26107,7 +26107,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " .",
+                "texto": ".",
                 "estilo": "normal"
               }
             ],
@@ -26215,7 +26215,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": ". Este efeito consume até 100 pontos.",
+                "texto": ". Este efeito consome até 100 pontos.",
                 "estilo": "normal"
               }
             ],
@@ -26439,7 +26439,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " e tem mais de10 pontos de ",
+                "texto": " e tem mais de 10 pontos de ",
                 "estilo": "normal"
               },
               {
@@ -27638,7 +27638,7 @@
                 "estilo": "destaque"
               },
               {
-                "texto": " ao alvos:",
+                "texto": " aos alvos:",
                 "estilo": "normal"
               }
             ],
@@ -29269,7 +29269,7 @@
                 "estilo": "normal"
               },
               {
-                "texto": "Esquiva ",
+                "texto": "Esquiva",
                 "estilo": "destaque"
               },
               {

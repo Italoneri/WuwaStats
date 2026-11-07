@@ -3,6 +3,20 @@
     "descricao": "Correções do texto PT oficial dos kits, aplicadas por scripts/importar_kits.py no texto cru (com marcação) antes da conversão. Chave = nome em inglês (a de resonators.json). Cada troca é conferida no texto em inglês do nanoka (static.nanoka.cc/ww/<versão>/en/character/<id>.json). Correção que não acha o trecho vira aviso na importação."
   },
   "correcoes": {
+    "Aalto": [
+      {
+        "trecho": "<te href=850049>Portal do Dilema</te>",
+        "troca": "<te href=850049>Portão do Dilema</te>",
+        "motivo": "O mesmo termo do glossário (te href=850049) aparece como \"Portão do Dilema\" no resto do kit."
+      }
+    ],
+    "Aemeath": [
+      {
+        "trecho": "ATQ Pesado: Mech - Carregado",
+        "troca": "ATQ Pesado: Mecha - Carregado",
+        "motivo": "\"Mech\" sem tradução; o resto do kit diz \"Mecha\" (ATQ Pesado: Mecha - Carregado I/II)."
+      }
+    ],
     "Augusta": [
       {
         "trecho": "777777777777777777",
@@ -13,6 +27,78 @@
         "trecho": "de Augusta.zz",
         "troca": "de Augusta.",
         "motivo": "Letras soltas no fim do item de Majestade; o inglês do nanoka termina em \"Augusta's Outro Skill...\"."
+      },
+      {
+        "trecho": "Lâmina do Guerreiro",
+        "troca": "Lâmina da Guerreira",
+        "motivo": "O nome da Habilidade de Ressonância é \"Lâmina da Guerreira\" (Warrior's Blade); o texto alternava com \"Lâmina do Guerreiro\"."
+      },
+      {
+        "trecho": "Canto de Batalha dos Inflexíveis",
+        "troca": "Canção de Batalha dos Inflexíveis",
+        "motivo": "O nome da Habilidade Outro é \"Canção de Batalha dos Inflexíveis\"; o texto da Majestade dizia \"Canto\"."
+      },
+      {
+        "trecho": "Reino do Governante",
+        "troca": "Reino da Governante",
+        "motivo": "O título da seção e as outras menções dizem \"Reino da Governante\" (Augusta é a governante)."
+      },
+      {
+        "trecho": "Lealdade Jurada",
+        "troca": "Juramento de Lealdade",
+        "motivo": "O termo do glossário (te href=130606) é \"Juramento de Lealdade\"; o texto alternava com \"Lealdade Jurada\" para o mesmo estado."
+      },
+      {
+        "trecho": "Guardião da Luz Perpétua",
+        "troca": "Protetor Semprebrilho",
+        "motivo": "\"Sublime é o Sol: Protetor Semprebrilho\" é o nome usado no resto do kit; a Canção de Batalha dizia \"Guardião da Luz Perpétua\"."
+      },
+      {
+        "trecho": "Ganha restaura {2}",
+        "troca": "Ganha {2}",
+        "motivo": "\"Ganha restaura\": dois verbos seguidos na lista da Ascendência; os outros itens dizem \"Ganha {n} de Ascendência\"."
+      },
+      {
+        "trecho": "Trovoada -  Gancho",
+        "troca": "Trovoada - Gancho",
+        "motivo": "Espaço duplo no nome do golpe na S6."
+      },
+      {
+        "trecho": "Trovoada: Gancho",
+        "troca": "Trovoada - Gancho",
+        "motivo": "A S3 dizia \"Trovoada: Gancho\"; os multiplicadores e a S6 usam \"Trovoada - Gancho\"."
+      },
+      {
+        "trecho": "Rugido do Trovão - Ascendente",
+        "troca": "Trovoada - Gancho",
+        "motivo": "Mesmo golpe (Thunderoar: Uppercut) que os multiplicadores e as sequências chamam de \"Trovoada - Gancho\"; os outros golpes Thunderoar já são \"Trovoada\"."
+      },
+      {
+        "trecho": "Rugido do Trovão - Recuo",
+        "troca": "Trovoada - Passo para Trás",
+        "motivo": "Mesmo golpe (Dodge Counter - Thunderoar: Backstep) que o multiplicador chama de \"Contra-ATQ Evasivo: Trovoada - Passo para Trás\"."
+      },
+      {
+        "trecho": "Contra-ATQ Evasivo - ATQ Pesado: Choque de Aço",
+        "troca": "Contra-ATQ Evasivo: ATQ Pesado - Choque de Aço",
+        "motivo": "Ordem dos separadores trocada em relação ao título da seção."
+      },
+      {
+        "trecho": "Choque de Aço",
+        "troca": "Choque Metálico",
+        "motivo": "Steelclash aparece como \"Choque Metálico\" no ATQ Pesado e como \"Choque de Aço\" no Contra-ATQ; unificado no nome do ATQ Pesado."
+      },
+      {
+        "trecho": "Luz Solar Eterna",
+        "troca": "Luz Solar Imortal",
+        "motivo": "Undying Sunlight é \"Luz Solar Imortal\" em todo o kit, menos no título do Contra-ATQ Evasivo."
+      }
+    ],
+    "Baizhi": [
+      {
+        "trecho": "{2} acúmulos d",
+        "troca": "{2} acúmulo d",
+        "motivo": "\"1 acúmulos\": o parâmetro vale 1 e o texto ficou no plural."
       }
     ],
     "Brant": [
@@ -20,6 +106,84 @@
         "trecho": "com ATQ Normal\n.",
         "troca": "com ATQ Normal.",
         "motivo": "Ponto final caiu numa linha própria no item de Bravo; o inglês do nanoka termina em \"Normal Attacks hit the target.\"."
+      }
+    ],
+    "Buling": [
+      {
+        "trecho": "por{1}s",
+        "troca": "por {1}s",
+        "motivo": "Faltava espaço: \"por16s\"."
+      }
+    ],
+    "Camellya": [
+      {
+        "trecho": "Expiação </color>,",
+        "troca": "Expiação</color>,",
+        "motivo": "Espaço antes da vírgula (\"Expiação ,\")."
+      },
+      {
+        "trecho": "Dano de ATQ Básico=",
+        "troca": "Dano de ATQ Básico)",
+        "motivo": "Parêntese fechado com \"=\" por engano: \"(considerado Dano de ATQ Básico=\"."
+      },
+      {
+        "trecho": "Botão Carmesim",
+        "troca": "Broto Carmesim",
+        "motivo": "Crimson Bud aparece como \"Broto Carmesim\" e \"Botão Carmesim\"; unificado em \"Broto\" (maioria, e combina com Modo de Brotação)."
+      },
+      {
+        "trecho": "Botões Carmesins",
+        "troca": "Brotos Carmesins",
+        "motivo": "Mesmo termo no plural (Crimson Buds)."
+      },
+      {
+        "trecho": "Cada botão dura",
+        "troca": "Cada broto dura",
+        "motivo": "Mesmo termo (each bud lasts)."
+      }
+    ],
+    "Chisa": [
+      {
+        "trecho": "Gamepad=pressionar}  <color=Highlight>ATQ Básico",
+        "troca": "Gamepad=pressionar} <color=Highlight>ATQ Básico",
+        "motivo": "Espaço duplo em \"pressionar  ATQ Básico\"."
+      },
+      {
+        "trecho": "<color=Highlight>ATQ Básico</color> .",
+        "troca": "<color=Highlight>ATQ Básico</color>.",
+        "motivo": "Espaço antes do ponto final."
+      },
+      {
+        "trecho": "mais de{3}",
+        "troca": "mais de {3}",
+        "motivo": "Faltava espaço: \"mais de10\"."
+      },
+      {
+        "trecho": "Após uar",
+        "troca": "Após usar",
+        "motivo": "Erro de digitação: \"uar\"."
+      },
+      {
+        "trecho": "Este efeito consume",
+        "troca": "Este efeito consome",
+        "motivo": "\"consume\" (verbo em espanhol/inglês) em vez de \"consome\"."
+      },
+      {
+        "trecho": "Habilidade de Ressonância</color> é substituído",
+        "troca": "Habilidade de Ressonância</color> é substituída",
+        "motivo": "Concordância: a Habilidade de Ressonância é substituída."
+      },
+      {
+        "trecho": "</te></color> ao alvos",
+        "troca": "</te></color> aos alvos",
+        "motivo": "Concordância: \"ao alvos\"."
+      }
+    ],
+    "Ciaccona": [
+      {
+        "trecho": "Esquiva </color>,",
+        "troca": "Esquiva</color>,",
+        "motivo": "Espaço antes da vírgula (\"Esquiva ,\")."
       }
     ],
     "Denia": [
